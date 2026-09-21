@@ -1,0 +1,207 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * MAVET arculat (D-015): a színek és a tipográfia a „MAVET színpaletta v1.0”
+ * és az arculatterv hierarchiája szerint. A márkaszínek `mavet-*` néven
+ * közvetlenül is elérhetők (pl. `bg-mavet-navy`, `text-mavet-gold`), a shadcn
+ * szemantikus tokenek pedig ezekre épülnek. A `.dark` blokk egyelőre nem
+ * használt; a prototípus világos megjelenésű.
+ */
+
+@theme inline {
+    --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+    --font-heading: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", P052, "TeX Gyre Pagella", serif;
+    --color-mavet-navy: var(--mavet-navy);
+    --color-mavet-navy-deep: var(--mavet-navy-deep);
+    --color-mavet-blue: var(--mavet-blue);
+    --color-mavet-blue-deep: var(--mavet-blue-deep);
+    --color-mavet-blue-50: var(--mavet-blue-50);
+    --color-mavet-gold: var(--mavet-gold);
+    --color-mavet-gold-light: var(--mavet-gold-light);
+    --color-mavet-gold-50: var(--mavet-gold-50);
+    --color-mavet-surface: var(--mavet-surface);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+    /* MAVET színpaletta v1.0 */
+    --mavet-navy: #0B2D5B;
+    --mavet-blue: #2A6BCB;
+    --mavet-gold: #F2A900;
+    --mavet-white: #FFFFFF;
+    --mavet-black: #000000;
+    --mavet-blue-50: #95B5E5;
+    --mavet-gold-50: #F9D480;
+    --mavet-black-50: #808080;
+    /* A logógradiensek köztes és szélső árnyalatai */
+    --mavet-navy-deep: #061E41;
+    --mavet-blue-deep: #1154A3;
+    --mavet-gold-light: #FFD15A;
+    /* Alternatív világos webes háttér */
+    --mavet-surface: #F8FAFC;
+
+    --background: var(--mavet-white);
+    --foreground: var(--mavet-navy);
+    --card: var(--mavet-white);
+    --card-foreground: var(--mavet-navy);
+    --popover: var(--mavet-white);
+    --popover-foreground: var(--mavet-navy);
+    --primary: var(--mavet-navy);
+    --primary-foreground: var(--mavet-white);
+    --secondary: #EDF2FA;
+    --secondary-foreground: var(--mavet-navy);
+    --muted: var(--mavet-surface);
+    /*
+     * A kézikönyv másodlagos szövegszíne (#808080) fehéren csak 3,9:1
+     * kontrasztot ad, ami folyószövegnél nem teljesíti a WCAG AA-t. Helyette
+     * navy tónusú szürke szerepel (kb. 6,5:1).
+     */
+    --muted-foreground: #4F5F7A;
+    --accent: #E6EEFA;
+    --accent-foreground: var(--mavet-navy);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: #DDE5F0;
+    --input: #C9D4E5;
+    --ring: var(--mavet-blue);
+    --chart-1: var(--mavet-blue);
+    --chart-2: var(--mavet-gold);
+    --chart-3: var(--mavet-navy);
+    --chart-4: var(--mavet-blue-50);
+    --chart-5: var(--mavet-gold-50);
+    --radius: 0.625rem;
+    --sidebar: var(--mavet-surface);
+    --sidebar-foreground: var(--mavet-navy);
+    --sidebar-primary: var(--mavet-navy);
+    --sidebar-primary-foreground: var(--mavet-white);
+    --sidebar-accent: #E6EEFA;
+    --sidebar-accent-foreground: var(--mavet-navy);
+    --sidebar-border: #DDE5F0;
+    --sidebar-ring: var(--mavet-blue);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  /* Arculati hierarchia: H1–H3 Palatino Bold, H4–H6 Source Sans 3 600. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+  ::selection {
+    background-color: var(--mavet-gold-50);
+    color: var(--mavet-navy);
+  }
+}
+
+/* A logó alsó (navy) gradiense: sötét sávok, lábléc. */
+@utility bg-mavet-navy-gradient {
+  background-image: linear-gradient(180deg, #164D91 0%, #0B2D5B 55%, #061E41 100%);
+}
+
+/* Hero és CTA háttér: navy alap, kék és halvány arany fényfolttal. */
+@utility bg-mavet-hero {
+  background-color: var(--mavet-navy);
+  background-image:
+    radial-gradient(60rem 36rem at 88% -12%, rgb(42 107 203 / 0.55), transparent 62%),
+    radial-gradient(36rem 26rem at -8% 112%, rgb(242 169 0 / 0.12), transparent 60%),
+    linear-gradient(180deg, #0B2D5B 0%, #061E41 100%);
+}
+
+/* Finom rácsminta sötét felületre, a szélek felé elhalványul. */
+@utility bg-mavet-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  mask-image: radial-gradient(ellipse 70% 80% at 70% 30%, black 20%, transparent 75%);
+}

@@ -1,0 +1,4831 @@
+WEBVTT
+Kind: captions
+Language: hu
+
+00:00:01.280 --> 00:00:04.720
+Pontos.
+Cáó, sziasztok.
+
+00:00:04.000 --> 00:00:09.720
+Oké.
+Oké. Szia. Mi újság?
+
+00:00:06.720 --> 00:00:09.720
+Szó.
+
+00:00:10.559 --> 00:00:17.520
+Na köszi, hogy tudtatok csatlakozni,
+illetve Gyuri, neked külön, hogy vagy te
+
+00:00:15.519 --> 00:00:24.080
+is.
+András, arra arra gondoltam, hogy akkor
+
+00:00:21.480 --> 00:00:28.439
+menjünk végig a az összes kérdéses
+részen,
+
+00:00:25.599 --> 00:00:34.040
+és akkor hogyha hogyha tudnád mondani,
+hogy hol mi volt, átbeszéljük. Ög azt
+
+00:00:32.399 --> 00:00:38.879
+nem tudom, írta-e ki nektek, hogy
+felvétel készül megbeszélésről, és akkor
+
+00:00:35.879 --> 00:00:41.879
+ebből mi könnyen átvezetjük majd a
+változtatásokat.
+
+00:00:41.920 --> 00:00:50.079
+Nekem meg van nyitva. Dobjam be ide
+Gyuri a doksit, vagy
+
+00:00:47.360 --> 00:00:52.600
+nem? Én most fülelek. Én most fülelek.
+Aha.
+
+00:00:50.399 --> 00:00:59.800
+Majd átnézem, át fogom nézni is.
+Jó, oké. Oké. Egy
+
+00:00:55.840 --> 00:01:04.839
+fél pillanat én is megkeresem a
+magamnak én is megnyissam.
+
+00:01:02.320 --> 00:01:12.600
+De egyébként bedobhatod itt bennyitom a
+Persze benyitom a háttérbe én is akkor
+
+00:01:09.080 --> 00:01:12.600
+és látni fogom.
+
+00:01:16.680 --> 00:01:21.520
+Ühüm.
+Jó.
+
+00:01:23.479 --> 00:01:30.840
+Na, nekem is sikerült megtalálni.
+Jó.
+
+00:01:29.000 --> 00:01:33.799
+Jó, akkor úgy, hogyha így megyünk sorba,
+és akkor, mert ugye alapvetően én írtam
+
+00:01:32.560 --> 00:01:39.399
+kérdéseket, és akkor
+Igen, igen, igen.
+
+00:01:35.560 --> 00:01:39.399
+Szupi. Jó,
+
+00:01:42.240 --> 00:01:50.119
+jó, alapvetően összességében így maga a
+struktúra meg a rendszer az az
+
+00:01:48.360 --> 00:01:54.880
+tetszik. Tehát, hogy így azt gondolom,
+hogy jó, igen, ott a hány adminisztrátor
+
+00:01:53.119 --> 00:01:59.840
+az ilyen költői kérdés volt, nyilván azt
+majd mi megbeszéljük,
+
+00:01:56.560 --> 00:02:03.920
+de hogy
+igazából itt az a gondolat merült föl
+
+00:02:02.079 --> 00:02:07.280
+bennem, mert látom, hogy ugye nagyon sok
+mindent, sőt alapvetően a tartalmi
+
+00:02:05.479 --> 00:02:12.480
+részeket gyak mi ugyan mi tudjuk
+szerkeszteni majd. Ez körülbelül
+
+00:02:10.720 --> 00:02:16.400
+szerintetek amúgy mennyi időt vesz
+igénybe? Nyilván ez attól függ, hogy
+
+00:02:13.720 --> 00:02:19.920
+mennyi tartalom van. Tudom, csak hogy
+nyilván elt se tudom képzelni. egy hírt
+
+00:02:18.200 --> 00:02:24.080
+fölrakni az mennyi idő egy ilyen
+felületre?
+
+00:02:21.319 --> 00:02:28.280
+Hát hogyha megvan a hírnak a a szövege,
+meg hogyha konkrétan a tartalom megvan,
+
+00:02:26.440 --> 00:02:31.760
+akkor ez egy én azt gondolom, hogy
+egy-két percnél nem kell, hogy több
+
+00:02:29.640 --> 00:02:36.200
+legyen. Gyuri,
+hát igen. Hát hogyha le akarnánk
+
+00:02:33.599 --> 00:02:41.400
+vezetni, így nagyon egyszerűen
+bejelentkezünk majd valamilyen
+
+00:02:38.360 --> 00:02:47.080
+bejelentkezési formával, tehát vagy
+Google-ös bejelentkezéssel, ilyen
+
+00:02:43.040 --> 00:02:50.480
+Google, vagy jelszóval, vagy OT kóddal.
+Tehát gyakorlatilag ez egy nagyon gyors,
+
+00:02:48.959 --> 00:02:55.920
+de én amúgy ilyen a social média
+bejelentkezést is tudom javasolni. A
+
+00:02:53.840 --> 00:03:00.280
+leggyorsabb egyébként a Gmailes, tehát
+egy kattintással bent vagy a rendszerbe.
+
+00:02:58.680 --> 00:03:05.799
+Azt bevisz az admin fiókba, ott
+rákattintasz a hírekre, új hír
+
+00:03:02.280 --> 00:03:07.159
+hozzáadása, bemásolod, mentész.
+Tehát, hogy
+
+00:03:06.159 --> 00:03:10.360
+Üm Aha.
+Tehát, hogy nem
+
+00:03:07.560 --> 00:03:13.480
+jó. Tehát, hogy ilyen hihetetlen nagy
+informatikai manővereket nem igényel,
+
+00:03:12.360 --> 00:03:19.799
+akkor
+hát nem nem, mert ugye itt igazából csak
+
+00:03:17.400 --> 00:03:24.799
+szöveges tartalomnak lesz szöveges
+tartalom bővítése lesz, meg új szöveges
+
+00:03:23.120 --> 00:03:29.080
+tartalom létrehozása maga az oldós
+oldastruktúra az már meglesz, és akkor
+
+00:03:27.040 --> 00:03:33.000
+az majd legenerálja saját magát ott a
+háttérben.
+
+00:03:30.599 --> 00:03:39.560
+Aha. Jó, jó. Oké,
+oké. ö a ö tagsági státusz meg a
+
+00:03:37.439 --> 00:03:44.080
+tagfelvételi folyamat ugye az azt külön
+kérdésként is írtad
+
+00:03:42.280 --> 00:03:48.080
+ez így oké ez a válasz tehát hogyha úgy
+képzelem hogy akkor valóban
+
+00:03:45.200 --> 00:03:52.840
+egyszerűsítünk a a lépésen vagy nem
+biztos, hogy egyszerűsítünk de hogy
+
+00:03:50.159 --> 00:03:56.799
+gyakorlatilag a tagjelölt először
+visszajelzést kap és mi is hamarabb
+
+00:03:55.079 --> 00:04:01.120
+döntünk mint ahogy ő fizetnek tehát hogy
+akkor fizet amikor már a fizetése az
+
+00:03:58.680 --> 00:04:04.760
+biztos, hogy valódi tagságot eredményez
+így van ugye ezzel ezzel azt körüljük
+
+00:04:03.319 --> 00:04:08.920
+kell, hogy nektek vissza kelljen
+küldeni. Tehát az összes ilyen
+
+00:04:06.280 --> 00:04:13.159
+komplikáció az ezzel ki van kerülve, és
+akkor gyakorlatilag fizetés után
+
+00:04:11.000 --> 00:04:18.680
+automatikusan taggá tud válni, amiről
+egyébként szintén értesítést kap. Tehát
+
+00:04:15.159 --> 00:04:23.560
+folyamatosan a felhasználó végig a taggá
+válási úton értesítve van, hogy mi
+
+00:04:21.280 --> 00:04:25.440
+történik, milyen státuszban van. És ti
+ezt
+
+00:04:23.800 --> 00:04:29.960
+tát meg ő azt tudja majd követ tudja
+majd követni is majd a saját fiókjába,
+
+00:04:28.199 --> 00:04:32.240
+hogy milyen státusza lesz, ugye, hogyha
+jól értem.
+
+00:04:31.199 --> 00:04:34.759
+Igen.
+Oké.
+
+00:04:34.800 --> 00:04:42.440
+informálva lesz. Igen, igen, igen.
+A tagdíjnál ott ugye beírtam az
+
+00:04:40.320 --> 00:04:47.240
+összegeket, annyit elírtam, és az egy
+releváns különbség, hogy 27 január 1.
+
+00:04:45.639 --> 00:04:52.720
+Tehát az a lényeg, hogy idén mi már nem
+szedünk tagdíjat, hanem hanem ugye jövő
+
+00:04:50.160 --> 00:04:59.759
+évtől indul a jövő indul évtől indul a
+tagdíjfizetés. És akkor itt két kérdés
+
+00:04:55.880 --> 00:05:02.120
+ezzel kapcsolatban. Az egyik, hogy
+vagy vagy szóval az, hogy nyilván, hogy
+
+00:05:00.840 --> 00:05:08.360
+akkor úgy kéne megcsinálni, hogy most
+ebbe a három hónapba
+
+00:05:04.360 --> 00:05:12.000
+még ugye ne kérjen tagdíjat a rendszer.
+Tehát
+
+00:05:10.240 --> 00:05:16.960
+valahogy ez
+ez ez annyi lesz, hogy hogy én azt
+
+00:05:14.400 --> 00:05:22.800
+gondolom, hogy hogy ugyanúgy átkerül
+abba a nem tudom, abba a tagsággá váló
+
+00:05:20.039 --> 00:05:27.360
+folyamatba, ami mondjuk az ingyenes
+tagsági
+
+00:05:24.680 --> 00:05:31.759
+kategória. És akkor amint ti jóvá
+hagyjátok a tagságot, nem fizetési
+
+00:05:29.560 --> 00:05:37.880
+oldalra visszük, hanem már értesítést
+kap arról, hogy taggá vált. Úgyhogy és
+
+00:05:34.639 --> 00:05:45.080
+akkor 27. január 1-től lehet aktiválni
+azt, hogy minden minden ilyen tagsági
+
+00:05:41.360 --> 00:05:47.960
+kategóriának megvan az, hogy hogy
+fizetőse vagy sem, illetve hogy mennyibe
+
+00:05:46.759 --> 00:05:51.400
+kerül.
+Így van. Tehát amiket leírtam
+
+00:05:49.440 --> 00:05:59.160
+összegeket, kategóriákat, az gyak jövő
+év január 1-től érvényes. És
+
+00:05:54.919 --> 00:06:05.319
+nekem ami kérdés, hogy kire, hogy ez a
+kedvezményes éves tagdíj, ez kire
+
+00:06:02.400 --> 00:06:10.560
+vonatkozik, ez hogy működne.
+Ez gyak mindenkire, aki
+
+00:06:08.560 --> 00:06:16.560
+olyan rendes tag, hogy nem orvos vagy
+nem gyógyszerész a végzettsége,
+
+00:06:13.680 --> 00:06:21.880
+illetve azokra, akik ifjúsági tagok
+lesznek. Tehát ugye a 35 év alatti tagok
+
+00:06:18.639 --> 00:06:26.199
+az ifjúsági tagok, tehát ők ők ugye
+alapból ifjúsági tagnak jelentkeznek, és
+
+00:06:24.319 --> 00:06:31.840
+nem rendes tagnak. Ott egyértelmű a
+dolog. És a rendes tagokat választottuk
+
+00:06:28.919 --> 00:06:38.720
+szét végzettség szerint.
+Ö itt alapvetően azt igen, tehát hogy
+
+00:06:35.199 --> 00:06:42.759
+gyakor ugye amit írtam is itt nem tudom,
+hogy ezt a rendszernek kell-e
+
+00:06:40.440 --> 00:06:47.680
+automatikusan kezelni, vagy ezt így
+rábízzuk, hogy mindenki megugorja
+
+00:06:45.240 --> 00:06:53.280
+magától ezt a
+önkategorizálást.
+
+00:06:50.360 --> 00:06:57.440
+Hát hogyha fölveszünk születési dátumot,
+akkor meg tudjuk oldani automatikusan.
+
+00:06:55.599 --> 00:07:02.080
+Ha nem veszünk föl születési dátumot,
+akkor ezt magunknak kell megoldaniuk.
+
+00:07:00.199 --> 00:07:07.360
+Igen, ugye ezt írtuk is, hogy hogy lesz
+ilyen, tehát hogyha a az ifjúsági
+
+00:07:05.120 --> 00:07:12.400
+kategóriába tartozik, akkor azt dátum
+alapján tudjuk monitorozni, és a a
+
+00:07:10.000 --> 00:07:19.000
+többit meg nyilván kiválasztja, hogy
+milyen fajta tagságot
+
+00:07:15.360 --> 00:07:23.360
+választ, vagy mi az itt a Igen, az itt
+világos itt a rendes tagon belül kérdés
+
+00:07:21.240 --> 00:07:27.800
+ugye, hogy a mert hogy a rendes tag az
+lehet egy pszichológus, mondjuk ő neki
+
+00:07:25.639 --> 00:07:32.639
+5000, ha meg viszont rendes tag de
+gyógyszerész, akkor neki 10000.
+
+00:07:31.319 --> 00:07:39.120
+Tehát, hogy itt ez a
+akkor viszont munkakategóriákat vagy
+
+00:07:34.520 --> 00:07:39.120
+munkatípus kategóriákat kell megadni.
+
+00:07:39.280 --> 00:07:45.759
+Tehát akkor akkor egy olyan legő
+csinálni
+
+00:07:42.800 --> 00:07:50.039
+legördülő lista, amiben benne vannak
+ezek, és ő kiválaszthatja, hogy melyik
+
+00:07:48.240 --> 00:07:53.319
+az, és akkor így tudjuk automatikusan
+eldönteni, hogy az melyik.
+
+00:07:51.000 --> 00:07:56.159
+És hogyha valaki valakinek nincs, valaki
+nem találja meg azt a listát, amibe
+
+00:07:54.720 --> 00:08:00.720
+tartozik, akkor kinek jelez, hogy az
+bővítve legyen?
+
+00:07:58.159 --> 00:08:04.639
+Én én azt javaslom, tehát hogy pont
+azért, mert ugye ez lényegében egy igen
+
+00:08:02.159 --> 00:08:09.879
+nem választás itt a rendes tagon belül,
+hogy hogy egy olyan opciót adnék, hogy
+
+00:08:07.319 --> 00:08:14.039
+rendes tag kettős. Orvos vagy
+gyógyszerész,
+
+00:08:11.280 --> 00:08:17.440
+és a másik pedig, hogy rendes tag, hogy
+se nem orvos, se nem gyógyszerész. És
+
+00:08:15.800 --> 00:08:20.159
+ebben mindenki más a pszichológus, a
+gyógytornász, tehát mindenki benne van,
+
+00:08:19.440 --> 00:08:25.199
+aki magára is
+pszichológus mondjuk ő orvosnak gondolja
+
+00:08:22.199 --> 00:08:25.199
+magát,
+
+00:08:25.599 --> 00:08:28.599
+csak
+
+00:08:29.000 --> 00:08:34.880
+szőrözés
+alapvetően ugye gyakor teljesen jogos
+
+00:08:32.800 --> 00:08:38.159
+ugye gyak ugye az elbírálási folyamatot
+a a tehát ugye végül is van ugye egy
+
+00:08:36.479 --> 00:08:41.240
+humán faktor, amikor mi ugye jóvá
+hagyjuk a dolgot. Tehát ha ott látjuk,
+
+00:08:39.839 --> 00:08:46.000
+hogy mondjuk véletlen valaki rosszul
+azonosította be magát, mert nem nincs
+
+00:08:43.959 --> 00:08:50.680
+tudatában annak, hogy mi a végzettsége,
+akkor mi majd szólunk neki, hogy
+
+00:08:49.080 --> 00:08:56.040
+hogy mi van.
+Érthető.
+
+00:08:51.320 --> 00:08:56.040
+Lehet, mindjárt földugom töltőre gépet.
+
+00:08:58.200 --> 00:09:05.440
+Szóval én ezt a ezt a két kategóriát
+javasolnám, ami viszont
+
+00:09:03.079 --> 00:09:10.160
+kérdés pont és ez ugye már akár most
+évvégén is fölvetődhet,
+
+00:09:07.839 --> 00:09:10.160
+hogy
+
+00:09:10.839 --> 00:09:18.560
+azt hogy tudja a rendszer elkülöníteni,
+vagy automatikusan eltudja-e, hogy ha
+
+00:09:15.360 --> 00:09:23.920
+mondjuk 26 december
+26 az rossz példa ilyen szempontból, 27
+
+00:09:21.600 --> 00:09:30.560
+december 20-án mondjuk valaki majd
+jelentkezik, és ő befizet egy tagdíjat,
+
+00:09:27.640 --> 00:09:34.480
+hogy az a 27-es évre vonatkozik, vagy a
+28-as évre.
+
+00:09:35.120 --> 00:09:41.600
+Nyilván erre pici az esély gyakorlatba,
+de ugye ez azért van, mert hogy a
+
+00:09:38.880 --> 00:09:46.079
+tagsági díjat ugye nincs tört tagsági
+díj, hanem mindig naptári években
+
+00:09:43.480 --> 00:09:50.000
+gondolkozunk. Tehát gyakusan
+elképzelhető,
+
+00:09:48.079 --> 00:09:54.399
+mondom nem nagy az esély, hogy valaki
+december 20-án gondol egyet, vagyis az
+
+00:09:52.040 --> 00:09:58.200
+adott évre akar még bejelentkezni és
+fizetni. De lehet, hogy ő ott már jövő
+
+00:09:56.399 --> 00:10:04.360
+évet fizetné ki.
+Hát én azt mondanám, hogy most ahogy
+
+00:10:01.000 --> 00:10:11.279
+közeledünk az évhez, meg kellene egy
+ilyen vallomot határozni, amin belül
+
+00:10:08.120 --> 00:10:19.360
+olcsóbban beléphet. Tehát, hogy
+szerintem arányaiba nem szaguri vagy
+
+00:10:15.279 --> 00:10:19.360
+András nálad is szaggad, Gyuri?
+
+00:10:19.440 --> 00:10:27.959
+Igen. Időn most most jó, de néha a kép
+az homály. Ja, bocs, azért, mert itt
+
+00:10:24.800 --> 00:10:33.240
+vagyok az irodáb és a lakásban van a net
+és három két emelette fén vagyok.
+
+00:10:31.560 --> 00:10:36.480
+Átcsatlakozok videó
+átcsatlakozok mobilnetre, és akkor jó
+
+00:10:34.959 --> 00:10:40.240
+leszek. Jó,
+az is jó. Oké,
+
+00:10:40.600 --> 00:10:48.639
+mindjárt jövök vissza. Szerintem elmegy
+majd egy pillanatra a vonal.
+
+00:10:46.200 --> 00:10:53.920
+András, más rendszerek esetében esetleg
+tapasztaltál már valami hasonlót, vagy
+
+00:10:50.680 --> 00:10:55.839
+van van ezzel tapasztalatod?
+K
+
+00:10:54.200 --> 00:10:59.920
+gyakorlatilag a legtöbb tudományos
+társaság baromi nagy türelmi idővel
+
+00:10:58.240 --> 00:11:03.480
+dolgozik. Tehát én is ugye egy picit azt
+láttad is, hogy ugye lazítottam a
+
+00:11:01.560 --> 00:11:07.320
+dolgon, és ezzel is mi még nagyon
+szigorúak leszünk. Tehát a legtöbb
+
+00:11:05.360 --> 00:11:10.760
+társaságban szerintem a tagság fele az
+két-három éve nem fizetett semmi.
+
+00:11:09.560 --> 00:11:17.000
+Ó,
+tehát hogy ez a tagdíj kezelés ez ez nem
+
+00:11:14.959 --> 00:11:21.600
+annyira van szigorúan véve, úgyhogy nem
+tudok neked megoldási javaslatot adni,
+
+00:11:19.680 --> 00:11:25.040
+hogy máshol ez hogy működ.
+Ott ott simán annyi szokott lenni, mert
+
+00:11:23.279 --> 00:11:30.680
+egyébként nem is tudok olyan tudományos
+társaságot, ahol ahol ilyen online
+
+00:11:28.120 --> 00:11:34.880
+fizetéses, simple ps verzió van. Simán
+utalni szoktunk, és a közleménybe be
+
+00:11:32.440 --> 00:11:38.680
+kell írni, hogy melyik évet fizetjük ki.
+Amúgy bocsi visszatérve most már nem
+
+00:11:37.040 --> 00:11:41.680
+most már jobb a vonal
+valamivel. Igen,
+
+00:11:39.760 --> 00:11:45.600
+valamivel jobb. Oké. Tehát, hogy simán
+lehetne szerintem mondjuk ez mondjuk egy
+
+00:11:43.440 --> 00:11:50.880
+egész decemberre félárazni, vagy valami
+ilyesmit. Tehát hogy
+
+00:11:48.800 --> 00:11:54.519
+és akkor
+tehát hogy ez annyira annyira alacsony a
+
+00:11:52.360 --> 00:11:59.399
+tagsági díj, hogy hogy nagyon nem kéne
+kis egységekre bontani szerintem. Aki
+
+00:11:56.920 --> 00:12:03.880
+decemberbe jönni akar, az féláron jöhet.
+És akkor ennyi.
+
+00:12:01.079 --> 00:12:07.639
+Én akár azzal is ki tudok békülni, hogy
+mert akkor még félrazni kell, hogy a
+
+00:12:05.320 --> 00:12:12.639
+decemberi befizetés az már automatikusan
+következő évnek számít. Pont azért, amit
+
+00:12:10.320 --> 00:12:16.279
+beszéltünk, hogy tehát hogy itt elég
+lazán tudjuk lenni, csak akkor akkor ezt
+
+00:12:14.880 --> 00:12:20.120
+így tehát hogy akkor a rendszer akkor
+ezt így tudja,
+
+00:12:18.399 --> 00:12:24.000
+hogy akkor jó, akkor ezt beszéljük meg,
+mint megoldás. Jó, hogy akkor a
+
+00:12:21.440 --> 00:12:31.360
+decemberi befizetések azok már mindig
+következő évnek számítanak.
+
+00:12:26.959 --> 00:12:35.839
+Jó, oké. Oké,
+jó,
+
+00:12:32.399 --> 00:12:41.320
+jó, akkor nekem ehhez a részhez nincs
+más. Mehetünk lejjebb.
+
+00:12:39.320 --> 00:12:48.160
+Oké.
+Tüü tüm tüm. Igen, itt a tagdíj fizetés.
+
+00:12:44.720 --> 00:12:48.160
+Akkor ezt megbeszéltük.
+
+00:12:50.480 --> 00:12:56.639
+Itt a kettő pont.
+Díaz. Ühüm. Bocsi. Díjazottaknál volt ez
+
+00:12:54.160 --> 00:13:01.839
+a kérdésed, hogy hogy érdemes-e a
+tagságmenübe tenni. Ez rajtatok áll,
+
+00:12:59.519 --> 00:13:05.160
+majd később lesznek a díjazottak, és
+akkor szerintem ott említsük ezt meg,
+
+00:13:03.279 --> 00:13:10.199
+vagy beszéljünk róla, hogy hogy ez
+hogyan működik, mennyi díjazott lenne,
+
+00:13:08.199 --> 00:13:13.760
+milyen rendszerességgel frissül. Csak
+jelzem itt, hogy majd akkor erről
+
+00:13:11.560 --> 00:13:19.519
+később.
+Jó, jó, jó. Oxi, oké.
+
+00:13:20.600 --> 00:13:31.320
+Igen. Itt a következő bekezdés
+itt, hogy ugye ahogy írtad, hogy nincs
+
+00:13:27.279 --> 00:13:34.800
+önálló oldala a munkacsoportoknak.
+Tehát ezek tag azt jelenti, hogy az
+
+00:13:32.920 --> 00:13:40.399
+összes munkacsoport egy ilyen nagyon
+hosszú legördülő oldal, amibe így tudunk
+
+00:13:38.760 --> 00:13:44.279
+menni lefele, illetve hogyha rákattintok
+az adott munkacsoport nevére, akkor
+
+00:13:41.920 --> 00:13:49.519
+nyilván odaugrik az oldalon belül. Ezt
+így így kell elképzelni? vagy
+
+00:13:46.839 --> 00:13:54.920
+még a fel a felépítése az az kérdés
+számomra is, illetve az is kérdés, hogy
+
+00:13:51.720 --> 00:14:00.399
+egy munkacsoportról például a leírás az
+milyen hosszú, mert ugye el tudunk
+
+00:13:57.160 --> 00:14:06.560
+képzelni kártyákat is, és akkor van
+néhány munkacsoport, ez egy cím, meg egy
+
+00:14:03.040 --> 00:14:11.800
+gyakorlatilag egy egymondatos leírás.
+Vagy ezekhez hosszabb leírásokat
+
+00:14:08.839 --> 00:14:16.040
+gondoltok, kell külön aloldal minden
+munkacsoportnak. Szóval ez számomra nem
+
+00:14:13.880 --> 00:14:20.519
+volt teljesen világos, illetve az sem,
+de erről is majd beszélünk később, hogy
+
+00:14:18.040 --> 00:14:23.920
+mi történik egy munkacsoportban való
+jelentkezéskor. Ugye erre is írtál AB
+
+00:14:22.759 --> 00:14:30.360
+opciót.
+Igen. Igen. A munkacsoport leírásnál én
+
+00:14:26.839 --> 00:14:35.040
+nagyjából egy ilyen kábé féloldalnyi
+szöveget k A4 fél A4-es oldalnyi
+
+00:14:32.800 --> 00:14:40.480
+szöveget képzelek, és így a jelen
+elképzelés szerint én nem hiszem se azt,
+
+00:14:37.800 --> 00:14:44.279
+hogy ez dinamikusan változna, se azt,
+hogy bővülne. Tehát, hogy hogy mit a
+
+00:14:42.759 --> 00:14:48.240
+munkacsoporttagokat nem akarom
+fölsorolni, hanem ez tényleg arról szól,
+
+00:14:46.160 --> 00:14:52.759
+hogy ott van a munkacsoport vezető, ott
+van a rövid témaleírás, és akkor nyilván
+
+00:14:50.959 --> 00:14:58.240
+aki érdeklődik, akar, az csatlakozik a
+munkacsoporthoz, és utána ők már azt
+
+00:14:55.199 --> 00:15:04.680
+külön magukkal kapcsolattartást intézik.
+Ühüm. Oké. Jó. hogyha féloldalas leírás
+
+00:15:01.839 --> 00:15:10.079
+van, akkor lehet, hogy egyébként vagy
+külön oldalt javasolnék, vagy valami
+
+00:15:06.880 --> 00:15:14.199
+modell felugrót. Ezt ezt majd szerintem
+a terveken kitaláljuk, és akkor látni
+
+00:15:12.120 --> 00:15:19.199
+fogod, hogy hogy oldottuk meg. Könnyű
+módosítani. Úgyhogy én azt gondolom,
+
+00:15:16.800 --> 00:15:23.000
+hogy ide hozunk egy egy jó megoldást, és
+akkor majd megnézed a a prototípuson,
+
+00:15:21.279 --> 00:15:27.959
+amit fejlesztünk, hogy hogy az akkor így
+megfelel-e.
+
+00:15:24.480 --> 00:15:34.120
+Jó, oké. Oké. Ja, tehát hogy ez a ez a
+legegyszerűbb, mert
+
+00:15:31.399 --> 00:15:39.639
+mert mert ez a legegyszerűbb.
+Oksi.
+
+00:15:35.639 --> 00:15:39.639
+Jó. Ö
+
+00:15:42.680 --> 00:15:45.680
+3.1.
+
+00:15:46.560 --> 00:15:49.560
+Ühüm.
+
+00:15:52.519 --> 00:15:59.160
+Igen. Itt csak annyi, hogy esetleg
+tudtok mondani olyat, ami ami így olyan
+
+00:15:56.680 --> 00:16:04.279
+oldalt, vagy így mutatni egyet, hogy így
+nagyjából ezt így hogy képzeljem?
+
+00:16:02.319 --> 00:16:08.560
+Leginkább itt nekem a partneri szakasz
+volt a kérdés.
+
+00:16:06.000 --> 00:16:13.240
+Aha. Tehát nagyon nagyon egyszerű. Ugye
+a fő ez a főoldalra vonatkozik
+
+00:16:10.759 --> 00:16:18.440
+gyakorlatilag, ahol amin belül vannak
+különböző szekciók, és ezek a szekciók
+
+00:16:15.360 --> 00:16:25.240
+átvezetnek másik funkcióra. És akkor itt
+van a, hogyha a partnerek a a kérdés,
+
+00:16:22.880 --> 00:16:30.600
+akkor a partnereket általában, de ez is
+rajtatok múlik, az alap kivitelezés az
+
+00:16:28.360 --> 00:16:36.120
+az szokott lenni, hogy egy névvel és egy
+logóval megjelenik a partner, esetleg
+
+00:16:33.040 --> 00:16:41.160
+linket is lehet berakni mögé, és akkor
+ők gyakorlatilag egyfajta szponzorként
+
+00:16:39.600 --> 00:16:45.519
+vagy partnerként így jelen vannak,
+megjelennek a főoldalon. Ugye
+
+00:16:42.920 --> 00:16:49.279
+ezoptimalizálás szempontból is jó
+szokott lenni, hogyha össze vannak
+
+00:16:46.800 --> 00:16:55.279
+kapcsolva, be vannak linkelve, úgyhogy
+általában így szoktuk megjelenjteni.
+
+00:16:52.800 --> 00:16:59.480
+Ühüm. De hogy főoldal elő alatt azt
+értjük, ami adott esetben lejjebb is
+
+00:16:57.519 --> 00:17:04.000
+van, ugye? Tehát ő mindjárt most mondjuk
+megosztok egy képet. Jó, most nyilván
+
+00:17:01.880 --> 00:17:08.839
+nagyjából tök mindegy, hogy
+tehát elvileg most látjátok ezt a
+
+00:17:06.000 --> 00:17:12.160
+Csakoszweg oldalt például, tehát hogy
+akkor itt ezt nem úgy kell elképzelni,
+
+00:17:10.400 --> 00:17:18.160
+hogy mondjuk a mit tudom én, ahol náluk
+a hírek vannak, ott sorakoznak föl a
+
+00:17:14.799 --> 00:17:24.640
+partnerek logói, vagy
+nem, ez egy hát a lejjebb görgetsz, vagy
+
+00:17:21.160 --> 00:17:28.280
+hol itt jobb oldalt érted a híreket.
+Hát vagy hogy nagyjából Igen. Itt
+
+00:17:26.039 --> 00:17:31.080
+mondjuk akkor hova kell Tehát ez a ez a
+főoldal, ez ennyit tud. Ez ez itt
+
+00:17:30.480 --> 00:17:34.039
+például ennyi.
+Így van. Úgy kell elképzelni, hogy a
+
+00:17:32.720 --> 00:17:40.679
+futer, nézd csak, hogyha lejjebb
+görgetsz, vagy a mi elképzelésünk az
+
+00:17:36.679 --> 00:17:46.360
+volt, itt van ez a kék lábléc, és felett
+van egy tartalmi szekció, ahol te
+
+00:17:43.440 --> 00:17:51.840
+listázod a a szervezetnek a a
+támogatóit, logóval, névvel együtt.
+
+00:17:49.440 --> 00:17:55.400
+Aha. Aha. Jó, tehát akkor az alapvetően
+ennek a nyitó oldalnak a legaljára
+
+00:17:53.760 --> 00:17:59.559
+kerül, és az nyilván az, hogy milyen
+hosszú ez a nyitóal, ez majd függ egyéb
+
+00:17:57.640 --> 00:18:04.240
+dolgoktól, merthogy, mert hogy egy ilyen
+partner is, na ez remélem, hogy egy
+
+00:18:01.720 --> 00:18:06.960
+folyamatosan bővülő
+és és előbb-utóbb elég terjedelmes dolog
+
+00:18:06.679 --> 00:18:11.240
+lesz,
+de hogy ezt úgy bocsi úgy fogjuk
+
+00:18:08.919 --> 00:18:14.799
+csinálni, hogy a lesz egy külön partner
+aloldal is, nem? Ahol, hogy így
+
+00:18:12.840 --> 00:18:19.080
+dedikáltan meg lesz jelenítve mindenki.
+Tehát, hogy
+
+00:18:16.440 --> 00:18:25.039
+hát ez kérdés, tehát ez kérdés, hogy
+hány darab partner számolni, mert hogyha
+
+00:18:22.120 --> 00:18:29.280
+azt mondod, hogy itt 40 logót szeretnénk
+megjeleníteni, akkor nyilvánvalóan az a
+
+00:18:27.120 --> 00:18:34.640
+javaslat, hogy legyen egy külön
+partnerek vagy támogatóink aloldal, ami
+
+00:18:32.600 --> 00:18:38.039
+valahonnan elérhető. Most ez nem biztos,
+hogy akkor a főoldalról
+
+00:18:38.120 --> 00:18:43.400
+és akkor ott meg lehet meg lehet
+tekinteni, vagy például lehet, hogy a
+
+00:18:41.559 --> 00:18:49.240
+menüben, a navigációs menüben nem
+jelenítenék meg külön ilyen partnerek
+
+00:18:47.280 --> 00:18:56.039
+információt, de az is lehet, hogy itt
+van ez a szekció az oldal alján, és
+
+00:18:52.320 --> 00:19:00.039
+akkor egy gombbal át lehet menni az
+összes partnert listázó oldalra. Tehát
+
+00:18:58.320 --> 00:19:05.200
+lehetnek kiemelt partnereink, mondjuk
+ezt így szokás, igen, hogy kiemelt
+
+00:19:02.159 --> 00:19:10.320
+partnereink, kettős pont, az ötöt vagy
+nyolcat berakod logóval, ikonnal, és egy
+
+00:19:08.520 --> 00:19:13.960
+gomb, hogy tekintse meg az összes
+partnerünket, vagy az összes
+
+00:19:11.559 --> 00:19:19.120
+támogatónkat, ami átvisz egy külön
+aloldalra, ahol az összes listáz van.
+
+00:19:16.840 --> 00:19:24.480
+Aha. Hát akkor ez alapján én azt úgy el
+tudnám képzelni picit a a többi menüpont
+
+00:19:22.360 --> 00:19:29.960
+analógiájára, hogyha ha igen, itt lenne
+egy olyan kártya,
+
+00:19:26.799 --> 00:19:35.440
+a úgy úgy írtátok mindegyikre, hogy hogy
+partnerek. Mindet itt az elején valóban
+
+00:19:32.600 --> 00:19:38.520
+nem tüntetném föl, mert a cél azért az,
+hogy minimum egy 20-ig eljussunk elég
+
+00:19:37.440 --> 00:19:42.480
+gyorsan. Ezt nagyjából úgy kell
+elképzelni, hogy egyéb
+
+00:19:40.320 --> 00:19:45.640
+öségügyi
+szervezetekkel lesznek ilyen
+
+00:19:43.720 --> 00:19:50.919
+együttműködési megállapodások, tehát ez
+azért tud dinamikusan nőni. És hogyha ha
+
+00:19:49.159 --> 00:19:54.280
+ez is tud úgy lenni, mint a híreknél
+írtátok, hogy alapvetően mi az
+
+00:19:52.400 --> 00:19:57.480
+kijelölgethetjük, hogy melyik a kiemelt
+hír, nem?
+
+00:19:55.400 --> 00:20:02.880
+Adott esetben, ha itt is be tudjuk
+jelölgetni, hogy melyik a kiemelt
+
+00:19:58.919 --> 00:20:05.720
+partner, akkor akkor mondjuk ezt így
+egy ilyen séma mentén el tudnám
+
+00:20:04.919 --> 00:20:12.880
+képzelni.
+Tök jó. Igen, fel is írtam.
+
+00:20:09.200 --> 00:20:20.360
+Jó, szupi. Akkor
+jó, akkor most ezt egyelőre megállítom,
+
+00:20:16.320 --> 00:20:20.360
+aztán ha kell, majd visszamegyünk.
+
+00:20:22.799 --> 00:20:25.799
+Jó,
+
+00:20:26.880 --> 00:20:34.520
+a 3.2-t azt később megválaszoltátok,
+tehát azt azt értem. későbbi leírásból
+
+00:20:32.600 --> 00:20:40.480
+kiderült, hogy ez a hírek események hogy
+néz ki, úgyhogy az így világos számomra.
+
+00:20:37.480 --> 00:20:40.480
+Ühüm.
+
+00:20:41.080 --> 00:20:44.080
+Ö
+
+00:20:45.559 --> 00:20:53.440
+hírlevél, igen. Itt ö tehát hírlevél
+alatt akkor nem azt a levelet értjük,
+
+00:20:51.679 --> 00:20:58.400
+amikor ő kap egy visszajelzést, hogy
+tagdíjat fizetett, tagl lett, bármi,
+
+00:20:55.799 --> 00:21:00.360
+hanem az, hogy mi generálunk
+tartalmakat.
+
+00:20:59.880 --> 00:21:02.799
+Igen.
+Ö.
+
+00:21:03.880 --> 00:21:13.799
+Nyilván ez alapvetően tervben van. Itt
+milyen esetben javasoljátok azt, hogy
+
+00:21:08.320 --> 00:21:18.440
+ezt külső ö szolgáltató vagy külső
+rendszeren keresztül csináljuk, vagy
+
+00:21:15.799 --> 00:21:21.279
+mikor jobb az, hogyha be van integrálva?
+Abszolút nem tudom, hogy ez hogy lenne
+
+00:21:20.039 --> 00:21:27.159
+érdemes.
+Hát ugye a beintegrálás az
+
+00:21:24.200 --> 00:21:32.720
+ahhoz is kell egy külső rendszer, mert
+ugye egy ilyen hírlevélküldő platformot
+
+00:21:28.919 --> 00:21:36.520
+csinálni egyébként az bonyolult dolog,
+de hogy nekünk van hírlevélküldő
+
+00:21:34.159 --> 00:21:40.600
+platformunk is, amit lehet használni, az
+a hírlevelekküldése.hu
+
+00:21:38.120 --> 00:21:44.480
+és akkor azt tudjuk integrálni. Tehát,
+hogy ez egy nagyon egyszerű, nagyon
+
+00:21:42.279 --> 00:21:49.760
+basic rendszer.
+Az tényleg arra való, hogy nagyon
+
+00:21:47.000 --> 00:21:53.440
+egyszerűen és nagyon gyorsan, hatékonyan
+egyszerű menürendszerrel lehessen
+
+00:21:51.760 --> 00:21:57.000
+dolgozni,
+vagy vagy bármilyen bonyolultabb
+
+00:21:55.320 --> 00:22:01.279
+rendszert is, hogyha komoly kampányokat
+szeretnétek, akkor mondjuk a mércsimpet
+
+00:21:58.880 --> 00:22:05.919
+tudjuk, vagy a Brévót, vagy tudunk
+ajánlani. De hogyha mondom, hogyha
+
+00:22:04.120 --> 00:22:09.679
+a mi rendszerünkkel is lehet kezdeni,
+tehát az az egyszerű. Nem gondolnám,
+
+00:22:07.720 --> 00:22:12.640
+hogy ilyen több 10000 hírlevélküldés
+lenne kezdetekben, ugye, hogy ezt jól
+
+00:22:11.400 --> 00:22:17.400
+sejtem.
+A nem. Sőt, pillanatnyilag azért is
+
+00:22:15.000 --> 00:22:22.480
+kérdezek, mert nekem
+tehát nekem most az a az a az a kérdés,
+
+00:22:19.279 --> 00:22:26.279
+hogy igazából mi mitől több egy hírlevél
+küldő rendszer, mint amikor én a
+
+00:22:24.000 --> 00:22:30.400
+Gmailben ugye egy címlistára adott
+esetben ha ez egy kör emailt kiküldö?
+
+00:22:27.880 --> 00:22:35.320
+Hát azért, mert profi nagy hírlevélküldő
+rendszerbe ott mindenki saját maga kapja
+
+00:22:33.080 --> 00:22:40.559
+meg, tehát nem titkos másolatban vannak
+benne. Mindenki saját maga kapja meg a
+
+00:22:37.440 --> 00:22:44.360
+saját nevére személyesen a lev levelet,
+és azt lehet szerkeszteni. Tehát ez egy
+
+00:22:42.640 --> 00:22:48.320
+szerkesztett levél lehet. Lehet
+fejlécel, lehet logó, lehet
+
+00:22:46.840 --> 00:22:52.240
+gyakorlatilag mintogyha egy mini
+weboldalt küldenél, tehát ezt úgy kell
+
+00:22:50.600 --> 00:22:57.760
+elképzelni.
+Tehát, hogy maga maga szerkesztettségről
+
+00:22:55.720 --> 00:23:03.480
+lenne itt szó. Meg hát nagyon egyszerűen
+lehet kezelni a feliratkozókat. Tehát
+
+00:23:00.480 --> 00:23:07.720
+hogy bocsi, tehát hogy nem kell
+egyenként bemásolgatni mindenkit a
+
+00:23:05.240 --> 00:23:11.840
+Gmailbe vagy címeket csinálni, hanem ott
+mindenki ott van egy helyen, azokat
+
+00:23:09.520 --> 00:23:16.360
+csoportokra lehet bontani, meg tudod
+nézni, hogy kinek lett kézbesítve a
+
+00:23:13.640 --> 00:23:22.440
+hírlevé, kinek nem, ki olvasta el, ki
+kattintott bele, ki mire kattintott, és
+
+00:23:18.600 --> 00:23:25.679
+akkor még sorolhatnám. Tehát, hogy
+igen, azt olvastam, és az tökre
+
+00:23:23.880 --> 00:23:29.200
+tetszett, hogy így ugye a nem tagokhoz
+is eljuthat, hogyha föliratkoznak. Tehát
+
+00:23:27.799 --> 00:23:31.679
+azt azt igen, azt láttam, hogy ilyen
+szempontból is ez már egy plusz tud.
+
+00:23:30.840 --> 00:23:34.640
+Igen.
+Nagyságrendileg ez költségben mit
+
+00:23:33.600 --> 00:23:39.360
+jelent?
+Hát ez nagyságrendileg ezt annyit
+
+00:23:36.760 --> 00:23:45.960
+jelent, hogy a hírlevél rendszerünk az
+úgy indul, hogy 1000 kiküldött hírlevél
+
+00:23:42.760 --> 00:23:52.799
+az ingyenes, és akkor 1000 fölött meg
+vásárolni kell krediteket. Az egy
+
+00:23:49.120 --> 00:23:57.480
+hírlevél 1 Ft.
+Ühüm. Azok az nem sokat.
+
+00:23:54.799 --> 00:24:00.400
+Ja, mármint hogy úgy bocsi úgy, hogy egy
+személynek, tehát hogyha hogyha
+
+00:23:59.480 --> 00:24:04.679
+világos világos.
+Igen, igen, igen, igen. Közben bocs,
+
+00:24:02.600 --> 00:24:08.880
+most egy k
+vagy akkor egy 200 fős társaságnál
+
+00:24:06.720 --> 00:24:14.840
+praktikusan gyak az 1000res keretben
+ugye öt kör
+
+00:24:11.200 --> 00:24:18.799
+van. É Aha. Jó, tehát értem.
+Világos, világos. Jó.
+
+00:24:19.520 --> 00:24:29.240
+Egy három percet tudnátok adni nekem,
+csak sír lent a gyerek a macska megí
+
+00:24:26.960 --> 00:24:31.559
+tudjuk csak hogyha oké.
+Bocsánat, de de ti folytassátok
+
+00:24:30.880 --> 00:24:36.159
+nyugodtan.
+Jó, jó, nyugodtan.
+
+00:24:33.840 --> 00:24:40.760
+Én én akkor azt gondolom, hogy hogy itt
+ezzel a basic verzióval, ha elindulunk,
+
+00:24:39.080 --> 00:24:46.919
+az jó, mert szerintem ez most így
+gyorsan kiderült, hogy
+
+00:24:42.440 --> 00:24:49.919
+hogy ebben mennyire profik vagyunk már.
+Jó.
+
+00:24:57.000 --> 00:25:03.720
+Igen, írjak tag a a szerkeszthetőségnél,
+hogy akkor hogyha egy új partnert
+
+00:25:00.600 --> 00:25:07.600
+fölveszek, akkor annál a partner
+oldalnál gyak én én oda be tudom másolni
+
+00:25:05.960 --> 00:25:11.320
+mondjuk a logóját, meg be tudom
+állítani, mint admin, hogyha rákattint,
+
+00:25:09.720 --> 00:25:14.520
+akkor rámenjen az oldalra, ugye?
+Így van. Tehát ez gyakorlatilag egy
+
+00:25:12.799 --> 00:25:20.080
+képfeltöltés,
+egy címnek a vagy egy névnek a beírása
+
+00:25:16.919 --> 00:25:25.559
+és a link bemásolása.
+Szóvik.
+
+00:25:22.559 --> 00:25:25.559
+Jó.
+
+00:25:26.200 --> 00:25:31.720
+Szerintem erre később jött válasz a
+4.1-nél, de hogy nyilván ott a dokument,
+
+00:25:30.039 --> 00:25:35.320
+az alapszabály az egy dokumentumként
+kerül
+
+00:25:33.240 --> 00:25:40.880
+föltöltésre, tehát hogy így nyilván nem
+szövegként gondolom.
+
+00:25:38.159 --> 00:25:46.559
+Igen,
+igen. A a következő rész ez meg ez
+
+00:25:43.440 --> 00:25:52.159
+máshol is visszajön, hogy ugye a gyak
+ugye a a profilláthatóság
+
+00:25:49.240 --> 00:25:56.399
+kérdése, hogy akkor gyak vezetőség
+névsor vagy elnökség névsora, ez ugye
+
+00:25:54.080 --> 00:26:00.440
+most már megvan.
+Gyakorlatilag ha ők nem hagyják
+
+00:25:58.200 --> 00:26:04.120
+egyesével jóvá a profiljuknál, akkor
+maga nevük se jelenik meg. Tehát, hogy
+
+00:26:02.720 --> 00:26:08.919
+akkor az elnökségnél lehet, hogy lesz
+hat üles rublika.
+
+00:26:06.919 --> 00:26:15.159
+ezen gondol gondolkoztam sokat, és itt
+is próbáltam az egyszerűségre törekedni,
+
+00:26:11.960 --> 00:26:21.240
+és a jelenlegi leírásban ez van. Igen.
+Tehát hogyha valaki egy elnökségi tag,
+
+00:26:17.640 --> 00:26:25.559
+akkor tudod jelezni neki, hogy figyelj,
+kapcsold be ezt a ezt a kapcsolót, hogy
+
+00:26:23.520 --> 00:26:30.320
+megjelenjél.
+Ühüm. Ühüm.
+
+00:26:27.960 --> 00:26:37.559
+Mert utána tehát, hogy ugye a másik
+opció az, hogy neked kell szerkeszteni,
+
+00:26:34.480 --> 00:26:41.720
+neked kell a neveket kivenni, a linkeket
+összekapcsolni, hogy tartozik-e
+
+00:26:39.240 --> 00:26:46.399
+profilhoz, nem tartozik profil hozzá.
+Szóval, hogy admin oldalon ez extra
+
+00:26:44.039 --> 00:26:51.440
+teher lehet, miközben user oldalon
+gyakorlatilag egy pipa.
+
+00:26:49.039 --> 00:27:00.200
+Ühüm. Értelek.
+Jó, jó. Oké. Ezt így el tudom fogadni.
+
+00:26:57.240 --> 00:27:05.120
+Jó, igen, ott akkor az Igen.
+Egyébként olyat tudunk csinálni, hogy
+
+00:27:02.240 --> 00:27:11.200
+hogy ez valamilyen UIban tehát feltűnő
+legyen ez a ez az egész pipa. Tudunk
+
+00:27:07.799 --> 00:27:16.520
+keretet rakni mögé. be tudjuk építeni
+egyébként a nem tudom a regisztráció
+
+00:27:13.240 --> 00:27:22.480
+elfogadás vagy a a amikor sikeres volt a
+regisztráció meg a az adatok feltöltése,
+
+00:27:19.600 --> 00:27:26.880
+akkor tudunk erre egy olyan UX megoldást
+hozni, ami ami biztossá teszi azt, hogy
+
+00:27:24.919 --> 00:27:30.080
+ne kerülje el a figyelmét ez a ez a
+pipa.
+
+00:27:28.240 --> 00:27:37.200
+Szupi. Az viszont jó igen, hogyha ez
+ilyen kiemelt kiemelt hangsúlyt kap.
+
+00:27:34.960 --> 00:27:40.360
+Igen, ez de mondjuk a szöveget én is
+jobbár, vagy úgyse én fogom küldeni,
+
+00:27:38.919 --> 00:27:48.799
+hogy de hogy nem vezetőség, hanem
+elnökség van. De de igen, a szöveget
+
+00:27:45.799 --> 00:27:48.799
+jó.
+
+00:27:52.480 --> 00:27:56.720
+Igen, a díjakról beszéltünk.
+
+00:27:58.640 --> 00:28:06.720
+Igen. Itt a a érdemes tag kapcsán
+a jelentkezésnél
+
+00:28:05.159 --> 00:28:10.480
+én én benne hagynám, mert ugye az
+érdemes tagba azért vannak olyanok,
+
+00:28:08.840 --> 00:28:15.919
+tehát hogy ne úgy képzeljétek el, hogy
+azok mind ilyen nagyon tiszteletbeli
+
+00:28:13.120 --> 00:28:21.039
+félig haldokló bácsik, nénik, hanem
+simán van a 65-6 éves aktív háziorvos,
+
+00:28:18.600 --> 00:28:24.360
+aki csak úgy tehát, hogy ő simán meg
+tudja csinálni magának a regisztrációt.
+
+00:28:22.919 --> 00:28:28.799
+Csak az én fejemben az van, hogy a saját
+dolgomat könnyítem, ha ő magának
+
+00:28:25.960 --> 00:28:33.120
+csinálja meg.
+És akkor de mivel mivel jár ez az
+
+00:28:30.880 --> 00:28:39.039
+érdemes tag, meg mitől függ? Tehát ezt
+is el kell bírálnotok.
+
+00:28:35.320 --> 00:28:44.480
+Igen. Igen. Tehát ez ezt
+ezt igen, ezt el kell bírálnunk. Ez gyak
+
+00:28:41.039 --> 00:28:49.799
+ugye az alapszabályban benne van a a
+gyakorlati relevanciája, hogy nem fizett
+
+00:28:46.440 --> 00:28:54.799
+tagdíjat és hogy egyszerre nem is tudom
+már mit írtunk, hogy azem max 20 érdemes
+
+00:28:51.960 --> 00:29:00.279
+tagunk lehet. Ők ők kicsit egy ilyen
+ilyen tényleg ilyen vénektanácsa azért,
+
+00:28:57.399 --> 00:29:03.679
+tehát hogy az a okosabbak,
+tapasztaltabbak,
+
+00:29:01.840 --> 00:29:09.000
+mit tudom én, professzorok, ilyesmik
+lesznek érdemes tagok. Tehát ezt én úgy
+
+00:29:06.159 --> 00:29:13.600
+képzelem, hogy automatikusan magától,
+aki így rátalál az oldalra, ő ezt nem
+
+00:29:10.840 --> 00:29:18.640
+fogja bejelölni. Ezt az önelentkezésnél
+is azt fogja bejelölni, akinek én
+
+00:29:15.600 --> 00:29:22.360
+mondom, hogy na mit tudom én, Tamás,
+légy szíves, amikor jelentkezel, akkor
+
+00:29:20.880 --> 00:29:26.039
+válaszd ki, mert szeretnénk, hogy
+érdemes tag legyél.
+
+00:29:26.200 --> 00:29:34.679
+Oké, tehát akkor azt mondod, hogyha jól
+értem, hogy regisztráció során már lehet
+
+00:29:31.360 --> 00:29:40.279
+érdemes tagként tagságra is jelentkezni.
+Mert az én fejemben, ami volt,
+
+00:29:37.039 --> 00:29:45.679
+hogy valaki taggá válik, vagy már tag,
+és onnan tud átkerülni az érdemes tag
+
+00:29:43.200 --> 00:29:51.679
+kategóriába. És akkor itt gondoltam ott,
+hogy aha nem ez ugyanúgy párhuzamosan
+
+00:29:49.519 --> 00:29:55.240
+ugye a különböző rendes tag, ifjúsági
+tag, hallgatói tag, érdemes tag, tehát
+
+00:29:53.519 --> 00:29:59.240
+hogy ez ugyanúgy egy párhuzamos
+kategória.
+
+00:29:56.880 --> 00:30:03.919
+Tehát az érdemes tag, ő nem rendes tag.
+és azt elfogadhatónak látod, mert ugye
+
+00:30:01.440 --> 00:30:11.919
+ez is admin oldalon megint megbonyolítja
+a dolgokat, hogy ha tagi jelentkezés
+
+00:30:07.640 --> 00:30:16.399
+van, és ti visszautasítjátok
+a és azt hiszem itt írtad, hogy akkor
+
+00:30:14.200 --> 00:30:22.440
+lehetne olyan, hogy ti átrakjátok másik
+kategóriába, hogy ez szintén admin
+
+00:30:19.000 --> 00:30:28.799
+oldalon extra elég bonyolult fejlesztés,
+vagy úgy relatíve olyan olyan
+
+00:30:26.159 --> 00:30:36.120
+szóval nem a legkönnyebb megoldás. hogy
+elfogadható-e az, hogy ha esetleg valaki
+
+00:30:32.679 --> 00:30:36.120
+ö ö
+
+00:30:36.240 --> 00:30:42.919
+érdemes tagnak jelentkezett, akkor
+visszautosítjátok,
+
+00:30:39.919 --> 00:30:48.960
+és akkor tud akár a visszautasító
+emailben is lehet ez valami sablon, hogy
+
+00:30:46.240 --> 00:30:54.120
+akkor szia, vissza visszautosítottuk, de
+hogy sima tagként megjelentkezhetsz.
+
+00:30:52.039 --> 00:30:57.519
+Abszolút. Se sőt lehet, hogy ez jobb is
+így, mert akkor tudatosódik benne, hogy
+
+00:30:55.880 --> 00:31:00.279
+mi van.
+Alapvetően nem gondolom, hogy
+
+00:30:58.480 --> 00:31:04.960
+dömpingszerűen lesz ez, de ez jobb
+verzió. Igen. Tehát ez így jó, hogy
+
+00:31:02.200 --> 00:31:12.440
+sablon email, és akkor tájékoztatjuk,
+hogy hogy próbálkozzon rendes tagként.
+
+00:31:08.760 --> 00:31:12.440
+Ez így tök jó. Igen.
+
+00:31:12.720 --> 00:31:20.360
+Jó,
+mehetünk lejjebb.
+
+00:31:17.559 --> 00:31:26.320
+Bocsi, vissza is csatlakoztam.
+Igen, egy pillanat még gyorsan írom.
+
+00:31:23.320 --> 00:31:26.320
+Nyugodtan.
+
+00:31:29.799 --> 00:31:37.600
+Oké, megvagyok.
+Oké, akkor tagdíj azt szerintem
+
+00:31:34.440 --> 00:31:44.639
+megbeszéltük, de hogyha ha itt
+mégis vetődik föl, akkor szóljatok.
+
+00:31:41.720 --> 00:31:51.320
+Munkacsoportok
+itt picit picit egy-két elnevezés
+
+00:31:46.960 --> 00:31:55.639
+változott, azt azt módosítottam.
+Jó, egyébként ezt is tudjátok majd
+
+00:31:53.240 --> 00:32:03.120
+szerkeszteni. Tehát itt is az van, hogy
+mind a munkacsoport neve, a leírása,
+
+00:31:58.480 --> 00:32:07.720
+ezek mind szerkeszthető dolgok lesznek.
+Jó, most beleírtam közben még egyet,
+
+00:32:05.120 --> 00:32:14.200
+mert
+most se telt eleltétlenül a nap. Jó,
+
+00:32:11.200 --> 00:32:14.200
+oké.
+
+00:32:14.240 --> 00:32:17.240
+A
+
+00:32:18.840 --> 00:32:29.440
+csatlakozás. Igen, azt szerintem Ja, nem
+ez a munkacsoportjelentkezés.
+
+00:32:25.360 --> 00:32:34.840
+Igen. Tehát, hogy itt ugye írtam, hogy
+odáig odáig biztos a dolog, hogy
+
+00:32:32.480 --> 00:32:40.559
+hogy a munkacsoport vezető felé kell,
+hogy jelezzzen a a tag. Alapvetően én
+
+00:32:38.440 --> 00:32:44.000
+ezt emailbe
+tudom elképzelni, tehát hogy ott ott
+
+00:32:41.919 --> 00:32:48.360
+lesz a munkacsoportvezetőnek az email
+elérhetősége. Mivel ugye sok
+
+00:32:46.159 --> 00:32:52.320
+munkacsoport lesz, ezért az tuti, hogy
+nem lesz minden munkacsoportvezető
+
+00:32:50.159 --> 00:33:00.480
+admin, tehát hogy azért nem a felületen
+bonyolítanám ezt a ezt a ezt a dolgot.
+
+00:32:57.440 --> 00:33:05.279
+És akkor
+igen, itt ez a kérdés bennem, hogy az
+
+00:33:03.279 --> 00:33:11.159
+legyen, hogy ez valami automatikus email
+legyen, vagy pedig az, hogy ír egy saját
+
+00:33:08.799 --> 00:33:14.960
+szavas emailt a tag, hogy helló, Mahos
+András vagyok, szeretnék csatlakozni a
+
+00:33:12.880 --> 00:33:19.279
+Longevity munkacsoportban.
+Mi mind a kettő lehet. Tehát én azt
+
+00:33:17.120 --> 00:33:23.600
+javaslom, hogy ne ne az legyen, hogy
+akkor megadunk egy email címet, és neki
+
+00:33:21.480 --> 00:33:28.720
+el kell hagyni az oldalt, hogy megírjon
+egy email címet, vagy vagy egy emailt,
+
+00:33:25.760 --> 00:33:33.279
+és kiküldje. hanem inkább az, hogy
+rákattint a nem tudom jelentkezés
+
+00:33:30.720 --> 00:33:40.240
+gombra, akkor ott megjelenik egyrészt az
+email címe a a vezetőnek, vagy a vezető
+
+00:33:36.200 --> 00:33:45.120
+profilja, és akár egy rövid szöveges
+beviteli mező, ahol ő ha van extra
+
+00:33:42.960 --> 00:33:49.039
+üzenete, tehát ez nem kötelező, de ha
+van valami extra, amit szeretne írni,
+
+00:33:47.240 --> 00:33:53.919
+akkor azt azt beleírhatja, és
+automatikusan akkor a munkacsoport
+
+00:33:51.279 --> 00:33:59.279
+vezetőjének ez a ez az emailjébe
+beérkezik ez a kérelem, úgymond
+
+00:33:56.840 --> 00:34:03.559
+Ez így, ez így tökéletes.
+Ö, és akkor
+
+00:34:02.080 --> 00:34:09.159
+igen, azt azt gondolom egyszerű, hogy
+erről nyilván kap a jelölt egy
+
+00:34:05.840 --> 00:34:15.200
+visszaigazolót, hogy ez elment.
+Ami kérdés ugye a az elfogadás résznél,
+
+00:34:13.280 --> 00:34:19.760
+hogy amikor a munkacsoportvezető ezt
+elfogadja,
+
+00:34:17.520 --> 00:34:22.639
+akkor
+hogy tudjuk ezt valahogy a
+
+00:34:20.879 --> 00:34:28.240
+legegyszerűbben csinálni, hogy nyilván a
+tagnak is menjen egy visszajelzés, meg a
+
+00:34:26.280 --> 00:34:33.960
+weboldal felé is, hogy ott ugye napra
+készek legyenek a rendszerek.
+
+00:34:31.399 --> 00:34:40.960
+Na, nekem ez itt kérdés, tehát hogy a
+weboldal, hogyha jól értettem korábban,
+
+00:34:37.800 --> 00:34:45.320
+akkor a munkacsoportok leírásán kívül
+egyébként nem kezeli a munkacsoportokat.
+
+00:34:43.399 --> 00:34:50.520
+Tehát azt mondtad, hogy nem listázunk
+tagokat, nincsen semmilyen
+
+00:34:48.159 --> 00:34:55.800
+extra tevékenység, ami a weboldalon
+zajlik.
+
+00:34:53.079 --> 00:35:00.560
+És akkor így így viszont számomra
+kérdés, hogy miért szükséges az, hogy az
+
+00:34:58.079 --> 00:35:06.440
+oldal egyáltalán regisztrálja. Tehát
+elég az tehát, hogy hogy oké, azt meg
+
+00:35:03.880 --> 00:35:09.119
+tudjuk könnyíteni az adott vezetőnek
+talán,
+
+00:35:07.960 --> 00:35:14.119
+hogy
+hogyan küldjön visszajelzést arról, hogy
+
+00:35:12.359 --> 00:35:19.320
+valaki csatlakozik, de hogy utána mi
+történik. Tehát, hogy ő gyakorlatilag
+
+00:35:16.160 --> 00:35:23.119
+felkerül egy levelezési listára, ez vagy
+megbeszélik egymás között, hogy a
+
+00:35:21.440 --> 00:35:28.359
+munkacsoportnak a munkája az hogyan
+történik, de hogy ez a weboldalon kívül
+
+00:35:25.440 --> 00:35:34.440
+történik.
+Igazad van. Igen, ez így kicsit össze
+
+00:35:32.560 --> 00:35:38.640
+gubban szoródott bennem. Nyilván azért
+az egy cél lenne,
+
+00:35:36.599 --> 00:35:42.480
+hogy valamilyen szinten központilag is
+azért mi azt tudjuk követni, hogy az
+
+00:35:40.520 --> 00:35:46.520
+egyes munkacsoportban kik vannak, hogy
+ne csak a konkrét munkacsoportvezetők
+
+00:35:44.520 --> 00:35:51.720
+tudják ugye a saját csapatukat. Tehát,
+hogy most ez a gondolat vetődött föl
+
+00:35:48.920 --> 00:35:55.880
+bennem egyébként. Az, hogy ha ugye a
+tagnévsor viszont úgyis fönn van a
+
+00:35:53.880 --> 00:36:00.040
+weboldalon, mert ugye az fönn lesz, mert
+ott regisztrál mindenki, hogy ott
+
+00:35:57.920 --> 00:36:05.760
+egyébként kapjon
+a munkacsoportag egy-egy címkét, az egy
+
+00:36:02.480 --> 00:36:09.720
+bonyolult dolog.
+Nem
+
+00:36:06.800 --> 00:36:14.880
+fejlesztés. Én én amit bonyolultnak
+látok, tehát az nem bonyolult, amit
+
+00:36:11.640 --> 00:36:21.760
+bonyolultnak látok, hogy kell egy olyan
+felületet is extrába fejleszteni ezek
+
+00:36:17.119 --> 00:36:26.839
+alapján, ami nem teljes admin felület,
+hanem a munkacsoportnak a vezetője tudja
+
+00:36:24.440 --> 00:36:32.079
+visszaigazolni, meg meg ott beérkezik,
+látja a beérkezett kérelmeket, és akkor
+
+00:36:29.160 --> 00:36:35.000
+ott tudja visszaigazolni, vagy tehát
+tehát
+
+00:36:33.280 --> 00:36:41.560
+ugye, hogy hogy juthat vissza a
+rendszerbe az az adat, hogy egy adott
+
+00:36:38.839 --> 00:36:45.680
+tag csatlakozott és elfogadásra került
+az ő csatlakozásra egy adott
+
+00:36:42.920 --> 00:36:50.680
+munkacsoporthoz. Ez a kérdés. És akkor
+az a fejlesztés lenne, én azt gondolom,
+
+00:36:48.400 --> 00:36:54.839
+hogy Gyuri javítsd ki, hogy egy olyan
+profilt is kell létrehozni, meg egy
+
+00:36:52.119 --> 00:37:01.880
+olyan felületet, ahol a munkacsoport
+adminok úgymond, vagy elnökök tudják
+
+00:36:58.920 --> 00:37:06.440
+jóváhagyni, elfogadni, kezelni ezeket a
+tagságokat azért, hogy bekerüljön a
+
+00:37:04.240 --> 00:37:09.319
+rendszerbe, ugyeme.
+Üüm.
+
+00:37:06.640 --> 00:37:12.720
+Ühüm. Ezt bonyolultnak érezném.
+Mi a kérdés egyébként közben ezzel
+
+00:37:11.119 --> 00:37:16.960
+kapcsolatban mi a kérdés? Mármint, hogy
+hogy lehetne ezt megvalósítani, vagy
+
+00:37:14.440 --> 00:37:21.960
+hogy mennyi plusz idő lenne ezt le
+kódolni, vagy mi itt a kérdés? Igazából
+
+00:37:19.720 --> 00:37:29.000
+még a a hogyan egyelőre?
+Aha. Hát a hogyan a hogyan része az
+
+00:37:26.400 --> 00:37:34.240
+meglévő ügyféladatok bizonyos részeinek
+a módosítása. Tehát ez technikailag
+
+00:37:32.040 --> 00:37:37.599
+ez egy nem egy bonyolult nem egy
+bonyolult programozási folyamat. Itt az
+
+00:37:36.119 --> 00:37:42.160
+a bonyolultabb, hogy az interface
+megcsinálni hozzá, kitalálni a logikát,
+
+00:37:40.160 --> 00:37:44.880
+kitalálni az automatizációt mögé,
+satöbbi, satöbbi. Tehát
+
+00:37:43.839 --> 00:37:48.160
+igen, az admin,
+tehát meg meg lehet csinálni, tehát meg
+
+00:37:46.480 --> 00:37:51.680
+ezt fel lehet írni tudónak, tehát hogy
+csináljuk meg, legyen benne ebbe a
+
+00:37:50.079 --> 00:37:55.800
+csomagban, vagy ne. Tehát ezeket
+fölírhatjuk úgy, hogy akár csináljuk meg
+
+00:37:53.920 --> 00:38:00.599
+akkor jövő februárba, vagy jövő
+márciusba. Tehát, hogy ez ezek jó
+
+00:37:57.640 --> 00:38:05.040
+ötletek, ezeket fel lehet írni, de hogy
+azért ez megdobná igazából a mostani
+
+00:38:02.720 --> 00:38:11.119
+rendszert gyakorlatilag, főleg úgy, hogy
+azért azért azért el se kezdtük
+
+00:38:07.319 --> 00:38:13.800
+fejleszteni, tehát hogy
+azért nem sok idő van erre.
+
+00:38:13.359 --> 00:38:17.720
+Igen,
+az a verzió, mert mert igen, ezt most
+
+00:38:15.560 --> 00:38:21.000
+egy picit bonyolultnak érzem, meg meg
+értem, hogy mi a nyilván gyaklatilag
+
+00:38:19.520 --> 00:38:25.560
+most azt kéne befolyásolnunk, hogy egy
+külső ember, amikor emailt küld, akkor
+
+00:38:22.680 --> 00:38:29.760
+az hova megy, vagy vagy az hozzáet.
+Értem.
+
+00:38:27.119 --> 00:38:33.359
+De ha adott esetben, akkor csak az opció
+megmaradjon, mert akkor a
+
+00:38:30.800 --> 00:38:36.880
+munkacsoportvezető meg a elnök, az admin
+egymás között majd ezt az
+
+00:38:34.680 --> 00:38:42.040
+információcserét lebonyolítja
+weboldaltól függetlenül, de hogy akár
+
+00:38:39.280 --> 00:38:47.440
+adminként, akkor mi munkacsoport
+címkéket tudjunk adni a az egyes
+
+00:38:44.800 --> 00:38:51.560
+tagokhoz, az az akkor, ha jól értem, az
+viszont egy egyszerűen kivitelezhető
+
+00:38:49.240 --> 00:38:56.440
+dolog, ugye, mert mert akkor viszont én
+úgy úgy képzelem, hogy
+
+00:38:54.359 --> 00:39:01.560
+hogy akkor az adminnak lesz egy listája,
+és az most tök mindegy, hogy hogy jut el
+
+00:38:58.119 --> 00:39:08.079
+hozzá, hogy 12 név van, aki az egyik
+munkacsoportba bekerül, akkor ő az admin
+
+00:39:03.800 --> 00:39:11.520
+felületen a 12 névnél odarak egy kis
+pipát, ahogy mit
+
+00:39:09.240 --> 00:39:15.800
+hát ez szerintem hogyha már maga az
+adott munkacsoporton belüli embereknek
+
+00:39:13.880 --> 00:39:21.040
+azt a pipát adni, ami ahhoz a
+munkacsoporthoz tartoznak, amiben már ők
+
+00:39:17.920 --> 00:39:25.960
+eleve benne vannak, tehát itt ezt
+automatikusan már oda kell adni ezek a
+
+00:39:23.760 --> 00:39:30.960
+nem, de ez a de pont ez a lényeg. Gyuri,
+tudod, hogy hogyan kerül be a
+
+00:39:27.280 --> 00:39:36.640
+rendszerbe, mert hogyha emailen megy a a
+munkacsoport elnökének, hogy akkor én
+
+00:39:33.960 --> 00:39:38.880
+Kispista jelentkeztem,
+akkor
+
+00:39:37.000 --> 00:39:42.040
+és hogy rakod oda be? Persze, én értem,
+hogy te oda hogy rakod be. Er erre
+
+00:39:40.800 --> 00:39:47.680
+mondom, hogy kellene egy külön
+adminfelületet fejleszteni az elnök, a
+
+00:39:44.800 --> 00:39:52.480
+munkacsoport elnököknek, akik kezelik
+gyakorlatilag ezeket a jelentkezéseket,
+
+00:39:49.640 --> 00:39:57.040
+és akkor ezáltal tudna bekerülni a a
+rendszerbe az, hogy az adott jelentkező
+
+00:39:54.880 --> 00:40:02.079
+tagnak a jelentkezése elfogadásra
+került, vagy visszautosításra került. És
+
+00:39:59.960 --> 00:40:06.359
+akkor ez a ez a kezelő része tehát, hogy
+ez egy újabb ilyen jogosultsági szint,
+
+00:40:04.680 --> 00:40:11.839
+mert hogy a munkacsoportvezetőknek ugye
+nem adnánk meg azt a lehetőséget, hogy
+
+00:40:08.760 --> 00:40:16.560
+egyébként az oldalt szerk a különböző
+tagi, nem tudom, csatlakozási adatokat
+
+00:40:14.319 --> 00:40:21.280
+láthassák. Ezt látom én egy ilyen
+nagyobb extra költségnek vagy vagy
+
+00:40:19.040 --> 00:40:26.720
+fejlesztésnek.
+Csak így a keretet lássátok. egy azért
+
+00:40:24.560 --> 00:40:30.400
+is próbálom ezt a részt egyszerűsíteni,
+mert mert azért ez a munkacsoport rész
+
+00:40:28.480 --> 00:40:34.680
+ez a társaságon belül az aktívabb, tehát
+egy szűkebb körnek szól. Tehát ez nagyon
+
+00:40:32.400 --> 00:40:39.079
+ideális esetben, és mit tudom én, amikor
+azt mondom, hogy nagyon nagyra nőttünk,
+
+00:40:36.839 --> 00:40:41.680
+maximum összesen mondjuk szerintem 100
+ember lesz a különböző
+
+00:40:40.160 --> 00:40:45.800
+munkacsoportokban,
+tehát hogy ennyi emberre nem vagyok
+
+00:40:43.880 --> 00:40:50.599
+benne biztos, hogy
+igen. Nekem lehet lenne egy javaslatom
+
+00:40:47.720 --> 00:40:56.240
+egyébként, hogy ha a munkacsoport
+vezetők amikor elfogadnak egy tagságot,
+
+00:40:53.400 --> 00:41:00.480
+akkor az elfogadó emailben, amit ők
+maguk küldenek ki, tehát az már a privát
+
+00:40:58.560 --> 00:41:05.000
+része és nem a rendszer része,
+beleírják, mert ugye a a munka a
+
+00:41:03.400 --> 00:41:10.200
+munkavállaló,
+a tag az ugye a saját profilját tudja
+
+00:41:07.800 --> 00:41:15.400
+szerkeszteni. És hogyha elintézzük ezt
+annyival, hogy a visszaigazoló emailben,
+
+00:41:12.760 --> 00:41:20.520
+kedves István
+örömmel fogadtuk a jelentkezésed a
+
+00:41:18.079 --> 00:41:26.839
+munkacsoportba, elfogadjuk a a
+jelentkezésed, és hogy kérlek a a
+
+00:41:24.200 --> 00:41:31.119
+weboldalon a saját profilodban jelöl be,
+hogy munkacsoport tag lettél és akkor
+
+00:41:28.920 --> 00:41:36.520
+itt nem kell külön jogosultság, az adott
+munkacsoport tag a az elfogadásakor
+
+00:41:34.880 --> 00:41:39.880
+tudja szerkeszteni. egyébként erre
+például linket is tudunk neki
+
+00:41:37.920 --> 00:41:44.400
+biztosítani.
+Tudja szerkeszteni a a saját profilját,
+
+00:41:42.520 --> 00:41:49.119
+és akkor ő jelöli be, hogy ennek a
+munkacsoportnak most már tagja vagyok.
+
+00:41:47.079 --> 00:41:53.760
+Szuper, ez nekem így tök jó.
+És hogyha és hogyha magába a
+
+00:41:51.119 --> 00:41:58.920
+visszaigazoló értesítő emailbe teszünk
+bele egy linket, amire ha rákattint,
+
+00:41:56.520 --> 00:42:02.480
+akkor őt automatikusan beteszi úgy a
+munkacsoportba, hogy neki bele se kell
+
+00:42:01.000 --> 00:42:07.400
+nyúlnia.
+Ha hát ha ez technikailag kivitel lesz,
+
+00:42:05.160 --> 00:42:11.720
+hát ez egy ez egyszerűbb. Ez egyszerűbb,
+mintogy egy admin részt írni nekik.
+
+00:42:09.359 --> 00:42:18.079
+Tehát, hogy Ja, persze nem az admin
+rész, hanem hogy az a kérdés, tudod,
+
+00:42:13.200 --> 00:42:20.839
+hogy hogy most a munkavá a tagnak kell
+bocsánat, hogy munkavállalót mondok
+
+00:42:19.440 --> 00:42:25.319
+mindig, csak közben egy olyan rendszert
+is fejlesztünk.
+
+00:42:23.520 --> 00:42:29.839
+Szóval, hogy a tagnak kell beállítani,
+vagy tudsz egy olyan linket küldeni
+
+00:42:26.839 --> 00:42:35.040
+neki, ami a profilján már automatikusan
+beállítja, de nem csak azt, hogy ő akkor
+
+00:42:32.160 --> 00:42:39.000
+munkacsoport tag, hanem hogy konkrétan
+melyik munkacsoportnak a tagja.
+
+00:42:36.599 --> 00:42:43.319
+Szerintem ez egy kicsit netcesebb.
+És ugye ezt a munkacsoportnak a vezetője
+
+00:42:41.079 --> 00:42:48.319
+fogja kiküldeni. Szóval neki egy akkor
+egy ilyen link tárral kellene
+
+00:42:46.079 --> 00:42:51.280
+rendelkeznie.
+Hát nem, hát ugye azt a rendszer
+
+00:42:49.760 --> 00:42:54.880
+automatikusan generálná, ha a
+rendszerből küldjük ki. Tehát itt ugye
+
+00:42:53.440 --> 00:42:59.880
+az a kérdés, hogy az email az a
+rendszerből, tehát hogy igazából nehéz,
+
+00:42:58.599 --> 00:43:03.480
+tehát hogy a végén lehet, hogy
+odajutunk, odajukadunk el, mintogy
+
+00:43:02.079 --> 00:43:08.160
+tényleg egyszerűbb lenne egy admin
+felület, ahol ő azokat kiválassza,
+
+00:43:05.839 --> 00:43:11.440
+azokat az embereket azt hozzáadja. Itt
+az a kérdés, hogy mennyire akarjuk
+
+00:43:09.400 --> 00:43:16.079
+leterhelni magukat a felhasználókat is,
+hogy kész, hogy hogy ők is dolgozzanak
+
+00:43:14.480 --> 00:43:18.839
+egy ezen lehet spórolni egyébként,
+hogyha felhasználók csináltatsz meg
+
+00:43:17.520 --> 00:43:21.960
+dolgokat.
+Én Én itt ebbe a verzióba ezt
+
+00:43:20.480 --> 00:43:26.319
+javasolnám, tehát azért mondom, hogy nem
+nagy embertömegről van szó, és ez gyak
+
+00:43:24.079 --> 00:43:30.000
+egyetlen egyszeri alkalom, ugye pont
+azért, mert hogy ez egy
+
+00:43:28.040 --> 00:43:33.319
+szűkebb körit azt feltételezzük, hogy
+motivált emberek vannak, tehát hogy
+
+00:43:31.559 --> 00:43:37.520
+nekik talán azért nem esik nehezükre az,
+hogy még egyszer belépjenek a
+
+00:43:35.440 --> 00:43:41.640
+profiljukba, és ott kattintsanak egyet.
+Tehát hogyha ha ez kevesebb
+
+00:43:39.720 --> 00:43:46.440
+fejlesztéssel jár, és ez abszolút a
+mostani struktúrába belefér, akkor ez
+
+00:43:44.359 --> 00:43:49.960
+nekem tök oké.
+Hát szerintem akkor maradjunk inkább
+
+00:43:47.880 --> 00:43:54.000
+ennél, mintogy az ilyen token alapul
+generálásokon, mert közben leesett
+
+00:43:52.400 --> 00:43:58.400
+amúgy, hogy igen, tehát hogy ez nem egy
+belső rendszerből küldött levél lesz,
+
+00:43:56.040 --> 00:44:05.240
+ami majd legenerálja a linkeket, hanem
+itt ezt így one by one fogja valaki a
+
+00:44:01.640 --> 00:44:05.240
+rendszeren kívül kiküldözgetni.
+
+00:44:05.359 --> 00:44:17.079
+Jó, jó, akkor ez így, ez így jó.
+Nekem jó. Oké, ez így jó. Ez így jó.
+
+00:44:13.160 --> 00:44:20.520
+Jó. A díjaknál ott ugye gyakorlatilag
+megint így az oldalnak a hosszúsága a
+
+00:44:19.319 --> 00:44:24.839
+kérdés. Ugye ezt ezt úgy kell
+elképzelni, ugye van ez a elég sokféle
+
+00:44:22.559 --> 00:44:30.680
+díj
+idees. Tisztelt elnök az alapvetően egy
+
+00:44:27.559 --> 00:44:36.880
+lesz. Az összes többi díj az elvileg
+évente egyszer kerülhet maximum
+
+00:44:33.280 --> 00:44:42.599
+kiosztásra. Tehát évente ugye gyak egy 2
+3 4 öt díjat tudunk kiosztani, de úgy
+
+00:44:40.680 --> 00:44:46.119
+szól a szabály, hogy nem muszáj
+kiosztani minden díjat minden évben.
+
+00:44:44.680 --> 00:44:50.079
+Úgyhogy az tök jó, amit azt az sok
+helynél láttam azt a megoldást, hogyha
+
+00:44:48.599 --> 00:44:54.280
+valami üres maradna, akkor az nem
+jelenik meg. Ez tök jó. Vagy ezt én úgy
+
+00:44:52.480 --> 00:44:58.040
+értelmeztem, hogyha mit tudom én jövőre
+nem osztunk életműdíjat, akkor nem
+
+00:44:55.760 --> 00:45:00.760
+jelenik meg az a
+tehát ez
+
+00:44:58.400 --> 00:45:06.520
+Igen. Ez így jó.
+Egy egy díj egy taghoz kerülhet, vagy
+
+00:45:03.480 --> 00:45:13.680
+egy díjat akár többen is kaphatnak?
+Hát főszabály szerint egy ugye nyilván
+
+00:45:09.319 --> 00:45:17.800
+elvileg nem kizárt megosztott díj, de
+úszásban is nagyon ritka az, hogy hogy
+
+00:45:15.800 --> 00:45:21.720
+megosztott második hely van. Tehát hogy
+kábé kábé alapvetően főszabály szerint
+
+00:45:19.880 --> 00:45:25.200
+egy díj egy ember. Aha.
+Egy évben.
+
+00:45:22.160 --> 00:45:27.119
+És akkor és ez évente lesz listázva,
+hogyha jól értem.
+
+00:45:26.800 --> 00:45:32.599
+Igen.
+Vagy évente kerülásra. Jó.
+
+00:45:30.160 --> 00:45:36.240
+Itt fontos az, mert akkor itt lehetne
+rövidíteni, vagy egy kicsit
+
+00:45:33.880 --> 00:45:41.160
+egyszerűsíteni az oldal hosszon is,
+hogyha ugye beszéltük azt, hogy a a
+
+00:45:39.240 --> 00:45:47.119
+díjazottaknak legyen, vagy a díjaknak
+legyenek külön oldal, hogyha a csak az
+
+00:45:44.480 --> 00:45:50.920
+adott aktuális évet kell egyébként
+alapvetően megjeleníteni, vagy az
+
+00:45:48.800 --> 00:45:54.760
+aktuális év díjazottjait, akkor itt
+rövidíthetünk az oldalon, és akkor nem
+
+00:45:52.599 --> 00:45:58.480
+gondolnám, hogy kell egy külön aloldal.
+És hogyha korábbi díjazottakat is
+
+00:45:56.800 --> 00:46:02.839
+szeretnék megnézni, akkor nem tudom, egy
+táblázatot lehet megnyitni
+
+00:46:01.000 --> 00:46:07.240
+vagy egy linken keresztül valahogy
+valahogy hozzájutni ahhoz az
+
+00:46:04.240 --> 00:46:10.559
+információhoz.
+Hát igen, azért mindenképpen a korábbi
+
+00:46:08.920 --> 00:46:13.680
+díjazottak az, mert ugye alapvetően
+mindig korábbi díjazottak vannak, tehát
+
+00:46:12.040 --> 00:46:19.000
+hogy praktikusan ugye mit tudom mondjuk
+27-ben ugye májusban lesz a konferencia,
+
+00:46:16.160 --> 00:46:23.599
+ott kiosztjuk a díjakat,
+onnantól ketyeg az óra, onnantól ugye
+
+00:46:20.599 --> 00:46:28.040
+27-es végülis korábbi díjazott a ugye az
+aktuál utána 28-ban megint lesz egy
+
+00:46:25.839 --> 00:46:33.800
+díjazott, de az ugye ott aktuálisan az
+eseményen derül ki. Ö nyilván persze
+
+00:46:31.599 --> 00:46:37.440
+mindig van egy legfrissebb év, ha ha így
+nézzük, de hogy igen, ennek az lenne a
+
+00:46:35.520 --> 00:46:42.400
+célja, hogy visszakövethető legyen, majd
+reméljük, hogy azért ez majd itt sok
+
+00:46:39.079 --> 00:46:48.800
+évre fog tekinteni ez a dolog. És akkor
+a tehát, hogy például mindjárt akkor
+
+00:46:44.119 --> 00:46:48.800
+most a csak megmutatom megint.
+
+00:47:00.160 --> 00:47:07.400
+Itt ugye a Csaposzba ott két díj van. Ez
+az életműdíj meg a mvódíj. És akkor ugye
+
+00:47:05.200 --> 00:47:11.440
+évre lebontva van. Most ezt nem tudom,
+hogy amúgy úgy praktikusabb, hogy
+
+00:47:09.839 --> 00:47:16.920
+díjanként
+alfiókok az évek, vagy egy éven belül
+
+00:47:13.920 --> 00:47:20.760
+alfiókok a különböző díjak. évenként.
+És akkor ugye itt itt van, mit tudom én
+
+00:47:19.240 --> 00:47:24.880
+mondjuk tavaly a Szabó János kapott
+életműdíjat, és akkor ott a fényképen
+
+00:47:22.359 --> 00:47:27.880
+meg egy linkként föl van csatolva az
+önéletrajza,
+
+00:47:26.480 --> 00:47:32.200
+tehát hogy egy ilyesmi ilyesmi
+struktúrát én így el tudok képzelni.
+
+00:47:31.800 --> 00:47:37.359
+Szuper.
+És amúgy már bocs, hogy közbeszólok,
+
+00:47:35.800 --> 00:47:40.680
+csak
+ugye már egy kicsit nagy tovább tovább
+
+00:47:38.760 --> 00:47:45.119
+is gondolkodom, mint amennyit kell
+amennyire kellene. Például, hogyha mi
+
+00:47:42.319 --> 00:47:49.880
+megjelenítünk egy díjozottat, akinek
+személyes adatai, képe satöbbi, satöbbi
+
+00:47:47.359 --> 00:47:55.119
+van feltöltve, ott mi lesz a struktúra,
+hogy hogy ő hogy fog beleegyezni abba,
+
+00:47:52.520 --> 00:47:59.160
+hogy az ő személyes adatait a weboldalon
+használjuk. Tehát ugye ezekről elég
+
+00:47:57.520 --> 00:48:03.720
+keveset beszéltünk, de hogy azért ezek
+elég fontos dolgok.
+
+00:48:02.119 --> 00:48:07.760
+Hát én ez amúgy jó kérdés, mert például
+itt a Csakosznál én is voltam díjazott
+
+00:48:05.839 --> 00:48:13.720
+pár éven ivódíjas, és soha senki nem
+kérdezte meg, hogy amúgy
+
+00:48:10.200 --> 00:48:18.359
+a használhatja a képemet, de meg például
+hipertantársaságba is, és ott se
+
+00:48:15.440 --> 00:48:21.559
+kérdezték meg. Tök jogos a kérdés. Olyan
+szerintem ezt egyébként úgy fogjuk
+
+00:48:19.599 --> 00:48:26.280
+megoldani így, hogy most már
+fölvetetted, hogy amikor mond lesznek
+
+00:48:24.480 --> 00:48:30.119
+díjazottok, akkor nekik erőnyilatkozni
+kell.
+
+00:48:27.000 --> 00:48:33.680
+Ühüm. hogy hogy a díj átvételének
+feltétele, hogy beleegyezik abba, hogy
+
+00:48:32.160 --> 00:48:37.559
+az vagy hát nem, hát vagy beleegyezik,
+vagy nem, de mondjuk ilyenkor azért
+
+00:48:36.040 --> 00:48:43.599
+meglepne, ha valaki azt mondáne, hogy
+elfogadom a díjat, de nem írhatjátok ki,
+
+00:48:41.160 --> 00:48:47.200
+de jogos, jogos. Igen. Tehát, hogy ki
+tudja, hogy nem most gondolom, gondolom
+
+00:48:45.599 --> 00:48:51.839
+ezekbe a tudományos körökben nincsenek
+belső fúrások, de hogy
+
+00:48:53.280 --> 00:48:58.760
+hogy hogy mondjam? Tehát, hogy te ai az
+adatóságoknál például, hogyha te most
+
+00:48:57.040 --> 00:49:02.440
+ezt bejelentenéd, hogy te nem
+nyilatkoztál, meg nem adtál engedély,
+
+00:49:00.359 --> 00:49:07.799
+satöbbi, satöbbi, tehát úgy kidobnak oda
+egy, nem tudom 5 milliós bírságot, hogy
+
+00:49:05.400 --> 00:49:11.680
+csak úgy pislognak. Tehát és ez egyre
+komolyabban veszik, és én ahogy láttam,
+
+00:49:09.480 --> 00:49:15.680
+egyre inkább arra arrafelé tendálunk,
+hogy a szigorú szabályok azok még
+
+00:49:13.400 --> 00:49:19.040
+szigorúbbak lesznek.
+Úgyhogy erre is készüljünk azért föl
+
+00:49:17.160 --> 00:49:23.000
+valamennyire, meg ezeknek is meg kell
+majd magát a helyét teremteni a
+
+00:49:21.000 --> 00:49:26.960
+weboldalon, meg magát a jog jog jog jog
+jogi dokumentumokat is, hogy ezekről
+
+00:49:24.720 --> 00:49:29.720
+azért gondoskodni kell.
+Jó, jó, ez ez teljesen
+
+00:49:28.079 --> 00:49:34.359
+zárójá bezárva. Bocs, nem akarok izé,
+tehát ez nagyon messzire tekintek, csak
+
+00:49:31.599 --> 00:49:39.079
+hogy tehát már egy belső levélküldésnél
+is nyilatkoztatni kell magát a
+
+00:49:36.480 --> 00:49:43.000
+levélküldő felhasználót, hogy
+beleegyezik az adik kezelésébe, és őt
+
+00:49:41.319 --> 00:49:47.000
+teljes mértékben tájékoztatni kell
+arról, hogy hol vannak kezelve az
+
+00:49:44.799 --> 00:49:51.200
+adatai, milyen szerveren, milyen
+országban, milyen biztonsági
+
+00:49:48.799 --> 00:49:55.720
+intézkedésekkel. És még tehát ez ilyen
+száraz hülyeségek, de ki tudja, hogy ki
+
+00:49:54.240 --> 00:49:59.160
+küldi? Tehát, hogy ki tud ki tudja, hogy
+milyen ember kerül oda, aki ezt a
+
+00:49:57.720 --> 00:50:03.520
+platformot használja. Szóval ezekre
+azért majd gond vagy ezekre majd térjünk
+
+00:50:01.000 --> 00:50:06.520
+vissza, amikor már elkészül az oldal.
+Jó, jó, jó,
+
+00:50:04.880 --> 00:50:10.480
+jó,
+jó.
+
+00:50:07.640 --> 00:50:15.640
+Oké. Kapcsolat. Itt a az email cím arról
+mi futólag beszéltünk, amikor ugye a
+
+00:50:13.240 --> 00:50:21.400
+domaint foglaltuk.
+És végül is ott miben maradtunk? hogy
+
+00:50:18.640 --> 00:50:25.240
+hogy a doménel párhuzamosan vagy hogy
+akkor nekünk lesz
+
+00:50:23.559 --> 00:50:29.200
+tényleg nem emlékszem, hogy mit
+beszéltünk, hogy Mavetes email címről
+
+00:50:27.400 --> 00:50:35.760
+beszélgettünk, vagy ugye a domén az
+vidékegészségügy.hu lesz, hogy az lesz a
+
+00:50:33.079 --> 00:50:38.960
+mit beszéltünk? Ezeket regisztráltuk
+ugye
+
+00:50:37.040 --> 00:50:44.599
+a doméneket. Igen. És ugye az volt, hogy
+a maget az foglalt volt. Azt ugye egy
+
+00:50:41.319 --> 00:50:48.200
+állatorvos csaj
+ugye. Igen. És így lett
+
+00:50:46.079 --> 00:50:52.839
+vidékegészségügy, ami a vagy
+vidékegészség.hu, bocsánat, ami amúgy
+
+00:50:50.799 --> 00:50:56.920
+nem rossz, tehát hogy
+de a kongresszus az viszont Mavet
+
+00:50:55.160 --> 00:51:02.040
+kongresszus, tehát ő úgy foglaltuk le,
+hogy vidékegészség.hu meg
+
+00:50:58.359 --> 00:51:06.720
+mavetkongresszus.hu. Hu. Ö,
+igen. Szóval az email címmel mi a
+
+00:51:04.720 --> 00:51:10.760
+helyzet?
+Amelyiket szeretnéd, azt megcsinálom.
+
+00:51:11.400 --> 00:51:16.799
+Ennyi.
+És így, hogy a a Mert amúgy nem tudom,
+
+00:51:13.920 --> 00:51:20.160
+hogy ezek a a doménhez vannak kapcsolva,
+vagy adott esetben például a Mavetet,
+
+00:51:18.480 --> 00:51:25.920
+mint
+email cím viszont tudnánk használni?
+
+00:51:23.040 --> 00:51:32.359
+Nem tudnánk. Nem hát ez úgy működik,
+hogy csinálunk egy levelező szervert
+
+00:51:29.119 --> 00:51:36.720
+és a levelező szervernek a kicsit
+kínaiul beszélek, a rekordjait állítjuk
+
+00:51:34.680 --> 00:51:40.480
+be a domén névnél. Tehát nekünk
+hozzáférésünk kell legyen a domén
+
+00:51:38.359 --> 00:51:45.480
+névhez, hogy beállítsuk azokat az
+összekötő kódokat, amik lehetőséget
+
+00:51:43.319 --> 00:51:48.119
+adnak arra, hogy fogadni és küldeni
+lehessen email címet az adott email
+
+00:51:47.200 --> 00:51:49.839
+címről.
+Aha.
+
+00:51:48.359 --> 00:51:54.040
+Igazából nem az adott email címről,
+hanem az adott domjén végződésről. Tehát
+
+00:51:52.240 --> 00:51:56.720
+igazából korlátlan email címet
+csinálhatunk egy adott doménh.
+
+00:51:56.359 --> 00:51:59.400
+Aha.
+De hogy igen, hozzá kell, hogy férjünk.
+
+00:51:58.440 --> 00:52:02.799
+Igen. Igen.
+Világos. Akkor akkor viszont a
+
+00:52:00.640 --> 00:52:07.799
+vidékegészség lesz az, amivel majd így
+foglalkozunk. Én ezt mikorra találjam
+
+00:52:05.359 --> 00:52:12.160
+ki, hogy hogy hány email cím kéne, meg
+milyen email cím kéne?
+
+00:52:09.400 --> 00:52:18.880
+Amikor akarod. Amikor akarod. Tehát,
+hogy ezt viszonylag gyorsan megcsinálom.
+
+00:52:15.280 --> 00:52:24.200
+Van is szerverünk hozzá.
+Most ez futhat a mi szerverünkön is,
+
+00:52:21.000 --> 00:52:30.280
+vagy ti választatok egy szolgáltatót.
+És akkor ott ennek van egy havi díja
+
+00:52:26.000 --> 00:52:35.359
+általában ilyen 10 és 30000 Ft közt éves
+szinten. Ja, az a lényeg, hogy mennyire
+
+00:52:33.000 --> 00:52:42.160
+akartok saját kontrollt. Tehát azt kell
+tudni, hogy ugye az én, vagyis a mi
+
+00:52:39.799 --> 00:52:47.920
+szerverünkön, amire föl van ez telepítve
+ez a ez az úgymond email szerver, tehát
+
+00:52:45.440 --> 00:52:50.920
+ehhez senki nem fér hozzá, csak mi.
+Tehát a leveleket, azokat nem látjuk, de
+
+00:52:49.880 --> 00:52:55.079
+hogy ez a szerver, ez a mi
+konfigurációnk, ez a mi kezünkben van,
+
+00:52:52.880 --> 00:52:59.359
+hogyha egy külső szolgáltatóhoz mész,
+akkor ugye te megbízol abba a
+
+00:52:56.920 --> 00:53:04.119
+szolgáltatóba, hogy ott vannak a te
+személyes levelezéseid. egyébként
+
+00:53:01.119 --> 00:53:07.599
+99%-ban mindenki ezt csinálja. Csak én
+azért mondom, mert ugye nekünk a saját
+
+00:53:05.920 --> 00:53:13.880
+céges levelezések az mind a saját
+szerverünkön fut.
+
+00:53:09.960 --> 00:53:18.119
+Én ez spórolás miatt is meg meg
+szerintem ez sokkal jobb, mint egy
+
+00:53:15.839 --> 00:53:22.280
+másparti szolgáltató, de ez a legyen a
+ti döntésetek, tehát hogy hogy van
+
+00:53:20.440 --> 00:53:27.319
+lehet, tehát hogy bárhov regisztrálhatsz
+100 fajtát is, tehát hogy még a akár a
+
+00:53:24.799 --> 00:53:31.359
+Gmailnél is tudsz előfizetni céges email
+szolgáltatásra.
+
+00:53:28.359 --> 00:53:37.119
+Ühüm. Ühüm. hogyha ezt választod, akkor
+nézz egy kicsit utána,
+
+00:53:33.359 --> 00:53:40.640
+és majd mondod, hogy
+mit mit szeretnél, vagy mit választsz.
+
+00:53:38.760 --> 00:53:43.400
+Hogyha Gmailt használsz alapból, akkor
+lehet, hogy érdemes mondjuk ezt pont a
+
+00:53:42.160 --> 00:53:47.920
+Gmailnél, mert ott az rögtön az
+összekötés megtörténik, és maga a
+
+00:53:45.400 --> 00:53:51.720
+Gmailnek a platformján keresztül
+levelezel, és akkor ott kiválasztod a
+
+00:53:49.720 --> 00:53:55.799
+céges emailt, akkor tudod az összes
+postafiókodat egy helyre is tudod hozni.
+
+00:53:54.319 --> 00:53:59.599
+Nem tudom, ennek mi a havi díja meg kell
+nézni. A konfigurációba viszont nagyon
+
+00:53:57.480 --> 00:54:03.799
+szívesen segítek.
+Jó, jó, köszi. Akkor ezt be is írtam
+
+00:54:01.280 --> 00:54:08.799
+ebbe a doxiba, hogy akkor ez hozzám
+tartozik, mint kérdés pillanat.
+
+00:54:05.880 --> 00:54:14.200
+Igen, igen, ez abszolút. Igen.
+Jó, a következő
+
+00:54:12.280 --> 00:54:18.839
+igen. Ugye erről már az előbb picit
+szerintem hasonlót pedzegettünk. GDPR
+
+00:54:17.160 --> 00:54:24.440
+szabályzat, hogy nyilván akkor gondolom
+itt az oldalműködéséhez kell részletes
+
+00:54:21.839 --> 00:54:30.000
+ilyen adatvédelmi szabályzat. Nekem van
+ilyen adatvédelmi szakember ismerősöm.
+
+00:54:28.680 --> 00:54:36.119
+Ez ilyenkor hogy van, hogy erre nektek
+van egy sablon, vagy ezt egy külső ember
+
+00:54:32.160 --> 00:54:40.359
+csinálja meg, vagy mi a praktikus?
+Hát ezt általában úgy szoktuk
+
+00:54:37.440 --> 00:54:45.160
+megcsinálni, hogy ugye
+tehát én én java részt aival szoktam
+
+00:54:42.119 --> 00:54:50.000
+ezeket legenerálni.
+Tehát ugye tudom azok megvannak azok a
+
+00:54:46.880 --> 00:54:53.520
+technikai dolgok, amiket igazából csak
+én meg mi tudunk, mert ugye mi
+
+00:54:51.440 --> 00:54:58.440
+fejlesztjük az oldalt, tehát azokat bele
+kell írni.
+
+00:54:55.559 --> 00:55:02.839
+És amúgy azt a Zai által legenerált
+amúgy egész jó jogi dokumentumokat ér,
+
+00:55:01.319 --> 00:55:07.720
+azt mondjuk át lehet nézetni egy
+szakjogásszal. Ez az olcsóbbik verzió. A
+
+00:55:05.839 --> 00:55:12.359
+drágábbik aznak ha ő írja meg, és ő
+veszi fel velünk a kapcsolatot, és mi
+
+00:55:10.400 --> 00:55:16.680
+konzultálunk vele, és átadjuk azokat a
+technikai információkat, amire szüksége
+
+00:55:14.200 --> 00:55:21.640
+van. Ez eddig a karrierem során még soha
+nem fordult elő, hogy ügyvédek
+
+00:55:18.880 --> 00:55:27.119
+megkeress. Nem nem ügyvédő, ilyen
+munkavédelmés adatvédelmés ilyesmi, de
+
+00:55:25.000 --> 00:55:33.599
+ha jó, akkor viszont a lehet, hogy úgy
+csinálom, hogy akkor összekötnélek vele
+
+00:55:29.559 --> 00:55:37.920
+titeket, vagy akkor téged, és akkor
+nyilván úgy, hogy ne legyen túl
+
+00:55:35.079 --> 00:55:40.839
+bonyolult, meg hatékonyak legyünk, meg
+minden szempontból jó legyen. Jó, hogy
+
+00:55:40.559 --> 00:55:44.119
+akkor
+jó,
+
+00:55:42.799 --> 00:55:47.319
+jó, jó. Hát nem tudom, tudod, ilyen
+általános szerződési feltételek meg
+
+00:55:45.799 --> 00:55:54.000
+ilyeneket nem tudom, hogy szeretnétek-e.
+Tehát ezeket
+
+00:55:49.680 --> 00:55:57.200
+ezeket érdemes amúgy megcsinálni. Tehát
+én nem tudom, hogy szeretnek minket.
+
+00:55:55.680 --> 00:56:01.680
+Tehát azért mondom, hogy ez jó, hogyha
+olyan valaki nézi meg, aki jobban tudja,
+
+00:55:59.359 --> 00:56:05.880
+hogy ezt mi szeretnénk-e vagy nem, mert
+az tehát, hogy nyilván én nekem egyik
+
+00:56:04.160 --> 00:56:09.200
+weboldalt se dob föl annyira, amikor
+látom, hogy van rajta ilyen, de nyilván
+
+00:56:07.559 --> 00:56:16.079
+valamiért van.
+Hát igen, állítólag kötelező, tehát hogy
+
+00:56:13.000 --> 00:56:19.880
+most, hogy ezt hány én nem hallottam még
+olyan precedens értékű ügyről, hogy
+
+00:56:17.960 --> 00:56:23.520
+valakit iszonyatosan ezért megbüntettek
+volna, mert nem volt mondjuk impresszuma
+
+00:56:21.640 --> 00:56:27.000
+vagy valami, ami amúgy is Magyarországon
+kötelező.
+
+00:56:25.480 --> 00:56:30.960
+Hát
+ez csak ilyen extrán védjük be magunkat,
+
+00:56:28.839 --> 00:56:33.359
+de hát ez később ezt kurolni azért
+szerintem.
+
+00:56:32.119 --> 00:56:35.359
+Tehát hogy
+jó,
+
+00:56:33.760 --> 00:56:40.559
+én azt mondom, hogy amit lehet, azt meg
+kell írni A-jal, azt kész.
+
+00:56:38.200 --> 00:56:43.559
+Jó, jó. Trópusabb, mint az ügyet.
+Szerintem
+
+00:56:41.359 --> 00:56:49.000
+ez ilyen nagyon alapkérdés. Nagyjából
+sejtem is a választ, de pont itt a
+
+00:56:46.559 --> 00:56:52.839
+Csakosz oldalnál, amit mutogatok nektek,
+ott nagyon sokszor van az, hogy valaki
+
+00:56:50.960 --> 00:56:57.039
+keresi és nem nyitja meg, mert ugye
+kiírja neki a gép, hogy nem biztonságos
+
+00:56:55.000 --> 00:57:00.799
+az oldal, mert nincs ugye valami az a
+tanúsítvány. Ninc
+
+00:56:57.920 --> 00:57:03.640
+s A SSL szertifikét, azt adjuk alapból,
+az lesz.
+
+00:57:02.680 --> 00:57:06.640
+Jó, jó,
+jó.
+
+00:57:04.799 --> 00:57:11.799
+Oké.
+Ö.
+
+00:57:08.400 --> 00:57:16.119
+Igen, itt a 6.3-baan ott az evidens a
+válasz, hogy a nem regisztráltak is
+
+00:57:13.520 --> 00:57:22.079
+lássák ilyen szürkítve vagy lakatolva,
+vagy valahogy a dolgokat. Az az tök tök
+
+00:57:19.079 --> 00:57:22.079
+jó.
+
+00:57:22.680 --> 00:57:31.280
+Ö
+az érdemes tagot már beszéltük itt a
+
+00:57:29.319 --> 00:57:36.520
+Igen.
+Jelszó és ismétlés. Most itt a 7.1-be
+
+00:57:34.359 --> 00:57:42.880
+egybe járok, mert közben lejöttem, hogy
+nem osztottam meg. Itt ez csak ilyen
+
+00:57:41.160 --> 00:57:46.680
+egyszerűségges.
+Nem terveztünk ilyet.
+
+00:57:45.240 --> 00:57:49.920
+Igen. Tehát, hogy ne ne járjunk úgy,
+mint a viccbe, hogy a végén a
+
+00:57:48.280 --> 00:57:54.520
+káromkodásra meg kiírja, hogy ez jó
+lenne, csak foglalt.
+
+00:57:52.240 --> 00:57:58.720
+Igen.
+Oké. Igen. A másik, azt is lehet, hogy
+
+00:57:57.240 --> 00:58:03.000
+írtam valahova, csak erről jutott
+eszembe, az is ilyen felhasználó, hogy a
+
+00:58:00.920 --> 00:58:07.200
+a az a süti szabályzat, amit ugye el
+kell fogadni, hogy elfogadod vagy nem
+
+00:58:04.680 --> 00:58:11.440
+fogadod el, hogy vannak olyan oldalok,
+ahol hogy egy kattintással ki tudom lőni
+
+00:58:09.000 --> 00:58:16.240
+és tudok tovább menni, az tök jó. Azokon
+az oldalokon szoktam maradni, de hogy
+
+00:58:13.000 --> 00:58:21.000
+vannak olyan oldalak, ahol meg gyak
+egyesével kattinggatni, ha én ki akarom
+
+00:58:18.400 --> 00:58:25.319
+szedni. Erről is órákig tudnék beszélni,
+és nagyon szívesen is tenném, csak
+
+00:58:22.839 --> 00:58:29.680
+szerintem Peti ennek nem örülne. Elég
+expert vagyok a süti témába. A lényeg,
+
+00:58:27.680 --> 00:58:32.799
+hogy nekünk nekünk nagyon minimál kell.
+Tehát
+
+00:58:31.280 --> 00:58:37.720
+majdhogy nem azt kell, hogy mondjam,
+hogy kábé észrevehetetlenné tehetjük az
+
+00:58:35.440 --> 00:58:41.640
+oldalon. És ha valakit nagyon zavar az a
+kis észrevehetetlen része, és rákattint,
+
+00:58:39.680 --> 00:58:45.319
+hogy oké, és akkor ennyi.
+Szupi. Jó. Igen, mert nyilván én nem
+
+00:58:43.280 --> 00:58:48.480
+értek hozzá. Nekem a felhasznál oldalról
+van az, hogy hogy ad egy rossz élményt,
+
+00:58:47.880 --> 00:58:53.799
+hogyha
+Igen, ez általában azért szokott lenni,
+
+00:58:51.319 --> 00:58:58.359
+mert
+ugye neked engedélyt kell adnod, hogy a
+
+00:58:56.760 --> 00:59:03.160
+Google
+elvegye azokat az adatokat, ami a
+
+00:59:00.960 --> 00:59:07.640
+számítógépeden van, tehát hogy átadd a
+Google-nek a szerveréhez, és ezek az
+
+00:59:05.359 --> 00:59:10.760
+engedélyezéseket szokták azért úgy meg
+Na mindegy, tényleg nem akarok
+
+00:59:08.680 --> 00:59:14.119
+belemenni. A lényeg az, hogy a lényeg
+az, hogy igen. Tehát hogyha valaki
+
+00:59:12.280 --> 00:59:18.000
+nagyon leegyszerűsítő, hogyha valaki
+nagyon komoly méréseket szeretne
+
+00:59:16.000 --> 00:59:22.039
+csinálni user interakciókról egy
+weboldalon, akkor nagyon sok mindenbe
+
+00:59:20.160 --> 00:59:26.160
+neked bele kell egyezni, és rohadt
+idegesítővé teszik, hogy te véletlenül
+
+00:59:24.119 --> 00:59:30.039
+egy minél több dologba beleegyezz, hogy
+ők minden adatot megkapjanak rólad, amit
+
+00:59:28.039 --> 00:59:32.359
+szeretnének. Tehát, hogy igazi amúgy
+röviden ennyi.
+
+00:59:31.640 --> 00:59:37.240
+Oké. Ja.
+Ja. Ja, de hogy mi nem gyűjtünk majd
+
+00:59:34.039 --> 00:59:40.799
+adatokat, tehát hogy nem nem volt erről
+szó, nem hogy mondjuk az analitic bele
+
+00:59:38.799 --> 00:59:45.000
+be lesz kötve, vagy tehát be lehet
+kötni, tehát úgy de hogy így erről ha
+
+00:59:43.599 --> 00:59:49.200
+jól tudom, akkor nem volt szó, hogy
+analitikai méréseket alap analitikai
+
+00:59:47.520 --> 00:59:52.920
+méréseket a szerveren tudunk csinálni,
+azt csinálunk is, tehát ugye arról
+
+00:59:50.760 --> 00:59:56.720
+tudunk majd adni infókat. De hogyha
+mondjuk kell Google Analytics, vagy
+
+00:59:54.839 --> 01:00:01.640
+akarjátok hirdetni az oldalt Google
+Adssel, akkor egy kicsit majd ezt a süti
+
+00:59:59.559 --> 01:00:08.119
+tájékoztatót meg logikát is be kell
+építeni, hogy az megfeleljen a a a GDPR
+
+01:00:05.359 --> 01:00:13.000
+szabályoknak meg
+a meg a Google is szeresse. De szerintem
+
+01:00:10.640 --> 01:00:14.520
+ez majd egy másik fejezet, tehát hogy
+egyelőre akkor
+
+01:00:14.280 --> 01:00:19.920
+Aha.
+minimálba toljuk.
+
+01:00:15.720 --> 01:00:25.880
+Oké. Jó, jó.
+Igen. 7.3. Itt a ez ugye az admin
+
+01:00:23.119 --> 01:00:31.000
+felülethez ö tehát, hogy amikor jön egy
+jelentkezés, akkor akkor az admin
+
+01:00:28.920 --> 01:00:36.480
+adminok kapnak valami értesítést, vagy
+időnként ő be kell lépjen és csekkolja?
+
+01:00:33.319 --> 01:00:41.200
+Kap kaphat emailt is róla.
+Abszolút a felületen is kaphat róla
+
+01:00:38.200 --> 01:00:41.200
+értesítést.
+
+01:00:41.319 --> 01:00:46.000
+Jó, jó. Igen. Tehát, hogy valami
+mindenképpen legyen, mert az nyilván
+
+01:00:45.000 --> 01:00:51.039
+praktikus
+kaphat. Persze, tehát az ilyen automata
+
+01:00:48.119 --> 01:00:55.960
+emaileket, tehát ezek ezek ezeket ezt
+mindenki kapja majd, tehát hogy ott
+
+01:00:53.079 --> 01:01:00.920
+látni fogják majd, hogy hogyha történik
+valami.
+
+01:00:57.559 --> 01:01:03.359
+Jó, a következő kérdésem az hülyeség,
+mert
+
+01:01:01.640 --> 01:01:06.520
+nyugodtan tedd föl.
+Nem, itt már már megválasztantam, tehát
+
+01:01:05.000 --> 01:01:10.880
+hogy a dmentes kategóriánál az
+automatikus tagságról van-e értesítés,
+
+01:01:08.680 --> 01:01:15.480
+de az automatikus tagság is elfogadás
+után van, tehát hogy ott igazából csak a
+
+01:01:12.839 --> 01:01:18.559
+fizetés esik ki. Úgyhogy úgyhogy ezt
+most így megválaszoltam magamnak.
+
+01:01:17.960 --> 01:01:22.720
+Ühüm.
+A Igen. A tagdíjfizetésről ott egyfelől
+
+01:01:20.960 --> 01:01:28.039
+beszéltük, akkor ezt megbeszéltük, hogy
+a december az már átlógó hónap a tagdí
+
+01:01:26.960 --> 01:01:33.280
+szempontjából.
+Igen.
+
+01:01:28.680 --> 01:01:38.200
+Ö a másik, hogy ugye utalásos lehetőség
+azért az a a színfém mellett egyébként
+
+01:01:36.280 --> 01:01:42.960
+tartósan is mindenképp legyen szerintem,
+mert valaki van, aki azt preferálja,
+
+01:01:40.520 --> 01:01:46.400
+mert kevesen szerintem.
+illetve a harmadik dolog, ami egyébként
+
+01:01:44.760 --> 01:01:51.680
+nem tudom, hogy releváns lesz-e, mert
+azért nyilván idő idén át kéne, hogy
+
+01:01:49.240 --> 01:01:56.000
+fusson a cégbíróság, amit itt írtam,
+hogy ugye hivatalosan mi még Magyar Faló
+
+01:01:54.359 --> 01:02:01.160
+Egészségügyi tudományos társaságként
+vagyunk bejegyezve.
+
+01:01:58.520 --> 01:02:07.319
+Ugye most lesz, vagy ma lett beadva pont
+a cégbíróságra a módosítás. Tehát, hogy
+
+01:02:04.640 --> 01:02:12.960
+ez ez itt azért a 8.1-ben ezt azért
+írtam le. Ebből szerintem a főüzenet az,
+
+01:02:09.680 --> 01:02:20.680
+hogy legyen utalásos meg simple pay
+verzió is. És ö
+
+01:02:17.760 --> 01:02:26.400
+ennek ami relevanciája igen, az az, hogy
+ha ugye átutalással történik a fizetés,
+
+01:02:23.640 --> 01:02:30.839
+akkor azt a rendszer
+úgy ért akkor érzékeli, ha az admin ezt
+
+01:02:28.760 --> 01:02:35.880
+így manuálisan beírja, vagy hogy van ez?
+Igen, igen, igen. Így van. Tehát ezt nem
+
+01:02:34.279 --> 01:02:39.039
+lehet úgy összekötni.
+Jó, jó. Csak, hogy akkor ezt így értem.
+
+01:02:38.480 --> 01:02:42.000
+Jó.
+Igen.
+
+01:02:40.079 --> 01:02:45.440
+Ez ugye ez ugye azzal jár egyébként,
+hogy nektek folyamatosan monitorozni
+
+01:02:43.839 --> 01:02:49.440
+kell, vagy nem tudom, hogy lesz-e erre
+külön bankszámla.
+
+01:02:48.039 --> 01:02:53.480
+De Aha.
+Mert akkor nézni kell, és akkor egy
+
+01:02:51.240 --> 01:02:58.880
+adminnak kell ugye átkapcsolni az adott
+felhasználót, hogy oké, akkor most már
+
+01:02:55.680 --> 01:03:03.279
+befizett és engedélyezve van.
+Igen. Tehát, hogy meg lehet amúgy ezt a
+
+01:03:00.960 --> 01:03:07.680
+bankiutalást is is lehet amúgy
+automatizálni, csak ez egy rohadt
+
+01:03:05.799 --> 01:03:13.440
+bonyolult dolog, mert a banktól ki kell
+kérni a egyáltalán, hogyha a bank
+
+01:03:10.799 --> 01:03:18.319
+egyáltalán van olyan restépiája, amivel
+neked információkat tud küldeni
+
+01:03:15.599 --> 01:03:22.640
+rendszerileg satöbbi satöbbi, tehát hogy
+meg lehet automatizálni, lehet, csak ez
+
+01:03:20.799 --> 01:03:25.119
+ja ez egy viszonylag bonyolul dolog, nem
+méri meg.
+
+01:03:23.680 --> 01:03:28.720
+Nem kell. Tehát igen, igen. Nyilván itt
+azt kell látni, ugye mi nem webshop
+
+01:03:27.000 --> 01:03:33.119
+vagyunk, tehát nálunk, hogyha ha mondjuk
+az 500 fős tagságot elérjük, ami egy
+
+01:03:30.880 --> 01:03:39.200
+[&nbsp;__&nbsp;] jó tagság egy orvosszerve vagy egy
+egészségügyi szervezetnél, akkor akkor
+
+01:03:36.359 --> 01:03:44.480
+egy év alatt 500 tagdíjfizetésünk lesz.
+Tehát, hogy ez ez azért egy manuálisan
+
+01:03:41.839 --> 01:03:47.520
+és akár kezelhető nagyság. Úgyhogy ez
+így ez így oké, de így akkor akkor
+
+01:03:46.520 --> 01:03:52.760
+értem. Tehát, hogy ez
+de de hogy leginkább szerintem szerintem
+
+01:03:49.680 --> 01:03:56.119
+a nagyon a bankkártyás fizetés felé kell
+terelni az embereket, hogy
+
+01:03:54.720 --> 01:04:02.839
+Igen, amúgy igen, igen,
+hogy az a az legyen a fő cél szerintem.
+
+01:03:58.640 --> 01:04:08.279
+Mi mikor mikor lehet aktuális vagy
+érdekes az utalásos fizetés? Az nekem
+
+01:04:05.279 --> 01:04:08.279
+kérdés.
+
+01:04:10.279 --> 01:04:17.520
+Én akkor képzelem el, hogyha bár nem
+tudom, hogy van-e vanakinek még olyan
+
+01:04:14.520 --> 01:04:26.599
+bankkártyája, hogy ezt így nem tudja,
+vagy vagy nem bízik ebbe. Tehát, hogy
+
+01:04:19.960 --> 01:04:26.599
+esetleg ilyet ilyet tudok elképzelni. De
+
+01:04:27.039 --> 01:04:34.400
+tehát így nem tudom, nem tudom, mert én
+most már egyébként nyilván meg szerintem
+
+01:04:31.279 --> 01:04:40.559
+90%-unk most már ugye ezt a ezt a gyors
+fizetéses verziót használja.
+
+01:04:38.000 --> 01:04:45.400
+Amú szerintem amúgy figy amúgy szerintem
+szerintem ilyenkor mindig mindig azt
+
+01:04:42.680 --> 01:04:49.839
+kell csinálni szemét módon, hogy nagyon
+megnehezíteni a a felhasználóknak a
+
+01:04:47.640 --> 01:04:55.160
+dolgát. hogyha tényleg banki utalást
+szeretne, akkor kell adni egy email
+
+01:04:52.920 --> 01:04:58.839
+címet, akkor vegye fel a kapcsolatot, és
+akkor majd a kapcsolatfölvétel után majd
+
+01:04:57.359 --> 01:05:03.279
+akkor ti küldtök neki majd egy
+bankszámlaszámot, és akt szépen leírni a
+
+01:05:01.000 --> 01:05:08.119
+szabályzatba, és el fog menni a kedvbe
+az utalástól, aztán egy másodperc alatt
+
+01:05:05.559 --> 01:05:12.880
+lepengeti kebankártyával.
+Tehát, hogy ne adni nekik nem szabad
+
+01:05:10.000 --> 01:05:17.760
+szerintem közvetlen lehetőséget adni,
+közvetlen linket adni nekik az utalásra,
+
+01:05:15.359 --> 01:05:21.720
+de ez nekem a személyes véleményem.
+A azért hagynám egyébként bent most egy
+
+01:05:19.599 --> 01:05:26.559
+válaszkérdést, ez nem a tagdíjnál
+elsorban, csak hogy nyilván akkor kábé
+
+01:05:23.480 --> 01:05:31.559
+egyféle legyen ugye a rendszer mindig a
+kongresszusnál ott viszont valószínűleg
+
+01:05:28.680 --> 01:05:36.680
+az lesz többségben, mert mert ott ugye
+nagyon sokszor van az, hogy gyógyszer
+
+01:05:33.240 --> 01:05:42.200
+cég szponzorálja a részvételt.
+Tehát, hogy ott ott ott amiatt amiatt
+
+01:05:40.200 --> 01:05:48.359
+van ez. És adott esetben a tagságnál is
+azt azt azért el tudom képzelni. Igen. A
+
+01:05:45.359 --> 01:05:54.359
+másik válasz a kérdésre.
+Ugye ezt általában céges költségként
+
+01:05:50.880 --> 01:05:59.760
+elszámolják, és sok olyan kolléga van,
+hogy mondjuk a céges bankszámlához nincs
+
+01:05:56.839 --> 01:06:04.960
+bankkártya. Tehát hogy
+hogy ez mondjuk igaz. Igen, igen, igen.
+
+01:06:03.000 --> 01:06:07.319
+Igen, igen, igen. Ez ez tényleg így van.
+Igen, igen.
+
+01:06:05.680 --> 01:06:11.599
+Úgyhogy, úgyhogy ezért, ezért hagynám
+meg, de de mondom én azt gondolom, hogy
+
+01:06:09.520 --> 01:06:15.880
+ez egy kezelhető nagyságrend lesz, és és
+az, hogyha viszont lesz a könnyített,
+
+01:06:13.720 --> 01:06:22.000
+nem tudom mi ennek a hivatalos neve, az
+az egy tök jó előrelépés lesz.
+
+01:06:19.359 --> 01:06:27.920
+Jó. A itt a 8.2-ben a kettőbe a
+különböző türelmi időkkel kapcsolatban.
+
+01:06:26.279 --> 01:06:32.520
+Itt látjátok, tehát hogy én egy kicsit
+így így engedékenyebben tenném ezt, és
+
+01:06:30.680 --> 01:06:36.799
+még így is így is nagyon szigorúak
+leszünk a
+
+01:06:33.640 --> 01:06:41.760
+többi társasághoz képest.
+Ez így technikailag kivitelezhető,
+
+01:06:39.160 --> 01:06:45.480
+gondolom annyi, hogy ugye most egy vagy
+két plusz emlékeztetőt
+
+01:06:43.680 --> 01:06:49.839
+raktunk bele.
+Hát én minden nap küldenék egyet
+
+01:06:47.160 --> 01:06:53.720
+legalább.
+Biztos ami biztos.
+
+01:06:52.160 --> 01:06:59.240
+Én azért csináltam ezt a két hetit, mert
+ott ha mondjuk valaki elment sielni,
+
+01:06:56.400 --> 01:07:02.359
+akkor
+és akkor viszont ha a sielés alatt
+
+01:07:00.640 --> 01:07:05.799
+minden nap emlékeztetjük, akkor én azért
+lépnék ki.
+
+01:07:06.839 --> 01:07:14.760
+A viszont a 8.3-ba háromba beleraktam
+egy ilyet, hogy esetleg azt nem lehet-e
+
+01:07:13.200 --> 01:07:19.680
+érdemes,
+mit tudom én ilyen, akár nem tudom, fél
+
+01:07:16.760 --> 01:07:24.000
+évente, mondjuk kettőt összesen, vagy
+vagy tehát, hogy egy nem túl sűrűn, de
+
+01:07:22.480 --> 01:07:28.640
+mondjuk egyet egyet így ilyen
+emlékeztetőbe.
+
+01:07:25.720 --> 01:07:33.680
+Szerintem a fél évente egy egy lenne az
+az, ami oké, vagy nem tudom, négy hónap,
+
+01:07:30.720 --> 01:07:37.039
+négy havontal, vagy negyed évenként egy.
+Hát lehet akkor mit tudom én, négy
+
+01:07:35.200 --> 01:07:40.960
+havonta és akkor három darab, tehát hogy
+egy év után meg végképpen el lehet őket
+
+01:07:38.960 --> 01:07:45.480
+engedni, mert nyilván valaki nem akar,
+nem akar, de hogy mondjuk az, hogy még
+
+01:07:43.039 --> 01:07:49.799
+egy évig ott egy három darab kimenjen,
+az az szerintem nem lenne rossz.
+
+01:07:47.599 --> 01:07:55.000
+Jó, hát ugye onnantól fogva már, hogy
+ilyen értesítőket küldünk, ugye itt már
+
+01:07:52.240 --> 01:07:58.799
+tudni kell őket leiratkoztatni is,
+úgyhogy azt majd azt majd azért meg kell
+
+01:07:56.880 --> 01:08:02.480
+oldani. Tehát, hogy ezt majd ne írjuk
+oda, ezt ne felejtsük el.
+
+01:08:00.640 --> 01:08:07.119
+Igen, azt azt valahol én is írtam.
+leiratkozást tovább azért nem csinálnám
+
+01:08:05.079 --> 01:08:11.559
+egyébként, mert alapvetően mi egy nagyon
+fiatal társaság vagyunk, mármint így
+
+01:08:09.839 --> 01:08:17.719
+tagság szempontjából, tehát most a
+vezetőségnek nincs 40 év az állati átlag
+
+01:08:13.920 --> 01:08:22.960
+életkora, de azért a reális háziorvosi
+korfát nézve nagyon sokan azért nem
+
+01:08:19.640 --> 01:08:26.880
+fognak mondjuk reagálni, mert meghalnak
+most morbid, de hogy ez tényleg így van.
+
+01:08:25.080 --> 01:08:34.560
+És akkor nyilván nyilván őket nem kell
+sokáig azért bombázni emailekkel. Ö
+
+01:08:33.239 --> 01:08:37.600
+igen, ez így szörnyű, de egyébként
+tényleg, vagy ezt így nem tudom, hogy
+
+01:08:35.560 --> 01:08:42.040
+tudjátok-e, hogy az átlag életkor a
+háziorvosoknál bőven 60 év fölött van,
+
+01:08:41.799 --> 01:08:48.159
+ami
+ugye normál esetben inkább a nyugdíj
+
+01:08:44.279 --> 01:08:53.199
+korhatár kéne, hogy legyen. Ö
+jó eszembe az én arvosom is meghalt vagy
+
+01:08:50.600 --> 01:08:56.719
+60 évesen.
+Jó fiatal volt.
+
+01:08:54.000 --> 01:09:00.960
+Pedig ő fiatal volt. Ő igen, amúgy ő
+tényleg fiatal volt akkor. Igen. Ja,
+
+01:09:00.279 --> 01:09:07.719
+szegény.
+Jó. No,
+
+01:09:03.640 --> 01:09:07.719
+oké, akkor a
+
+01:09:08.839 --> 01:09:12.319
+Ezek okék.
+
+01:09:13.000 --> 01:09:18.400
+Igen, itt a 9.3 három a megjelenés
+engedélyezésről beszéltünk, és akkor ott
+
+01:09:17.000 --> 01:09:23.920
+beszéltük azt, hogy ez ilyen nagyon
+nagyon fel figyelemfelkeltő legyen, meg
+
+01:09:21.480 --> 01:09:27.719
+tehát hogy tényleg lehetőleg abba az
+irányba tereljük, hogy egyezzen bele,
+
+01:09:26.319 --> 01:09:31.319
+csak hogy itt lesz valamilyen kicsi
+ilyen ugye i betű szokott lenni, hogy
+
+01:09:30.120 --> 01:09:36.239
+így rámegy az ember és akkor
+elmagyarázza, hogy az mi, hogy
+
+01:09:33.839 --> 01:09:40.120
+hogy ne ijedjen meg tőled.
+Én nem is nem is rejteném i betű alá.
+
+01:09:38.440 --> 01:09:46.440
+Tehát ki van ki lesz írva ez egy ilyen
+tájékoztató a pipa mellé, hogy konkrétan
+
+01:09:42.839 --> 01:09:50.040
+mi is mi hol látható, mi látható róla
+satöbbi.
+
+01:09:48.239 --> 01:09:56.640
+Szuki. Jó.
+Igen. Igen. Ez a legtisztább. Igen.
+
+01:09:53.440 --> 01:10:03.760
+Jó. A következő betegség betegséget
+bekezdést azt megbeszéltük itt akkor a a
+
+01:09:59.679 --> 01:10:03.760
+vezetőséggel kapcsolatban.
+
+01:10:07.320 --> 01:10:11.000
+Hát ez csak ilyen
+
+01:10:11.480 --> 01:10:19.320
+ez ezt meg tudjuk úgy csinálni a
+sorrendezést, hogy hogy ne vegye ne
+
+01:10:16.600 --> 01:10:23.800
+vegye figyelembe, de mégis ott legyen az
+elején a doktor.
+
+01:10:22.199 --> 01:10:27.480
+Az amúgy szerintem nem rossz. Igen, mert
+azért, mert valaki meg a végére rakja,
+
+01:10:25.280 --> 01:10:32.679
+és akkor ez amúgy Igen.
+Aha.
+
+01:10:28.560 --> 01:10:37.239
+Ez csak ilyen kis apróság, de
+egyébként olyat is csinálhatunk
+
+01:10:35.239 --> 01:10:41.520
+regisztrációnál, és szerintem az lenne a
+legjobb, hogyha ott lenne egy ilyen
+
+01:10:39.440 --> 01:10:46.600
+titulus
+beviteli mező, ami legördülő mező lenne,
+
+01:10:44.600 --> 01:10:50.480
+és akkor csak a legördülőből kiválasztja
+azt, hogy hogy mi az, ami rá vonatkozik.
+
+01:10:48.840 --> 01:10:55.600
+Nem tudom, hogy itt van olyan, akinek
+több is van, doktor, professzor, PhD,
+
+01:10:53.360 --> 01:11:00.239
+nem tudom micsoda, aki többet. Ö igen, a
+a PhD-t meg a habilt meg ilyesmit, azt
+
+01:10:58.040 --> 01:11:06.040
+nem kell bántani szerintem, mert az
+fölösleges. A professzort meg a doktort
+
+01:11:02.920 --> 01:11:09.280
+érdemes, merthogy azt azt használ, tehát
+hogy nyilván a doktor az ugye a
+
+01:11:07.000 --> 01:11:13.000
+személyibe is benne van, professzor az
+az a személyib nem kerül be, de azt
+
+01:11:11.400 --> 01:11:17.400
+használják, tehát hogy ez a kettő, ha
+van, ez így elég.
+
+01:11:15.080 --> 01:11:23.120
+És akkor ilyenkor mondjuk a névlistában,
+nem tudom, professzor Mohos András,
+
+01:11:20.760 --> 01:11:27.679
+akkor az prof legyen, vagy legyen
+teljesen kiírva.
+
+01:11:25.600 --> 01:11:32.040
+Lehet így, hogy prof ugyanúgy rövidíti,
+mint ugye a DR is rövidítés. És akkor a
+
+01:11:30.199 --> 01:11:35.960
+mit tudom én,
+a professzor Mohos András most ennél
+
+01:11:33.719 --> 01:11:38.159
+maradva, ő az M betűnél van.
+Így van.
+
+01:11:36.280 --> 01:11:41.800
+Tehát, hogy ő ő nem a P-nél, hanem ő az
+M betűnél van.
+
+01:11:39.880 --> 01:11:47.120
+Oké.
+ami még így a ez is ilyen személyes
+
+01:11:44.760 --> 01:11:52.280
+tapasztalat a a amikor ugye adatokat
+adják meg lakcímnél szokott az lenni
+
+01:11:49.800 --> 01:11:56.639
+hogy
+tehát ő egyértelmű lesz tehát hogy tök
+
+01:11:54.040 --> 01:12:01.840
+jó az amikor sorrendbe úgy jön hogy
+irányítószám város
+
+01:11:59.320 --> 01:12:06.960
+utca házszám és mindegy hogy hány
+mezőben van de egyértelműen tudom hogy
+
+01:12:04.320 --> 01:12:10.719
+melyik mezőben mit kell írni mert nagyon
+sok olyan oldal van hogy írja hogy cím
+
+01:12:09.480 --> 01:12:14.600
+ott van egy rohadt nagy hely hely,
+beírom az egész címemet, azt alatta meg
+
+01:12:12.520 --> 01:12:17.199
+ott van, hogy ide kellett volna az
+irányítószám.
+
+01:12:16.199 --> 01:12:21.840
+Igen,
+ez ilyen kis apróság, csak bosszantó.
+
+01:12:20.199 --> 01:12:24.199
+Szóval, hogyha ezt ezt tudjuk úgy
+csinálni, hogy egyértelmű legyen, akkor
+
+01:12:23.320 --> 01:12:28.560
+az tök jó.
+Sőt, ide tudunk olyat szokásat csinálni,
+
+01:12:26.840 --> 01:12:32.679
+hogyha beírja az irányítószámot, akkor
+már a településnevet automatikusan ki is
+
+01:12:31.600 --> 01:12:37.000
+tölti,
+és akkor már csak az utcát meg a
+
+01:12:34.800 --> 01:12:44.400
+házszámot kell.
+Ezzel már lekörözzük a országos ügyeleti
+
+01:12:40.000 --> 01:12:44.400
+szoftvernek a képességeit.
+
+01:12:45.000 --> 01:12:51.800
+Sőt, ez megint csak ilyen kis apróság.
+Ha mondjuk egy halotthoz megyünk
+
+01:12:49.840 --> 01:12:56.199
+ügyeletbe, akkor két felület két
+felületet kell kitölteni. Persze. A két
+
+01:12:54.199 --> 01:12:59.520
+felületen összesen azzem hatszor kell
+kézzel beírni az elhunnak a lakcímét. Ö,
+
+01:12:59.440 --> 01:13:03.280
+az
+úristen.
+
+01:13:01.600 --> 01:13:06.960
+Úgyhogy, úgyhogy
+de valaki biztos jól keresett vele, hogy
+
+01:13:05.080 --> 01:13:12.520
+ezt így lefejlesztette.
+Ez biztos eg ajánlást kérnünk szépen
+
+01:13:09.639 --> 01:13:17.320
+majd, hogyha ez a projekt sikeres, vagy
+akkor
+
+01:13:12.920 --> 01:13:17.320
+csináljunk szar rendszereket. Ajánlás.
+
+01:13:17.560 --> 01:13:21.960
+Szerintem ott nagy a verseny, úgyhogy
+
+01:13:22.480 --> 01:13:30.560
+oké, akkor a jó a 10.2. Igen, ott én is
+írtam a leiratkozást a hírlevélnél,
+
+01:13:28.920 --> 01:13:35.920
+tehát hogy nyilván ez majd ugye fontos
+lesz.
+
+01:13:32.920 --> 01:13:35.920
+Oké.
+
+01:13:42.960 --> 01:13:55.000
+Oké. A ND44 szerintem megbeszéltük már.
+Igen, erről beszéltünk. Tehát ez nekem
+
+01:13:49.960 --> 01:13:59.400
+így így kerek, ha nektek az. Igen.
+12.1.
+
+01:13:56.560 --> 01:14:02.400
+Ott az a legutolsó mondat az az mit
+jelent?
+
+01:14:06.719 --> 01:14:13.199
+Nyilatkozatokhoz.
+Megtörtént. Bocsi, csak elolvasom, hogy
+
+01:14:10.960 --> 01:14:16.320
+a kontextus is meglegyen. Szkészetőség
+és adatelés.
+
+01:14:21.880 --> 01:14:29.360
+tájékoztató azonosítható változata
+kapcsolódik végségi tartalmakat
+
+01:14:31.400 --> 01:14:39.520
+hát bevallom őszintén ezt ezt most nem
+tudom
+
+01:14:36.320 --> 01:14:39.520
+ki ishetjük
+
+01:14:39.679 --> 01:14:45.000
+már itt igenzárás
+Egy
+
+01:14:52.880 --> 01:14:57.560
+mert ez ez igen, ez gondolom valami
+olyasmit jelenthet, hogy ha valaki
+
+01:14:55.679 --> 01:15:03.159
+kilépett, akkor ő már nem fér hozzá
+bizonyos dolgokhoz, de hogyha valami
+
+01:15:00.239 --> 01:15:07.800
+adatkezelési per van, akkor
+hozzá kell, hogy férjen. Igen.
+
+01:15:05.199 --> 01:15:11.560
+Aha. Jó. Oké, akkor így megfejtettük.
+Jó,
+
+01:15:08.920 --> 01:15:17.880
+hogy ez még egyszer micsoda, hogy
+tehát hogyha valaki kilép, akkor még
+
+01:15:15.440 --> 01:15:22.280
+bizonyos adatokat tárolnunk kell. Tehát
+az, hogy hogy
+
+01:15:20.520 --> 01:15:26.120
+valaki kilépett, nem jelenti azt, hogy
+nekünk ne kelljen rögzíteni vagy
+
+01:15:24.159 --> 01:15:30.920
+megtartani bizonyos adatokat, hogyha
+hogyha erre később szükség van.
+
+01:15:28.159 --> 01:15:32.679
+Ezt nyolc évig meg kell őrizni.
+Ühüm.
+
+01:15:31.920 --> 01:15:35.639
+Kábé
+szép.
+
+01:15:34.159 --> 01:15:39.520
+Tehát mondhatjuk azt a hatóságoknak,
+hogy leégett a szerver, nem tudnak mit
+
+01:15:37.320 --> 01:15:43.800
+csinálni.
+Mármint tényleg, tehát hogy megvannak
+
+01:15:41.679 --> 01:15:47.199
+erre a praktikák, de amúgy igen, tehát
+hogy nem nyolc évig, de hogy négy négy
+
+01:15:45.920 --> 01:15:52.080
+évig biztos.
+Tehát majd csinálunk ezekről biztonsági
+
+01:15:49.080 --> 01:15:52.080
+mentéseket
+
+01:15:52.239 --> 01:15:57.440
+és
+és megőrizzük meg magát a törléseket. És
+
+01:15:55.760 --> 01:16:01.800
+ezt úgy kell majd András elképzelni,
+hogyha valamitől törlünk, akkor az nem
+
+01:15:59.520 --> 01:16:05.600
+úgy fog kinézni, hogy ez úgy elveszik az
+éterbe, hanem csak annyi, hogy nem fog
+
+01:16:03.560 --> 01:16:09.320
+látszódni az oldalon. De amúgy nekünk az
+meg fog maradni. Tehát az ott ott marad
+
+01:16:07.320 --> 01:16:14.880
+majd az adatbázisban. Azt azért is amért
+a mert amit Peti mondott meg meg jó,
+
+01:16:12.880 --> 01:16:19.679
+mert tudom tudom a forgatókönyvet, hogy
+amikor jön vissza, akarja vissza az
+
+01:16:16.719 --> 01:16:23.760
+adatait, nem akar új profilt csinálni,
+restoroljuk neki a dolgait, satöbbi,
+
+01:16:21.520 --> 01:16:28.840
+satöbbi, de ugye ezeket majd szépen bele
+kell írogatni majd a a felhasználói
+
+01:16:26.920 --> 01:16:33.360
+feltételekbe, vagy felhas általáll
+szerzési feltételekbe, meg majd az
+
+01:16:30.480 --> 01:16:40.320
+adatkezelési tájékoztatóba. Tehát, hogy
+Ja,
+
+01:16:35.239 --> 01:16:40.320
+jó. Oké. A sütit megbeszéltük.
+
+01:16:50.120 --> 01:17:00.199
+Dogdi, a 13-as már itt a a 13.2-be
+mentem. Igen, ez a javaslatom, hogyha ez
+
+01:16:58.440 --> 01:17:05.920
+így jó.
+Oké, az érdemes tagot megbeszéltük.
+
+01:17:03.840 --> 01:17:10.320
+A hát ezzel a szervezetekkel még
+igazából nem nagyon tudjuk, hogy mit
+
+01:17:07.679 --> 01:17:14.560
+kezdjünk. Úgyhogy pillanatnyilag én azt
+mondanám itt, amit írtam, hogy a mit
+
+01:17:12.679 --> 01:17:19.960
+tudom én, ha a MOL bejelentkezik, mint
+pártolótag, sok szeretettel várjuk,
+
+01:17:17.400 --> 01:17:24.520
+akkor majd mit tudom én, vagy az OTP,
+akkor Csányi Sándor így egy személybe
+
+01:17:22.320 --> 01:17:28.560
+jelentkezzen be egyelőre.
+Ühüm.
+
+01:17:26.639 --> 01:17:33.280
+Pillanatilag nem
+tudom, hogy hogy erre mi lenne a jó
+
+01:17:31.679 --> 01:17:38.840
+megoldás. Nem hiszem, hogy egyébként
+szervezetek tömegével fognak a
+
+01:17:35.280 --> 01:17:42.560
+szervezetek inkább a együttműködések
+irányába fognak menni. Tehát ott az a
+
+01:17:41.159 --> 01:17:48.120
+cél, hogy inkább ilyen kétoldali
+együttműködések legyenek, és amúgy ha
+
+01:17:44.520 --> 01:17:48.120
+akarnak, akkor megszonzorálhatnak.
+
+01:17:53.480 --> 01:17:57.480
+Számla díjbe kérő.
+
+01:17:59.480 --> 01:18:03.159
+Na igen. Tehát ő ezt ezt
+
+01:18:03.719 --> 01:18:08.840
+ezt így abszolút nem látom
+pillanatnyilag. És és amúgy az a durva,
+
+01:18:06.920 --> 01:18:11.800
+hogy nem is emlékszem, hogy például a
+Csakoszba ez hogy szokott lenni, hogy
+
+01:18:10.280 --> 01:18:15.520
+szerintem én ott amikor kifizetem a
+tagdíjat, nekem erről nem küldenek
+
+01:18:13.639 --> 01:18:21.199
+számlát. Tehát hogy én simán a
+könyvelőhöz ott csak a bankszámlak
+
+01:18:17.719 --> 01:18:25.719
+vonatomat viszem el, hogy nyilván van
+egy számlázó programja a szervezetnek,
+
+01:18:24.440 --> 01:18:32.480
+amúgy nem tudom, hogy pillanatilag
+melyik. Ö, hogy mi utólag ezekről a
+
+01:18:28.760 --> 01:18:38.480
+kifizetésekről állítunk ki számlát, vagy
+hát amúgy ezért is ezért is szívás a
+
+01:18:35.080 --> 01:18:42.360
+banki átutalás, mert ugye a
+a kártyás befizetésekről azonnal tudjuk
+
+01:18:40.800 --> 01:18:45.639
+küldeni a számlát automatikusan a
+háttérbe.
+
+01:18:43.080 --> 01:18:50.320
+Ugye itt a itt abban állapodtunk meg,
+hogy hogy a számlázás része az nem az
+
+01:18:48.719 --> 01:18:55.639
+azzal nem foglalkozunk, vagy nem része
+ennek a ennek a szerződésnek. Úgyhogy ez
+
+01:18:53.280 --> 01:19:01.400
+csak ilyen érdekességként volt kérdés,
+hogy hogy egyébként lehet, hogy kellene
+
+01:18:57.520 --> 01:19:06.480
+beszélni róla, kellett számlát küldeni.
+Ehhez nem tudom ti hogyan hogyan
+
+01:19:03.480 --> 01:19:06.480
+viszonyultok.
+
+01:19:06.880 --> 01:19:11.880
+Ö
+valószínűleg egyébként nyilván ideális
+
+01:19:10.199 --> 01:19:15.040
+lenne. Tehát pont ez már azt gondolom,
+azt nem tudom, szerintem mi ketten
+
+01:19:13.239 --> 01:19:19.920
+beszéltük, vagy lehet, hogy pont akkor
+te voltál kapcsolódva, hogy ő ugye sokan
+
+01:19:17.199 --> 01:19:24.000
+ezt céges, sőt legtöbb 90%-ban ezt
+cégként fogják rendezni. Tehát, hogy
+
+01:19:22.080 --> 01:19:29.239
+hiába magánszemély
+lesz tag, de a cége fogja ezt kifizetni,
+
+01:19:27.040 --> 01:19:33.520
+és akkor nyilván oda meg jó egy számla,
+de hogy akkor ez gyakorlatban például
+
+01:19:34.000 --> 01:19:40.120
+akkor ez úgy tud kinézni, mondjuk ha
+simple pénő fizetett, nyilván én látom,
+
+01:19:37.840 --> 01:19:45.000
+hogy a bankszámlára érkezett be pénz, és
+akkor akár én kézzel belépek a számlázó
+
+01:19:42.440 --> 01:19:50.639
+programba, és kiállítom a számlát.
+Ez pontosan így működik. Igen. Viszont
+
+01:19:47.560 --> 01:19:55.040
+hogyha tehát hogyha hogyha Simple Payen
+keresztül fizetett, akkor az arra van
+
+01:19:52.960 --> 01:20:00.560
+lehetőség, hogy a számlázó programmal
+összekötjük, és akkor automatikusan
+
+01:19:58.159 --> 01:20:05.199
+megy ki. Csak ez az a ez az a rész,
+amiről így a szerződésben nem
+
+01:20:02.000 --> 01:20:09.320
+beszéltünk, hogy most akkor ez tehát ez
+ez nem volt eredetileg benne.
+
+01:20:06.840 --> 01:20:13.679
+Igen, mert ez ugye úgy működik, nagyon
+nagyon gyorsan meg egyszerűen elmondom,
+
+01:20:12.120 --> 01:20:18.239
+hogy beérkezik a Simple Payhez a
+fizetés. Mi meg tudjuk kérni a Simple
+
+01:20:15.960 --> 01:20:22.679
+Pay-t, hogy nekünk a mi saját
+rendszerünknek igazoljon vissza a
+
+01:20:20.080 --> 01:20:28.280
+fizetés állapotáról. És ha a fizetés
+állapota
+
+01:20:24.320 --> 01:20:33.760
+mondjuk befizetett, akkor a rendszer
+automatikusan tovább lép arra a
+
+01:20:30.679 --> 01:20:38.719
+funkcióra, hogy számlaküldés
+és azt a nagyon leegyszerűsítő
+
+01:20:36.000 --> 01:20:46.639
+számlaküldés funkcióba bele lesz építve
+mondjuk a számlas.hu-nak hu-nak a kódja,
+
+01:20:42.920 --> 01:20:50.000
+és kiküldi gyakorlatilag a számlá.hu.
+Tehát gyakorlatilag itt nem mi küldjük a
+
+01:20:48.199 --> 01:20:54.159
+számlát, hanem gyakorlatilag össze lesz
+kötve, össze lenne kötve a
+
+01:20:51.320 --> 01:20:59.159
+számlá.hu-val, és magaszámlá.hu küldené
+ki automatikusan a számlát.
+
+01:20:56.639 --> 01:21:02.920
+Ez ez egy később ráépíthető dolog, ugye?
+Tehát, hogy ezt jól jól gondol. Aha. Jó,
+
+01:21:01.000 --> 01:21:06.960
+mert most első körben valószínűleg, hogy
+Aha. Szuki, mert mert azt gondolom, hogy
+
+01:21:04.760 --> 01:21:12.440
+nyilván ez azért hosszú távon,
+tehát ugyanúgy, mint ugye amit
+
+01:21:08.199 --> 01:21:17.360
+beszéltünk, bocsi, az az admin felület
+ugye ami most lez egyszerűsítve,
+
+01:21:15.080 --> 01:21:22.000
+azt is később bele tudjuk építeni. Amúgy
+én javaslom is tehát, hogy hogy érthető
+
+01:21:20.440 --> 01:21:26.120
+most a büdzés satöbbi, satöbbi, de hogy
+ezeket írjuk föl tudóba, és akkor majd
+
+01:21:24.440 --> 01:21:30.159
+érjünk rá jövőre vissza valamikor,
+amikor már úgy át a
+
+01:21:27.920 --> 01:21:35.600
+annyi, hogy a számlázás ugye az 27-től
+elvileg akkor már tehát, hogy ugye
+
+01:21:32.400 --> 01:21:39.040
+26-ban nincs még tagdíj, de 27-től
+szerintem már kell ezzel számolni.
+
+01:21:38.000 --> 01:21:43.320
+Ühüm.
+Így van. De tehát, hogy lehet, hogy azt
+
+01:21:40.760 --> 01:21:48.960
+mondom, hogy mit 27-et majd kézzel
+megcsináljuk. Ö de az mindenképpen egy
+
+01:21:46.520 --> 01:21:52.679
+fontos infó, hogy hogy akkor bele tudjuk
+rakni, amikor úgy gondoljuk. Nyilván
+
+01:21:51.320 --> 01:21:55.880
+nyilván nem az, hogy akkor holnapra
+legyen kész, de hogy akkor akkor ez így
+
+01:21:54.560 --> 01:21:58.840
+ez így
+hát igen. Meg tudod ez
+
+01:21:56.920 --> 01:22:04.199
+meg látjátok, hogy mekkora terhelés van.
+Tehát hogyha
+
+01:22:00.719 --> 01:22:09.080
+betentebbe érkezik nem tudom 10 kérelem
+vagy befizetés, akkor arról kézzel sem
+
+01:22:06.920 --> 01:22:14.679
+olyan nagyon nagy
+teher valószínűleg kiküldeni a számlát.
+
+01:22:11.480 --> 01:22:22.120
+Ez terhelésen múlik meg meg azon, hogy
+nektek mennyi időtök van.
+
+01:22:18.199 --> 01:22:26.120
+Jó, Oxi, akkor
+már sok mindent megbeszéltünk.
+
+01:22:26.159 --> 01:22:34.199
+Oké. a tagságot azt igen. a a
+munkahelyet kérdeztet, hogyha nincs
+
+01:22:31.199 --> 01:22:34.199
+munkahely
+
+01:22:34.360 --> 01:22:41.679
+itt itt igen valahogy azt az opciót
+megadni, hogy nincs munkahelyem, vagy
+
+01:22:38.520 --> 01:22:46.560
+hogy adott esetben itt írtam ugye az
+ilyen kötelezős dolgoknál sokszor van
+
+01:22:44.320 --> 01:22:49.960
+az, hogy berakok egy pontot és tovább
+enged a rendszer,
+
+01:22:51.480 --> 01:22:57.960
+mert igazából ha nincs munkahelye, akkor
+nyilván
+
+01:22:55.440 --> 01:23:04.199
+nincs mit beírni.
+Én bármelyikkel tudok együtt élni. Ühüm.
+
+01:23:04.639 --> 01:23:08.520
+Jó, megoldjuk.
+
+01:23:12.960 --> 01:23:15.960
+Jó.
+
+01:23:17.880 --> 01:23:20.880
+37-es.
+
+01:23:27.840 --> 01:23:32.840
+Hát itt nem teljesen. Tehát, hogy
+nyilván itt ugye az én fejemben annyi
+
+01:23:30.639 --> 01:23:36.239
+van, hogy ugye mondjuk ha az
+alapszabályt vesszük példának, akkor
+
+01:23:34.639 --> 01:23:43.520
+hogy az oldalon mi annyit látunk, hogy
+van egy link, rákattint kell egy PDF-et
+
+01:23:39.719 --> 01:23:46.520
+megnézni. Én azt gondolom, hogy szöveges
+dokumentumokból
+
+01:23:51.679 --> 01:23:56.480
+alapvetően, hogyha mondjuk ilyen
+protokollokban gondolkozunk, azok is
+
+01:23:54.280 --> 01:24:01.360
+mondjuk 100 oldal alatt vannak. Így így
+méret szempontjából nem tudom, hogy ott
+
+01:23:59.520 --> 01:24:06.800
+nem tudom, olyan nagyságrendek kábé hány
+oldalnál nőnek.
+
+01:24:04.440 --> 01:24:11.800
+videókat
+első körben nem nagyon gondolom, hogy
+
+01:24:09.600 --> 01:24:15.480
+tehát hogy azt azt úgy nem feltétlen
+képzelem el, hogy mondjuk most nekünk
+
+01:24:13.159 --> 01:24:20.120
+föl kellene tölteni egy másfél órás
+előadást egybe. Ha ilyen hosszú lenne,
+
+01:24:18.199 --> 01:24:25.320
+akkor már jobban el tudom úgy képzelni,
+hogy mondjuk egy link kerül föl, ahol
+
+01:24:22.400 --> 01:24:31.360
+mondjuk YouTube-ra eljuk link, tehát a a
+videótárolás az egy külön az egy külön
+
+01:24:28.600 --> 01:24:35.639
+ugye akár több gigab-os is lehet. Szóval
+itt itt mindenképpen az lenne a
+
+01:24:33.679 --> 01:24:39.840
+javaslat, hogy vagy mi Vimeora vagy
+YouTube-ra feltölteni
+
+01:24:37.800 --> 01:24:45.119
+privát linken, és akkor azt lehet
+esetleg beágyazni az oldalba.
+
+01:24:42.360 --> 01:24:50.159
+Hát szerintem igen. Tehát bocsi, közbes
+szólok. A BNY az sokkal jobb, de az kábé
+
+01:24:47.920 --> 01:24:55.159
+majdnem olyan, mint a a Vimeo. Le lehet
+védeni a videókat és ott őt nem a
+
+01:24:53.080 --> 01:25:01.199
+tárhely szerint meg nem nagyon súlyos
+éves díjat fizetsz, mint a Vimeonál,
+
+01:24:57.440 --> 01:25:06.840
+hanem a forgalom után. Tehát, hogy a
+hogy ahánnyan megnézik, hogy ahány Igen.
+
+01:25:05.239 --> 01:25:12.040
+Tehát, hogy mennyi adatot töltöttek le,
+tehát a videónzés során. Olcsó. Olcsó.
+
+01:25:10.400 --> 01:25:15.360
+Tehát hogy én azt javaslom a Bunnit,
+tehát hogy azt oda lehet videókat
+
+01:25:13.840 --> 01:25:21.440
+föltölteni, nagyon egyszerűen föl tudod
+tölteni András, és azokat a videókat el
+
+01:25:18.320 --> 01:25:24.880
+tudjuk helyezni akár a weboldalon is.
+Easy.
+
+01:25:23.199 --> 01:25:29.119
+Ez ez mennyiből más, mintogyha van
+mondjuk egy YouTube csatorna, és akkor a
+
+01:25:26.600 --> 01:25:33.560
+link kerül? Ez annyiból más, hogy ezeket
+le tudod védetni, tehát hogy más nem
+
+01:25:31.400 --> 01:25:37.719
+tudja a linkeket megosztani. A videó az
+csak a weboldalon fog élni, és nem
+
+01:25:35.679 --> 01:25:41.760
+tudják onnan leszedni, meg tovább
+osztogatni. Tehát nekik
+
+01:25:39.920 --> 01:25:45.080
+meg kell látogatni a weboldalt ahhoz,
+hogy a videót azt meg tudják nézni.
+
+01:25:43.880 --> 01:25:48.800
+Aha. Oké.
+Privát videó esetén meg alapjáraton
+
+01:25:47.000 --> 01:25:52.040
+ezeket le kell ilyen token alapú
+védelmet tenni rá. Ezt a YouTube nem
+
+01:25:50.320 --> 01:25:54.360
+tudja megcsinálni.
+Ühüm. Ühüm.
+
+01:25:53.080 --> 01:25:58.280
+De YouTube-ra is föl lehet tölteni,
+hogyha full nyilvános. Tök jó YouTube
+
+01:25:56.199 --> 01:26:01.360
+is, tehát hogy tökre működik.
+Ühüm. Ühüm. Ühüm.
+
+01:25:59.440 --> 01:26:04.119
+Tehát, hogy érted, hogy most mekkora
+komolysága van mondjuk egy olyan
+
+01:26:02.639 --> 01:26:08.000
+oldalnak, ahol egy YouTube-ot osztanak
+meg, meg mekkora komolysága van, ahol
+
+01:26:06.040 --> 01:26:11.920
+látják, hogy egy saját beágyazott videó
+van magában az oldalon, és nem vezet egy
+
+01:26:10.360 --> 01:26:15.920
+harmadik oldalra, mint például a
+YouTube. De hát ez is, tehát hogy ha ez
+
+01:26:14.119 --> 01:26:19.400
+a hogy ez a szakmán belül ez egy bevett
+szokás, nekem oké,
+
+01:26:18.679 --> 01:26:23.119
+de én nem t
+nem nagyon szoktak. Tehát, hogy
+
+01:26:21.560 --> 01:26:27.920
+szerintem lassan most már azért nektek
+így körvonalazódik az, hogy én azt
+
+01:26:25.600 --> 01:26:33.880
+gondolom, hogy nem a az orvostársaságok
+a a nagy innovátorok így a informatika
+
+01:26:30.880 --> 01:26:33.880
+területén.
+
+01:26:36.960 --> 01:26:46.159
+44. Igazából ezt megbeszéltük szerintem.
+Tehát, hogy most már így ez nekem így
+
+01:26:42.520 --> 01:26:52.080
+világos a profilképnél. Igen, ez csak
+ilyen alap, hogy ott vagy ilyen egyszerű
+
+01:26:49.239 --> 01:26:56.560
+kérdés, hogy hogy ott ha föltölt az 5
+MB, az gondolom elég nagy egy képnek, de
+
+01:26:54.880 --> 01:27:01.520
+hogy azt így min körül tudja vágni
+ilyesmi, vagy
+
+01:26:59.480 --> 01:27:04.880
+vagy az konkrétan egy képet tölt föl,
+mint egy szemigazolványkép.
+
+01:27:05.520 --> 01:27:10.320
+Én ezzel mennék, hogy egy képet tölt
+föl.
+
+01:27:10.440 --> 01:27:16.159
+Jó.
+Ja, tehát hogy Ja, képeket is is
+
+01:27:14.000 --> 01:27:19.600
+optimalizálni kell majd. Tehát az lenne
+a jó, hogyha bárki ezt a képet, bocsi,
+
+01:27:18.000 --> 01:27:23.400
+ezt most ki tölti föl?
+Ez a profilkép. Profilkép. Profil
+
+01:27:21.239 --> 01:27:27.440
+profilkép. Tehát hogyha a profilképet,
+akkor gyakorlatilag ugye nem
+
+01:27:25.000 --> 01:27:30.520
+rendszergazda fogja föltölteni. Tehát
+akkor ezt a rendszerileg kell majd
+
+01:27:28.760 --> 01:27:34.560
+megcsinálni, hogy leskálázza annak a
+képnek a méretét. Meg majd megadunk egy
+
+01:27:32.520 --> 01:27:36.280
+maximum képméretet is, amit majd föl
+lehet tölteni, hogy ne terheljük nagyon
+
+01:27:36.040 --> 01:27:39.440
+a
+hát ez lenne az öt az 5 meg. Igen. Ami
+
+01:27:38.360 --> 01:27:47.280
+itt van.
+Tehát szerintem azt vegyük le egyre.
+
+01:27:43.440 --> 01:27:54.320
+Csak nem igen, csak nem. Tehát azért
+gondolj bele, 70 éves orvostársunk
+
+01:27:51.760 --> 01:27:57.840
+megkap egy portrét magáról, a fotós 10
+MB-osan küldi el, ő nem fogja
+
+01:27:56.280 --> 01:28:00.679
+kicsinyítgetni magának.
+Szóval
+
+01:27:58.159 --> 01:28:06.600
+tökre egyetértek. Oké, meggyőztél.
+Köszi.
+
+01:28:02.480 --> 01:28:12.119
+megoldjuk ezt azt a funkciót, hogy ő nem
+tudom igazgassa, tehát hogy frame-e
+
+01:28:08.960 --> 01:28:15.320
+állítsa meg ilyesmi. Ezt én én nem
+biztos, hogy beleraknám most így első
+
+01:28:13.880 --> 01:28:18.560
+körből.
+Jó, oké. Megvagyok nélküle, csak
+
+01:28:18.040 --> 01:28:25.040
+oké,
+csak kérdés volt. Oké, jó. 13/5.
+
+01:28:22.920 --> 01:28:29.480
+Igen. Itt igazából a a kérdés az
+alapvetően az ugye most nyilván amiket
+
+01:28:27.080 --> 01:28:35.239
+átküldöttem, azt akkor azt gondolom,
+vagy már azt láttátok, már látom, hogy
+
+01:28:31.440 --> 01:28:40.480
+láttátok így a leírás alapján most én át
+tudom még küldeni ugye az elnökségnek a
+
+01:28:37.719 --> 01:28:44.840
+névsorát, a
+ö
+
+01:28:42.520 --> 01:28:48.920
+bizottsági tagokat.
+Picit ugye frissült a munkacsoportok
+
+01:28:46.920 --> 01:28:53.719
+listája. Első körben mire van még
+szükségetek most?
+
+01:28:51.840 --> 01:28:58.400
+munkacsoportleírások.
+Nekem semmi igazából, bocsi nekem
+
+01:28:55.639 --> 01:29:03.280
+semmire. Petinek van illega inkább itt
+most akkor, hogyha
+
+01:28:59.560 --> 01:29:07.800
+sőt még még ezekre sem. Tehát most ugye
+a következő lépés a prototípus
+
+01:29:05.800 --> 01:29:12.600
+fejlesztése. Ezeket damiatokkal is
+tudjuk csinálni, és a végén majd, hogyha
+
+01:29:10.520 --> 01:29:17.600
+úgy van, akkor de de én azt gondolom,
+hogy tehát hogyha például elnökségi
+
+01:29:14.880 --> 01:29:21.679
+tagok vagy vagy csoporttagok vagy
+elnökségi vezetők
+
+01:29:20.000 --> 01:29:25.520
+ezeknek is admin oldalon kell majd
+beállítani, tehát hogy ugye nekik is
+
+01:29:23.360 --> 01:29:30.320
+regisztrálni kell,
+végig kell menni a folyamatodon, és úgy
+
+01:29:27.199 --> 01:29:36.239
+úgy tudod majd a profiljukat megmutatni.
+Szóval onnan fog jönni az adat, nem
+
+01:29:32.280 --> 01:29:38.960
+pedig onnan, hogy egy fixen feltöltött
+dolog legyen.
+
+01:29:37.920 --> 01:29:46.159
+Aha.
+Jó, oké. És az arculati résznél? Igen,
+
+01:29:43.239 --> 01:29:50.800
+ott lett új logó, megfogadtam a
+javaslatot, egyszerűsödött.
+
+01:29:48.280 --> 01:29:56.000
+Nyilván már így a szí színösszetétel
+ilyesmi megvan. Ez hogy néz ki, hogy én
+
+01:29:53.320 --> 01:30:00.199
+ezt átküldöm nektek nyilván abba a
+formába, vagy abba azon a szinten,
+
+01:29:57.800 --> 01:30:04.679
+ameddig én eljutottam. És akkor ti így
+finom hangoljátok, vagy vagy hogy ezt
+
+01:30:02.280 --> 01:30:09.560
+hogy csináljuk?
+Hogy a következő lépés az az, hogy
+
+01:30:06.320 --> 01:30:14.639
+prototípus, tehát drótváz igazából, csak
+már túl vagyunk azon, hogy hogy statikus
+
+01:30:12.480 --> 01:30:19.400
+dróthvázokat nézegessünk. Úgyhogy egy
+gyakorlatilag végigkattintható,
+
+01:30:16.800 --> 01:30:24.679
+működő weboldalt fogsz látni a
+prototípusban annyi különbséggel, hogy
+
+01:30:21.800 --> 01:30:29.520
+még színek, betűtípusok, tehát az
+arculati elemek nem lesznek ráhúzva
+
+01:30:27.400 --> 01:30:33.719
+erre. Tehát szürke szürke gomb lesz,
+fekete gomb lesz, fehér gomb lesz,
+
+01:30:31.440 --> 01:30:37.719
+minden szürke árnyalatos lesz. Így tudod
+majd letesztelni azt, hogy ténylegesen
+
+01:30:35.960 --> 01:30:41.880
+úgy működik-e az oldal, ahogy ahogy te
+eltervezted. És akkor az utána következő
+
+01:30:40.320 --> 01:30:48.600
+lépésben
+húzzuk majd rá azt az arculatot, amit
+
+01:30:44.840 --> 01:30:52.920
+amit ti adtok. Itt a az arcatnál nyilván
+az a logó lesz, amit adtok. Pontosan
+
+01:30:50.719 --> 01:30:59.239
+azokat a színeket fogjuk használni,
+amiket ti adtok. És egyébként dizájn
+
+01:30:56.199 --> 01:31:03.560
+elemek, tehát ez a UI design az az ennek
+az arcolatnak az alapján kerül
+
+01:31:01.679 --> 01:31:08.880
+kialakításra. Tehát csak mondok egy
+példát. Hogyha ti az arculatban
+
+01:31:06.080 --> 01:31:14.239
+kék és zöld színeket használtok
+leginkább, akkor kell egy olyan CTA,
+
+01:31:12.280 --> 01:31:19.320
+mondjuk egy regisztrálok vagy egy tagnak
+jelentkezek gomb, ami ezektől jobban
+
+01:31:16.840 --> 01:31:23.600
+elüt. Hogyha ilyen szín nincsen a ti
+arcolatotokban, akkor mi azt egy
+
+01:31:21.239 --> 01:31:27.119
+narancssárgát be fogunk rakni azért,
+hogy figyelemfelhívóbb vagy
+
+01:31:25.159 --> 01:31:31.840
+figyelemfelkeltőbb legyen az az adott
+gomb. De alapvetően ragaszkodni fogunk
+
+01:31:29.560 --> 01:31:35.159
+ahhoz, amit ti tudtok majd nekünk
+biztosítani.
+
+01:31:33.000 --> 01:31:38.440
+Bocsánat, hogy közb szólok. Mennyi van
+még a meetingből? Mert mindjárt lemerül
+
+01:31:36.600 --> 01:31:41.960
+a telefonom meg a gépem.
+Szerintem egy pár perc.
+
+01:31:41.280 --> 01:31:45.560
+Pár perc. Jó,
+végén járunk. Nem,
+
+01:31:43.560 --> 01:31:51.920
+akkor megvártok még. Gyors lemegyek
+töltőjér. Egy perc.
+
+01:31:48.719 --> 01:31:54.440
+Persze, de ha addig megbeszéljük, akkor
+addig ha megbeszéltek, akkor
+
+01:31:53.679 --> 01:31:58.719
+jó.
+Szerintem amúgy bocs, a végére értünk,
+
+01:31:57.320 --> 01:31:59.760
+ne menj sehova.
+Jó,
+
+01:31:59.080 --> 01:32:05.440
+igen.
+Oké. Leges jó, mer k 2%-on vagyok, és
+
+01:32:03.040 --> 01:32:06.320
+már így szaggat a fejem.
+Jó,
+
+01:32:05.679 --> 01:32:09.960
+jó, köszönjük.
+Nekem így oké. Nektek van-e kérdés
+
+01:32:08.800 --> 01:32:15.520
+felém?
+Nekem nincs kérdés. Le fogom kisázni a a
+
+01:32:12.920 --> 01:32:20.080
+specifikációt ezek alapján. Arra majd
+kérünk szépen egy jóváhagyást. Ugye itt
+
+01:32:18.440 --> 01:32:24.360
+beszéltük azt, hogy fontos lenne, hogyha
+ez ez így ténylegesen úgy maradna, és
+
+01:32:22.199 --> 01:32:29.440
+nem utólag jönnének be még change
+requestek, és akkor elkezdünk majd
+
+01:32:26.560 --> 01:32:34.719
+azonnal dolgozni a prototípuson.
+Utolsó kérdés ugye az ütemezés kapcsán
+
+01:32:32.719 --> 01:32:40.119
+ugye azért sürgetem én ezt ennyire
+október-án lesz egy nagy háziorvos
+
+01:32:37.800 --> 01:32:45.080
+konferencia ahol ahol tök jó lenne úgy
+odamenni ott már mondjuk egy hete ez az
+
+01:32:42.280 --> 01:32:49.960
+oldal működik és a köztudatban vagyunk
+ez így tehát ez ugye praktikusan egy
+
+01:32:47.639 --> 01:32:54.080
+ilyen szeptember 25 környékét jelentene
+hogy a hogy ott én már azt úgy tudom
+
+01:32:52.239 --> 01:33:00.040
+hirdetni az embereknek hogy gyertek
+nézzétek az oldalt
+
+01:32:56.719 --> 01:33:00.040
+hát szűk szűk
+
+01:33:00.119 --> 01:33:07.679
+Nézzük meg, nézzük meg a prototípus.
+Erre hadd válaszoljunk már a prototípus
+
+01:33:04.719 --> 01:33:12.600
+után. Jó.
+De megpróbálunk, megpróbálunk
+
+01:33:11.000 --> 01:33:15.239
+megpróbálunk megpróbáljuk a legjobbat
+kihozni belőle.
+
+01:33:13.719 --> 01:33:18.280
+Hát
+na az nagyon nekem most csak, hogy
+
+01:33:16.880 --> 01:33:22.840
+őszinte legyek, nekem az nagyon-nagyon
+szűknek tűnik.
+
+01:33:20.080 --> 01:33:28.320
+ami esetleg köztes megoldás lehet, hogy
+az oldal nem teljes funkciókészettel
+
+01:33:25.040 --> 01:33:36.159
+kerül kirakásra, hanem mit tudom én, egy
+főoldal a a az olyan tartalmi elemek
+
+01:33:33.159 --> 01:33:40.679
+amik amik nem ilyen nem kell hozzá
+adminrész, vagy nem vagy mondjuk
+
+01:33:38.119 --> 01:33:47.400
+regisztráció nélkül, tehát hogy lássák
+azt az idei érkezők, hogy ez az oldal
+
+01:33:43.320 --> 01:33:51.960
+van és hamarosan lehet regisztrálni.
+ö
+
+01:33:49.280 --> 01:33:57.320
+amit sokkal reálisabbnak látok, mert
+tényleg ez a két hét alatt lehozni azt,
+
+01:33:54.760 --> 01:34:03.800
+hogy ebből a egy dokumentumból egy
+teljesen működő UI, UEX design, minden
+
+01:34:01.119 --> 01:34:09.239
+rajta legyen, ez végtelenül rövid idő
+szerintem.
+
+01:34:05.719 --> 01:34:12.560
+Nekem már ez a ez a ilyen alapverzió is
+működőképes lehet. Nyilván az elején
+
+01:34:10.719 --> 01:34:17.480
+úgyis a közösségi médiába kezdjük el
+hirdetni. Ennek az lenne a lényege,
+
+01:34:15.080 --> 01:34:21.320
+tehát egy olyan szintig el tudunk jutni,
+hogy ott ott október-án, ha én
+
+01:34:19.320 --> 01:34:26.520
+beszélgetek emberekkel, beüti a
+keresőbe, hogy ez, akkor megtalálja a
+
+01:34:24.320 --> 01:34:32.440
+Facebook oldalunkat, meg ha honlapra
+rámegy, akkor ott valami legyen. Egy
+
+01:34:29.360 --> 01:34:37.360
+nyitólap már az tök jó. Tehát tehát az
+az viszont jó lenne, hogyha ez az
+
+01:34:35.320 --> 01:34:42.239
+biztos, hogy megvalósítható. Tehát a
+funkciókészlete, hogyha hogyha eddig az
+
+01:34:40.639 --> 01:34:45.639
+időpontig szűkítünk, akkor az
+mindenképpen
+
+01:34:43.840 --> 01:34:48.560
+jó, jó, jó. Csak nyilván akkor nektek
+ugye sorrendben akkor a dizájn mégis egy
+
+01:34:47.199 --> 01:34:52.679
+picit ugye bizonyos szempontokból
+hamarabb jön, mint a adott esetben a
+
+01:34:51.199 --> 01:34:56.679
+vagy ezt te tudod, hogy milyen
+sorrendben mit kell. Akkor jövök, akkor
+
+01:34:54.440 --> 01:35:00.840
+jövök erre egy megoldással, egy
+javaslattal erre, és akkor a a docsival
+
+01:34:59.239 --> 01:35:05.520
+együtt azt is átküldöm, hogy akkor mi
+lenne ezen a köztes köztes oldalon
+
+01:35:03.800 --> 01:35:08.239
+októberig. Jó,
+szupi. Jó, jó, jó.
+
+01:35:07.719 --> 01:35:13.239
+Oké,
+ez így tökéletes. Oké, oké,
+
+01:35:11.440 --> 01:35:17.280
+akkor nagyon szépen köszönöm.
+Köszöntem én is nagyon szépen.
+
+01:35:16.360 --> 01:35:22.440
+Sziasztok.
+És akkor beszélünk majd. Sziasztok.
+
+01:35:19.440 --> 01:35:22.440
+Sziasztok.
+
