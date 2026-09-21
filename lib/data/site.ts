@@ -27,7 +27,7 @@ export const membershipCategories = [
 export const preliminaryMembershipCategories = membershipCategories.filter((category) => category.canApply)
 
 export const contact = {
-  email: "kapcsolat@example.hu",
+  email: "info@videkegeszseg.hu",
   facebook: "#",
 } as const
 
