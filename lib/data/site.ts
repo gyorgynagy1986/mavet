@@ -30,3 +30,25 @@ export const contact = {
   email: "kapcsolat@example.hu",
   facebook: "#",
 } as const
+
+/** The three words of the motto, each with a short explanation. */
+export const mottoPillars: { title: string; description: string; image: string; imagePosition: string }[] = [
+  {
+    title: "Helyszín",
+    description: "A vidéki közösségek valós helyzetéből és szükségleteiből indulunk ki, ott, ahol az ellátás ténylegesen megvalósul.",
+    image: "/helyszin.webp",
+    imagePosition: "object-[60%_35%]",
+  },
+  {
+    title: "Közösség",
+    description: "Nyitott, interdiszciplináris fórum szakembereknek, kutatóknak, oktatóknak, döntéshozóknak és hallgatóknak.",
+    image: "/kozosseg.webp",
+    imagePosition: "object-[50%_30%]",
+  },
+  {
+    title: "Szemlélet",
+    description: "Méltányos, közösségközpontú és bizonyítékokon alapuló ellátás, amely mindenki számára fenntartható.",
+    image: "/szemlelet.webp",
+    imagePosition: "object-[35%_30%]",
+  },
+]

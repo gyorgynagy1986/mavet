@@ -205,3 +205,153 @@
   background-size: 4rem 4rem;
   mask-image: radial-gradient(ellipse 70% 80% at 70% 30%, black 20%, transparent 75%);
 }
+
+/* Hero háttérkép: lassú, folyamatos közelítés és távolítás (Ken Burns). */
+@utility animate-mavet-zoom {
+  animation: mavet-zoom 40s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes mavet-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.18);
+  }
+}
+
+/*
+ * Finom görgetési effektek, tisztán CSS-ből (scroll-driven animations), így a
+ * lapok szerveroldaliak maradnak. Progresszív: ahol a böngésző nem támogatja
+ * (jelenleg pl. Firefox), vagy csökkentett mozgás van beállítva, a tartalom
+ * egyszerűen statikusan jelenik meg.
+ */
+
+/* Beúszás, ahogy az elem a nézetbe ér. */
+@utility mavet-reveal {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: mavet-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 14rem;
+    }
+  }
+}
+
+/* A hero tartalma kigörgetéskor finoman elhalványul és megemelkedik. */
+@utility mavet-hero-exit {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: mavet-hero-exit linear both;
+      animation-timeline: view();
+      animation-range: exit 10% exit 90%;
+    }
+  }
+}
+
+/* Enyhe parallax: az elem kicsit lemarad a görgetéshez képest. */
+@utility mavet-parallax {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: mavet-parallax linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+@keyframes mavet-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes mavet-hero-exit {
+  to {
+    opacity: 0.25;
+    transform: translateY(-1.5rem);
+  }
+}
+
+@keyframes mavet-parallax {
+  to {
+    transform: translateY(3.5rem);
+  }
+}
+
+/*
+ * mavet-reveal-auto: ugyanaz a beúszás az egész oldalon, lapszintű módosítás
+ * nélkül. A `main` elemen belül minden kártya és cikkszakasz megkapja; a
+ * kártyát tartalmazó szakasz kimarad, hogy ne halmozódjon a két animáció.
+ * A tartomány rögzített hosszú (14rem), így a képernyőnél magasabb elemek
+ * (hosszú szöveg, űrlap) sem maradnak sokáig halványak.
+ */
+@layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      main :where([data-slot="card"], article section:not(:has([data-slot="card"]))):not(.mavet-reveal) {
+        animation: mavet-reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 14rem;
+      }
+    }
+  }
+}
+
+/*
+ * Oldalirányú bekúszás (balról, illetve jobbról). Csak nagy képernyőn: kisebb
+ * szélességen vízszintes túlcsordulást okozna, ott a sima beúszás marad.
+ */
+@utility mavet-reveal-left {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: mavet-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 14rem;
+      @media (min-width: 64rem) {
+        animation-name: mavet-reveal-left;
+      }
+    }
+  }
+}
+
+@utility mavet-reveal-right {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: mavet-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 14rem;
+      @media (min-width: 64rem) {
+        animation-name: mavet-reveal-right;
+      }
+    }
+  }
+}
+
+@keyframes mavet-reveal-left {
+  from {
+    opacity: 0;
+    transform: translateX(-1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes mavet-reveal-right {
+  from {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
