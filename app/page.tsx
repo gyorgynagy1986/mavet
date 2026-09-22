@@ -19,7 +19,7 @@ export default function HomePage() {
           className="absolute inset-0 -z-20 overflow-hidden opacity-[0.16] mix-blend-luminosity [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
           aria-hidden="true"
         >
-          <Image src="/hero.webp" alt="" fill sizes="100vw" className="object-cover object-[center_60%] motion-safe:animate-mavet-zoom" />
+          <Image src="/hero.webp" alt="" fill sizes="100vw" priority className="object-cover object-[center_60%] motion-safe:animate-mavet-zoom" />
         </div>
         <div className="absolute inset-0 -z-10 bg-mavet-grid" aria-hidden="true" />
         <MavetEmblem variant="mono" className="absolute -top-6 -right-40 -z-10 w-96 text-white opacity-[0.04] lg:hidden" />
