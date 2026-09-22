@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { DevelopmentBanner } from "@/components/development-banner";
@@ -15,6 +16,23 @@ import { SiteHeader } from "@/components/site-header";
 const sans = Source_Sans_3({
   subsets: ["latin", "latin-ext"],
   variable: "--font-source-sans",
+  display: "swap",
+});
+
+/**
+ * Címbetű: a kézikönyv Palatino Linotype-ot ír elő, ami nem szolgálható ki
+ * webről. Helyette a TeX Gyre Pagella (a Palatino ingyenes, GUST-licencű
+ * klónja) van beágyazva, így a címsorok minden eszközön egyformák. A
+ * `globals.css` `--font-display` verme ezt használja, Palatino tartalékkal.
+ */
+const display = localFont({
+  src: [
+    { path: "./fonts/pagella/pagella-regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/pagella/pagella-italic.woff2", weight: "400", style: "italic" },
+    { path: "./fonts/pagella/pagella-bold.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/pagella/pagella-bolditalic.woff2", weight: "700", style: "italic" },
+  ],
+  variable: "--font-pagella",
   display: "swap",
 });
 
@@ -34,7 +52,7 @@ export const metadata: Metadata = {
  */
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="hu" className={cn(sans.variable, "h-full antialiased")}>
+    <html lang="hu" className={cn(sans.variable, display.variable, "h-full antialiased")}>
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <a href="#tartalom" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:ring-2 focus:ring-ring">Ugrás a tartalomra</a>
         <DevelopmentBanner />

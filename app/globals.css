@@ -15,7 +15,7 @@
 @theme inline {
     --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
     --font-heading: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
-    --font-display: "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", P052, "TeX Gyre Pagella", serif;
+    --font-display: var(--font-pagella), "Palatino Linotype", Palatino, "Book Antiqua", serif;
     --color-mavet-navy: var(--mavet-navy);
     --color-mavet-navy-deep: var(--mavet-navy-deep);
     --color-mavet-blue: var(--mavet-blue);
@@ -353,5 +353,19 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Lassú keringés a hero gyűrűin; a kezdőszög és a sebesség CSS-változó. */
+@utility animate-mavet-orbit {
+  animation: mavet-orbit var(--orbit-duration, 80s) linear infinite;
+}
+
+@keyframes mavet-orbit {
+  from {
+    rotate: var(--orbit-from, 0deg);
+  }
+  to {
+    rotate: calc(var(--orbit-from, 0deg) + 360deg);
   }
 }

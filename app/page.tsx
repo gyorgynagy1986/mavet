@@ -50,8 +50,13 @@ export default function HomePage() {
             <div className="absolute inset-[9%] rounded-full border border-white/10 bg-white/[0.04]" />
             <div className="absolute inset-[18%] rounded-full bg-mavet-blue/40 blur-3xl" />
             <div className="absolute inset-[19%] rounded-full bg-white shadow-[0_30px_80px_-20px_rgb(6_30_65/0.8)]" />
-            <div className="absolute top-[14%] right-[12%] size-2.5 rounded-full bg-mavet-gold" />
-            <div className="absolute bottom-[19%] left-[6%] size-2 rounded-full bg-mavet-blue-50" />
+            {/* Two dots orbiting slowly on the rings (outer: gold, clockwise; inner: light blue, counter-clockwise). */}
+            <div className="absolute inset-0 motion-safe:animate-mavet-orbit [--orbit-from:38deg] [--orbit-duration:70s]" style={{ rotate: "38deg" }}>
+              <div className="absolute top-0 left-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-mavet-gold shadow-[0_0_12px_2px_rgb(242_169_0/0.45)]" />
+            </div>
+            <div className="absolute inset-[9%] motion-safe:animate-mavet-orbit [--orbit-from:232deg] [--orbit-duration:110s] motion-safe:[animation-direction:reverse]" style={{ rotate: "232deg" }}>
+              <div className="absolute top-0 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-mavet-blue-50" />
+            </div>
             <MavetEmblem className="relative w-[44%] translate-y-[4%]" />
           </div>
         </SiteContainer>
@@ -66,7 +71,7 @@ export default function HomePage() {
               <li key={title} className="group relative isolate flex flex-col gap-3 overflow-hidden p-6 pt-28 sm:p-8 sm:pt-36">
                 {/* Faint duotone photo: luminosity blend over a light blue tint, fading out towards the text. */}
                 <div
-                  className="absolute inset-0 -z-10 bg-mavet-blue-50 opacity-30 transition-opacity duration-500 [mask-image:linear-gradient(to_bottom,black_12%,transparent_64%)] group-hover:opacity-45 motion-reduce:transition-none"
+                  className="absolute inset-0 -z-10 bg-mavet-blue-50 opacity-50 transition-opacity duration-500 [mask-image:linear-gradient(to_bottom,black_28%,transparent_70%)] group-hover:opacity-65 motion-reduce:transition-none"
                   aria-hidden="true"
                 >
                   <Image
@@ -77,8 +82,10 @@ export default function HomePage() {
                     className={cn("object-cover mix-blend-luminosity transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transform-none", imagePosition)}
                   />
                 </div>
-                <span className="h-0.5 w-8 rounded-full bg-mavet-gold" aria-hidden="true" />
-                <h3 className="text-xl">{title}</h3>
+                <h3 className="flex items-center gap-2.5 text-xl">
+                  <MavetEmblem variant="mono" className="h-[0.7em] w-auto shrink-0 text-mavet-blue" />
+                  {title}
+                </h3>
                 <p className="leading-7 text-muted-foreground">{description}</p>
               </li>
             ))}
