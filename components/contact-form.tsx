@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, type FormEvent } from "react"
 import Link from "next/link"
 import { CheckCircle2Icon, SendIcon } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -10,6 +10,7 @@ import { Field, FieldContent, FieldError, FieldGroup, FieldLabel } from "@/compo
 import { Input } from "@/components/ui/input"
 import { Spinner } from "@/components/ui/spinner"
 import { Textarea } from "@/components/ui/textarea"
+import { emailErrorMessage, validateEmail } from "@/lib/validation/email"
 
 type Errors = Partial<Record<"name" | "email" | "message" | "consent", string>>
 
@@ -17,7 +18,9 @@ export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error" | "limited">("idle")
   const [errors, setErrors] = useState<Errors>({})
 
-  async function submit(formData: FormData) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
     const values = {
       name: String(formData.get("name") ?? "").trim(),
       email: String(formData.get("email") ?? "").trim(),
@@ -26,7 +29,8 @@ export function ContactForm() {
     }
     const next: Errors = {}
     if (values.name.length < 2) next.name = "Adja meg a nevét."
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) next.email = "Adjon meg egy érvényes e-mail-címet."
+    const emailResult = validateEmail(values.email)
+    if (!emailResult.ok) next.email = emailErrorMessage(emailResult)
     if (values.message.length < 10) next.message = "Az üzenet legalább 10 karakter legyen."
     if (!values.consent) next.consent = "Az adatkezelési hozzájárulás szükséges."
     setErrors(next)
@@ -48,7 +52,7 @@ export function ContactForm() {
   if (status === "success") return <Alert aria-live="polite"><CheckCircle2Icon /><AlertTitle>Az üzenetet rögzítettük</AlertTitle><AlertDescription>Köszönjük a megkeresést.</AlertDescription></Alert>
 
   return (
-    <form action={submit} noValidate className="flex flex-col gap-5">
+    <form onSubmit={submit} noValidate className="flex flex-col gap-5">
       <FieldGroup>
         <Field data-invalid={Boolean(errors.name) || undefined}><FieldLabel htmlFor="contact-name">Név</FieldLabel><Input id="contact-name" name="name" autoComplete="name" aria-invalid={Boolean(errors.name)} disabled={status === "submitting"} /><FieldError>{errors.name}</FieldError></Field>
         <Field data-invalid={Boolean(errors.email) || undefined}><FieldLabel htmlFor="contact-email">E-mail-cím</FieldLabel><Input id="contact-email" name="email" type="email" autoComplete="email" aria-invalid={Boolean(errors.email)} disabled={status === "submitting"} /><FieldError>{errors.email}</FieldError></Field>

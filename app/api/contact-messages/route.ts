@@ -1,3 +1,5 @@
+import { isValidEmail } from "@/lib/validation/email"
+
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as Record<
     string,
@@ -8,7 +10,7 @@ export async function POST(request: Request) {
     typeof body.name === "string" &&
     body.name.trim().length >= 2 &&
     typeof body.email === "string" &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email) &&
+    isValidEmail(body.email) &&
     typeof body.message === "string" &&
     body.message.trim().length >= 10 &&
     body.consent === true;

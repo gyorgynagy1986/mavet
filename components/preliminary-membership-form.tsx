@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, type FormEvent } from "react"
 import Link from "next/link"
 import { CheckCircle2Icon, SendIcon } from "lucide-react"
-import { preliminaryMembershipCategories } from "@/lib/data/site"
+import { preliminaryMembershipCategories, privacyNoticeVersion } from "@/lib/data/site"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -11,29 +11,31 @@ import { Field, FieldContent, FieldError, FieldGroup, FieldLabel } from "@/compo
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Spinner } from "@/components/ui/spinner"
+import { emailErrorMessage, validateEmail } from "@/lib/validation/email"
 
 type Status = "idle" | "submitting" | "success" | "error" | "limited"
 
 type Errors = Partial<Record<"category" | "lastName" | "firstName" | "email" | "consent", string>>
-
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export function PreliminaryMembershipForm({ initialCategory = "" }: { initialCategory?: string }) {
   const [status, setStatus] = useState<Status>("idle")
   const [category, setCategory] = useState(initialCategory)
   const [errors, setErrors] = useState<Errors>({})
 
-  async function submit(formData: FormData) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
     const title = String(formData.get("title") ?? "")
     const lastName = String(formData.get("lastName") ?? "").trim()
     const firstName = String(formData.get("firstName") ?? "").trim()
     const email = String(formData.get("email") ?? "").trim()
     const consent = formData.get("consent") === "on"
+    const emailResult = validateEmail(email)
     const nextErrors: Errors = {
       category: category ? undefined : "Válasszon tagsági kategóriát.",
       lastName: lastName ? undefined : "Adja meg a vezetéknevét.",
       firstName: firstName ? undefined : "Adja meg a keresztnevét.",
-      email: emailPattern.test(email) ? undefined : "Adjon meg egy érvényes e-mail-címet.",
+      email: emailResult.ok ? undefined : emailErrorMessage(emailResult),
       consent: consent ? undefined : "Az adatkezelési hozzájárulás szükséges.",
     }
     setErrors(nextErrors)
@@ -44,7 +46,7 @@ export function PreliminaryMembershipForm({ initialCategory = "" }: { initialCat
       const response = await fetch("/api/preliminary-membership-applications", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ category, title, lastName, firstName, email, consent, privacyNoticeVersion: "csok-2026-09-21" }),
+        body: JSON.stringify({ category, title, lastName, firstName, email, consent, privacyNoticeVersion }),
       })
       setStatus(response.status === 429 ? "limited" : response.ok ? "success" : "error")
     } catch {
@@ -53,11 +55,11 @@ export function PreliminaryMembershipForm({ initialCategory = "" }: { initialCat
   }
 
   if (status === "success") {
-    return <Alert aria-live="polite"><CheckCircle2Icon /><AlertTitle>Rögzítettük előzetes jelentkezését</AlertTitle><AlertDescription>Rövidesen visszaigazoló e-mailt küldünk. Amikor elkészül a teljes jelentkezési folyamat, ugyanarra a címre küldünk felhívást a folytatásához.</AlertDescription></Alert>
+    return <Alert aria-live="polite"><CheckCircle2Icon /><AlertTitle>Rögzítettük előzetes jelentkezését</AlertTitle><AlertDescription>A megadott címre visszaigazoló e-mailt küldünk. Ha erre a címre korábban már érkezett jelentkezés, azt nem rögzítettük újra, de a visszaigazolást ismét elküldtük. A Közgyűlés döntéséig nincs további teendője.</AlertDescription></Alert>
   }
 
   return (
-    <form action={submit} noValidate className="flex flex-col gap-5">
+    <form onSubmit={submit} noValidate className="flex flex-col gap-5">
       <FieldGroup>
         <Field data-invalid={Boolean(errors.category) || undefined}>
           <FieldLabel htmlFor="membership-category">Tagsági kategória</FieldLabel>

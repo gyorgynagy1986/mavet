@@ -52,3 +52,6 @@ export const mottoPillars: { title: string; description: string; image: string; 
     imagePosition: "object-[35%_30%]",
   },
 ]
+
+/** Identifier of the currently published privacy notice; stored with every consent. */
+export const privacyNoticeVersion = "csok-2026-09-22"

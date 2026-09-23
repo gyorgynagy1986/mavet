@@ -42,8 +42,9 @@ fejléccel; átmeneti hiba: `500` vagy `503`.
 A backend ellenőrzi a mezőket, korlátozza a visszaélést, és az üzenetet az
 élesítés előtt megadott MAVET-kapcsolattartónak továbbítja.
 
-A jelenlegi route handlerek demómegvalósítások: e-mailt nem küldenek, és éles
-személyesadat-tárolást nem végeznek. Az éles backendnek a válaszkódok és a kérés
+A `preliminary-membership-applications` handler 2026-09-22-től éles megvalósítás
+(MongoDB Atlas + Upstash + SendGrid, lásd CHANGELOG); a `contact-messages`
+handler továbbra is demó: e-mailt nem küld, és személyes adatot nem tárol. Az éles backendnek a válaszkódok és a kérés
 alakjának megváltoztatása nélkül kell átvennie a működést.
 
 ## 3. Elvárt adatok és állapotok

@@ -4,6 +4,43 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-09-22 – Előzetes jelentkezés: valódi backend
+
+### Változások
+
+- **Adatbázis.** `lib/db-connect.ts` (mongoose, Atlas, health-gated pool
+  Vercel Fluid alá) és `lib/models/membership-application.ts` (séma:
+  kategória, titulus, név, e-mail egyedi indexszel, `status: tagjelolt`,
+  hozzájárulás-igazolás időponttal, tájékoztató-verzióval, IP-hash-sel,
+  user agenttel, e-mail-kézbesítési könyvelés).
+- **Kérésszám-korlátozás.** `lib/server/rate-limit.ts` (Upstash Redis,
+  csúszóablak, 5 beküldés / IP / 10 perc; kulcs nélkül figyelmeztetéssel
+  átenged).
+- **E-mail.** `lib/server/mail.ts` (SendGrid, feladó `MAIL_FROM`), a jelentkezői
+  visszaigazolás az ügyfél sablonszövegével és belső értesítés a `MAIL_TO`
+  címre (`lib/server/membership-application-mails.ts`). Kulcs nélkül csak logol.
+- **Route handler.** `POST /api/preliminary-membership-applications` menti a
+  jelentkezőt, duplikált e-mailre `200 { duplicate: true }`-t ad újraküldés
+  nélkül, korlátozáskor `429` + `Retry-After`, adatbázis-hibánál `503`.
+- **Adatkezelési tájékoztató.** Alapszöveg a tényleges technológiával
+  (adatfeldolgozók: Vercel, MongoDB Atlas, Upstash, SendGrid), jogalapokkal és
+  érintetti jogokkal; a tájékoztató verziója (`privacyNoticeVersion`,
+  `lib/data/site.ts`) minden hozzájárulással együtt tárolódik.
+- **Környezet.** `.env.example` és `.env.local` váz: `MONGODB_URI`,
+  `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, `SENDGRID_API_KEY`,
+  `MAIL_FROM`, `MAIL_FROM_NAME`, `MAIL_TO`.
+- **Teszt.** Az API-teszt mockolt adatbázissal és levélküldéssel fedi a sikeres
+  mentést, a hibás adatot, a duplikációt, a korlátozást és az adatbázis-hibát.
+
+### Ismert korlátok
+
+- A kapcsolati űrlap (`/api/contact-messages`) továbbra is demó: nem ment és
+  nem továbbít e-mailt.
+- Az adatkezelési tájékoztató adatkezelői adatai és megőrzési idői az ügyfél
+  jóváhagyására várnak.
+
+---
+
 ## 2026-09-21 – Arculat: tokenek és főoldal
 
 ### Változások
