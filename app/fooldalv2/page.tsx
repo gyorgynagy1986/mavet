@@ -30,7 +30,7 @@ export default function HomeV2Page() {
 
         <SiteContainer className="mavet-hero-exit pt-20 pb-44 sm:pt-28 sm:pb-56 lg:pt-32 lg:pb-64">
           <div className="flex max-w-2xl flex-col items-start gap-8 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-700">
-            <Eyebrow className="text-mavet-gold-50">Magyar Vidékegészségügyi Társaság</Eyebrow>
+            <Eyebrow emblem="mono" className="text-mavet-gold-50">Magyar Vidékegészségügyi Társaság</Eyebrow>
             <div className="flex flex-col gap-6">
               <h1 className="text-[2.75rem] leading-[1.05] text-balance sm:text-6xl lg:text-7xl">
                 Helyszín. Közösség. <span className="text-mavet-gold italic">Szemlélet.</span>

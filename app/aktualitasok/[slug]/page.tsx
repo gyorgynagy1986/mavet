@@ -39,7 +39,7 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
           <div className="flex flex-col gap-5 leading-7 text-muted-foreground">
             {item.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
-          <Button className="mt-2 w-fit" variant="outline" render={<Link href="/aktualitasok" />} nativeButton={false}>
+          <Button className="mt-2 w-fit" variant="soft" render={<Link href="/aktualitasok" />} nativeButton={false}>
             Vissza az aktualitásokhoz
           </Button>
       </article>

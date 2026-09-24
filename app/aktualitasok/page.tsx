@@ -21,7 +21,7 @@ export default function NewsPage() {
                 </CardHeader>
                 <CardContent className="flex flex-1 flex-col items-start gap-5">
                   <p className="leading-7 text-muted-foreground">{item.excerpt}</p>
-                  <Button variant="outline" render={<Link href={`/aktualitasok/${item.slug}`} />} nativeButton={false}>
+                  <Button variant="soft" render={<Link href={`/aktualitasok/${item.slug}`} />} nativeButton={false}>
                     Elolvasom
                   </Button>
                 </CardContent>

@@ -17,6 +17,9 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        /* Navigational secondary action on light backgrounds: light blue fill, stays below the navy/gold primary CTAs. */
+        soft:
+          "border-mavet-blue/15 bg-mavet-blue/10 text-mavet-navy hover:border-mavet-blue/30 hover:bg-mavet-blue/20 aria-expanded:bg-mavet-blue/20",
         gold: "bg-mavet-gold text-mavet-navy hover:bg-mavet-gold-light",
         "outline-inverse":
           "border-white/30 bg-white/5 text-white hover:border-white/60 hover:bg-white/10",

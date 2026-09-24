@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -35,6 +35,12 @@ const display = localFont({
   variable: "--font-pagella",
   display: "swap",
 });
+
+/** Csak világos téma; lásd a `globals.css` `color-scheme` megjegyzését. */
+export const viewport: Viewport = {
+  colorScheme: "only light",
+  themeColor: "#0B2D5B",
+};
 
 export const metadata: Metadata = {
   title: {

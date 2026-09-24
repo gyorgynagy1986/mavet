@@ -4,6 +4,30 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-09-24 – Ügyfél-visszajelzések (weboldal 1.0 javaslatok)
+
+### Változások
+
+- **Hero alacsony képernyőn.** Új `short-lg` Tailwind variant (legalább 1024 px
+  széles és legfeljebb 760 px magas ablak). Ilyenkor kisebb a térköz, a h1
+  48 px, a lead `text-lg`, az embléma köre `max-w-sm`. A h1 asztali mérete
+  64 px, a mottó szavai mindig külön sorban állnak. A gombok 1366×768-on és
+  150%-os skálázásnál is a hajtás fölött vannak.
+- **Színes embléma világos háttéren.** Az `Eyebrow` új `emblem` propja:
+  alapból színes (kék-arany), navy háttéren `mono`. A pillérkártyák ikonja is
+  színes.
+- **`soft` gombvariáns.** Világoskék kitöltés, navy szöveg; a navigáló
+  másodlagos gombok ezt használják az `outline` helyett.
+- **Kiszínesedő pillérkártyák.** Hoverre és fókuszra a duotone fotó fölé egy
+  színes réteg úszik be. Érintőképernyőn ugyanez történik, amikor a kártya a
+  képernyő közepére ér (`components/home/in-view-item.tsx`).
+- **Csak világos megjelenés.** `color-scheme: only light` és a viewport
+  `colorScheme`, hogy a mobilos kényszerített sötét mód ne barnítsa az aranyat.
+- **Aloldal-fejléc.** A `PageHeader` halványkék sáv lett, jobb oldalt a
+  hero tájkép halvány duotone változatával és embléma-vízjellel.
+
+---
+
 ## 2026-09-22 – Előzetes jelentkezés: valódi backend
 
 ### Változások

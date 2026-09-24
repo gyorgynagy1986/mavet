@@ -41,7 +41,7 @@ export function HomeContent() {
           <div className="mavet-reveal-right flex flex-col gap-5 text-lg leading-8 text-muted-foreground">
             <p>A vidékegészségügy nem kizárólag földrajzi fogalom, hanem olyan szakmai szemlélet, amely minden ember számára magas színvonalú és fenntartható egészségügyi ellátást kíván biztosítani.</p>
             <p>A Társaság fórumot teremt a szakemberek, kutatók, oktatók, döntéshozók, hallgatók és érdeklődők együttműködéséhez.</p>
-            <Button size="xl" variant="outline" className="mt-3 w-fit" render={<Link href="/a-tarsasagrol" />} nativeButton={false}>
+            <Button size="xl" variant="soft" className="mt-3 w-fit" render={<Link href="/a-tarsasagrol" />} nativeButton={false}>
               Küldetés és történet
               <ArrowRightIcon data-icon="inline-end" />
             </Button>
@@ -58,7 +58,7 @@ export function HomeContent() {
               <h2 className="text-3xl leading-tight sm:text-[2.5rem]">Munkacsoportok</h2>
               <p className="max-w-2xl text-lg leading-8 text-muted-foreground">Közös témák és kihívások mentén szerveződő szakmai közösségek.</p>
             </div>
-            <Button size="xl" variant="outline" className="w-fit shrink-0" render={<Link href="/munkacsoportok" />} nativeButton={false}>
+            <Button size="xl" variant="soft" className="w-fit shrink-0" render={<Link href="/munkacsoportok" />} nativeButton={false}>
               Összes munkacsoport
               <ArrowRightIcon data-icon="inline-end" />
             </Button>
@@ -100,7 +100,7 @@ export function HomeContent() {
                 <Eyebrow className="text-mavet-blue">Friss hírek</Eyebrow>
                 <h2 className="text-3xl leading-tight sm:text-[2.5rem]">Aktualitások</h2>
               </div>
-              <Button size="xl" variant="outline" className="w-fit shrink-0" render={<Link href="/aktualitasok" />} nativeButton={false}>
+              <Button size="xl" variant="soft" className="w-fit shrink-0" render={<Link href="/aktualitasok" />} nativeButton={false}>
                 Összes aktualitás
                 <ArrowRightIcon data-icon="inline-end" />
               </Button>
@@ -156,7 +156,7 @@ export function HomeContent() {
           <div className="mavet-reveal relative isolate overflow-hidden rounded-3xl bg-mavet-hero px-7 py-14 text-white sm:px-14 sm:py-20">
             <MavetEmblem variant="mono" className="absolute -right-16 -bottom-20 -z-10 w-[30rem] text-white opacity-[0.06]" />
             <div className="flex max-w-2xl flex-col items-start gap-6">
-              <Eyebrow className="text-mavet-gold-50">Tagság</Eyebrow>
+              <Eyebrow emblem="mono" className="text-mavet-gold-50">Tagság</Eyebrow>
               <h2 className="text-3xl leading-tight text-balance sm:text-[2.5rem]">Csatlakozzon a vidékegészségügy szakmai közösségéhez</h2>
               <p className="text-lg leading-8 text-white/80">Rendes, ifjúsági, hallgatói és pártoló tagsági formákkal várjuk a vidéki közösségek egészségéért tenni kívánó szakembereket és érdeklődőket.</p>
               <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">

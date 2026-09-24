@@ -3,6 +3,8 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
+/* Desktop layout on a short viewport (1366×768 laptops, 125–150% Windows scaling): the hero is compressed vertically. */
+@custom-variant short-lg (@media (min-width: 64rem) and (max-height: 760px));
 
 /*
  * MAVET arculat (D-015): a színek és a tipográfia a „MAVET színpaletta v1.0”
@@ -66,6 +68,13 @@
 }
 
 :root {
+    /*
+     * Csak világos megjelenés: a böngészők kényszerített sötét módja (Chrome
+     * Android auto dark, Samsung Internet) különben átszínezi az oldalt, és az
+     * arany barnává válik.
+     */
+    color-scheme: only light;
+
     /* MAVET színpaletta v1.0 */
     --mavet-navy: #0B2D5B;
     --mavet-blue: #2A6BCB;
