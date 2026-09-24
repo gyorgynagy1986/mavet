@@ -6,11 +6,12 @@
 export const dataController = {
   name: "Magyar Vidékegészségügyi Társaság",
   shortName: "MAVET",
-  seat: null as string | null, // pl. "1234 Budapest, Példa utca 1."
-  registrationCourt: null as string | null, // pl. "Fővárosi Törvényszék"
-  registrationNumber: null as string | null, // pl. "01-02-0012345"
-  taxNumber: null as string | null,
-  representative: null as string | null, // pl. "Dr. Példa Péter elnök"
+  seat: "6726 Szeged, Fő fasor 179." as string | null,
+  registrationCourt: "Szegedi Törvényszék Cégbírósága" as string | null,
+  // A székhelyváltozás a Szegedi Törvényszéken folyamatban van; a szám a korábbi (fővárosi) bejegyzésé, a lezárulás után frissítendő.
+  registrationNumber: "01-02-0011944" as string | null,
+  taxNumber: "18702264-1-42" as string | null,
+  representative: "Dr. Mohos András" as string | null,
   email: "info@videkegeszseg.hu",
   privacyEmail: "info@videkegeszseg.hu",
   website: "https://videkegeszseg.hu",
