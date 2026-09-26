@@ -42,13 +42,25 @@ export const viewport: Viewport = {
   themeColor: "#0B2D5B",
 };
 
+const siteName = "Magyar Vidékegészségügyi Társaság"
+const siteDescription =
+  "A Magyar Vidékegészségügyi Társaság (MAVET) a vidéki közösségek egészségéért dolgozó szakemberek nyitott, interdiszciplináris fóruma. Helyszín. Közösség. Szemlélet."
+
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: {
-    default: "MAVET",
-    template: "%s | MAVET",
+    default: `${siteName} (MAVET)`,
+    template: `%s | ${siteName}`,
   },
-  description:
-    "A Magyar Vidékegészségügyi Társaság fejlesztés alatt álló bemutatkozó weboldala.",
+  description: siteDescription,
+  applicationName: siteName,
+  openGraph: {
+    type: "website",
+    locale: "hu_HU",
+    siteName,
+    title: `${siteName} (MAVET)`,
+    description: siteDescription,
+  },
 };
 
 /**

@@ -10,6 +10,7 @@ import { Field, FieldContent, FieldError, FieldGroup, FieldLabel } from "@/compo
 import { Input } from "@/components/ui/input"
 import { Spinner } from "@/components/ui/spinner"
 import { Textarea } from "@/components/ui/textarea"
+import { privacyNoticeVersion } from "@/lib/data/site"
 import { emailErrorMessage, validateEmail } from "@/lib/validation/email"
 
 type Errors = Partial<Record<"name" | "email" | "message" | "consent", string>>
@@ -41,7 +42,7 @@ export function ContactForm() {
       const response = await fetch("/api/contact-messages", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ...values, privacyNoticeVersion: "csok-2026-09-20" }),
+        body: JSON.stringify({ ...values, privacyNoticeVersion }),
       })
       setStatus(response.status === 429 ? "limited" : response.ok ? "success" : "error")
     } catch {

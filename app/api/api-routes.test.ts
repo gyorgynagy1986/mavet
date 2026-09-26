@@ -1,9 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
-const { dbConnect, create, updateOne, sendMail, rateLimit } = vi.hoisted(() => ({
+const { dbConnect, create, updateOne, contactCreate, contactUpdateOne, sendMail, rateLimit } = vi.hoisted(() => ({
   dbConnect: vi.fn<() => Promise<undefined>>(async () => undefined),
   create: vi.fn<(doc: Record<string, unknown>) => Promise<{ _id: string; email: string; createdAt: Date }>>(),
   updateOne: vi.fn(() => ({ catch: () => undefined })),
+  contactCreate: vi.fn<(doc: Record<string, unknown>) => Promise<{ _id: string; createdAt: Date }>>(),
+  contactUpdateOne: vi.fn(() => ({ catch: () => undefined })),
   sendMail: vi.fn<(message: { to: string; subject: string; text: string }) => Promise<void>>(async () => undefined),
   rateLimit: vi.fn<() => Promise<{ allowed: boolean; retryAfterSeconds?: number }>>(async () => ({ allowed: true })),
 }))
@@ -12,6 +14,10 @@ vi.mock("@/lib/db-connect", () => ({ default: dbConnect, markPoolPoisoned: () =>
 vi.mock("@/lib/models/membership-application", async (importOriginal) => {
   const original = await importOriginal<typeof import("@/lib/models/membership-application")>()
   return { ...original, MembershipApplicationModel: { create, updateOne } }
+})
+vi.mock("@/lib/models/contact-message", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@/lib/models/contact-message")>()
+  return { ...original, ContactMessageModel: { create: contactCreate, updateOne: contactUpdateOne } }
 })
 vi.mock("@/lib/server/mail", () => ({ sendMail, getNotificationRecipient: () => "iroda@example.hu" }))
 vi.mock("@/lib/server/rate-limit", () => ({ rateLimit, getClientIp: () => "127.0.0.1", hashIp: () => "hash" }))
@@ -84,14 +90,64 @@ describe("POST /api/preliminary-membership-applications", () => {
   })
 })
 
+const validContact = { name: "Teszt Elek", email: "Teszt@Example.hu", message: "Ez egy tesztüzenet a Társaságnak.", consent: true, privacyNoticeVersion: "csok-2026-09-22" }
+
 describe("POST /api/contact-messages", () => {
-  it("accepts a valid contact message", async () => {
-    const response = await contact(request("/api/contact-messages", { name: "Teszt Elek", email: "teszt@example.hu", message: "Ez egy tesztüzenet.", consent: true }))
-    expect(response.status).toBe(201)
+  beforeEach(() => {
+    vi.clearAllMocks()
+    contactCreate.mockResolvedValue({ _id: "msg1", createdAt: new Date() })
   })
 
-  it("rejects an incomplete contact message", async () => {
+  it("saves a valid message and notifies the MAVET contact with reply-to set to the sender", async () => {
+    const response = await contact(request("/api/contact-messages", validContact))
+    expect(response.status).toBe(201)
+    await expect(response.json()).resolves.toMatchObject({ ok: true, id: "msg1" })
+    expect(contactCreate).toHaveBeenCalledTimes(1)
+    expect(contactCreate.mock.calls[0][0]).toMatchObject({ name: "Teszt Elek", email: "teszt@example.hu", message: "Ez egy tesztüzenet a Társaságnak.", consent: { accepted: true, privacyNoticeVersion: "csok-2026-09-22" } })
+    expect(sendMail).toHaveBeenCalledTimes(1)
+    expect(sendMail.mock.calls[0][0]).toMatchObject({ to: "iroda@example.hu", replyTo: "teszt@example.hu" })
+    expect(sendMail.mock.calls[0][0].text).toContain("Ez egy tesztüzenet a Társaságnak.")
+    expect(contactUpdateOne).toHaveBeenCalledWith({ _id: "msg1" }, { $set: { "notifications.adminEmailSentAt": expect.any(Date) } })
+  })
+
+  it("still returns 201 when the notification e-mail fails, and records the error", async () => {
+    sendMail.mockRejectedValueOnce(new Error("sendgrid down"))
+    const response = await contact(request("/api/contact-messages", validContact))
+    expect(response.status).toBe(201)
+    expect(contactUpdateOne).toHaveBeenCalledWith({ _id: "msg1" }, { $set: { "notifications.lastError": "admin: sendgrid down" } })
+  })
+
+  it("rejects an incomplete contact message without touching the database", async () => {
     const response = await contact(request("/api/contact-messages", { name: "", email: "", message: "", consent: false }))
     expect(response.status).toBe(400)
+    expect(contactCreate).not.toHaveBeenCalled()
+    expect(sendMail).not.toHaveBeenCalled()
+  })
+
+  it("rejects a message that is too long", async () => {
+    const response = await contact(request("/api/contact-messages", { ...validContact, message: "x".repeat(5001) }))
+    expect(response.status).toBe(400)
+    expect(contactCreate).not.toHaveBeenCalled()
+  })
+
+  it("returns 429 with Retry-After when rate limited", async () => {
+    rateLimit.mockResolvedValueOnce({ allowed: false, retryAfterSeconds: 42 })
+    const response = await contact(request("/api/contact-messages", validContact))
+    expect(response.status).toBe(429)
+    expect(response.headers.get("Retry-After")).toBe("42")
+    expect(contactCreate).not.toHaveBeenCalled()
+  })
+
+  it("returns 503 when the database is unavailable", async () => {
+    dbConnect.mockRejectedValueOnce(new Error("down"))
+    const response = await contact(request("/api/contact-messages", validContact))
+    expect(response.status).toBe(503)
+  })
+
+  it("returns 500 when saving fails", async () => {
+    contactCreate.mockRejectedValueOnce(new Error("write failed"))
+    const response = await contact(request("/api/contact-messages", validContact))
+    expect(response.status).toBe(500)
+    expect(sendMail).not.toHaveBeenCalled()
   })
 })

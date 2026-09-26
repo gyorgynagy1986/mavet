@@ -28,7 +28,7 @@ export const preliminaryMembershipCategories = membershipCategories.filter((cate
 
 export const contact = {
   email: "info@videkegeszseg.hu",
-  facebook: "#",
+  facebook: "https://www.facebook.com/profile.php?id=61594246717148",
 } as const
 
 /** The three words of the motto, each with a short explanation. */

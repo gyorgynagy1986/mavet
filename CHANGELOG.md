@@ -4,6 +4,43 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-09-26 – Kapcsolati űrlap élesítése, Facebook-oldal bekötése
+
+### Változások
+
+- **Éles kapcsolati végpont.** A `POST /api/contact-messages` a demó helyett a
+  tagsági jelentkezéssel azonos infrastruktúrát használja: Upstash rate limit
+  (IP-nként 5 üzenet / 10 perc), mentés az új `ContactMessage` modellbe
+  (`contact_messages` gyűjtemény, hozzájárulás-bizonyítékkal), értesítő e-mail
+  a `MAIL_TO` címre `Reply-To: feladó` fejléccel
+  (`lib/server/contact-message-mails.ts`). Válaszkódok: 201 / 400 / 429 /
+  500 / 503, a kérés alakja változatlan. A feladó nem kap visszaigazolást.
+- **SEO-metaadatok.** A gyökér `title` alapértéke „Magyar Vidékegészségügyi
+  Társaság (MAVET)”, az aloldalak sablonja „%s | Magyar Vidékegészségügyi
+  Társaság”. A „fejlesztés alatt álló bemutatkozó weboldala” leírás helyett a
+  hero bevezetőjével egyező, kereső- és megosztásbarát leírás. Új
+  `metadataBase` (a `NEXT_PUBLIC_SITE_URL`-ből), `applicationName` és Open
+  Graph adatok (`og:type`, `og:locale`, `og:site_name`, cím, leírás) a
+  Facebook-megosztásokhoz.
+- **Adatkezelési verzió.** A kapcsolati űrlap a fixen beírt `csok-2026-09-20`
+  helyett a közös `privacyNoticeVersion` konstanst küldi.
+- **Tesztek.** A kapcsolati végpontra 7 szerződésteszt (siker, e-mail-hiba
+  melletti siker, hiányos és túl hosszú kérés, 429, 503, 500); összesen 17.
+- **Fejlesztői környezet.** Projektszintű `.npmrc` (`legacy-peer-deps=false`),
+  mert a gépszintű `legacy-peer-deps=true` mellett az npm kihagyta a vitest
+  peer-függőségét (vite), és a tesztek nem indultak. A hiányzó
+  `@rolldown/binding-win32-x64-msvc` natív csomag `npm i --no-save`-vel
+  pótolható, a lockfile-t nem kell módosítani.
+
+- **Facebook-hivatkozás.** A Társaság Facebook-oldalának címe bekerült a
+  `contact.facebook` mezőbe (`lib/data/site.ts`). A `FacebookMark` ikon
+  mostantól link, amely új lapon nyitja az oldalt (`rel="noopener noreferrer"`),
+  hover- és fókuszállapottal, képernyőolvasónak szóló címkével.
+- **Szövegek.** A főoldali „hamarosan elérhető” és a Kapcsolat oldali
+  „az élesítés előtt kerül be” placeholder-mondatok végleges szövegre cserélve.
+
+---
+
 ## 2026-09-24 – Ügyfél-visszajelzések (weboldal 1.0 javaslatok)
 
 ### Változások

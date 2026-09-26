@@ -39,13 +39,20 @@ Kérés: `name`, `email`, `message`, `consent: true`, `privacyNoticeVersion`.
 Siker: `201`; hibás adat: `400`; korlátozás: `429` opcionális `Retry-After`
 fejléccel; átmeneti hiba: `500` vagy `503`.
 
-A backend ellenőrzi a mezőket, korlátozza a visszaélést, és az üzenetet az
-élesítés előtt megadott MAVET-kapcsolattartónak továbbítja.
+A backend ellenőrzi a mezőket (név 2–100 karakter, érvényes e-mail, üzenet
+10–5000 karakter, `consent: true`), IP-nként 10 percenként 5 üzenetre
+korlátozza a beküldést, az üzenetet a `contact_messages` gyűjteményben rögzíti
+a hozzájárulás bizonyítékával (időpont, tájékoztató-azonosító, IP-hash,
+user agent), majd értesítő e-mailt küld a `MAIL_TO` címre. Az értesítés
+`Reply-To` fejléce a feladó címe, így a kapcsolattartó közvetlenül válaszolhat.
+A feladó nem kap automatikus visszaigazolást. Ha az e-mail-küldés hibázik, az
+üzenet mentve marad, a hiba a rekord `notifications.lastError` mezőjébe kerül,
+és a válasz így is `201`.
 
-A `preliminary-membership-applications` handler 2026-09-22-től éles megvalósítás
-(MongoDB Atlas + Upstash + SendGrid, lásd CHANGELOG); a `contact-messages`
-handler továbbra is demó: e-mailt nem küld, és személyes adatot nem tárol. Az éles backendnek a válaszkódok és a kérés
-alakjának megváltoztatása nélkül kell átvennie a működést.
+Mindkét CSÖK handler éles megvalósítás (MongoDB Atlas + Upstash + SendGrid):
+a `preliminary-membership-applications` 2026-09-22-től, a `contact-messages`
+2026-09-26-tól (lásd CHANGELOG). A válaszkódok és a kérés alakja a fenti
+szerződés szerint rögzített.
 
 ## 3. Elvárt adatok és állapotok
 

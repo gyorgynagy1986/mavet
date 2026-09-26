@@ -34,7 +34,7 @@ export function SiteFooter() {
         <div className="flex flex-col gap-2.5 text-sm">
           <p className="mb-1 text-xs font-semibold tracking-[0.14em] text-white/55 uppercase">Kapcsolat</p>
           <a className={footerLinkClass} href={`mailto:${contact.email}`}>{contact.email}</a>
-          <FacebookMark className="mt-2 border-white/25 bg-white/10 text-white" />
+          <FacebookMark className="mt-2 border-white/25 bg-white/10 text-white hover:bg-white/20" />
         </div>
       </SiteContainer>
       <div className="border-t border-white/10">

@@ -178,7 +178,7 @@ export function HomeContent() {
         <SiteContainer className="mavet-reveal flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
           <div>
             <h2 className="text-2xl">Maradjon kapcsolatban a MAVET-tel</h2>
-            <p className="mt-2 text-muted-foreground">Tájékozódjon az oldalon, vagy kövesse hamarosan elérhető Facebook-oldalunkat.</p>
+            <p className="mt-2 text-muted-foreground">Tájékozódjon az oldalon, vagy kövesse Facebook-oldalunkat.</p>
           </div>
           <FacebookMark className="size-11 border-border text-mavet-blue" />
         </SiteContainer>
