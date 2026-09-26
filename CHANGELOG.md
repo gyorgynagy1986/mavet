@@ -22,6 +22,11 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
   `metadataBase` (a `NEXT_PUBLIC_SITE_URL`-ből), `applicationName` és Open
   Graph adatok (`og:type`, `og:locale`, `og:site_name`, cím, leírás) a
   Facebook-megosztásokhoz.
+- **Hero címsor.** A főoldal `h1`-e a Társaság teljes neve (az eddigi
+  eyebrow-címke), a mottó `h2` lett. Az `Eyebrow` új `as` propja (alapból
+  `p`) dönti el az elemet, így csak a hero címkéje címsor, a szekciócímkék
+  továbbra is bekezdések, oldalanként egy `h1` marad. A címke `font-sans`
+  osztályt kapott, hogy `h1`-ként se váltson a Palatino címsor-betűre.
 - **Adatkezelési verzió.** A kapcsolati űrlap a fixen beírt `csok-2026-09-20`
   helyett a közös `privacyNoticeVersion` konstanst küldi.
 - **Tesztek.** A kapcsolati végpontra 7 szerződésteszt (siker, e-mail-hiba

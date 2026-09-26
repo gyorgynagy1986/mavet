@@ -26,11 +26,11 @@ export default function HomePage() {
         <MavetEmblem variant="mono" className="absolute -top-6 -right-40 -z-10 w-96 text-white opacity-[0.04] lg:hidden" />
         <SiteContainer className="mavet-hero-exit grid items-center gap-12 pt-16 pb-28 sm:pt-24 sm:pb-36 lg:grid-cols-[1.15fr_0.85fr] lg:pt-24 lg:pb-40 short-lg:pt-10 short-lg:pb-28">
           <div className="flex flex-col items-start gap-8 short-lg:gap-6 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-700">
-            <Eyebrow emblem="mono" className="text-mavet-gold-50">Magyar Vidékegészségügyi Társaság</Eyebrow>
+            <Eyebrow as="h1" emblem="mono" className="text-mavet-gold-50">Magyar Vidékegészségügyi Társaság</Eyebrow>
             <div className="flex flex-col gap-6">
-              <h1 className="text-[2.75rem] leading-[1.05] text-balance sm:text-6xl lg:text-[4rem] short-lg:text-5xl">
+              <h2 className="text-[2.75rem] leading-[1.05] text-balance sm:text-6xl lg:text-[4rem] short-lg:text-5xl">
                 <span className="block">Helyszín.</span> <span className="block">Közösség.</span> <span className="block text-mavet-gold italic">Szemlélet.</span>
-              </h1>
+              </h2>
               <p className="max-w-xl text-lg leading-8 text-white/80 sm:text-xl short-lg:text-lg short-lg:leading-7">
                 A tudomány az együttműködésben válik cselekvéssé. A MAVET a vidéki közösségek egészségéért dolgozó szakemberek nyitott, interdiszciplináris fóruma.
               </p>
