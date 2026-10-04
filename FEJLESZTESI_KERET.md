@@ -78,3 +78,5 @@ Minden kör zárásakor:
   tölthetők fel valós adatként (D-014).
 - Nyitott ügyfélkérdések: a specifikáció 13. fejezete és
   `docs/03-tervezes/MAVET - Belső fejlesztői kérdések.md`.
+
+  docs
