@@ -5,11 +5,12 @@ A projekt technikai és munkamódszerbeli kerete. A döntések a
 
 ## 1. A munka célja és határa
 
-Működő, végigkattintható **front-end wireframe** készül (D-001), magas
-kódminőségben. A vizuális arculat és a backend egy másik fejlesztő feladata; a
-front-end adja át a szerkezetet, az állapotokat, az adatmodellt és az
-API-szerződést (D-002, D-003). A kliens a wireframe-et látja, és szükség esetén
-módosítást kér; a specifikációhoz a lehető legközelebb maradunk.
+A teljes weboldal és tagsági rendszer ebben a projektben készül: front-end,
+arculat, backend, hitelesítés és adminisztrációs felület egy kézben (D-016,
+amely a korábbi D-002/D-008 „másik fejlesztő” határt felülírta). A CSÖK
+bemutatkozó oldal 2026 szeptemberében elkészült; a tagsági rendszer
+fejlesztése az admin hitelesítéssel indult (D-017). A specifikációhoz a lehető
+legközelebb maradunk; eltérésnél a döntési napló az irányadó.
 
 ## 2. Stack
 
@@ -17,7 +18,8 @@ módosítást kér; a specifikációhoz a lehető legközelebb maradunk.
 - Tailwind CSS v4, shadcn komponensek Base UI primitívekkel (`base-nova` stílus).
 - Nincs `src/` könyvtár; import alias `@/*`.
 - Teszt: Vitest + Testing Library (jsdom).
-- Nincs valódi hitelesítés, fizetés vagy külső szolgáltatás (D-006, D-007).
+- Backend: Mongoose (MongoDB Atlas), Upstash Redis (rate limit, belépési kódok),
+  SendGrid (tranzakciós e-mail), NextAuth v4 (admin hitelesítés, D-017).
 
 ## 3. Kőbe vésett renderelési szabályok (D-005)
 
@@ -35,9 +37,17 @@ módosítást kér; a specifikációhoz a lehető legközelebb maradunk.
 
 ## 4. Adat- és API-réteg
 
-- `lib/data/*` – mintaadatok, ez a későbbi backend cseréjének egyetlen pontja.
-- `app/api/*` – route handlerek; ők adják a valódi HTTP-végpontokat.
-- `lib/api/*` – típusos kliens, amit a felület használ.
+- `lib/data/*` – statikus tartalom (navigáció, kategóriák, induló hírek).
+- `lib/models/*` – Mongoose sémák (`users`, `membership_applications`,
+  `contact_messages`, `auth_logs`, `admin_audit_logs`).
+- `lib/server/*` – szerveroldali segédek: adatbázis, levél, rate limit, Redis,
+  hitelesítés (`lib/server/auth/*`).
+- `app/api/*` – route handlerek; minden védett végpont `requireAdmin` /
+  `requireSuperAdmin` ellenőrzéssel indul. Server action csak ott, ahol a
+  hívó kizárólag a saját oldal (pl. belépési kód kérése).
+- Route-csoportok: `app/(public)` a publikus oldalak (közös fejléc, lábléc),
+  `app/admin` az adminisztráció, `app/mavet-login` a rejtett belépő oldal; a
+  gyökér `layout.tsx` csak a `<html>`/`<body>` keretet és a betűket adja.
 - A végpontok és a válaszformátumok a `BACKEND_HANDOVER.md`-ben dokumentáltak.
 
 ## 5. Munkarend
@@ -61,8 +71,9 @@ Minden kör zárásakor:
 
 ## 7. Nyitott keretfeltételek
 
-- **A véglegesített specifikációk (1. fázis és teljes) még nem érkeztek meg**
-  (D-010). Amíg nincs meg mindkettő, nem indul funkciófejlesztés.
+- A teljes specifikáció v0.4 (2026.09.14) és a CSÖK v0.3 a `specification/`
+  mappában; a konferenciamodul és a 13. fejezet nyitott paraméterei (jelszó-
+  követelmény, fájlkorlátok) még rögzítendők.
 - A meglévő forrásanyagok között évhelyőrzők és hiányzó nevek vannak; ezek nem
   tölthetők fel valós adatként (D-014).
 - Nyitott ügyfélkérdések: a specifikáció 13. fejezete és

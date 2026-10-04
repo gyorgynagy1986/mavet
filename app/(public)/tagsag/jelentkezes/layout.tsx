@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Előzetes tagsági jelentkezés",
-  description: "Előzetes tagsági jelentkezés a MAVET-hez.",
+  title: "Tagsági jelentkezés",
+  description: "Tagsági jelentkezés a Magyar Vidékegészségügyi Társaságba.",
 }
 
 export default function PreliminaryMembershipLayout({ children }: LayoutProps<"/tagsag/jelentkezes">) {

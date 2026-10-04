@@ -55,7 +55,7 @@ export function PreliminaryMembershipForm({ initialCategory = "" }: { initialCat
   }
 
   if (status === "success") {
-    return <Alert aria-live="polite"><CheckCircle2Icon /><AlertTitle>Rögzítettük előzetes jelentkezését</AlertTitle><AlertDescription>A megadott címre visszaigazoló e-mailt küldünk. Ha erre a címre korábban már érkezett jelentkezés, azt nem rögzítettük újra, de a visszaigazolást ismét elküldtük. A Közgyűlés döntéséig nincs további teendője.</AlertDescription></Alert>
+    return <Alert aria-live="polite"><CheckCircle2Icon /><AlertTitle>Köszönjük, ellenőrizze a postafiókját</AlertTitle><AlertDescription>A megadott címre elküldtük a jelentkezés folytatásához szükséges linket. A linkre kattintva töltheti ki a teljes adatlapot; a kitöltést később is folytathatja. Ha erre a címre korábban már érkezett jelentkezés, nem rögzítettük újra, de a linket ismét elküldtük.</AlertDescription></Alert>
   }
 
   return (
@@ -83,12 +83,12 @@ export function PreliminaryMembershipForm({ initialCategory = "" }: { initialCat
         <Field data-invalid={Boolean(errors.email) || undefined}><FieldLabel htmlFor="membership-email">E-mail-cím</FieldLabel><Input id="membership-email" name="email" type="email" autoComplete="email" placeholder="nev@pelda.hu" aria-invalid={Boolean(errors.email)} disabled={status === "submitting"} /><FieldError>{errors.email}</FieldError></Field>
         <Field data-invalid={Boolean(errors.consent) || undefined} orientation="horizontal">
           <Checkbox id="membership-consent" name="consent" aria-invalid={Boolean(errors.consent)} disabled={status === "submitting"} />
-          <FieldContent><p className="text-sm leading-6"><FieldLabel htmlFor="membership-consent" className="inline font-normal leading-6">Hozzájárulok, hogy a MAVET az előzetes tagsági jelentkezésemet rögzítse, visszaigazoló e-mailt küldjön, és a teljes jelentkezési folyamat elkészültekor ugyanarra az e-mail-címre felhívást küldjön a folytatáshoz, az </FieldLabel><Link className="font-medium underline underline-offset-4" target="_blank"  href="/adatkezeles">Adatkezelési tájékoztatóban</Link> foglaltak szerint.</p><FieldError>{errors.consent}</FieldError></FieldContent>
+          <FieldContent><p className="text-sm leading-6"><FieldLabel htmlFor="membership-consent" className="inline font-normal leading-6">Hozzájárulok, hogy a MAVET a jelentkezési szándékomat rögzítse, és a megadott e-mail-címre elküldje a jelentkezés folytatásához szükséges linket és emlékeztetőt, az </FieldLabel><Link className="font-medium underline underline-offset-4" target="_blank"  href="/adatkezeles">Adatkezelési tájékoztatóban</Link> foglaltak szerint.</p><FieldError>{errors.consent}</FieldError></FieldContent>
         </Field>
       </FieldGroup>
       {status === "error" && <Alert variant="destructive" aria-live="polite"><AlertTitle>Nem sikerült a beküldés</AlertTitle><AlertDescription>Próbálja újra később.</AlertDescription></Alert>}
       {status === "limited" && <Alert variant="destructive" aria-live="polite"><AlertTitle>Túl sok próbálkozás</AlertTitle><AlertDescription>Kérjük, várjon néhány percet, majd próbálja újra.</AlertDescription></Alert>}
-      <Button type="submit" size="lg" className="w-full sm:w-fit" disabled={status === "submitting"}>{status === "submitting" ? <Spinner data-icon="inline-start" /> : <SendIcon data-icon="inline-start" />}{status === "submitting" ? "Küldés…" : "Előzetes jelentkezés rögzítése"}</Button>
+      <Button type="submit" size="lg" className="w-full sm:w-fit" disabled={status === "submitting"}>{status === "submitting" ? <Spinner data-icon="inline-start" /> : <SendIcon data-icon="inline-start" />}{status === "submitting" ? "Küldés…" : "Jelentkezés indítása"}</Button>
     </form>
   )
 }

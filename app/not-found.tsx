@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MapIcon } from "lucide-react";
+import { PublicShell } from "@/components/public-shell";
 import { SiteContainer } from "@/components/site-container";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,8 +11,11 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
+// Unmatched URLs render under the root layout, outside the `(public)` group,
+// so the public frame is added here explicitly.
 export default function NotFound() {
   return (
+    <PublicShell>
     <SiteContainer className="py-16">
       <Empty className="min-h-96 border">
         <EmptyHeader>
@@ -30,5 +34,6 @@ export default function NotFound() {
         </EmptyContent>
       </Empty>
     </SiteContainer>
+    </PublicShell>
   );
 }

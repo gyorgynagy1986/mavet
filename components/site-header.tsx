@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { MenuIcon } from "lucide-react"
 import { navigation } from "@/lib/data/site"
+import { AccountMenu, AccountMenuRows } from "@/components/account-menu"
 import { MavetLogo } from "@/components/brand/mavet-logo"
 import { SiteContainer } from "@/components/site-container"
 import { Button } from "@/components/ui/button"
@@ -33,7 +34,7 @@ export function SiteHeader() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "relative rounded-md px-3 py-2 text-[0.9375rem] font-semibold text-mavet-navy/75 outline-none transition-colors hover:text-mavet-navy focus-visible:ring-3 focus-visible:ring-ring/50",
+                    "relative rounded-md px-3 py-2 text-[0.9375rem] font-semibold whitespace-nowrap text-mavet-navy/75 outline-none transition-colors hover:text-mavet-navy focus-visible:ring-3 focus-visible:ring-ring/50",
                     "after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-mavet-gold after:transition-transform after:duration-200 hover:after:scale-x-100 motion-reduce:after:transition-none",
                     active && "text-mavet-navy after:scale-x-100",
                   )}
@@ -44,9 +45,11 @@ export function SiteHeader() {
             })}
           </nav>
           <Button size="lg" className="h-10 px-4" render={<Link href="/tagsag/jelentkezes" />} nativeButton={false}>Jelentkezem</Button>
+          <AccountMenu />
         </div>
         <div className="flex items-center gap-2 lg:hidden">
           <Button render={<Link href="/tagsag/jelentkezes" />} nativeButton={false}>Jelentkezem</Button>
+          <AccountMenu className="px-2" />
           <Sheet>
             <SheetTrigger render={<Button variant="outline" size="icon" />} aria-label="Menü megnyitása">
               <MenuIcon />
@@ -62,6 +65,8 @@ export function SiteHeader() {
                   <SheetClose key={item.href} render={<Button variant={isActive(item.href) ? "secondary" : "ghost"} className="justify-start" aria-current={isActive(item.href) ? "page" : undefined} render={<Link href={item.href} />} nativeButton={false} />}>{item.label}</SheetClose>
                 ))}
                 <SheetClose render={<Button className="justify-start" render={<Link href="/tagsag/jelentkezes" />} nativeButton={false} />}>Jelentkezem</SheetClose>
+                <div className="my-2 h-px bg-border" role="separator" />
+                <AccountMenuRows close={(node, key) => <SheetClose key={key} render={node} />} />
               </nav>
             </SheetContent>
           </Sheet>

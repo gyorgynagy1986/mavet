@@ -4,6 +4,256 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-10-04 – Admin: Tagok (kategória, tagság visszavonása, fiók törlése)
+
+### Változások
+
+- **Tagok oldal** (`/admin/tagok`): állapotfülek (aktív, tagdíjra vár,
+  aktiválásra vár, lejárt, megszűnt) darabszámmal, keresés névre és
+  e-mail-címre. Részletező: tagsági adatok, profil, a tagnak kiment levelek,
+  link a jelentkezésre.
+- **Kategória módosítása** (spec 7.3): admin állítja, rendes tagnál az
+  orvos/gyógyszerész jelöléssel; a díjhatás a következő tagsági évtől. Naplózva
+  (`member_category_change`).
+- **Tagság visszavonása**: állapot `megszunt`, a fiók és a belépés megmarad; a
+  tag a fiókjában „Tagsága megszűnt” jelzést lát. Indoklás a naplóba, és
+  választhatóan a tagnak küldött `tagsag_megszunt` sablonlevélbe. Visszafordítható
+  („Helyreállítás”: aktív, vagy tagdíjra vár, ha az első tagdíj nyitott).
+- **Fiók végleges törlése** (csak SUPERADMIN): e-mail-cím begépelésével
+  megerősítve. A `users` rekord törlődik, a belépés azonnal megszűnik; a
+  jelentkezési rekordok megmaradnak a döntési előzmények miatt, de a személyes
+  mezők anonimizálódnak (spec 9.5 megőrzési elve). Naplózva (`member_delete`).
+- **Jelentkezés végleges törlése** (csak SUPERADMIN, elutasított vagy lezárt
+  jelentkezésre, ha nem tartozik hozzá tagi fiók): a rekord és a levélnaplója
+  törlődik, az admin naplóba bejegyzés kerül (`application_delete`). Nem
+  feltétele az újbóli jelentkezésnek: a lezárt/elutasított jelentkezés nem
+  blokkolja az új beküldést.
+- **Súgó** a Jelentkezések és a Tagok lista alatt: lenyitható magyarázat
+  minden fülhöz (`app/admin/status-help.tsx`).
+- Admin napló új akciói: `member_category_change`, `membership_revoke`,
+  `membership_restore`, `member_delete`, `application_delete`.
+
+### Ismert korlátok
+
+- A tag saját fióktörlése (9.5, jelszóval) a profilkörben jön.
+- A lejáratás és a megújítás (8.2) a fizetési körrel együtt.
+
+---
+
+## 2026-10-04 – Fejléc fiókmenü, elfelejtett jelszó, jelszócsere
+
+### Változások
+
+- **Fiókmenü a publikus fejlécben** (`components/account-menu.tsx`): a
+  sessiont a kliens kéri le (`/api/auth/session`), így a publikus oldalak
+  statikusak maradnak. Kijelentkezve „Bejelentkezés” ikon-gomb a `/belepes`
+  oldalra; tagként név + menü (Saját fiók, Kijelentkezés); adminként
+  Adminisztráció. Mobilon a menülap alján ugyanezek.
+- **Elfelejtett jelszó** (`/elfelejtett-jelszo`): semleges válasz (nem derül
+  ki, van-e fiók), IP-nként 5/10 perc és címenként 3/óra; aktivált tagi fiókra
+  `jelszo_visszaallitas` sablon egyszer használható, 1 óráig érvényes linkkel
+  (spec 13.4). **Új jelszó** (`/jelszo-visszaallitas/[token]`): D-020 szabály,
+  mentés után automatikus belépés. **Jelszócsere** a `/fiok` oldalon jelenlegi
+  + új jelszó kétszer (spec 9.1). Mind naplózva az `auth_logs`-ban
+  (`PASSWORD_RESET_REQUESTED`, `PASSWORD_RESET_DONE`, `PASSWORD_CHANGED`).
+- `/mavet-login`: tagi session mellett is megjelenik az admin űrlap (figyelmeztetéssel);
+  korábban a főoldalra irányított.
+- `robots.txt`: `/jelszo-visszaallitas/` tiltva.
+
+### Ismert korlátok
+
+- Profilszerkesztés, profilkép, megjelenési kapcsoló és tagi névjegyzék
+  (spec 9.2–9.4) külön körben.
+
+---
+
+## 2026-10-04 – Elbírálás vége: tagi fiók elfogadáskor, aktiválás, tagi belépés (D-019, D-020)
+
+### Változások
+
+- **Tagsági adatok a `users` modellen:** profil (titulus, név, születési dátum,
+  cím, telefon, szakterület, munkahely), `passwordHash`, aktiváló token,
+  `membership` (állapot: `aktivalasra_var` / `fizetesre_var` / `aktiv` /
+  `lejart` / `megszunt`, kategória, orvos/gyógyszerész jelölés, elfogadás és
+  aktiválás ideje, `paidThroughYear`, első tagdíj összege/éve/határideje).
+- **Tagdíj-szabályok** (`lib/data/membership-fees.ts`): kategóriánkénti díj,
+  2026-os díjmentesség, decemberi befizetés = következő év, elfogadás-kori
+  kimenet (aktív vagy fizetésre vár), 30 napos első határidő.
+- **Elfogadás** az adminban: létrehozza vagy a meglévő tagi fiókhoz kapcsolja a
+  tagságot, díjmentes vagy díjköteles aktiváló levelet küld (két új sablon:
+  „Jelentkezés elfogadva (díjmentes aktiválás)”, „Jelentkezés elfogadva (tagdíj
+  fizetendő)” összeggel, időszakkal, határidővel). Adminfiókhoz vagy már
+  tagsággal rendelkező címhez nem rögzíthető. A részletező mutatja a fiók
+  állapotát; „Aktiváló link újraküldése” gomb, amíg nincs aktiválva.
+- **Aktiváló oldal** `/fiok/aktivalas/[token]` (7 nap): jelszó beállítása a
+  D-020 szabály szerint, tagság aktiválása, automatikus belépés.
+- **Tagi belépés** `/belepes`: NextAuth `member-password` provider (bcrypt,
+  rate limit, semleges hiba, `auth_logs` csatorna `member-password`,
+  `ACCOUNT_ACTIVATED` esemény). **Saját fiók** `/fiok`: tagsági állapot,
+  kategória, érvényesség, első tagdíj felhívás, a jelentkezéskor megadott
+  adatok, kijelentkezés. Admin session a `/fiok`-ról az adminba kerül.
+- `robots.txt`: `/fiok`, `/tagsag/jelentkezes/<token>` tiltva. Új függőség:
+  `bcryptjs`.
+- **Tesztek:** 7 új (tagdíj-szabályok, jelszó); összesen 50.
+
+### Ismert korlátok
+
+- Nincs még fejléc-ikon, profilszerkesztés, megjelenési kapcsoló, tagi
+  névjegyzék, elfelejtett jelszó (következő kör).
+- Fizetés (SimplePay, banki átutalás rögzítése), első tagdíj emlékeztetője,
+  évi megújítás és lejáratás külön körben; a `fizetesre_var` fiók addig csak
+  tájékoztatást lát.
+- Az aktiváló link lejárta után a tag a Kapcsolat oldalon kérhet újat; az
+  admin a részletezőből küldi.
+
+### Ellenőrzés
+
+- `npm run typecheck`, `npm run lint`, `npm run test`, `npm run build` – lásd
+  QUALITY_GATE.md.
+
+---
+
+## 2026-10-04 – Kétlépcsős tagsági jelentkezés, adminos elbírálás, e-mail-sablonok, emlékeztető cron (D-018)
+
+### Változások
+
+- **Jelentkezés életciklusa** (`lib/models/membership-application.ts`):
+  `elozetes` → `megerositett` → `bekuldott` → `elfogadva` / `elutasitva`
+  (+ `visszavont`). Teljes adatlap-mezők a spec 7.1 szerint (születési dátum,
+  cím, telefon, szakterület, munkahely vagy „nincs állandó munkahelyem”,
+  rendes tagnál orvos/gyógyszerész jelölés), nyilatkozatok időbélyeggel, döntési
+  adatok, belső jegyzet, emlékeztető-történet. A régi egyedi e-mail index helyett
+  részleges egyedi index: egyszerre egy nyitott jelentkezés címenként.
+  `npm run migrate:applications`: a meglévő `tagjelolt` rekordok `elozetes`-re,
+  index csere.
+- **Folytató link.** A rövid űrlap beküldése (`POST
+  /api/preliminary-membership-applications`) után a jelentkező linket kap
+  (`/tagsag/jelentkezes/[token]`, sha-256-tal tárolt token, 30 nap, minden
+  küldéskor új). Első megnyitás = e-mail-cím ellenőrizve. Duplikált, még nem
+  véglegesített jelentkezésnél a link újraküldése (napi 1×), elbírálás alatt
+  lévőnél nincs levél; a válasz mindkét esetben azonos.
+- **Teljes adatlap** (`full-application-form.tsx`): kategóriafüggő mezők,
+  mezőszintű hibák, 2 mp-es automatikus mentés, „Mentés, később folytatom”,
+  véglegesítés nyilatkozatokkal. Életkor-szabályok: 18 év, Ifjúsági 35 év
+  alatt. Véglegesítés után a link állapotoldalt mutat (elbírálás alatt /
+  elfogadva / elutasítva + új jelentkezés gomb).
+- **Admin: Jelentkezések** (`/admin/jelentkezesek`): állapotfülek darabszámmal,
+  részletező a teljes adatlappal, idővonallal, nyilatkozatokkal és a
+  jelentkezéshez kiküldött levelekkel. Műveletek: elfogadás kategória-
+  felülírással, elutasítás jelentkezőnek szánt indoklással (Érdemesnél külön
+  sablon, spec 7.4), folytató link újraküldése, kézi emlékeztető, belső
+  jegyzet, lezárás döntés nélkül. Minden művelet server action friss
+  session-ellenőrzéssel.
+- **E-mail-sablonrendszer** (`lib/server/email/*`, `email_templates`): 7 sablon
+  (folytató link, emlékeztető, beérkezett, elfogadva, elutasítva, Érdemes
+  elutasítva, admin értesítés) kódbeli alapértelmezéssel és az adminban
+  szerkeszthető tárggyal + HTML-törzzsel. `{{változó}}` behelyettesítés
+  HTML-escape-pel, közös MAVET-keret (fejléc, lábléc), szöveges változat
+  automatikusan. `/admin/emailek`: lista, szerkesztő élő előnézettel
+  (sandboxolt iframe), változó-chipek, ismeretlen változó jelzése, aktív/inaktív
+  kapcsoló, alapértelmezett visszatöltése, teszt e-mail [TESZT] előtaggal.
+- **E-mail-napló** (`email_logs`, `/admin/emailek/naplo`): minden sablonos
+  küldés eredménye (elküldve / sikertelen / kihagyva), kiváltó (rendszer, cron,
+  admin, teszt), kapcsolódó jelentkezés. Ugyanitt az ütemezett futások
+  (`cron_runs`).
+- **Emlékeztető cron** (`/api/cron/application-reminders`, `vercel.json`:
+  naponta 07:00 UTC, `CRON_SECRET` Bearer): félbehagyott jelentkezésekre az
+  utolsó aktivitás után 7, majd 14 nappal, legfeljebb 2 (kézi is számít).
+- **Szövegek.** A Tagság/jelentkezés oldal és a rövid űrlap szövege a
+  kétlépcsős folyamathoz igazítva; a levelek az ügyfél jóváhagyta mondatokat
+  megtartják.
+- **Tesztek.** 17 új (API-szerződés a folytató linkkel, renderer, adatlap-
+  validáció és korhatárok, emlékeztető-ütemezés); összesen 43.
+
+### Ismert korlátok
+
+- Elfogadáskor még nem jön létre fiók; az elfogadó levél jelzi, hogy az
+  aktiváló link külön érkezik (következő kör: `users` + aktiválás + jelszó +
+  tagi belépés, díjköteles kategóriánál „fizetésre vár”).
+- Nincs irányítószám → település automatikus kitöltés (spec 7.1), adatforrás
+  szükséges hozzá.
+- A sablon-HTML-t az admin szabadon írja; `<script>` tiltva, egyéb HTML-
+  tisztítás nincs (adminisztrátori, nem publikus bevitel).
+- A `package-lock.json` Windowson újragenerálva nem tartalmazza a más
+  platformú natív csomagokat; Linux/macOS gépen `npm i --no-save
+  @rolldown/binding-<platform>` kell a tesztekhez.
+
+### Ellenőrzés
+
+- `npm run typecheck`, `npm run lint` – sikeres.
+- `npm run test` – 43 teszt sikeres (felhő-munkaterületen; a lokális
+  környezetben a futás túllépte az időkorlátot).
+- `npm run build` – sikeres (webpack, offline font-mock), 2 új publikus és
+  7 új admin/cron útvonal.
+
+---
+
+## 2026-10-04 – Admin hitelesítés és adminkezelés (D-016, D-017)
+
+### Változások
+
+- **Route-csoportok.** A publikus oldalak az `app/(public)/` alá kerültek (az
+  URL-ek változatlanok), a közös keret (fejlesztési sáv, fejléc, lábléc) a
+  csoport `layout.tsx`-ében és a `PublicShell` komponensben van. A gyökér
+  `app/layout.tsx` csak a `<html>`/`<body>` keretet, a betűket és a
+  metaadatokat adja, így az admin és a belépő oldal saját keretet kap. A 404
+  oldal maga teszi fel a publikus keretet (a gyökér alatt renderelődik).
+- **Admin belépés** (`/mavet-login`, rejtett, `noindex`, `robots.txt`-ben is
+  tiltva): e-mail + 6 jegyű, egyszer használatos kód. Az IMK projekt
+  auth-rétegéből átemelve, MAVET-arculattal (navy márkapanel, embléma,
+  Pagella címsor, arany haladásjelző). Kódkérés server actionnel, Redis
+  tárolással (3 perc; címenként 1/perc és 20/nap; IP-nként 5 kérés/perc),
+  user-enumeration védelemmel; kódellenőrzés NextAuth v4 credentials
+  providerrel (`admin-otp`), timing-safe összehasonlítással, 5 hibás
+  próbálkozás után zárolással, IP-nként 20 ellenőrzés/perc. JWT session 7
+  nap; a szerep percenként újraolvasódik az adatbázisból, így a visszavont jog
+  legfeljebb 1 percen belül mindenhol érvényesül.
+- **Szerepek.** `users` gyűjtemény (`lib/models/user.ts`): `SUPERADMIN`,
+  `ADMIN`, `USER`. A SUPERADMIN csak a `npm run seed:superadmin` scripttel
+  (`SUPERADMIN_EMAIL`, `SUPERADMIN_NAME` env) vagy DB-szinten adható.
+- **Admin keret** (`/admin`): szerveroldali layout friss session-ellenőrzéssel,
+  fejléc a logóval és „Admin” jelzéssel, navigáció (Kezdőlap; SUPERADMIN-nak
+  Adminok és Naplók), fiókmenü kijelentkezéssel, Toaster. A `proxy.ts` az
+  `/admin/*` útvonalakat token nélkül a belépő oldalra, nem admin szereppel a
+  főoldalra irányítja.
+- **Adminok oldal** (`/admin/adminok`, SUPERADMIN): lista utolsó belépéssel,
+  új admin felvétele név + e-mail alapján (meglévő tagi fiók előléptetése),
+  jog visszavonása (átsorolás `USER`-re, nem törlés). Saját fiók és SUPERADMIN
+  célpont nem módosítható. API: `GET`/`POST /api/admin/users`,
+  `PATCH /api/admin/users/[id]`, mind `requireSuperAdmin` guarddal.
+- **Naplók oldal** (`/admin/naplo`, SUPERADMIN): jogosultság-változások
+  (`admin_audit_logs`) és belépési események (`auth_logs`) utolsó 100 sora.
+- **Infra.** `lib/server/redis.ts` közös Upstash kliens (a rate limit is ezt
+  használja), `lib/auth-paths.ts` függőségmentes útvonal-konstansok,
+  `lib/server/auth/*` (verification, auth-logger, auth-options, session,
+  admin-audit, login-code-mail), `types/next-auth.d.ts` típusbővítés.
+  Új függőség: `next-auth@4`. Új env: `NEXTAUTH_SECRET`, `NEXTAUTH_URL`,
+  `SUPERADMIN_EMAIL`, `SUPERADMIN_NAME`.
+- **Tesztek.** 9 új teszt (kódformátum, timing-safe összehasonlítás, zárolási
+  küszöb, `requireAdmin`/`requireSuperAdmin` 401/403/átengedés, hibára zárt
+  session-lekérés); összesen 26.
+- **Dokumentáció.** D-016 és D-017 a döntési naplóban (D-002, D-006, D-008
+  felülírva), `FEJLESZTESI_KERET.md` és `BACKEND_HANDOVER.md` frissítve.
+
+### Ismert korlátok
+
+- Az élesítéshez `NEXTAUTH_SECRET` és `NEXTAUTH_URL` beállítása, majd a seed
+  script futtatása szükséges; nélkülük nincs belépés.
+- Az admin menü egyelőre csak a Kezdőlapot, az Adminokat és a Naplókat
+  tartalmazza; a tartalmi modulok (jelentkezések, hírek, események, szakmai
+  anyagok) a következő körökben jönnek.
+- Nincs 2FA és nincs admin IP-korlátozás; a belépési kód önmagában a második
+  faktor (e-mail-hozzáférés).
+- A tagi (USER) bejelentkezés (spec 9.1: e-mail + jelszó, jelszó-visszaállítás)
+  külön körben készül.
+
+### Ellenőrzés
+
+- `npm run typecheck`, `npm run lint`, `npm run test` (26 teszt) – sikeres.
+- `npm run build` – lásd QUALITY_GATE.md.
+
+---
+
 ## 2026-09-26 – Kapcsolati űrlap élesítése, Facebook-oldal bekötése
 
 ### Változások
