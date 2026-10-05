@@ -18,7 +18,7 @@ const ICONS = {
 export function AdminNav({ items, className }: { items: AdminNavItem[]; className?: string }) {
   const pathname = usePathname()
   return (
-    <nav className={cn("items-center gap-1 overflow-x-auto", className)} aria-label="Adminisztrációs navigáció">
+    <nav className={cn("items-center gap-1 overflow-x-auto overflow-y-hidden pb-1 md:overflow-visible md:pb-0", className)} aria-label="Adminisztrációs navigáció">
       {items.map((item) => {
         const active = item.exact ? pathname === item.href : pathname === item.href || pathname.startsWith(`${item.href}/`)
         const Icon = ICONS[item.icon]
