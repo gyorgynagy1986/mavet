@@ -1,4 +1,5 @@
 import { MemberCard } from "@/components/members/member-card"
+import { MemberCardGridSkeleton } from "@/components/members/member-skeletons"
 import { BOARD_ANCHOR } from "@/lib/auth-paths"
 import type { DirectoryProfile } from "@/lib/directory"
 import { listBoardMembers } from "@/lib/server/directory"
@@ -31,6 +32,19 @@ export async function BoardSection() {
           ))}
         </ul>
       ) : null}
+    </section>
+  )
+}
+
+/** The section frame with placeholder cards while the board list is being read. */
+export function BoardSectionSkeleton() {
+  return (
+    <section id={BOARD_ANCHOR} className="flex scroll-mt-24 flex-col gap-4">
+      <h2 className="text-2xl font-semibold tracking-tight">Vezetőség</h2>
+      <p className="leading-7 text-muted-foreground">
+        A Társaság vezetőségét különböző szakterületekről érkező, a vidék egészségének fejlesztése iránt elkötelezett szakemberek alkotják.
+      </p>
+      <MemberCardGridSkeleton count={4} columns="sm:grid-cols-2" />
     </section>
   )
 }

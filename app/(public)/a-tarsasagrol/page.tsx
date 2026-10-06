@@ -1,8 +1,9 @@
+import { Suspense } from "react"
 import { PageHeader } from "@/components/page-header"
 import { SiteContainer } from "@/components/site-container"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { BoardSection } from "./board-section"
+import { BoardSection, BoardSectionSkeleton } from "./board-section"
 
 // The board list follows the members' visibility switch immediately (9.3), so the page is rendered per request.
 export const dynamic = "force-dynamic"
@@ -70,7 +71,9 @@ export default function AboutPage() {
 
           <Separator />
 
-          <BoardSection />
+          <Suspense fallback={<BoardSectionSkeleton />}>
+            <BoardSection />
+          </Suspense>
         </article>
       </SiteContainer>
     </>

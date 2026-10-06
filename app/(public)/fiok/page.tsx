@@ -63,7 +63,7 @@ export default async function AccountPage() {
         <Alert>
           <CheckCircle2Icon className="text-mavet-blue" />
           <AlertTitle>Tagsága aktív</AlertTitle>
-          <AlertDescription>Érvényes {m.paidThroughYear ? `${m.paidThroughYear}. december 31-ig` : "a tagsági időszak végéig"}. A tagi anyagok és a névjegyzék a következő fejlesztési ütemben érkeznek; a profilját és a megjelenését a „Profil és megjelenés” fülön állíthatja be.</AlertDescription>
+          <AlertDescription>Érvényes {m.paidThroughYear ? `${m.paidThroughYear}. december 31-ig` : "a tagsági időszak végéig"}. A tagi névjegyzéket a „Tagi névjegyzék” fülön éri el; a profilját és a megjelenését a „Profil és megjelenés” fülön állíthatja be. A tagi szakmai anyagok a következő fejlesztési ütemben érkeznek.</AlertDescription>
         </Alert>
       ) : null}
       {m?.status === "megszunt" ? (
