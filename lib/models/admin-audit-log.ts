@@ -15,6 +15,8 @@ export const adminAuditActions = [
   "membership_restore", // membership reactivated after a revocation
   "member_delete", // member account deleted by a superadmin
   "application_delete", // closed/rejected application deleted by a superadmin
+  "member_self_delete", // member deleted their own account (9.5)
+  "member_office_change", // office / board flag set by an admin
 ] as const
 export type AdminAuditAction = (typeof adminAuditActions)[number]
 

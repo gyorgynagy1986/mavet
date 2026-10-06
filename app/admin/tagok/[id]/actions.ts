@@ -180,3 +180,29 @@ export async function deleteMember(id: string, confirmEmail: string): Promise<Me
   revalidatePath(`${ADMIN_HOME_PATH}/tagok`)
   return { ok: true, message: "A fiók törölve." }
 }
+
+/** Organisational office (elnök, bizottsági tag…) and the board flag that allows public appearance (4.1, 9.2). */
+export async function updateMemberOffice(id: string, office: string, boardMember: boolean): Promise<MemberActionResult> {
+  const g = await guard(id)
+  if (g.error) return g.error
+  const { user, session, meta } = g
+  const next = office.trim().slice(0, 120) || null
+  const before = { office: user.office ?? null, boardMember: user.boardMember ?? false }
+  if (before.office === next && before.boardMember === boardMember) return { ok: true, message: "Nincs változás." }
+  await UserModel.updateOne({ _id: user._id }, { $set: { office: next, boardMember } })
+  await logAdminAudit({
+    ...actorFromSession(session),
+    ...meta,
+    action: "member_office_change",
+    targetUserId: user._id,
+    targetEmail: user.email,
+    targetName: displayName(user),
+    changes: [
+      { field: "office", from: before.office, to: next },
+      { field: "boardMember", from: String(before.boardMember), to: String(boardMember) },
+    ],
+    summary: `Tisztség: ${next ?? "–"}; vezetőségi/bizottsági megjelenés: ${boardMember ? "igen" : "nem"}.`,
+  })
+  refresh(id)
+  return { ok: true, message: "Tisztség mentve." }
+}

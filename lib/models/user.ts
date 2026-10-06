@@ -73,6 +73,36 @@ const userSchema = new Schema(
     phone: { type: String, trim: true, maxlength: 40 },
     specialty: { type: String, trim: true, maxlength: 200 },
     workplace: { type: String, trim: true, maxlength: 200 },
+    birthPlace: { type: String, trim: true, maxlength: 120 },
+    /** Short introduction, max 500 characters (9.2). */
+    bio: { type: String, trim: true, maxlength: 500 },
+    interests: { type: [String], default: [] },
+    /** Workgroup ids the member marked in their profile (4.3: self-managed). */
+    workgroups: { type: [String], default: [] },
+    /** Organisational office (elnök, bizottsági tag…), set by the admin only (9.2). */
+    office: { type: String, trim: true, maxlength: 120, default: null },
+    /** Member may appear on the public board/committee page (admin-set, 4.1). */
+    boardMember: { type: Boolean, default: false },
+
+    photo: {
+      url: { type: String, default: null },
+      pathname: { type: String, default: null },
+      updatedAt: { type: Date, default: null },
+    },
+
+    /**
+     * Visibility (9.3): `enabled` is the single master switch (default off).
+     * The field flags decide which optional data accompanies the name.
+     */
+    visibility: {
+      enabled: { type: Boolean, default: false },
+      photo: { type: Boolean, default: true },
+      specialty: { type: Boolean, default: true },
+      workplace: { type: Boolean, default: true },
+      bio: { type: Boolean, default: true },
+      interests: { type: Boolean, default: true },
+      workgroups: { type: Boolean, default: true },
+    },
 
     membership: {
       status: { type: String, enum: membershipStatuses },
@@ -107,6 +137,7 @@ userSchema.index({ email: 1 }, { unique: true })
 userSchema.index({ activationTokenHash: 1 }, { sparse: true })
 userSchema.index({ passwordResetTokenHash: 1 }, { sparse: true })
 userSchema.index({ "membership.status": 1 })
+userSchema.index({ "visibility.enabled": 1, lastName: 1, firstName: 1 })
 
 export type User = InferSchemaType<typeof userSchema>
 export type UserDocument = User & { _id: mongoose.Types.ObjectId; createdAt: Date; updatedAt: Date }

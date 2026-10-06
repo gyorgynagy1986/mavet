@@ -35,6 +35,7 @@ export const emailTemplateKeys = [
   "admin_uj_jelentkezes",
   "jelszo_visszaallitas",
   "tagsag_megszunt",
+  "fiok_torolve",
 ] as const
 export type EmailTemplateKey = (typeof emailTemplateKeys)[number]
 
@@ -190,6 +191,18 @@ ${signature}`,
 <p>Tájékoztatjuk, hogy a Magyar Vidékegészségügyi Társaságban fennálló tagsága ({{kategoria}}) megszűnt.</p>
 <p>{{indoklas}}</p>
 <p>Fiókja megmarad, de a tagi felületek nem érhetők el. Kérdés esetén a weboldal Kapcsolat oldalán ír nekünk.</p>
+${signature}`,
+  },
+  fiok_torolve: {
+    key: "fiok_torolve",
+    name: "Fiók törölve (saját kérésre)",
+    description: "A tag saját fióktörlése után megy ki visszaigazolásként (spec 9.5).",
+    audience: "jelentkező",
+    variables: [V.nev],
+    defaultSubject: "Fiókja megszűnt – MAVET",
+    defaultHtml: `<p>Tisztelt {{nev}}!</p>
+<p>Kérésére a Magyar Vidékegészségügyi Társaság weboldalán vezetett fiókját és tagságát megszüntettük. A belépési hozzáférése és a más tagok számára látható profilja megszűnt; a jogszabály alapján kötelezően megőrzendő nyilvántartási adatok elkülönítve, a megőrzési szabályok szerint maradnak meg.</p>
+<p>Ha a jövőben újra csatlakozna, új tagsági jelentkezést indíthat a weboldalon.</p>
 ${signature}`,
   },
 }

@@ -15,6 +15,17 @@ export const workgroups = [
   "Longevity",
 ] as const
 
+/** Stable ids for the workgroups (stored on member profiles; the labels may be edited later). */
+export const workgroupOptions = [
+  { id: "telemedicina", name: "Telemedicina" },
+  { id: "mesterseges-intelligencia", name: "Mesterséges intelligencia" },
+  { id: "point-of-care", name: "Point of Care, kompetenciafejlesztés és hatáskörbővítés" },
+  { id: "ellatasszervezes", name: "Ellátásszervezés és menedzsment" },
+  { id: "humaneroforras", name: "Humánerőforrás-menedzsment és utánpótlás" },
+  { id: "longevity", name: "Longevity" },
+] as const
+export type WorkgroupId = (typeof workgroupOptions)[number]["id"]
+
 export const membershipCategories = [
   { id: "rendes", name: "Rendes tag", description: "Teljes jogú tagsági forma nagykorú természetes személyek számára, akik elfogadják a Társaság céljait és Alapszabályát.", highlights: ["Szavazati jog a Közgyűlésen", "Részvétel munkacsoportokban és bizottságokban", "Tagsági kedvezmények és szakmai szolgáltatások"], fee: "Évi 10 000 Ft orvos vagy gyógyszerész végzettséggel; egyébként 5 000 Ft.", canApply: true },
   { id: "ifjusagi", name: "Ifjúsági tag", description: "Teljes jogú tagsági forma a 35. életév betöltéséig jelentkező fiatal szakemberek számára.", highlights: ["Szavazati jog a Közgyűlésen", "Részvétel munkacsoportokban és bizottságokban", "Tagsági kedvezmények és szakmai szolgáltatások"], fee: "Évi 5 000 Ft.", canApply: true },

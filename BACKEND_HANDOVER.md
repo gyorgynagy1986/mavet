@@ -185,7 +185,16 @@ Migráció meglévő adatbázison: `npm run migrate:applications`.
   `tagsag_megszunt` levél), `restoreMembership`, `deleteMember` (SUPERADMIN;
   `users` törlés + `membership_applications` anonimizálás). Mind
   `admin_audit_logs` bejegyzéssel.
-- Fizetés, megújítás, lejáratás és profilkezelés: következő körök.
+- Profil (`/fiok/profil`, server actionök): `updateProfile` (9.2 mezők),
+  `updateVisibility` (`visibility.enabled` + mezőnkénti flagek, 9.3),
+  `uploadProfilePhoto` / `removeProfilePhoto` (sharp → WebP 512 px → Vercel
+  Blob `profil/<userId>/<ts>.webp`, `BLOB_READ_WRITE_TOKEN`). Saját fióktörlés:
+  `deleteOwnAccount` (jelszó + megerősítés; `users` törlés, jelentkezések
+  anonimizálva, `fiok_torolve` levél). Admin: `updateMemberOffice`
+  (`office`, `boardMember`). A névjegyzék és a publikus elnökségi kártyák a
+  `visibility.enabled` + `membership.status = aktiv` (+ `boardMember`) szűrésre
+  épülnek majd.
+- Fizetés, megújítás, lejáratás: következő körök.
 
 ## 6. Elvárt adatok és állapotok
 

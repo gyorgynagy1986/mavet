@@ -11,6 +11,7 @@ import { UserModel, type UserDocument } from "@/lib/models/user"
 import { categoryName, formatDate, formatDateTime } from "@/lib/server/applications"
 import { getServerAuthSession, isAdmin } from "@/lib/server/auth/session"
 import { SignOutButton } from "./sign-out-button"
+import { AccountNav } from "./account-nav"
 import { ChangePasswordForm } from "./change-password-form"
 import { Toaster } from "@/components/ui/sonner"
 
@@ -46,6 +47,7 @@ export default async function AccountPage() {
         </div>
         <SignOutButton />
       </header>
+      <AccountNav />
 
       {m?.status === "fizetesre_var" && m.feeDue ? (
         <Alert>
@@ -60,7 +62,7 @@ export default async function AccountPage() {
         <Alert>
           <CheckCircle2Icon className="text-mavet-blue" />
           <AlertTitle>Tagsága aktív</AlertTitle>
-          <AlertDescription>Érvényes {m.paidThroughYear ? `${m.paidThroughYear}. december 31-ig` : "a tagsági időszak végéig"}. A tagi anyagok, a névjegyzék és a profilbeállítások a következő fejlesztési ütemben érkeznek.</AlertDescription>
+          <AlertDescription>Érvényes {m.paidThroughYear ? `${m.paidThroughYear}. december 31-ig` : "a tagsági időszak végéig"}. A tagi anyagok és a névjegyzék a következő fejlesztési ütemben érkeznek; a profilját és a megjelenését a „Profil és megjelenés” fülön állíthatja be.</AlertDescription>
         </Alert>
       ) : null}
       {m?.status === "megszunt" ? (
@@ -94,7 +96,7 @@ export default async function AccountPage() {
       <Card>
         <CardHeader>
           <CardTitle>Adataim</CardTitle>
-          <CardDescription>A jelentkezéskor megadott adatok. A szerkesztés és a megjelenési beállítások a következő ütemben érkeznek.</CardDescription>
+          <CardDescription>A jelentkezéskor megadott adatok. Szerkesztés és megjelenési beállítások a „Profil és megjelenés” fülön.</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-3 text-sm sm:grid-cols-2">
           <div><div className="text-muted-foreground">Név</div><div className="font-medium">{fullName}</div></div>

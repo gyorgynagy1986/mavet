@@ -10,6 +10,7 @@ import { EmailLogModel, type EmailLogDocument } from "@/lib/models/email-log"
 import { UserModel, type UserDocument } from "@/lib/models/user"
 import { MEMBERSHIP_STATUS_LABEL, membershipBadgeVariant } from "@/lib/server/admin-members"
 import { categoryName, formatDateTime } from "@/lib/server/applications"
+import { workgroupOptions } from "@/lib/data/site"
 import { getServerAuthSession, isSuperAdmin } from "@/lib/server/auth/session"
 import { EMAIL_TEMPLATES, isEmailTemplateKey } from "@/lib/server/email/registry"
 import { Badge } from "@/components/ui/badge"
@@ -65,6 +66,7 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
             <CardHeader><CardTitle>Tagság</CardTitle></CardHeader>
             <CardContent>
               <dl className="space-y-3">
+                <Row label="Tisztség" value={user.office ? `${user.office}${user.boardMember ? " · publikus bemutatkozásban megjelenhet" : ""}` : "–"} />
                 <Row label="Kategória" value={`${categoryName(m.category)}${m.category === "rendes" ? (m.medicalDegree ? " · orvos/gyógyszerész" : " · nem orvos/gyógyszerész") : ""}`} />
                 <Row label="Elfogadva" value={m.acceptedAt ? formatDateTime(m.acceptedAt) : "–"} />
                 <Row label="Aktiválva" value={m.activatedAt ? formatDateTime(m.activatedAt) : "még nem"} />
@@ -86,6 +88,11 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
                 <Row label="Telefon" value={user.phone || "–"} />
                 <Row label="Szakterület" value={user.specialty || "–"} />
                 <Row label="Munkahely" value={user.workplace || "–"} />
+                <Row label="Bemutatkozás" value={user.bio || "–"} />
+                <Row label="Érdeklődés" value={user.interests?.length ? user.interests.join(", ") : "–"} />
+                <Row label="Munkacsoportok" value={user.workgroups?.length ? user.workgroups.map((w) => workgroupOptions.find((o) => o.id === w)?.name ?? w).join(", ") : "–"} />
+                <Row label="Megjelenés" value={user.visibility?.enabled ? "engedélyezve (névjegyzékben látható)" : "kikapcsolva"} />
+                <Row label="Profilkép" value={user.photo?.url ? "van" : "nincs"} />
               </dl>
             </CardContent>
           </Card>
@@ -119,6 +126,8 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
           category={m.category ?? "rendes"}
           medicalDegree={m.medicalDegree ?? null}
           canDelete={isSuperAdmin(session)}
+          office={user.office ?? null}
+          boardMember={user.boardMember ?? false}
         />
       </div>
     </div>

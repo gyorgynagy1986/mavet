@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
-import { Loader2Icon, RotateCcwIcon, SaveIcon, Trash2Icon, UserXIcon } from "lucide-react"
+import { BadgeCheckIcon, Loader2Icon, RotateCcwIcon, SaveIcon, Trash2Icon, UserXIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -13,9 +13,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { ADMIN_HOME_PATH } from "@/lib/auth-paths"
 import { membershipCategories } from "@/lib/data/site"
 import type { MembershipStatus } from "@/lib/models/user"
-import { changeMemberCategory, deleteMember, restoreMembership, revokeMembership, type MemberActionResult } from "./actions"
+import { changeMemberCategory, deleteMember, restoreMembership, revokeMembership, updateMemberOffice, type MemberActionResult } from "./actions"
 
-export function MemberActions({ id, email, status, category, medicalDegree, canDelete }: { id: string; email: string; status: MembershipStatus; category: string; medicalDegree: boolean | null; canDelete: boolean }) {
+export function MemberActions({ id, email, status, category, medicalDegree, canDelete, office: initialOffice, boardMember: initialBoard }: { id: string; email: string; status: MembershipStatus; category: string; medicalDegree: boolean | null; canDelete: boolean; office: string | null; boardMember: boolean }) {
   const router = useRouter()
   const [pending, startTransition] = useTransition()
   const [cat, setCat] = useState(category)
@@ -23,6 +23,8 @@ export function MemberActions({ id, email, status, category, medicalDegree, canD
   const [reason, setReason] = useState("")
   const [notify, setNotify] = useState(true)
   const [confirmEmail, setConfirmEmail] = useState("")
+  const [office, setOffice] = useState(initialOffice ?? "")
+  const [board, setBoard] = useState(initialBoard)
 
   function run(fn: () => Promise<MemberActionResult>, confirmText?: string, after?: () => void) {
     if (confirmText && !window.confirm(confirmText)) return
@@ -57,6 +59,27 @@ export function MemberActions({ id, email, status, category, medicalDegree, canD
           <Button variant="soft" className="w-full" disabled={pending} onClick={() => run(() => changeMemberCategory(id, cat, cat === "rendes" ? medical : null))}>
             {pending ? <Loader2Icon className="animate-spin" /> : <SaveIcon data-icon="inline-start" />}
             Kategória mentése
+          </Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Tisztség és publikus megjelenés</CardTitle>
+          <CardDescription>Szervezeti adat, a tag nem módosíthatja (spec 9.2). A vezetőségi/bizottsági jelölés engedi a publikus bemutatkozó oldalon való megjelenést, de csak akkor, ha a tag a saját profiljában bekapcsolta a megjelenést (4.1, 9.3).</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="space-y-2">
+            <Label htmlFor="office">Tisztség</Label>
+            <Input id="office" value={office} onChange={(e) => setOffice(e.target.value)} maxLength={120} placeholder="pl. elnök, alelnök, Etikai Bizottság tagja" disabled={pending} />
+          </div>
+          <label className="flex items-center gap-2 text-sm">
+            <Checkbox checked={board} onCheckedChange={(c) => setBoard(c === true)} disabled={pending} />
+            Megjelenhet a publikus elnökségi / bizottsági bemutatkozásban
+          </label>
+          <Button variant="soft" className="w-full" disabled={pending} onClick={() => run(() => updateMemberOffice(id, office, board))}>
+            <BadgeCheckIcon data-icon="inline-start" />
+            Tisztség mentése
           </Button>
         </CardContent>
       </Card>

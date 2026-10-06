@@ -4,6 +4,44 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-10-05 – Tagi profil, megjelenés engedélyezése, saját fióktörlés, tisztség
+
+### Változások
+
+- **Profil** (`/fiok/profil`, spec 9.2): titulus, név, születési adatok, cím,
+  telefon, szakterület, munkahely, bemutatkozás (500 karakter), érdeklődési
+  területek (legfeljebb 10), munkacsoport-tagság (a tag maga jelöli, 4.3).
+  E-mail, kategória és tisztség csak olvasható. Fiók almenü: Áttekintés,
+  Profil és megjelenés, Fiók törlése.
+- **Profilkép**: JPEG/PNG/WebP, max 10 MB, `sharp` négyzetesre vág és 512 px-re
+  méretez, WebP-ként a Vercel Blobba kerül (`BLOB_READ_WRITE_TOKEN`); előnézet
+  mentés előtt, csere és törlés. Token nélkül a feltöltés tiltva, érthető
+  üzenettel.
+- **Megjelenés engedélyezése** (9.3): egy fő kapcsoló (alapból ki) +
+  mezőnkénti engedélyek (kép, szakterület, munkahely, bemutatkozás,
+  érdeklődés, munkacsoportok); a szöveg jelzi, hogy általános tagként csak a
+  tagi felületen, vezetőségi jelöléssel a publikus oldalon is megjelenik.
+  Azonnal érvényes.
+- **Saját fióktörlés** (9.5, `/fiok/torles`): jelszó + „TÖRLÉS” megerősítés,
+  a fiók és a profilkép törlődik, a jelentkezési rekordok anonimizálódnak,
+  `fiok_torolve` sablonlevél, admin napló bejegyzés (`member_self_delete`).
+- **Admin, tag részletező**: tisztség (szabad szöveg) és „megjelenhet a publikus
+  elnökségi/bizottsági bemutatkozásban” jelölés (`boardMember`), naplózva
+  (`member_office_change`); a profil új mezői és a megjelenés állapota
+  látszanak.
+- Munkacsoportok stabil azonosítóval (`workgroupOptions`, `lib/data/site.ts`).
+  Új függőségek: `sharp`, `@vercel/blob`. Új env: `BLOB_READ_WRITE_TOKEN`.
+- Tesztek: 3 új (profil-normalizálás és validáció, érdeklődési lista).
+
+### Ismert korlátok
+
+- A tagi névjegyzék és a részletes tagi profil (9.4), valamint az A Társaságról
+  oldal elnökségi kártyái (4.1) a következő kör: a megjelenési adatok már
+  rendelkezésre állnak hozzá.
+- A munkacsoport-csatlakozási űrlap (4.3, e-mail a vezetőnek) még nincs.
+
+---
+
 ## 2026-10-04 – Admin: Tagok (kategória, tagság visszavonása, fiók törlése)
 
 ### Változások
