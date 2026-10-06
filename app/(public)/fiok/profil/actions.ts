@@ -72,6 +72,8 @@ export async function updateProfile(raw: Partial<Record<keyof ProfileInput, unkn
 export async function updateVisibility(input: VisibilityInput): Promise<ProfileActionResult> {
   const user = await currentMember()
   if (!user) return { ok: false, message: "Bejelentkezés szükséges." }
+  const limit = await rateLimit("profile-visibility", user._id.toString(), 60, "10 m")
+  if (!limit.allowed) return { ok: false, message: "Túl sok módosítás rövid idő alatt; próbálja újra kicsit később." }
   const flags = {
     enabled: input.enabled === true,
     photo: input.photo !== false,
@@ -81,7 +83,8 @@ export async function updateVisibility(input: VisibilityInput): Promise<ProfileA
     interests: input.interests !== false,
     workgroups: input.workgroups !== false,
   }
-  await UserModel.updateOne({ _id: user._id }, { $set: { visibility: flags } })
+  const result = await UserModel.updateOne({ _id: user._id }, { $set: { visibility: flags } })
+  if (result.matchedCount !== 1) return { ok: false, message: "A beállítás mentése nem sikerült." }
   refresh()
   return { ok: true, message: flags.enabled ? "Megjelenés engedélyezve." : "Megjelenés kikapcsolva: a neve sehol nem jelenik meg más tagoknak." }
 }

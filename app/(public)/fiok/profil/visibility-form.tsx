@@ -1,10 +1,9 @@
 "use client"
 
-import { useState, useTransition } from "react"
+import { useRef, useState, useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
-import { EyeIcon, EyeOffIcon, SaveIcon } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { EyeIcon, EyeOffIcon } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Switch } from "@/components/ui/switch"
@@ -26,15 +25,27 @@ export function VisibilityForm({ initial, boardMember, office }: { initial: Flag
   const router = useRouter()
   const [flags, setFlags] = useState<Flags>(initial)
   const [pending, startTransition] = useTransition()
-  const dirty = JSON.stringify(flags) !== JSON.stringify(initial)
+  const saved = useRef<Flags>(initial)
 
-  function save() {
+  /** Every change is saved at once (9.3: no approval step); on failure the switch jumps back. */
+  function apply(next: Flags) {
+    const previous = saved.current
+    setFlags(next)
     startTransition(async () => {
-      const r = await updateVisibility(flags)
-      if (r.ok) {
-        toast.success(r.message)
-        router.refresh()
-      } else toast.error(r.message)
+      try {
+        const r = await updateVisibility(next)
+        if (r.ok) {
+          saved.current = next
+          toast.success(r.message)
+          router.refresh()
+        } else {
+          setFlags(previous)
+          toast.error(r.message)
+        }
+      } catch {
+        setFlags(previous)
+        toast.error("A beállítás mentése nem sikerült. Próbálja újra.")
+      }
     })
   }
 
@@ -53,25 +64,23 @@ export function VisibilityForm({ initial, boardMember, office }: { initial: Flag
       </CardHeader>
       <CardContent className="space-y-5">
         <label className="flex items-center gap-3 text-sm font-semibold">
-          <Switch checked={flags.enabled} onCheckedChange={(c) => setFlags((f) => ({ ...f, enabled: c === true }))} disabled={pending} />
+          <Switch checked={flags.enabled} onCheckedChange={(c) => apply({ ...flags, enabled: c === true })} disabled={pending} />
           {flags.enabled ? "Engedélyezve" : "Kikapcsolva"}
+          {pending ? <Spinner className="size-4 text-muted-foreground" /> : null}
         </label>
         <fieldset className={!flags.enabled ? "opacity-50" : undefined} disabled={!flags.enabled || pending}>
           <legend className="mb-2 text-sm text-muted-foreground">A név mellett megjeleníthető adatok:</legend>
           <div className="grid gap-2 sm:grid-cols-2">
             {FIELDS.map((f) => (
               <label key={f.key} className="flex items-center gap-2 text-sm">
-                <Checkbox checked={flags[f.key]} onCheckedChange={(c) => setFlags((prev) => ({ ...prev, [f.key]: c === true }))} />
+                <Checkbox checked={flags[f.key]} onCheckedChange={(c) => apply({ ...flags, [f.key]: c === true })} />
                 {f.label}
               </label>
             ))}
           </div>
           <p className="mt-2 text-xs text-muted-foreground">Elérhetőségi, születési és fizetési adatok soha nem jelennek meg más tagoknak.</p>
         </fieldset>
-        <Button variant="soft" onClick={save} disabled={pending || !dirty}>
-          {pending ? <Spinner data-icon="inline-start" /> : <SaveIcon data-icon="inline-start" />}
-          Beállítások mentése
-        </Button>
+        <p className="text-xs text-muted-foreground">Minden változtatás azonnal mentésre kerül, külön mentés gomb nincs.</p>
       </CardContent>
     </Card>
   )
