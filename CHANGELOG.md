@@ -23,8 +23,14 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
   megjelenés engedélyezve + aktív tagság), név szerinti ábécérendben, kézi
   sorrend nélkül (4.1); a kártyán név, tisztség, engedélyezett portré és
   profilhivatkozás. Ha nincs megjeleníthető személy vagy az
-  adatbázis nem érhető el, marad a „hamarosan” szöveg. Az oldal emiatt kérésenként
-  renderelődik, így a kapcsoló azonnal érvényes (9.3).
+  adatbázis nem érhető el, marad a „hamarosan” szöveg. Az oldal statikus (CDN),
+  és minden olyan server action újragenerálja (`revalidatePublicPages()`,
+  `lib/server/revalidate-public.ts`), amely a listát módosíthatja: megjelenés,
+  profil, kép, tisztség, tagsági állapot, fióktörlés; óránkénti revalidálás
+  biztonsági hálóként. Így a kapcsoló azonnal érvényes (9.3).
+- **Betöltési vázak**: `loading.tsx` a `/fiok` (és aloldalai), `/tagok`,
+  `/tagok/[id]` és a vezetőségi profil útvonalakon; az A Társaságról oldalon a
+  vezetőségi rész `Suspense` határban. Navigáció azonnal, a tartalom streamelve.
 - **Beszédes cím a vezetőségi profiloknak**: `/a-tarsasagrol/vezetoseg/<nev>`
   (`users.slug`, a névből titulus és ékezet nélkül; névütközésnél sorszám;
   egyedi, ritka index). A cím az első vezetőségi jelöléskor rögzül, névváltozáskor

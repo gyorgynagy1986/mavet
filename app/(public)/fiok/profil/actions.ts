@@ -7,6 +7,7 @@ import { UserModel, type UserDocument } from "@/lib/models/user"
 import { getServerAuthSession } from "@/lib/server/auth/session"
 import { isBlobConfigured, photoDebug, purgeProfilePhotos, storeProfilePhoto } from "@/lib/server/profile-photo"
 import { rateLimit } from "@/lib/server/rate-limit"
+import { revalidatePublicPages } from "@/lib/server/revalidate-public"
 import { parseIsoDate } from "@/lib/validation/membership-application"
 import { normalizePhone } from "@/lib/validation/phone"
 import { PHOTO_MESSAGES, photoFileError } from "@/lib/validation/photo"
@@ -26,6 +27,7 @@ async function currentMember(): Promise<UserDocument | null> {
 function refresh() {
   revalidatePath(`${MEMBER_ACCOUNT_PATH}/profil`)
   revalidatePath(MEMBER_ACCOUNT_PATH)
+  revalidatePublicPages()
 }
 
 /** Personal and professional data (9.2). Category, office and membership data are never touched here. */

@@ -5,8 +5,12 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import { Separator } from "@/components/ui/separator"
 import { BoardSection, BoardSectionSkeleton } from "./board-section"
 
-// The board list follows the members' visibility switch immediately (9.3), so the page is rendered per request.
-export const dynamic = "force-dynamic"
+/**
+ * Static page served from the CDN. The board list changes only through server actions, and each of them
+ * calls `revalidatePublicPages()`, so the visibility switch of 9.3 still takes effect at once. The hourly
+ * revalidation is only a safety net.
+ */
+export const revalidate = 3600
 
 export default function AboutPage() {
   return (

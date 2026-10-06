@@ -14,6 +14,7 @@ import { getServerAuthSession, isAdmin, isSuperAdmin } from "@/lib/server/auth/s
 import { sendTemplatedMail } from "@/lib/server/email/send"
 import { ensureProfileSlug } from "@/lib/server/directory"
 import { purgeProfilePhotos } from "@/lib/server/profile-photo"
+import { revalidatePublicPages } from "@/lib/server/revalidate-public"
 
 export type MemberActionResult = { ok: true; message: string } | { ok: false; message: string }
 
@@ -40,6 +41,7 @@ async function guard(id: string, superOnly = false): Promise<Guarded> {
 function refresh(id: string) {
   revalidatePath(`${ADMIN_HOME_PATH}/tagok/${id}`)
   revalidatePath(`${ADMIN_HOME_PATH}/tagok`)
+  revalidatePublicPages()
 }
 
 function displayName(u: UserDocument): string {
@@ -181,6 +183,7 @@ export async function deleteMember(id: string, confirmEmail: string): Promise<Me
     summary: "Tagi fiók véglegesen törölve; a jelentkezési rekordok anonimizálva.",
   })
   revalidatePath(`${ADMIN_HOME_PATH}/tagok`)
+  revalidatePublicPages()
   return { ok: true, message: "A fiók törölve." }
 }
 
