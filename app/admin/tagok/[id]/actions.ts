@@ -12,6 +12,7 @@ import { categoryName } from "@/lib/server/applications"
 import { actorFromSession, logAdminAudit } from "@/lib/server/auth/admin-audit"
 import { getServerAuthSession, isAdmin, isSuperAdmin } from "@/lib/server/auth/session"
 import { sendTemplatedMail } from "@/lib/server/email/send"
+import { purgeProfilePhotos } from "@/lib/server/profile-photo"
 
 export type MemberActionResult = { ok: true; message: string } | { ok: false; message: string }
 
@@ -165,6 +166,7 @@ export async function deleteMember(id: string, confirmEmail: string): Promise<Me
     continueTokenExpiresAt: null,
   }
   await MembershipApplicationModel.updateMany({ email: user.email }, { $set: anonymised })
+  await purgeProfilePhotos(user._id.toString())
   await UserModel.deleteOne({ _id: user._id })
 
   await logAdminAudit({

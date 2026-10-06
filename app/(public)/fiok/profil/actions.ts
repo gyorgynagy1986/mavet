@@ -5,9 +5,10 @@ import dbConnect from "@/lib/db-connect"
 import { MEMBER_ACCOUNT_PATH } from "@/lib/auth-paths"
 import { UserModel, type UserDocument } from "@/lib/models/user"
 import { getServerAuthSession } from "@/lib/server/auth/session"
-import { deleteProfilePhoto, storeProfilePhoto } from "@/lib/server/profile-photo"
+import { isBlobConfigured, purgeProfilePhotos, storeProfilePhoto } from "@/lib/server/profile-photo"
 import { rateLimit } from "@/lib/server/rate-limit"
 import { parseIsoDate } from "@/lib/validation/membership-application"
+import { PHOTO_MESSAGES, photoFileError } from "@/lib/validation/photo"
 import { normalizeProfile, parseInterests, validateProfile, type ProfileErrors, type ProfileInput } from "@/lib/validation/profile"
 
 export type ProfileActionResult = { ok: true; message: string } | { ok: false; message: string; errors?: ProfileErrors }
@@ -82,28 +83,34 @@ export async function updateVisibility(input: VisibilityInput): Promise<ProfileA
   return { ok: true, message: flags.enabled ? "Megjelenés engedélyezve." : "Megjelenés kikapcsolva: a neve sehol nem jelenik meg más tagoknak." }
 }
 
-/** Photo upload (FormData with `photo`); replaces the previous one. */
+/** Photo upload (FormData with `photo`); replaces the previous one, which is deleted from the store. */
 export async function uploadProfilePhoto(formData: FormData): Promise<ProfileActionResult> {
   const user = await currentMember()
-  if (!user) return { ok: false, message: "Bejelentkezés szükséges." }
-  const limit = await rateLimit("profile-photo", user._id.toString(), 10, "1 h")
-  if (!limit.allowed) return { ok: false, message: "Túl sok képfeltöltés; próbálja újra később." }
+  if (!user) return { ok: false, message: PHOTO_MESSAGES.auth }
   const file = formData.get("photo")
-  if (!(file instanceof File) || file.size === 0) return { ok: false, message: "Válasszon ki egy képet." }
+  const invalid = photoFileError(file instanceof File ? file : null)
+  if (invalid || !(file instanceof File)) return { ok: false, message: invalid ?? PHOTO_MESSAGES.missing }
+  const limit = await rateLimit("profile-photo", user._id.toString(), 10, "1 h")
+  if (!limit.allowed) return { ok: false, message: PHOTO_MESSAGES.rateLimit }
 
-  const stored = await storeProfilePhoto(user._id.toString(), file)
+  const userId = user._id.toString()
+  const stored = await storeProfilePhoto(userId, file)
   if (!stored.ok) return stored
-  await deleteProfilePhoto(user.photo?.url)
   await UserModel.updateOne({ _id: user._id }, { $set: { photo: { url: stored.url, pathname: stored.pathname, updatedAt: new Date() } } })
+  // Old photos are removed only after the new one is saved; a failure here is logged and retried on the next upload or removal.
+  await purgeProfilePhotos(userId, stored.url)
   refresh()
-  return { ok: true, message: "Profilkép mentve." }
+  return { ok: true, message: PHOTO_MESSAGES.saved }
 }
 
+/** Removes the photo from the Blob store first; the profile is only cleared once the file is really gone. */
 export async function removeProfilePhoto(): Promise<ProfileActionResult> {
   const user = await currentMember()
-  if (!user) return { ok: false, message: "Bejelentkezés szükséges." }
-  await deleteProfilePhoto(user.photo?.url)
+  if (!user) return { ok: false, message: PHOTO_MESSAGES.auth }
+  if (!isBlobConfigured()) return { ok: false, message: PHOTO_MESSAGES.notConfigured }
+  const purged = await purgeProfilePhotos(user._id.toString())
+  if (!purged) return { ok: false, message: PHOTO_MESSAGES.deleteFailed }
   await UserModel.updateOne({ _id: user._id }, { $set: { photo: { url: null, pathname: null, updatedAt: null } } })
   refresh()
-  return { ok: true, message: "Profilkép eltávolítva." }
+  return { ok: true, message: PHOTO_MESSAGES.removed }
 }

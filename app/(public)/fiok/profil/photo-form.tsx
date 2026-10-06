@@ -7,7 +7,38 @@ import { ImageIcon, Trash2Icon, UploadIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Spinner } from "@/components/ui/spinner"
+import { PHOTO_ACCEPT, PHOTO_MESSAGES, PHOTO_SIZE, photoFileError } from "@/lib/validation/photo"
 import { removeProfilePhoto, uploadProfilePhoto } from "./actions"
+
+/** Stays under the 4.5 MB request limit of Vercel functions. */
+const UPLOAD_MAX_BYTES = 4 * 1024 * 1024
+/** Twice the stored size, so the server-side crop still has detail to work with. */
+const CLIENT_MAX_EDGE = PHOTO_SIZE * 2
+
+/**
+ * Always shrinks the photo in the browser and converts it to WebP (JPEG where the browser cannot encode WebP),
+ * so the upload is small. The server crops it to the final square WebP in every case.
+ */
+async function downscale(file: File): Promise<File> {
+  try {
+    const bitmap = await createImageBitmap(file, { imageOrientation: "from-image" })
+    const scale = Math.min(1, CLIENT_MAX_EDGE / Math.max(bitmap.width, bitmap.height))
+    const canvas = document.createElement("canvas")
+    canvas.width = Math.max(1, Math.round(bitmap.width * scale))
+    canvas.height = Math.max(1, Math.round(bitmap.height * scale))
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return file
+    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height)
+    bitmap.close()
+    const encode = (type: string) => new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, type, 0.9))
+    let blob = await encode("image/webp")
+    if (!blob || blob.type !== "image/webp") blob = await encode("image/jpeg")
+    if (!blob) return file
+    return new File([blob], blob.type === "image/webp" ? "profil.webp" : "profil.jpg", { type: blob.type })
+  } catch {
+    return file
+  }
+}
 
 export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; configured: boolean }) {
   const router = useRouter()
@@ -17,6 +48,12 @@ export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; c
   const [busy, setBusy] = useState(false)
 
   function pick(f: File | null) {
+    const invalid = f ? photoFileError(f) : null
+    if (invalid) {
+      toast.error(invalid)
+      if (inputRef.current) inputRef.current.value = ""
+      f = null
+    }
     setFile(f)
     setPreview(f ? URL.createObjectURL(f) : null)
   }
@@ -24,27 +61,43 @@ export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; c
   async function upload() {
     if (!file) return
     setBusy(true)
-    const fd = new FormData()
-    fd.set("photo", file)
-    const r = await uploadProfilePhoto(fd)
-    if (r.ok) {
-      toast.success(r.message)
-      pick(null)
-      if (inputRef.current) inputRef.current.value = ""
-      router.refresh()
-    } else toast.error(r.message)
-    setBusy(false)
+    try {
+      const prepared = await downscale(file)
+      if (prepared.size > UPLOAD_MAX_BYTES) {
+        toast.error(PHOTO_MESSAGES.tooLargeToSend)
+        return
+      }
+      const fd = new FormData()
+      fd.set("photo", prepared)
+      const r = await uploadProfilePhoto(fd)
+      if (r.ok) {
+        toast.success(r.message)
+        pick(null)
+        if (inputRef.current) inputRef.current.value = ""
+        router.refresh()
+      } else toast.error(r.message)
+    } catch (error) {
+      console.error("[photo-form] upload failed:", error)
+      toast.error(PHOTO_MESSAGES.network)
+    } finally {
+      setBusy(false)
+    }
   }
 
   async function remove() {
-    if (!window.confirm("Eltávolítja a profilképét?")) return
+    if (!window.confirm("Eltávolítja a profilképét? A kép a tárolóból is végleg törlődik.")) return
     setBusy(true)
-    const r = await removeProfilePhoto()
-    if (r.ok) {
-      toast.success(r.message)
-      router.refresh()
-    } else toast.error(r.message)
-    setBusy(false)
+    try {
+      const r = await removeProfilePhoto()
+      if (r.ok) {
+        toast.success(r.message)
+        router.refresh()
+      } else toast.error(r.message)
+    } catch {
+      toast.error(PHOTO_MESSAGES.deleteFailed)
+    } finally {
+      setBusy(false)
+    }
   }
 
   const shown = preview ?? photoUrl
@@ -53,7 +106,7 @@ export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; c
     <Card>
       <CardHeader>
         <CardTitle>Profilkép</CardTitle>
-        <CardDescription>JPEG, PNG vagy WebP, legfeljebb 10 MB. A képet a rendszer négyzetesre vágja és 512 képpontra méretezi; mentés előtt előnézetet mutat.</CardDescription>
+        <CardDescription>JPEG, PNG vagy WebP, legfeljebb 10 MB. A rendszer minden képet négyzetesre vág, 512 képpontra kicsinyít és WebP formátumban tárol; mentés előtt előnézetet mutat.</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-start">
         <div className="flex size-32 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-muted">
@@ -69,7 +122,7 @@ export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; c
           <input
             ref={inputRef}
             type="file"
-            accept="image/jpeg,image/png,image/webp"
+            accept={PHOTO_ACCEPT}
             aria-label="Profilkép kiválasztása"
             onChange={(e) => pick(e.target.files?.[0] ?? null)}
             disabled={busy || !configured}

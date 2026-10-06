@@ -8,7 +8,7 @@ import { logAdminAudit } from "@/lib/server/auth/admin-audit"
 import { getServerAuthSession } from "@/lib/server/auth/session"
 import { sendTemplatedMail } from "@/lib/server/email/send"
 import { verifyPassword } from "@/lib/server/members"
-import { deleteProfilePhoto } from "@/lib/server/profile-photo"
+import { purgeProfilePhotos } from "@/lib/server/profile-photo"
 import { rateLimit } from "@/lib/server/rate-limit"
 
 export type DeleteAccountResult = { ok: true } | { ok: false; message: string }
@@ -36,7 +36,7 @@ export async function deleteOwnAccount(password: string, confirmation: string): 
     { email: user.email },
     { $set: { title: "", lastName: "Törölt", firstName: "tag", email: `torolt-${user._id.toString()}@anonim.mavet`, birthDate: undefined, address: undefined, phone: undefined, specialty: undefined, workplace: undefined, internalNote: null, continueTokenHash: null, continueTokenExpiresAt: null } },
   )
-  await deleteProfilePhoto(user.photo?.url)
+  await purgeProfilePhotos(user._id.toString())
   await UserModel.deleteOne({ _id: user._id })
 
   await sendTemplatedMail({ key: "fiok_torolve", to: user.email, triggeredBy: "system", vars: { nev: name } })
