@@ -1,13 +1,13 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { ImageIcon, Trash2Icon, UploadIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Spinner } from "@/components/ui/spinner"
-import { PHOTO_ACCEPT, PHOTO_MESSAGES, PHOTO_SIZE, photoFileError } from "@/lib/validation/photo"
+import { PHOTO_ACCEPT, PHOTO_MESSAGES, PHOTO_SIZE, PROFILE_SAVE_EVENT, photoFileError } from "@/lib/validation/photo"
 import { removeProfilePhoto, uploadProfilePhoto } from "./actions"
 
 /** Stays under the 4.5 MB request limit of Vercel functions. */
@@ -59,10 +59,11 @@ export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; c
   }
 
   async function upload() {
-    if (!file) return
+    if (!file || busy) return
     setBusy(true)
     try {
       const prepared = await downscale(file)
+      console.log("[profile-photo:debug] client:prepared", { original: { type: file.type, size: file.size }, sent: { type: prepared.type, size: prepared.size } })
       if (prepared.size > UPLOAD_MAX_BYTES) {
         toast.error(PHOTO_MESSAGES.tooLargeToSend)
         return
@@ -70,6 +71,7 @@ export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; c
       const fd = new FormData()
       fd.set("photo", prepared)
       const r = await uploadProfilePhoto(fd)
+      console.log("[profile-photo:debug] client:result", r)
       if (r.ok) {
         toast.success(r.message)
         pick(null)
@@ -100,13 +102,31 @@ export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; c
     }
   }
 
+  // Saving the profile form also saves a pending photo; leaving the page with one asks for confirmation.
+  const uploadRef = useRef(upload)
+  useEffect(() => {
+    uploadRef.current = upload
+  })
+  const pending = Boolean(file)
+  useEffect(() => {
+    if (!pending) return
+    const onSave = () => void uploadRef.current()
+    const onLeave = (event: BeforeUnloadEvent) => event.preventDefault()
+    window.addEventListener(PROFILE_SAVE_EVENT, onSave)
+    window.addEventListener("beforeunload", onLeave)
+    return () => {
+      window.removeEventListener(PROFILE_SAVE_EVENT, onSave)
+      window.removeEventListener("beforeunload", onLeave)
+    }
+  }, [pending])
+
   const shown = preview ?? photoUrl
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>Profilkép</CardTitle>
-        <CardDescription>JPEG, PNG vagy WebP, legfeljebb 10 MB. A rendszer minden képet négyzetesre vág, 512 képpontra kicsinyít és WebP formátumban tárol; mentés előtt előnézetet mutat.</CardDescription>
+        <CardDescription>JPEG, PNG vagy WebP, legfeljebb 10 MB.</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-start">
         <div className="flex size-32 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-muted">
@@ -128,10 +148,15 @@ export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; c
             disabled={busy || !configured}
             className="text-sm file:mr-3 file:rounded-md file:border file:border-border file:bg-background file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-mavet-navy hover:file:bg-muted"
           />
+          {preview ? (
+            <p role="status" className="rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-900">
+              Ez még csak előnézet, a kép nincs mentve. Mentse a „Kép mentése” gombbal, vagy a profil mentésével együtt.
+            </p>
+          ) : null}
           <div className="flex flex-wrap gap-2">
             <Button onClick={upload} disabled={busy || !file || !configured}>
               {busy ? <Spinner data-icon="inline-start" /> : <UploadIcon data-icon="inline-start" />}
-              {preview ? "Előnézet mentése" : "Feltöltés"}
+              {preview ? "Kép mentése" : "Feltöltés"}
             </Button>
             {preview ? (
               <Button variant="outline" onClick={() => { pick(null); if (inputRef.current) inputRef.current.value = "" }} disabled={busy}>Elvetés</Button>

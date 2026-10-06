@@ -13,6 +13,7 @@ import { Spinner } from "@/components/ui/spinner"
 import { Textarea } from "@/components/ui/textarea"
 import { workgroupOptions } from "@/lib/data/site"
 import { BIO_MAX, validateProfile, type ProfileErrors, type ProfileInput } from "@/lib/validation/profile"
+import { PROFILE_SAVE_EVENT } from "@/lib/validation/photo"
 import { updateProfile } from "./actions"
 
 export function ProfileForm({ initial, email, category, office }: { initial: ProfileInput; email: string; category: string; office: string | null }) {
@@ -31,6 +32,8 @@ export function ProfileForm({ initial, email, category, office }: { initial: Pro
     setErrors(local)
     if (Object.keys(local).length > 0) return
     setBusy(true)
+    // A picked photo that was not saved separately goes up together with the profile.
+    window.dispatchEvent(new Event(PROFILE_SAVE_EVENT))
     const r = await updateProfile(form)
     if (r.ok) {
       toast.success(r.message)

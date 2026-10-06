@@ -5,7 +5,7 @@ import dbConnect from "@/lib/db-connect"
 import { MEMBER_ACCOUNT_PATH } from "@/lib/auth-paths"
 import { UserModel, type UserDocument } from "@/lib/models/user"
 import { getServerAuthSession } from "@/lib/server/auth/session"
-import { isBlobConfigured, purgeProfilePhotos, storeProfilePhoto } from "@/lib/server/profile-photo"
+import { isBlobConfigured, photoDebug, purgeProfilePhotos, storeProfilePhoto } from "@/lib/server/profile-photo"
 import { rateLimit } from "@/lib/server/rate-limit"
 import { parseIsoDate } from "@/lib/validation/membership-application"
 import { PHOTO_MESSAGES, photoFileError } from "@/lib/validation/photo"
@@ -88,6 +88,7 @@ export async function uploadProfilePhoto(formData: FormData): Promise<ProfileAct
   const user = await currentMember()
   if (!user) return { ok: false, message: PHOTO_MESSAGES.auth }
   const file = formData.get("photo")
+  photoDebug("action:received", { userId: user._id.toString(), isFile: file instanceof File, type: file instanceof File ? file.type : typeof file, size: file instanceof File ? file.size : null, previousUrl: user.photo?.url ?? null })
   const invalid = photoFileError(file instanceof File ? file : null)
   if (invalid || !(file instanceof File)) return { ok: false, message: invalid ?? PHOTO_MESSAGES.missing }
   const limit = await rateLimit("profile-photo", user._id.toString(), 10, "1 h")
@@ -95,10 +96,15 @@ export async function uploadProfilePhoto(formData: FormData): Promise<ProfileAct
 
   const userId = user._id.toString()
   const stored = await storeProfilePhoto(userId, file)
-  if (!stored.ok) return stored
-  await UserModel.updateOne({ _id: user._id }, { $set: { photo: { url: stored.url, pathname: stored.pathname, updatedAt: new Date() } } })
+  if (!stored.ok) {
+    photoDebug("action:store-failed", { message: stored.message })
+    return stored
+  }
+  const write = await UserModel.updateOne({ _id: user._id }, { $set: { photo: { url: stored.url, pathname: stored.pathname, updatedAt: new Date() } } })
+  const saved = await UserModel.findById(user._id).select("photo").lean<Pick<UserDocument, "photo"> | null>()
+  photoDebug("action:db-updated", { matched: write.matchedCount, modified: write.modifiedCount, photoInDb: saved?.photo ?? null })
   // Old photos are removed only after the new one is saved; a failure here is logged and retried on the next upload or removal.
-  await purgeProfilePhotos(userId, stored.url)
+  await purgeProfilePhotos(userId, { url: stored.url, pathname: stored.pathname })
   refresh()
   return { ok: true, message: PHOTO_MESSAGES.saved }
 }

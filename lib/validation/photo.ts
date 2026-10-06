@@ -28,3 +28,6 @@ export function photoFileError(file: { type: string; size: number } | null | und
   if (file.size > PHOTO_MAX_BYTES) return PHOTO_MESSAGES.size
   return null
 }
+
+/** Browser event fired when the profile form is saved, so a picked but not yet saved photo is uploaded with it. */
+export const PROFILE_SAVE_EVENT = "mavet:profile-save"
