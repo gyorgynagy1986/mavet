@@ -83,6 +83,12 @@ const userSchema = new Schema(
     office: { type: String, trim: true, maxlength: 120, default: null },
     /** Member may appear on the public board/committee page (admin-set, 4.1). */
     boardMember: { type: Boolean, default: false },
+    /**
+     * Readable address of the public board profile (`/a-tarsasagrol/vezetoseg/<slug>`). Set once, when the
+     * member first becomes a board member, and never rewritten on a name change, so shared links keep working.
+     * No default: the unique index is sparse, so the field must be absent until a slug exists.
+     */
+    slug: { type: String, trim: true, lowercase: true, maxlength: 80 },
 
     photo: {
       url: { type: String, default: null },
@@ -136,6 +142,7 @@ const userSchema = new Schema(
 userSchema.index({ email: 1 }, { unique: true })
 userSchema.index({ activationTokenHash: 1 }, { sparse: true })
 userSchema.index({ passwordResetTokenHash: 1 }, { sparse: true })
+userSchema.index({ slug: 1 }, { unique: true, sparse: true })
 userSchema.index({ "membership.status": 1 })
 userSchema.index({ "visibility.enabled": 1, lastName: 1, firstName: 1 })
 

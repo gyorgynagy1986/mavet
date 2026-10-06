@@ -9,6 +9,7 @@ import { categoryName, continueUrl, findByContinueToken, formatDateTime, fullNam
 import { sendTemplatedMail } from "@/lib/server/email/send"
 import { getNotificationRecipient } from "@/lib/server/mail"
 import { hashIp, rateLimit } from "@/lib/server/rate-limit"
+import { normalizePhone } from "@/lib/validation/phone"
 import { normalizeFullForm, parseIsoDate, validateFullForm, type FullFormErrors, type FullFormInput } from "@/lib/validation/membership-application"
 
 export type SaveResult = { ok: true; savedAt: string } | { ok: false; message: string }
@@ -26,7 +27,8 @@ function toUpdate(input: FullFormInput) {
     "address.city": input.city,
     "address.street": input.street,
     "address.country": input.country,
-    phone: input.phone,
+    // A draft may hold a half-typed number; it is kept as typed until it parses.
+    phone: normalizePhone(input.phone) ?? input.phone,
     specialty: input.specialty,
     workplace: input.noWorkplace ? "" : input.workplace,
     noWorkplace: input.noWorkplace,

@@ -10,9 +10,8 @@ import { Button } from "@/components/ui/button"
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Spinner } from "@/components/ui/spinner"
-import { MEMBER_ACCOUNT_PATH } from "@/lib/auth-paths"
 
-export function MemberLoginForm({ justActivated }: { justActivated: boolean }) {
+export function MemberLoginForm({ justActivated, returnTo }: { justActivated: boolean; returnTo: string }) {
   const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -25,7 +24,7 @@ export function MemberLoginForm({ justActivated }: { justActivated: boolean }) {
     setError(null)
     const result = await signIn("member-password", { email, password, redirect: false })
     if (result?.ok) {
-      router.replace(MEMBER_ACCOUNT_PATH)
+      router.replace(returnTo)
       router.refresh()
       return
     }

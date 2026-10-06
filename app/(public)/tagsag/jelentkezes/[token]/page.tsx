@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import dbConnect from "@/lib/db-connect"
 import { MembershipApplicationModel, unfinishedApplicationStatuses, type MembershipApplicationCategory, type MembershipApplicationDocument } from "@/lib/models/membership-application"
 import { categoryName, findByContinueToken, formatDateTime, fullName, hashToken } from "@/lib/server/applications"
+import { formatPhone } from "@/lib/validation/phone"
 import { FullApplicationForm } from "./full-application-form"
 
 export const dynamic = "force-dynamic"
@@ -77,7 +78,7 @@ export default async function ContinueApplicationPage({ params }: { params: Prom
                 city: app.address?.city ?? "",
                 street: app.address?.street ?? "",
                 country: app.address?.country ?? "Magyarország",
-                phone: app.phone ?? "",
+                phone: formatPhone(app.phone),
                 specialty: app.specialty ?? "",
                 workplace: app.workplace ?? "",
                 noWorkplace: app.noWorkplace ?? false,

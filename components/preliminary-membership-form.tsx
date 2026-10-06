@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, type FormEvent } from "react"
+import { useRef, useState, type FormEvent } from "react"
 import Link from "next/link"
 import { CheckCircle2Icon, SendIcon } from "lucide-react"
 import { preliminaryMembershipCategories, privacyNoticeVersion } from "@/lib/data/site"
@@ -21,6 +21,7 @@ export function PreliminaryMembershipForm({ initialCategory = "" }: { initialCat
   const [status, setStatus] = useState<Status>("idle")
   const [category, setCategory] = useState(initialCategory)
   const [errors, setErrors] = useState<Errors>({})
+  const confirmedTypo = useRef("")
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -30,7 +31,9 @@ export function PreliminaryMembershipForm({ initialCategory = "" }: { initialCat
     const firstName = String(formData.get("firstName") ?? "").trim()
     const email = String(formData.get("email") ?? "").trim()
     const consent = formData.get("consent") === "on"
-    const emailResult = validateEmail(email)
+    // A suspected typo is shown once; sending the same address again accepts it.
+    const emailResult = validateEmail(email, { allowTypo: confirmedTypo.current === email.toLowerCase() })
+    if (!emailResult.ok && emailResult.reason === "typo") confirmedTypo.current = email.toLowerCase()
     const nextErrors: Errors = {
       category: category ? undefined : "Válasszon tagsági kategóriát.",
       lastName: lastName ? undefined : "Adja meg a vezetéknevét.",

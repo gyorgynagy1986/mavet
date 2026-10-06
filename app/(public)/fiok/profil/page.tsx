@@ -8,6 +8,7 @@ import { UserModel, type UserDocument } from "@/lib/models/user"
 import { categoryName } from "@/lib/server/applications"
 import { getServerAuthSession, isAdmin } from "@/lib/server/auth/session"
 import { isBlobConfigured } from "@/lib/server/profile-photo"
+import { formatPhone } from "@/lib/validation/phone"
 import { AccountNav } from "../account-nav"
 import { SignOutButton } from "../sign-out-button"
 import { ProfileForm } from "./profile-form"
@@ -73,7 +74,7 @@ export default async function ProfilePage() {
           city: user.address?.city ?? "",
           street: user.address?.street ?? "",
           country: user.address?.country ?? "",
-          phone: user.phone ?? "",
+          phone: formatPhone(user.phone),
           specialty: user.specialty ?? "",
           workplace: user.workplace ?? "",
           bio: user.bio ?? "",

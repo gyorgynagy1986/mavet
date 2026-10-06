@@ -1,4 +1,5 @@
 import type { MembershipApplicationCategory } from "@/lib/models/membership-application"
+import { PHONE_ERROR, isValidPhone } from "@/lib/validation/phone"
 
 /**
  * Validation of the full application form (specification 7.1). Shared by the
@@ -26,8 +27,6 @@ export const fullFormFields: FullFormField[] = ["birthDate", "postalCode", "city
 
 export const IFJUSAGI_MAX_AGE = 35
 export const MIN_AGE = 18
-
-const PHONE_PATTERN = /^\+?[0-9 ()/-]{6,30}$/
 
 export function parseIsoDate(value: string): Date | null {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null
@@ -84,7 +83,7 @@ export function validateFullForm(input: FullFormInput, category: MembershipAppli
   if (!input.street) errors.street = "Adja meg a címet (utca, házszám)."
   if (!input.country) errors.country = "Adja meg az országot."
   if (!input.phone) errors.phone = "Adja meg a telefonszámát."
-  else if (!PHONE_PATTERN.test(input.phone)) errors.phone = "Adjon meg egy érvényes telefonszámot."
+  else if (!isValidPhone(input.phone)) errors.phone = PHONE_ERROR
   if (!input.specialty) errors.specialty = category === "hallgatoi" ? "Adja meg a tanulmányi területét." : "Adja meg a szakterületét."
 
   if (category !== "hallgatoi" && !input.noWorkplace && !input.workplace) {

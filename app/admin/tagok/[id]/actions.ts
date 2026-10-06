@@ -12,6 +12,7 @@ import { categoryName } from "@/lib/server/applications"
 import { actorFromSession, logAdminAudit } from "@/lib/server/auth/admin-audit"
 import { getServerAuthSession, isAdmin, isSuperAdmin } from "@/lib/server/auth/session"
 import { sendTemplatedMail } from "@/lib/server/email/send"
+import { ensureProfileSlug } from "@/lib/server/directory"
 import { purgeProfilePhotos } from "@/lib/server/profile-photo"
 
 export type MemberActionResult = { ok: true; message: string } | { ok: false; message: string }
@@ -192,6 +193,8 @@ export async function updateMemberOffice(id: string, office: string, boardMember
   const before = { office: user.office ?? null, boardMember: user.boardMember ?? false }
   if (before.office === next && before.boardMember === boardMember) return { ok: true, message: "Nincs változás." }
   await UserModel.updateOne({ _id: user._id }, { $set: { office: next, boardMember } })
+  // The readable public address is fixed the first time someone becomes a board member.
+  if (boardMember) await ensureProfileSlug(user)
   await logAdminAudit({
     ...actorFromSession(session),
     ...meta,

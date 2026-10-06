@@ -13,6 +13,7 @@ import { APPLICATION_STATUS_LABEL, statusBadgeVariant } from "@/lib/server/admin
 import { categoryName, formatDateTime, fullName } from "@/lib/server/applications"
 import { EMAIL_TEMPLATES, isEmailTemplateKey } from "@/lib/server/email/registry"
 import { getServerAuthSession, isSuperAdmin } from "@/lib/server/auth/session"
+import { formatPhone } from "@/lib/validation/phone"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -76,7 +77,7 @@ export default async function ApplicationDetailPage({ params }: { params: Promis
                 <Row label="Titulus" value={app.title || "–"} />
                 <Row label="Születési dátum" value={app.birthDate ? app.birthDate.toLocaleDateString("hu-HU", { timeZone: "UTC" }) : "–"} />
                 <Row label="Levelezési cím" value={address || "–"} />
-                <Row label="Telefon" value={app.phone || "–"} />
+                <Row label="Telefon" value={formatPhone(app.phone) || "–"} />
                 <Row label={app.category === "hallgatoi" ? "Tanulmányi terület" : "Szakterület"} value={app.specialty || "–"} />
                 <Row label="Munkahely" value={app.noWorkplace ? "Nincs állandó munkahelye" : app.workplace || "–"} />
                 {app.category === "rendes" ? <Row label="Végzettség" value={app.medicalDegree === true ? "Orvos / gyógyszerész (10 000 Ft)" : app.medicalDegree === false ? "Nem orvos / gyógyszerész (5 000 Ft)" : "–"} /> : null}

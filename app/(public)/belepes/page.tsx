@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import { SiteContainer } from "@/components/site-container"
 import { Card, CardContent } from "@/components/ui/card"
-import { ADMIN_HOME_PATH, MEMBER_ACCOUNT_PATH } from "@/lib/auth-paths"
+import { ADMIN_HOME_PATH, RETURN_PARAM, safeReturnPath } from "@/lib/auth-paths"
 import { getServerAuthSession, isAdmin } from "@/lib/server/auth/session"
 import { MemberLoginForm } from "./member-login-form"
 
@@ -10,7 +10,8 @@ export const dynamic = "force-dynamic"
 export default async function MemberLoginPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const params = await searchParams
   const session = await getServerAuthSession()
-  if (session) redirect(isAdmin(session) ? ADMIN_HOME_PATH : MEMBER_ACCOUNT_PATH)
+  const returnTo = safeReturnPath(params[RETURN_PARAM])
+  if (session) redirect(isAdmin(session) ? ADMIN_HOME_PATH : returnTo)
 
   return (
     <SiteContainer className="flex max-w-xl flex-col gap-6 py-12 sm:py-16">
@@ -20,7 +21,7 @@ export default async function MemberLoginPage({ searchParams }: { searchParams: 
       </section>
       <Card>
         <CardContent>
-          <MemberLoginForm justActivated={params.aktivalva === "1"} />
+          <MemberLoginForm justActivated={params.aktivalva === "1"} returnTo={returnTo} />
         </CardContent>
       </Card>
     </SiteContainer>

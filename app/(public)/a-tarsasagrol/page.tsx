@@ -2,6 +2,10 @@ import { PageHeader } from "@/components/page-header"
 import { SiteContainer } from "@/components/site-container"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import { BoardSection } from "./board-section"
+
+// The board list follows the members' visibility switch immediately (9.3), so the page is rendered per request.
+export const dynamic = "force-dynamic"
 
 export default function AboutPage() {
   return (
@@ -66,12 +70,7 @@ export default function AboutPage() {
 
           <Separator />
 
-          <section className="flex flex-col gap-4">
-            <h2 className="text-2xl font-semibold tracking-tight">Vezetőség</h2>
-            <p className="leading-7 text-muted-foreground">
-              A Társaság vezetőségét különböző szakterületekről érkező, a vidék egészségének fejlesztése iránt elkötelezett szakemberek alkotják. A részletes névsor és a személyes bemutatkozások hamarosan!
-            </p>
-          </section>
+          <BoardSection />
         </article>
       </SiteContainer>
     </>

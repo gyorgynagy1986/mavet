@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, type FormEvent } from "react"
+import { useRef, useState, type FormEvent } from "react"
 import Link from "next/link"
 import { CheckCircle2Icon, SendIcon } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -18,6 +18,7 @@ type Errors = Partial<Record<"name" | "email" | "message" | "consent", string>>
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error" | "limited">("idle")
   const [errors, setErrors] = useState<Errors>({})
+  const confirmedTypo = useRef("")
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -30,8 +31,10 @@ export function ContactForm() {
     }
     const next: Errors = {}
     if (values.name.length < 2) next.name = "Adja meg a nevét."
-    const emailResult = validateEmail(values.email)
+    // A suspected typo is shown once; sending the same address again accepts it.
+    const emailResult = validateEmail(values.email, { allowTypo: confirmedTypo.current === values.email.toLowerCase() })
     if (!emailResult.ok) next.email = emailErrorMessage(emailResult)
+    if (!emailResult.ok && emailResult.reason === "typo") confirmedTypo.current = values.email.toLowerCase()
     if (values.message.length < 10) next.message = "Az üzenet legalább 10 karakter legyen."
     if (!values.consent) next.consent = "Az adatkezelési hozzájárulás szükséges."
     setErrors(next)

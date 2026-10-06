@@ -12,6 +12,7 @@ import { MEMBERSHIP_STATUS_LABEL, membershipBadgeVariant } from "@/lib/server/ad
 import { categoryName, formatDateTime } from "@/lib/server/applications"
 import { workgroupOptions } from "@/lib/data/site"
 import { getServerAuthSession, isSuperAdmin } from "@/lib/server/auth/session"
+import { formatPhone } from "@/lib/validation/phone"
 import { EMAIL_TEMPLATES, isEmailTemplateKey } from "@/lib/server/email/registry"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -85,7 +86,7 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
               <dl className="space-y-3">
                 <Row label="Születési dátum" value={user.birthDate ? user.birthDate.toLocaleDateString("hu-HU", { timeZone: "UTC" }) : "–"} />
                 <Row label="Levelezési cím" value={address || "–"} />
-                <Row label="Telefon" value={user.phone || "–"} />
+                <Row label="Telefon" value={formatPhone(user.phone) || "–"} />
                 <Row label="Szakterület" value={user.specialty || "–"} />
                 <Row label="Munkahely" value={user.workplace || "–"} />
                 <Row label="Bemutatkozás" value={user.bio || "–"} />

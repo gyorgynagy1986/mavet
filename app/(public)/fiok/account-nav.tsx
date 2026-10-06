@@ -2,12 +2,13 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { MEMBER_ACCOUNT_PATH } from "@/lib/auth-paths"
+import { MEMBER_ACCOUNT_PATH, MEMBER_DIRECTORY_PATH } from "@/lib/auth-paths"
 import { cn } from "@/lib/utils"
 
 const items = [
   { href: MEMBER_ACCOUNT_PATH, label: "Áttekintés", exact: true },
   { href: `${MEMBER_ACCOUNT_PATH}/profil`, label: "Profil és megjelenés" },
+  { href: MEMBER_DIRECTORY_PATH, label: "Tagi névjegyzék" },
   { href: `${MEMBER_ACCOUNT_PATH}/torles`, label: "Fiók törlése" },
 ]
 

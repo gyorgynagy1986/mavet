@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { signOut } from "next-auth/react"
-import { ChevronDownIcon, LogInIcon, LogOutIcon, ShieldCheckIcon, UserCircle2Icon, UserRoundIcon } from "lucide-react"
+import { ChevronDownIcon, LogInIcon, LogOutIcon, ShieldCheckIcon, UserCircle2Icon, UserRoundIcon, UsersRoundIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { ADMIN_HOME_PATH, MEMBER_ACCOUNT_PATH, MEMBER_LOGIN_PATH } from "@/lib/auth-paths"
+import { ADMIN_HOME_PATH, MEMBER_ACCOUNT_PATH, MEMBER_DIRECTORY_PATH, MEMBER_LOGIN_PATH } from "@/lib/auth-paths"
 import { cn } from "@/lib/utils"
 
 type AccountState = { status: "loading" } | { status: "guest" } | { status: "member"; name: string; email: string } | { status: "admin"; name: string; email: string }
@@ -78,6 +78,12 @@ export function AccountMenu({ className }: { className?: string }) {
           {account.status === "admin" ? <ShieldCheckIcon aria-hidden="true" /> : <UserRoundIcon aria-hidden="true" />}
           {account.status === "admin" ? "Adminisztráció" : "Saját fiók"}
         </DropdownMenuItem>
+        {account.status === "member" ? (
+          <DropdownMenuItem render={<Link href={MEMBER_DIRECTORY_PATH} />}>
+            <UsersRoundIcon aria-hidden="true" />
+            Tagi névjegyzék
+          </DropdownMenuItem>
+        ) : null}
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive" onClick={() => signOut({ callbackUrl: "/" })}>
           <LogOutIcon aria-hidden="true" />
@@ -113,6 +119,15 @@ export function AccountMenuRows({ close }: { close: (node: React.ReactElement, k
         </Button>,
         "account",
       )}
+      {account.status === "member"
+        ? close(
+            <Button variant="ghost" className="justify-start" render={<Link href={MEMBER_DIRECTORY_PATH} />} nativeButton={false}>
+              <UsersRoundIcon data-icon="inline-start" aria-hidden="true" />
+              Tagi névjegyzék
+            </Button>,
+            "directory",
+          )
+        : null}
       <Button variant="ghost" className="justify-start text-destructive" onClick={() => signOut({ callbackUrl: "/" })}>
         <LogOutIcon data-icon="inline-start" aria-hidden="true" />
         Kijelentkezés

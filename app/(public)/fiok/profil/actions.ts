@@ -8,6 +8,7 @@ import { getServerAuthSession } from "@/lib/server/auth/session"
 import { isBlobConfigured, photoDebug, purgeProfilePhotos, storeProfilePhoto } from "@/lib/server/profile-photo"
 import { rateLimit } from "@/lib/server/rate-limit"
 import { parseIsoDate } from "@/lib/validation/membership-application"
+import { normalizePhone } from "@/lib/validation/phone"
 import { PHOTO_MESSAGES, photoFileError } from "@/lib/validation/photo"
 import { normalizeProfile, parseInterests, validateProfile, type ProfileErrors, type ProfileInput } from "@/lib/validation/profile"
 
@@ -52,7 +53,7 @@ export async function updateProfile(raw: Partial<Record<keyof ProfileInput, unkn
         "address.city": input.city,
         "address.street": input.street,
         "address.country": input.country,
-        phone: input.phone,
+        phone: normalizePhone(input.phone) ?? "",
         specialty: input.specialty,
         workplace: input.workplace,
         bio: input.bio.slice(0, 500),

@@ -1,4 +1,5 @@
 import { workgroupOptions } from "@/lib/data/site"
+import { PHONE_ERROR, isValidPhone } from "@/lib/validation/phone"
 
 /** Mirrors `membershipApplicationTitles` in the model; kept here so the client bundle stays free of mongoose. */
 export const profileTitles = ["", "Dr.", "Prof."] as const
@@ -28,7 +29,6 @@ export type ProfileErrors = Partial<Record<keyof ProfileInput, string>>
 export const BIO_MAX = 500
 export const INTERESTS_MAX = 10
 
-const PHONE_PATTERN = /^\+?[0-9 ()/-]{6,30}$/
 const workgroupIds = new Set<string>(workgroupOptions.map((w) => w.id))
 
 export function normalizeProfile(raw: Partial<Record<keyof ProfileInput, unknown>>): ProfileInput {
@@ -69,7 +69,7 @@ export function validateProfile(input: ProfileInput): ProfileErrors {
   if (!input.lastName) errors.lastName = "Adja meg a vezetéknevét."
   if (!input.firstName) errors.firstName = "Adja meg a keresztnevét."
   if (input.birthDate && !/^\d{4}-\d{2}-\d{2}$/.test(input.birthDate)) errors.birthDate = "Érvénytelen dátum."
-  if (input.phone && !PHONE_PATTERN.test(input.phone)) errors.phone = "Adjon meg egy érvényes telefonszámot."
+  if (input.phone && !isValidPhone(input.phone)) errors.phone = PHONE_ERROR
   if (input.bio.length > BIO_MAX) errors.bio = `A bemutatkozás legfeljebb ${BIO_MAX} karakter lehet.`
   return errors
 }

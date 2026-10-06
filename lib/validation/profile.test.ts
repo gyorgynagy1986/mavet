@@ -15,6 +15,8 @@ describe("profile validation", () => {
     expect(validateProfile({ ...base, lastName: "" }).lastName).toBeTruthy()
     expect(validateProfile({ ...base, birthDate: "2026/01/01" }).birthDate).toBeTruthy()
     expect(validateProfile({ ...base, phone: "abc" }).phone).toBeTruthy()
+    expect(validateProfile({ ...base, phone: "------" }).phone).toBeTruthy()
+    expect(validateProfile({ ...base, phone: "06 30 123 4567" }).phone).toBeUndefined()
     expect(validateProfile({ ...base, bio: "x".repeat(501) }).bio).toContain("500")
   })
 

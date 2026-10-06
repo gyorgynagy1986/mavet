@@ -118,7 +118,7 @@ export function ProfileForm({ initial, email, category, office }: { initial: Pro
               <Field><FieldLabel htmlFor="p-street">Utca, házszám</FieldLabel><Input id="p-street" value={form.street} onChange={(e) => update("street", e.target.value)} disabled={busy} /></Field>
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field><FieldLabel htmlFor="p-country">Ország</FieldLabel><Input id="p-country" value={form.country} onChange={(e) => update("country", e.target.value)} disabled={busy} /></Field>
-                <Field data-invalid={invalid("phone")}><FieldLabel htmlFor="p-phone">Telefonszám</FieldLabel><Input id="p-phone" type="tel" value={form.phone} onChange={(e) => update("phone", e.target.value)} disabled={busy} /><FieldError>{errors.phone}</FieldError></Field>
+                <Field data-invalid={invalid("phone")}><FieldLabel htmlFor="p-phone">Telefonszám</FieldLabel><Input id="p-phone" type="tel" autoComplete="tel" placeholder="+36 30 123 4567" aria-invalid={invalid("phone")} value={form.phone} onChange={(e) => update("phone", e.target.value)} disabled={busy} /><FieldError>{errors.phone}</FieldError></Field>
               </div>
             </FieldSet>
           </FieldGroup>

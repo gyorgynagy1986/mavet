@@ -4,6 +4,62 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-10-06 – Tagi névjegyzék, tagi profil, vezetőség valódi adatból (spec 9.4, 4.1)
+
+### Változások
+
+- **Tagi névjegyzék** (`/tagok`): csak bejelentkezett, aktív tagnak. Az aktív,
+  megjelenést engedélyező tagok név szerinti (magyar) ábécérendben, a titulus
+  nem része a rendezésnek; 24 fős, számozott lapozás. Névkereső részleges
+  egyezéssel, kis- és nagybetűtől, valamint ékezettől függetlenül, több szóra
+  is; csak a névben keres. Üres állapot és „Keresés törlése”.
+- **Tagi profil** (`/tagok/[id]`): név, tisztség és a tag által engedélyezett
+  mezők (portré, szakterület, munkahely, bemutatkozás, érdeklődés,
+  munkacsoportok). Általános tag profilja csak aktív tagnak nyílik meg;
+  vezetőségi/bizottsági tagé (admin kijelölés + saját engedély) publikus és
+  indexelhető. Nem létező, rejtett és jogosultság nélküli profil azonos választ
+  ad (vendég: belépés, nem aktív tag/admin: tájékoztató, aktív tag: 404).
+- **A Társaságról / Vezetőség**: a kártyák élő adatból (`boardMember` +
+  megjelenés engedélyezve + aktív tagság), név szerinti ábécérendben, kézi
+  sorrend nélkül (4.1); a kártyán név, tisztség, engedélyezett portré és
+  profilhivatkozás. Ha nincs megjeleníthető személy vagy az
+  adatbázis nem érhető el, marad a „hamarosan” szöveg. Az oldal emiatt kérésenként
+  renderelődik, így a kapcsoló azonnal érvényes (9.3).
+- **Beszédes cím a vezetőségi profiloknak**: `/a-tarsasagrol/vezetoseg/<nev>`
+  (`users.slug`, a névből titulus és ékezet nélkül; névütközésnél sorszám;
+  egyedi, ritka index). A cím az első vezetőségi jelöléskor rögzül, névváltozáskor
+  nem íródik át. A `/tagok/<id>` cím vezetőségi tagnál ide irányít; a zárt tagi
+  profilok címe változatlan és nem indexelhető.
+- **Belépés utáni visszatérés**: a névjegyzékről vagy tagi profilról a
+  bejelentkezéshez irányított látogató belépés után a kért oldalra kerül
+  (`?vissza=`, csak saját `/tagok` és `/fiok` útvonal fogadható el).
+- **Szabályok egy helyen** (`lib/directory.ts`, tesztelve): ki listázható, ki
+  publikus, mely mezők adhatók ki. Kapcsolati, születési és fizetési adat nem
+  része a kiadott profilnak. Lekérdezések: `lib/server/directory.ts`.
+- **Navigáció**: „Tagi névjegyzék” a fejléc fiókmenüjében (tagnak) és a fiók
+  fülei között.
+- **Profilkép javítások**: Server Action törzslimit 5 MB (`next.config.ts`);
+  kliensoldali kicsinyítés és WebP feltöltés előtt; a sharp kimenete `Blob`-ként
+  megy a tárolóba (a `Buffer` „SharedArrayBuffer is not allowed” hibát adott);
+  kép eltávolításakor, cseréjekor és fióktörléskor (admin általi törléskor is) a
+  tag teljes `profil/<id>/` mappája törlődik a Blob store-ból; egységes
+  hibaüzenetek (`lib/validation/photo.ts`); a profil mentése a kiválasztott, de
+  még nem mentett képet is feltölti, mentetlen képnél figyelmeztetés.
+
+### Ismert korlátok
+
+- A profilkép-folyamat ideiglenes `[profile-photo:debug]` logjai még a kódban
+  vannak; a feltöltés megerősítése után kivehetők.
+- A bizottságok külön csoportosítása és a bizottsági dokumentumok a
+  tartalomkezelési körben jönnek; most egy közös „Vezetőség” lista van.
+
+### Ellenőrzés
+
+- `npm run typecheck`, `npm run lint`, `npm run test` (78 teszt, 14 fájl),
+  `next build --webpack` – sikeres. Valódi adatbázissal böngészőben nem futott.
+
+---
+
 ## 2026-10-05 – Tagi profil, megjelenés engedélyezése, saját fióktörlés, tisztség
 
 ### Változások

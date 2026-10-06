@@ -10,6 +10,7 @@ import { formatHuf } from "@/lib/data/membership-fees"
 import { UserModel, type UserDocument } from "@/lib/models/user"
 import { categoryName, formatDate, formatDateTime } from "@/lib/server/applications"
 import { getServerAuthSession, isAdmin } from "@/lib/server/auth/session"
+import { formatPhone } from "@/lib/validation/phone"
 import { SignOutButton } from "./sign-out-button"
 import { AccountNav } from "./account-nav"
 import { ChangePasswordForm } from "./change-password-form"
@@ -100,7 +101,7 @@ export default async function AccountPage() {
         </CardHeader>
         <CardContent className="grid gap-3 text-sm sm:grid-cols-2">
           <div><div className="text-muted-foreground">Név</div><div className="font-medium">{fullName}</div></div>
-          <div><div className="text-muted-foreground">Telefon</div><div className="font-medium">{user.phone || "–"}</div></div>
+          <div><div className="text-muted-foreground">Telefon</div><div className="font-medium">{formatPhone(user.phone) || "–"}</div></div>
           <div><div className="text-muted-foreground">Szakterület</div><div className="font-medium">{user.specialty || "–"}</div></div>
           <div><div className="text-muted-foreground">Munkahely</div><div className="font-medium">{user.workplace || "–"}</div></div>
           <div className="sm:col-span-2"><div className="text-muted-foreground">Levelezési cím</div><div className="font-medium">{[user.address?.postalCode, user.address?.city, user.address?.street, user.address?.country].filter(Boolean).join(", ") || "–"}</div></div>
