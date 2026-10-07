@@ -4,6 +4,63 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-10-07 – Aktualitások: hírek és események adminból (spec 5., 3.2)
+
+### Változások
+
+- **Adatmodell** (`posts` gyűjtemény, `lib/models/post.ts`): hír és esemény egy
+  helyen; cím, összefoglaló, szöveg (egyszerű szöveg, bekezdések üres sorral,
+  a két meglévő hír szerkezete), állapot (piszkozat / közzétéve), opcionális
+  kép. Eseménynél kezdő dátum, opcionális időpont, záró dátum és időpont,
+  helyszín, külső jelentkezési vagy információs link. A cím (slug) a
+  létrehozáskor rögzül.
+- **Admin: Aktualitások** (`/admin/aktualitasok`): lista típus szerint, új hír /
+  új esemény, szerkesztő élő előnézettel. Piszkozat címmel is menthető;
+  közzétételhez minden megjelenő adat kell. Közzététel, visszavonás, törlés
+  (a képpel együtt). Nem mentett módosítás jelzése és kilépés előtti
+  rákérdezés. Kép: kliensoldali kicsinyítés, szerveren 1600 px WebP, Vercel
+  Blob (`aktualitasok/<id>/`), csere és törlés a tárolóból is. Műveletek az
+  admin naplóban (`post_create`, `post_update`, `post_publish`,
+  `post_unpublish`, `post_delete`).
+- **Időrend** (5.2, `lib/posts.ts`, tesztelve): magyar helyi idő szerint;
+  egy dátummal az esemény a nap végéig aktuális, záró dátum idő nélkül a
+  zárónap végéig, megadott befejezéssel addig. A véget ért esemény magától a
+  korábbiak közé kerül, az oldala megmarad, a jelentkezési gomb eltűnik.
+- **Publikus oldalak**: `/aktualitasok` (elöl a folyamatban lévő és közelgő
+  események, alatta a hírek; ha nincs aktuális esemény, a hírek kerülnek
+  felülre), `/aktualitasok/korabbi-esemenyek`, részletes oldal
+  (`/aktualitasok/<slug>`). A két lista külön, számozottan lapozható. Csak
+  közzétett tartalom olvasható, visszavont bejegyzés közvetlen linkkel sem.
+- **Főoldali előnézet** (3.2): legfeljebb hat kártya; elöl az admin által
+  kiemelt közzétett hír vagy aktuális esemény, utána az aktuális események,
+  majd a legfrissebb hírek, ismétlés nélkül. Egyszerre egy kiemelés lehet;
+  visszavonáskor és az esemény lejártakor megszűnik.
+- **Render**: a főoldal és a részletes oldalak statikusak; minden admin művelet
+  újragenerálja őket (`revalidatePosts`), 10 percenkénti revalidálás az
+  események időbeli átsorolásához. A lista kérésenkénti, betöltési vázzal.
+  A `sitemap.xml` a közzétett bejegyzéseket is tartalmazza.
+- **Meglévő hírek**: `npm run seed:news` a két eddigi hírt közzétett
+  bejegyzésként felveszi (ismételhető). A `lib/data/news.ts` megszűnt.
+- **Megjelenés engedélyezése**: a kapcsoló és a mezőnkénti jelölők azonnal
+  mentenek, külön mentés gomb nincs; hibánál visszaállnak.
+- A profilkép ideiglenes debug logjai kikerültek.
+
+### Ismert korlátok
+
+- A cikk egyszerű szöveg: nincs félkövér, lista, link vagy alcím a szövegben.
+- Egy kép tartozik egy bejegyzéshez (a spec eseménynél több képet említ).
+- A főoldali kártyák kép nélkül jelennek meg (a spec alapértelmezett képet ír);
+  a képek a listán és a részletes oldalon látszanak.
+- A seed nélkül az Aktualitások oldal üres: a teszt és az éles adatbázison is
+  futtatni kell.
+
+### Ellenőrzés
+
+- `npm run typecheck`, `npm run lint`, `npm run test` (94 teszt, 15 fájl),
+  `next build --webpack` – sikeres. Valódi adatbázissal böngészőben nem futott.
+
+---
+
 ## 2026-10-06 – Tagi névjegyzék, tagi profil, vezetőség valódi adatból (spec 9.4, 4.1)
 
 ### Változások

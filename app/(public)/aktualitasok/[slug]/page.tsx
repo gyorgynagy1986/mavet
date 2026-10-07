@@ -1,48 +1,56 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { ArrowLeftIcon } from "lucide-react"
+import { PostArticle } from "@/components/posts/post-article"
 import { SiteContainer } from "@/components/site-container"
 import { Button } from "@/components/ui/button"
-import { getNewsItem, newsItems } from "@/lib/data/news"
+import { PAST_EVENTS_PATH, POSTS_PATH } from "@/lib/posts"
+import { getPublishedPost, listPublishedSlugs } from "@/lib/server/posts"
 
-type NewsDetailPageProps = {
-  params: Promise<{ slug: string }>
+type Props = { params: Promise<{ slug: string }> }
+
+/**
+ * Static page per post, rebuilt when the admin saves, publishes or withdraws it (`revalidatePosts`).
+ * The ten-minute revalidation moves a finished event to "past" and removes its registration link.
+ */
+export const revalidate = 600
+
+export async function generateStaticParams() {
+  try {
+    return (await listPublishedSlugs()).map(({ slug }) => ({ slug }))
+  } catch {
+    // No database at build time: the pages are generated on first request instead.
+    return []
+  }
 }
 
-export function generateStaticParams() {
-  return newsItems.map(({ slug }) => ({ slug }))
-}
-
-export async function generateMetadata({ params }: NewsDetailPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const item = getNewsItem(slug)
-
-  return item ? { title: item.title, description: item.excerpt } : {}
+  const post = await getPublishedPost(slug).catch(() => null)
+  if (!post) return {}
+  return {
+    title: post.title,
+    description: post.excerpt || undefined,
+    alternates: { canonical: post.href },
+    openGraph: { title: post.title, description: post.excerpt || undefined, type: "article", images: post.imageUrl ? [post.imageUrl] : undefined },
+  }
 }
 
-export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
+/** Only published content is readable (5.3): a draft or withdrawn post answers "not found" even by direct link. */
+export default async function PostPage({ params }: Props) {
   const { slug } = await params
-  const item = getNewsItem(slug)
-
-  if (!item) notFound()
+  const post = await getPublishedPost(slug)
+  if (!post) notFound()
+  const past = post.event?.phase === "korabbi"
 
   return (
-    <SiteContainer className="max-w-3xl py-8 sm:py-10">
-      <article className="flex flex-col gap-6">
-        <header className="flex flex-col gap-3">
-          <time className="text-sm text-muted-foreground" dateTime={item.publishedAtIso}>
-            {item.publishedAt}
-          </time>
-          <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{item.title}</h1>
-          <p className="max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">{item.excerpt}</p>
-        </header>
-          <div className="flex flex-col gap-5 leading-7 text-muted-foreground">
-            {item.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          </div>
-          <Button className="mt-2 w-fit" variant="soft" render={<Link href="/aktualitasok" />} nativeButton={false}>
-            Vissza az aktualitásokhoz
-          </Button>
-      </article>
+    <SiteContainer className="flex max-w-3xl flex-col gap-8 py-8 sm:py-10">
+      <PostArticle post={post} />
+      <Button className="w-fit" variant="soft" render={<Link href={past ? PAST_EVENTS_PATH : POSTS_PATH} />} nativeButton={false}>
+        <ArrowLeftIcon data-icon="inline-start" aria-hidden="true" />
+        {past ? "Vissza a korábbi eseményekhez" : "Vissza az aktualitásokhoz"}
+      </Button>
     </SiteContainer>
   )
 }

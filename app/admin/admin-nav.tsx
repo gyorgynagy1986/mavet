@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { IdCardIcon, LayoutDashboardIcon, MailIcon, ScrollTextIcon, ShieldCheckIcon, UsersIcon } from "lucide-react"
+import { IdCardIcon, LayoutDashboardIcon, MailIcon, NewspaperIcon, ScrollTextIcon, ShieldCheckIcon, UsersIcon } from "lucide-react"
 import type { AdminNavItem } from "@/lib/admin-nav"
 import { cn } from "@/lib/utils"
 
@@ -13,6 +13,7 @@ const ICONS = {
   Users: UsersIcon,
   Mail: MailIcon,
   IdCard: IdCardIcon,
+  Newspaper: NewspaperIcon,
 } as const
 
 export function AdminNav({ items, className }: { items: AdminNavItem[]; className?: string }) {

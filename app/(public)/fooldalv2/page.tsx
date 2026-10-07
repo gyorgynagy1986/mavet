@@ -13,6 +13,12 @@ import { cn } from "@/lib/utils"
  * gradient, and three photo cards overlapping its bottom edge. Everything
  * below the cards is the shared `HomeContent`.
  */
+/**
+ * Static page; the news preview is refreshed when the admin changes a post (`revalidatePosts`) and, so that
+ * a finished event drops out on its own, every ten minutes.
+ */
+export const revalidate = 600
+
 export default function HomeV2Page() {
   return (
     <>

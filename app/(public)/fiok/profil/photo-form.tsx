@@ -7,38 +7,12 @@ import { ImageIcon, Trash2Icon, UploadIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Spinner } from "@/components/ui/spinner"
+import { UPLOAD_MAX_BYTES, downscaleImage } from "@/lib/client/downscale-image"
 import { PHOTO_ACCEPT, PHOTO_MESSAGES, PHOTO_SIZE, PROFILE_SAVE_EVENT, photoFileError } from "@/lib/validation/photo"
 import { removeProfilePhoto, uploadProfilePhoto } from "./actions"
 
-/** Stays under the 4.5 MB request limit of Vercel functions. */
-const UPLOAD_MAX_BYTES = 4 * 1024 * 1024
 /** Twice the stored size, so the server-side crop still has detail to work with. */
 const CLIENT_MAX_EDGE = PHOTO_SIZE * 2
-
-/**
- * Always shrinks the photo in the browser and converts it to WebP (JPEG where the browser cannot encode WebP),
- * so the upload is small. The server crops it to the final square WebP in every case.
- */
-async function downscale(file: File): Promise<File> {
-  try {
-    const bitmap = await createImageBitmap(file, { imageOrientation: "from-image" })
-    const scale = Math.min(1, CLIENT_MAX_EDGE / Math.max(bitmap.width, bitmap.height))
-    const canvas = document.createElement("canvas")
-    canvas.width = Math.max(1, Math.round(bitmap.width * scale))
-    canvas.height = Math.max(1, Math.round(bitmap.height * scale))
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return file
-    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height)
-    bitmap.close()
-    const encode = (type: string) => new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, type, 0.9))
-    let blob = await encode("image/webp")
-    if (!blob || blob.type !== "image/webp") blob = await encode("image/jpeg")
-    if (!blob) return file
-    return new File([blob], blob.type === "image/webp" ? "profil.webp" : "profil.jpg", { type: blob.type })
-  } catch {
-    return file
-  }
-}
 
 export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; configured: boolean }) {
   const router = useRouter()
@@ -62,8 +36,7 @@ export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; c
     if (!file || busy) return
     setBusy(true)
     try {
-      const prepared = await downscale(file)
-      console.log("[profile-photo:debug] client:prepared", { original: { type: file.type, size: file.size }, sent: { type: prepared.type, size: prepared.size } })
+      const prepared = await downscaleImage(file, CLIENT_MAX_EDGE)
       if (prepared.size > UPLOAD_MAX_BYTES) {
         toast.error(PHOTO_MESSAGES.tooLargeToSend)
         return
@@ -71,7 +44,6 @@ export function PhotoForm({ photoUrl, configured }: { photoUrl: string | null; c
       const fd = new FormData()
       fd.set("photo", prepared)
       const r = await uploadProfilePhoto(fd)
-      console.log("[profile-photo:debug] client:result", r)
       if (r.ok) {
         toast.success(r.message)
         pick(null)

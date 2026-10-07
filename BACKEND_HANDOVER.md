@@ -220,3 +220,22 @@ tekinthető véglegesnek.
 - MongoDB Atlas (Mongoose), Upstash Redis, SendGrid, NextAuth v4 (D-016, D-017).
   Fizetési integráció (SimplePay) még nincs (D-007 szerint csak ellenőrzött
   visszaigazolás aktiválhat).
+
+## Aktualitások (hírek és események)
+
+- Gyűjtemény: `posts` (`lib/models/post.ts`); indexek: egyedi `slug`,
+  `type + status + publishedAt`, `type + status + endsAt + startsAt`.
+- Szabályok adatbázis nélkül: `lib/posts.ts` (validáció, magyar idő → UTC,
+  `eventWindow`, `eventPhase`, `toPostView`, `composeHomePreview`).
+  Lekérdezések: `lib/server/posts.ts`. Admin műveletek (server actionök):
+  `app/admin/aktualitasok/actions.ts` (`savePost`, `setPostFeatured`,
+  `deletePost`, `uploadPostImage`, `removePostImage`).
+- Az esemény `startsAt` / `endsAt` mezője minden mentéskor a beírt magyar
+  dátumból és időből számolódik; az „aktuális vagy korábbi” besorolás ezekből
+  jön lekérdezéskor, ütemezett feladat nincs hozzá.
+- Statikus oldalak érvénytelenítése: `revalidatePosts(slug)` a
+  `lib/server/revalidate-public.ts`-ben; minden új, bejegyzést módosító
+  műveletnek hívnia kell.
+- Képek: `lib/server/post-image.ts`, Blob mappa `aktualitasok/<postId>/`.
+- Első feltöltés: `npm run seed:news`.
+

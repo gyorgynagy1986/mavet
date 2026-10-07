@@ -17,6 +17,11 @@ export const adminAuditActions = [
   "application_delete", // closed/rejected application deleted by a superadmin
   "member_self_delete", // member deleted their own account (9.5)
   "member_office_change", // office / board flag set by an admin
+  "post_create", // news item or event created
+  "post_update", // news item or event edited
+  "post_publish", // made public
+  "post_unpublish", // withdrawn (5.3)
+  "post_delete", // deleted with its image
 ] as const
 export type AdminAuditAction = (typeof adminAuditActions)[number]
 

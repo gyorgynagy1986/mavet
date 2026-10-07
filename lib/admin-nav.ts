@@ -10,7 +10,7 @@ export interface AdminNavItem {
   href: string
   label: string
   /** lucide icon name, resolved by the nav component. */
-  icon: "LayoutDashboard" | "ShieldCheck" | "ScrollText" | "Users" | "Mail" | "IdCard"
+  icon: "LayoutDashboard" | "ShieldCheck" | "ScrollText" | "Users" | "Mail" | "IdCard" | "Newspaper"
   superadminOnly?: boolean
   /** Only the exact path is active (for the home item). */
   exact?: boolean
@@ -20,6 +20,7 @@ export const ADMIN_NAV: readonly AdminNavItem[] = [
   { key: "home", href: ADMIN_HOME_PATH, label: "Kezdőlap", icon: "LayoutDashboard", exact: true },
   { key: "applications", href: `${ADMIN_HOME_PATH}/jelentkezesek`, label: "Jelentkezések", icon: "Users" },
   { key: "members", href: `${ADMIN_HOME_PATH}/tagok`, label: "Tagok", icon: "IdCard" },
+  { key: "posts", href: `${ADMIN_HOME_PATH}/aktualitasok`, label: "Aktualitások", icon: "Newspaper" },
   { key: "emails", href: `${ADMIN_HOME_PATH}/emailek`, label: "E-mailek", icon: "Mail" },
   { key: "admins", href: `${ADMIN_HOME_PATH}/adminok`, label: "Adminok", icon: "ShieldCheck", superadminOnly: true },
   { key: "logs", href: `${ADMIN_HOME_PATH}/naplo`, label: "Naplók", icon: "ScrollText", superadminOnly: true },

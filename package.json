@@ -10,7 +10,8 @@
     "test": "vitest run --passWithNoTests",
     "typecheck": "next typegen && tsc --noEmit",
     "seed:superadmin": "node --env-file=.env.local scripts/seed-superadmin.mjs",
-    "migrate:applications": "node --env-file=.env.local scripts/migrate-applications.mjs"
+    "migrate:applications": "node --env-file=.env.local scripts/migrate-applications.mjs",
+    "seed:news": "node --env-file=.env.local scripts/seed-news.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

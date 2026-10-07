@@ -10,6 +10,12 @@ import { Button } from "@/components/ui/button"
 import { mottoPillars } from "@/lib/data/site"
 import { cn } from "@/lib/utils"
 
+/**
+ * Static page; the news preview is refreshed when the admin changes a post (`revalidatePosts`) and, so that
+ * a finished event drops out on its own, every ten minutes.
+ */
+export const revalidate = 600
+
 export default function HomePage() {
   return (
     <>

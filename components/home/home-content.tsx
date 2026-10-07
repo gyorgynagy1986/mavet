@@ -15,7 +15,8 @@ import { FacebookMark } from "@/components/facebook-mark"
 import { Eyebrow } from "@/components/home/eyebrow"
 import { SiteContainer } from "@/components/site-container"
 import { Button } from "@/components/ui/button"
-import { newsItems } from "@/lib/data/news"
+import { POST_TYPE_LABEL, type PostView } from "@/lib/posts"
+import { listHomePreview } from "@/lib/server/posts"
 import { workgroups } from "@/lib/data/site"
 
 /** Decorative icons for the workgroup cards, in the order of `workgroups`. */
@@ -25,9 +26,16 @@ const workgroupIcons: LucideIcon[] = [StethoscopeIcon, BrainCircuitIcon, Activit
  * Everything on the home page below the hero and the motto pillars. Shared by
  * the home page and its design variants, so the content exists only once.
  */
-export function HomeContent() {
-  const latestNews = [...newsItems].sort((a, b) => b.publishedAtIso.localeCompare(a.publishedAtIso)).slice(0, 6)
-  const [featuredNews, ...otherNews] = latestNews
+export async function HomeContent() {
+  // Up to six cards (3.2): the featured post, then current events, then the newest news. Without any
+  // (or without a database) the whole block stays hidden.
+  let preview: PostView[] = []
+  try {
+    preview = await listHomePreview()
+  } catch (error) {
+    console.error("[home] news preview could not be loaded:", error)
+  }
+  const [featuredNews, ...otherNews] = preview
 
   return (
     <>
@@ -109,36 +117,40 @@ export function HomeContent() {
               <article className="mavet-reveal relative isolate flex flex-col justify-end gap-5 overflow-hidden rounded-2xl bg-mavet-hero p-7 text-white sm:p-10 lg:min-h-[26rem]">
                 <MavetEmblem variant="mono" className="absolute -top-6 -right-10 -z-10 w-72 text-white opacity-[0.06]" />
                 <p className="flex flex-wrap items-center gap-3 text-sm text-white/75">
-                  <span className="rounded-full bg-mavet-gold px-3 py-1 text-xs font-semibold tracking-wide text-mavet-navy uppercase">Kiemelt hír</span>
-                  <time dateTime={featuredNews.publishedAtIso}>{featuredNews.publishedAt}</time>
+                  <span className="rounded-full bg-mavet-gold px-3 py-1 text-xs font-semibold tracking-wide text-mavet-navy uppercase">
+                    {featuredNews.featured ? `Kiemelt ${POST_TYPE_LABEL[featuredNews.type].toLowerCase()}` : POST_TYPE_LABEL[featuredNews.type]}
+                  </span>
+                  {featuredNews.dateIso ? <time dateTime={featuredNews.dateIso}>{featuredNews.dateLabel}</time> : null}
+                  {featuredNews.event?.location ? <span>{featuredNews.event.location}</span> : null}
                 </p>
                 <h3 className="text-2xl leading-tight text-balance sm:text-3xl">
-                  <Link href={`/aktualitasok/${featuredNews.slug}`} className="rounded-sm outline-none after:absolute after:inset-0 focus-visible:ring-3 focus-visible:ring-white/50">
+                  <Link href={featuredNews.href} className="rounded-sm outline-none after:absolute after:inset-0 focus-visible:ring-3 focus-visible:ring-white/50">
                     {featuredNews.title}
                   </Link>
                 </h3>
                 <p className="max-w-2xl leading-7 text-white/80">{featuredNews.excerpt}</p>
                 <p className="flex items-center gap-1.5 font-semibold text-mavet-gold-light" aria-hidden="true">
-                  Elolvasom
+                  {featuredNews.type === "hir" ? "Elolvasom" : "Részletek"}
                   <ArrowUpRightIcon className="size-4" />
                 </p>
               </article>
               {otherNews.length > 0 && (
                 <div className="grid gap-5">
                   {otherNews.map((item) => (
-                    <article key={item.slug} className="mavet-reveal group relative flex flex-col gap-4 rounded-2xl border border-border bg-card p-7 transition duration-200 hover:border-mavet-blue-50 hover:shadow-[0_20px_44px_-20px_rgb(11_45_91/0.3)] sm:p-8">
+                    <article key={item.id} className="mavet-reveal group relative flex flex-col gap-4 rounded-2xl border border-border bg-card p-7 transition duration-200 hover:border-mavet-blue-50 hover:shadow-[0_20px_44px_-20px_rgb(11_45_91/0.3)] sm:p-8">
                       <p className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                        <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold tracking-wide text-mavet-blue-deep uppercase">Hír</span>
-                        <time dateTime={item.publishedAtIso}>{item.publishedAt}</time>
+                        <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold tracking-wide text-mavet-blue-deep uppercase">{POST_TYPE_LABEL[item.type]}</span>
+                        {item.dateIso ? <time dateTime={item.dateIso}>{item.dateLabel}</time> : null}
+                        {item.event?.location ? <span>{item.event.location}</span> : null}
                       </p>
                       <h3 className="text-xl leading-snug text-balance sm:text-2xl">
-                        <Link href={`/aktualitasok/${item.slug}`} className="rounded-sm outline-none after:absolute after:inset-0 focus-visible:ring-3 focus-visible:ring-ring/50">
+                        <Link href={item.href} className="rounded-sm outline-none after:absolute after:inset-0 focus-visible:ring-3 focus-visible:ring-ring/50">
                           {item.title}
                         </Link>
                       </h3>
                       <p className="leading-7 text-muted-foreground">{item.excerpt}</p>
                       <p className="mt-auto flex items-center gap-1.5 font-semibold text-mavet-blue" aria-hidden="true">
-                        Elolvasom
+                        {item.type === "hir" ? "Elolvasom" : "Részletek"}
                         <ArrowUpRightIcon className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none" />
                       </p>
                     </article>
