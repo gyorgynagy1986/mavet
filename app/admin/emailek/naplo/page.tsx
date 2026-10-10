@@ -78,7 +78,7 @@ export default async function EmailLogPage() {
                   <td className="px-4 py-2">{isEmailTemplateKey(m.templateKey) ? EMAIL_TEMPLATES[m.templateKey].name : m.templateKey}</td>
                   <td className="px-4 py-2">{m.applicationId ? <Link href={`${ADMIN_HOME_PATH}/jelentkezesek/${m.applicationId.toString()}`} className="text-mavet-navy underline-offset-4 hover:underline">{m.to}</Link> : m.to}</td>
                   <td className="max-w-xs truncate px-4 py-2 text-muted-foreground" title={m.subject}>{m.subject}</td>
-                  <td className="px-4 py-2"><Badge variant={m.status === "sent" ? "secondary" : m.status === "failed" ? "destructive" : "outline"}>{m.status === "sent" ? "elküldve" : m.status === "failed" ? "sikertelen" : "kihagyva"}</Badge>{m.error ? <div className="mt-0.5 max-w-xs truncate text-xs text-muted-foreground" title={m.error}>{m.error}</div> : null}</td>
+                  <td className="px-4 py-2"><Badge variant={m.status === "sent" ? "secondary" : m.status === "failed" ? "destructive" : "outline"}>{m.status === "sent" ? "elküldve" : m.status === "failed" ? "sikertelen" : "kihagyva"}</Badge>{(m.attempts ?? 1) > 1 ? <span className="ml-2 text-xs text-muted-foreground" title="Hány SendGrid-hívás kellett (átmeneti hibák újrapróbálva)">{m.attempts}. próbálkozás</span> : null}{m.error ? <div className="mt-0.5 max-w-xs truncate text-xs text-muted-foreground" title={m.error}>{m.error}</div> : null}</td>
                   <td className="px-4 py-2 text-xs text-muted-foreground">{m.triggeredBy}</td>
                 </tr>
               ))}

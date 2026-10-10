@@ -15,6 +15,8 @@ const emailLogSchema = new Schema(
     subject: { type: String, required: true },
     status: { type: String, enum: emailLogStatuses, required: true },
     error: { type: String, default: null, maxlength: 1000 },
+    /** SendGrid calls made for this mail (retries included); 0 when no API key was set. */
+    attempts: { type: Number, default: 1, min: 0 },
     /** "system" | "cron" | "admin:<email>" | "test:<email>" */
     triggeredBy: { type: String, default: "system" },
     /** Related records, when any. */

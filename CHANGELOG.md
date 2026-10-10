@@ -4,6 +4,30 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-10-10 – E-mail küldés: újrapróbálkozás átmeneti hibákra
+
+### Változások
+
+- **Retry a `sendMail`-ben** (`lib/server/mail-retry.ts`, `lib/server/mail.ts`):
+  minden kimenő levél (sablonos levelek, kontakt-értesítés, belépőkód) legfeljebb
+  3 SendGrid-hívást kap, 1 s, majd 3 s várakozással. Csak átmeneti hiba után
+  próbálkozik újra (429, 5xx, hálózati vagy időtúllépés); állandó 4xx (rossz cím,
+  nem hitelesített feladó, hibás kérés) azonnal sikertelen. Az utolsó
+  próbálkozás után `MailSendError` dobódik a próbálkozások számával és a
+  SendGrid hibaüzeneteivel.
+- **E-mail napló** (`email_logs.attempts`): az elküldött és a sikertelen
+  soroknál rögzítjük, hány hívás kellett; a napló oldal jelzi, ha 1-nél több volt.
+  Régi sorok alapértéke 1.
+- Tesztek: `lib/server/mail-retry.test.ts` (6 eset: hibaosztályozás, késleltetések,
+  feladás a 3. próbálkozás után, 4xx azonnali hiba, üzenetformázás).
+
+### Megjegyzés
+
+- A retry a kérésen belül fut, legrosszabb esetben ~4 s plusz a három hívás ideje;
+  a jelentkezési API és a server actionök időkorlátjába belefér.
+
+---
+
 ## 2026-10-07 – Aktualitások: hírek és események adminból (spec 5., 3.2)
 
 ### Változások

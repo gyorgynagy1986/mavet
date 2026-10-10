@@ -3,6 +3,7 @@ import dbConnect from "@/lib/db-connect"
 import { EmailLogModel } from "@/lib/models/email-log"
 import { EmailTemplateModel } from "@/lib/models/email-template"
 import { sendMail } from "@/lib/server/mail"
+import { MailSendError } from "@/lib/server/mail-retry"
 import { EMAIL_TEMPLATES, type EmailTemplateKey } from "@/lib/server/email/registry"
 import { htmlToText, renderTemplate, wrapInMailLayout, type TemplateVars } from "@/lib/server/email/render"
 
@@ -53,8 +54,10 @@ export interface SendTemplatedOptions {
 export type SendTemplatedResult = { status: "sent" | "skipped" } | { status: "failed"; error: string }
 
 /**
- * Renders and sends a templated mail and records the outcome in `email_logs`.
- * Never throws: callers decide what a failed mail means for their flow.
+ * Renders and sends a templated mail and records the outcome in `email_logs`,
+ * including how many SendGrid attempts it took (transient errors are retried
+ * inside `sendMail`). Never throws: callers decide what a failed mail means
+ * for their flow.
  */
 export async function sendTemplatedMail(options: SendTemplatedOptions): Promise<SendTemplatedResult> {
   const { key, to, vars, triggeredBy = "system", applicationId = null, userId = null, replyTo } = options
@@ -69,15 +72,16 @@ export async function sendTemplatedMail(options: SendTemplatedOptions): Promise<
       return { status: "skipped" }
     }
 
-    await sendMail({ to, subject, text: rendered.text, html: rendered.html, replyTo })
-    await EmailLogModel.create({ templateKey: key, to, subject, status: "sent", triggeredBy, applicationId, userId })
+    const { attempts } = await sendMail({ to, subject, text: rendered.text, html: rendered.html, replyTo })
+    await EmailLogModel.create({ templateKey: key, to, subject, status: "sent", attempts, triggeredBy, applicationId, userId })
     return { status: "sent" }
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
-    console.error(`❌ [email] ${key} → ${to} failed:`, message)
+    const attempts = error instanceof MailSendError ? error.attempts : 1
+    console.error(`❌ [email] ${key} → ${to} failed after ${attempts} attempt(s):`, message)
     try {
       await dbConnect()
-      await EmailLogModel.create({ templateKey: key, to, subject, status: "failed", error: message.slice(0, 1000), triggeredBy, applicationId, userId })
+      await EmailLogModel.create({ templateKey: key, to, subject, status: "failed", error: message.slice(0, 1000), attempts, triggeredBy, applicationId, userId })
     } catch (logError) {
       console.error("❌ [email] log write failed:", logError)
     }

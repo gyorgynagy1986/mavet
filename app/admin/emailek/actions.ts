@@ -11,6 +11,7 @@ import { EMAIL_TEMPLATES, exampleVars, isEmailTemplateKey, type EmailTemplateKey
 import { renderMail, resolveTemplate } from "@/lib/server/email/send"
 import { isPlausibleEmail, normalizeEmail } from "@/lib/server/auth/verification"
 import { sendMail } from "@/lib/server/mail"
+import { MailSendError } from "@/lib/server/mail-retry"
 
 export type TemplateActionResult = { ok: true; message: string } | { ok: false; message: string }
 
@@ -82,12 +83,13 @@ export async function sendTestEmail(key: string, rawTo: string): Promise<Templat
     const template = await resolveTemplate(g.key)
     const rendered = renderMail(template, exampleVars(spec))
     const subject = `[TESZT] ${rendered.subject}`
-    await sendMail({ to, subject, text: rendered.text, html: rendered.html })
-    await EmailLogModel.create({ templateKey: g.key, to, subject, status: "sent", triggeredBy: `test:${g.session.user.email ?? g.session.user.id}` })
+    const { attempts } = await sendMail({ to, subject, text: rendered.text, html: rendered.html })
+    await EmailLogModel.create({ templateKey: g.key, to, subject, status: "sent", attempts, triggeredBy: `test:${g.session.user.email ?? g.session.user.id}` })
     return { ok: true, message: `Teszt e-mail elküldve: ${to}` }
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
-    await EmailLogModel.create({ templateKey: g.key, to, subject: `[TESZT] ${spec.defaultSubject}`, status: "failed", error: message.slice(0, 1000), triggeredBy: `test:${g.session.user.email ?? g.session.user.id}` }).catch(() => {})
+    const attempts = error instanceof MailSendError ? error.attempts : 1
+    await EmailLogModel.create({ templateKey: g.key, to, subject: `[TESZT] ${spec.defaultSubject}`, status: "failed", error: message.slice(0, 1000), attempts, triggeredBy: `test:${g.session.user.email ?? g.session.user.id}` }).catch(() => {})
     return { ok: false, message: `A küldés nem sikerült: ${message}` }
   }
 }
