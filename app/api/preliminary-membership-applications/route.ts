@@ -3,11 +3,13 @@ import {
   MembershipApplicationModel,
   membershipApplicationCategories,
   membershipApplicationTitles,
+  openApplicationStatuses,
+  unfinishedApplicationStatuses,
   type MembershipApplicationCategory,
+  type MembershipApplicationDocument,
   type MembershipApplicationTitle,
 } from "@/lib/models/membership-application"
-import { getNotificationRecipient, sendMail } from "@/lib/server/mail"
-import { adminNotificationMail, applicantConfirmationMail } from "@/lib/server/membership-application-mails"
+import { ensureApplicationIndexes, sendContinueLink } from "@/lib/server/applications"
 import { getClientIp, hashIp, rateLimit } from "@/lib/server/rate-limit"
 import { isValidEmail } from "@/lib/validation/email"
 
@@ -59,10 +61,17 @@ function isDuplicateKeyError(error: unknown): boolean {
   return typeof error === "object" && error !== null && (error as { code?: unknown }).code === 11000
 }
 
+/**
+ * Step 1 of the membership application (D-018): the short form. Saves the
+ * applicant in `elozetes` state and e-mails the continuation link that verifies
+ * the address and leads to the full form. A second submission for an address
+ * with an OPEN application creates nothing and answers identically (the
+ * existence of an address must not be inferable); an unfinished application
+ * gets its link re-sent, at most once a day.
+ */
 export async function POST(request: Request) {
   const ip = getClientIp(request)
 
-  // Abuse limit: 5 submissions per IP per 10 minutes.
   const limit = await rateLimit("membership-application", ip, 5, "10 m")
   if (!limit.allowed) {
     return Response.json(
@@ -82,12 +91,14 @@ export async function POST(request: Request) {
     console.error("❌ [membership-application] db connect failed:", error)
     return Response.json({ ok: false, error: "unavailable" }, { status: 503 })
   }
+  await ensureApplicationIndexes()
 
-  let application
+  let application: MembershipApplicationDocument
   try {
-    application = await MembershipApplicationModel.create({
+    const created = await MembershipApplicationModel.create({
       ...payload,
-      status: "tagjelolt",
+      status: "elozetes",
+      lastActivityAt: new Date(),
       consent: {
         accepted: true,
         acceptedAt: new Date(),
@@ -96,20 +107,22 @@ export async function POST(request: Request) {
         userAgent: request.headers.get("user-agent")?.slice(0, 512) ?? undefined,
       },
     })
+    application = created.toObject ? (created.toObject() as MembershipApplicationDocument) : (created as unknown as MembershipApplicationDocument)
   } catch (error) {
     if (isDuplicateKeyError(error)) {
-      // Same e-mail already applied: no new record, identical response (the
-      // existence of an address must not be inferable), but the confirmation
-      // is re-sent so the owner learns the application is on file. Bounded to
-      // one re-send per address per day to prevent mail bombing.
       const resend = await rateLimit("membership-application-resend", hashIp(payload.email), 1, "1 d")
       if (resend.allowed) {
         try {
-          await sendMail(applicantConfirmationMail(payload.email))
-          await MembershipApplicationModel.updateOne(
-            { email: payload.email },
-            { $set: { "notifications.applicantEmailSentAt": new Date() } },
-          )
+          const existing = await MembershipApplicationModel.findOne({ email: payload.email, status: { $in: [...openApplicationStatuses] } })
+            .select({ email: 1, title: 1, lastName: 1, firstName: 1, category: 1, status: 1 })
+            .lean<MembershipApplicationDocument | null>()
+          if (existing && (unfinishedApplicationStatuses as readonly string[]).includes(existing.status)) {
+            await sendContinueLink(existing, "folytatas", "system:resend")
+          } else if (!existing) {
+            // Duplicate key without an open application = a stale unique index. Loud, not silent.
+            console.error("❌ [membership-application] duplicate key but no open application for this address — check the email_1 index (npm run migrate:applications)")
+            return Response.json({ ok: false, error: "server_error" }, { status: 500 })
+          }
         } catch (mailError) {
           console.error("❌ [membership-application] duplicate re-send failed:", mailError)
         }
@@ -124,36 +137,8 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "server_error" }, { status: 500 })
   }
 
-  // E-mails are best effort: the record is already saved, delivery is tracked on it.
-  const createdAt = application.createdAt ?? new Date()
-  const notifications: Record<string, unknown> = {}
-
-  try {
-    await sendMail(applicantConfirmationMail(application.email))
-    notifications["notifications.applicantEmailSentAt"] = new Date()
-  } catch (error) {
-    console.error("❌ [membership-application] applicant e-mail failed:", error)
-    notifications["notifications.lastError"] = `applicant: ${(error as Error).message}`.slice(0, 512)
-  }
-
-  const recipient = getNotificationRecipient()
-  if (recipient) {
-    try {
-      await sendMail(adminNotificationMail(recipient, { ...payload, createdAt }))
-      notifications["notifications.adminEmailSentAt"] = new Date()
-    } catch (error) {
-      console.error("❌ [membership-application] admin e-mail failed:", error)
-      notifications["notifications.lastError"] = `admin: ${(error as Error).message}`.slice(0, 512)
-    }
-  } else {
-    console.warn("⚠️ [membership-application] MAIL_TO missing — no internal notification sent")
-  }
-
-  if (Object.keys(notifications).length) {
-    await MembershipApplicationModel.updateOne({ _id: application._id }, { $set: notifications }).catch((error) => {
-      console.error("❌ [membership-application] notification bookkeeping failed:", error)
-    })
-  }
+  // The record is saved; the mail is best effort and tracked in email_logs.
+  await sendContinueLink(application, "folytatas", "system")
 
   return Response.json({ ok: true, id: String(application._id) }, { status: 201 })
 }

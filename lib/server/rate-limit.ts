@@ -1,6 +1,6 @@
 import { Ratelimit } from "@upstash/ratelimit"
-import { Redis } from "@upstash/redis"
 import { createHash } from "node:crypto"
+import { getRedis } from "@/lib/server/redis"
 
 declare global {
   var __ratelimits__: Map<string, Ratelimit> | undefined
@@ -18,13 +18,6 @@ export function getClientIp(request: Request): string {
 /** Stable, non-reversible identifier for an IP (stored instead of the raw address). */
 export function hashIp(ip: string): string {
   return createHash("sha256").update(ip).digest("hex")
-}
-
-function getRedis(): Redis | null {
-  const url = process.env.UPSTASH_REDIS_REST_URL
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN
-  if (!url || !token) return null
-  return new Redis({ url, token })
 }
 
 /**

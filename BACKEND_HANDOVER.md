@@ -1,21 +1,16 @@
-# Backend átadás – front-end szerződés
+# Backend – API és adatmodell
 
-**Állapot:** a CSÖK-változat két publikus végpontjának szerződése rögzítve; a
-teljes rendszer további végpontjai később kerülnek ide.
+**Állapot:** a CSÖK két publikus végpontja és az admin hitelesítés (D-017) él;
+a tagsági rendszer további végpontjai körönként kerülnek ide.
 
-## 1. Határ és felelősség
+## 1. Felelősség
 
-A front-end (működő wireframe) az átadási pont (D-002). A backend fejlesztő
-felel a valódi adatokért, a szerveroldali üzleti logikáért, az e-mail-küldésért,
-a fájltárolásért, a fizetési integrációért, a biztonságért és az adminisztrációs
-felületért (D-008). A backend fejlesztő **nem építi újra** a képernyőket és az
-interakciókat: azok a front-end körben készen átadásra kerülnek.
-
-A felület az adatokat **valódi HTTP API-rétegen** keresztül éri el (D-003):
-a böngésző egy típusos klienst hív, ami Next.js route handlereket szólít meg.
-A handlerek jelenleg mintaadatot szolgáltatnak (`lib/data/*`). A backend
-integráció annyi, hogy a handlerek belseje valódi adatforrásra cserélődik – a
-végpontok és a válaszformátumok változatlanok maradnak.
+A backend, a hitelesítés és az adminisztrációs felület ebben a projektben
+készül (D-016). Ez a dokumentum a rendszer API-jainak, adatmodelljének és
+környezeti változóinak nyilvántartása. Minden védett végpont szerveroldalon
+ellenőrzi a jogosultságot (`requireAdmin` / `requireSuperAdmin`,
+`lib/server/auth/session.ts`); a felületen elrejtett gomb nem védelem
+(specifikáció 12.2).
 
 ## 2. CSÖK API-végpontok
 
@@ -54,12 +49,159 @@ a `preliminary-membership-applications` 2026-09-22-től, a `contact-messages`
 2026-09-26-tól (lásd CHANGELOG). A válaszkódok és a kérés alakja a fenti
 szerződés szerint rögzített.
 
-## 3. Elvárt adatok és állapotok
+## 3. Admin hitelesítés és adminkezelés (D-017)
 
-_Az egyes területek (tartalom, fiók, tagsági életciklus, fizetés, tagi
-névjegyzék, szakmai anyagok, konferencia) adatköre a tervezés során kerül ide._
+### Folyamat
 
-## 4. Nyitott döntések, amelyek a backendet érintik
+1. `/mavet-login` (rejtett, noindex): az admin megadja az e-mail-címét. A
+   `requestLoginCode` server action (`app/mavet-login/actions.ts`) ismeretlen
+   vagy nem admin címre is „siker” választ ad (kis véletlen késleltetéssel), így
+   a felületről nem deríthető ki, ki admin. Admin címre 6 jegyű kód megy
+   SendGriddel (`lib/server/auth/login-code-mail.ts`).
+2. A kód Redisben él (`mavet:auth:code:<email>`, 3 perc). Címenként 1 kód /
+   perc, 20 kód / nap; IP-nként 5 kérés / perc.
+3. A kódot a NextAuth `admin-otp` credentials provider ellenőrzi
+   (`lib/server/auth/auth-options.ts`): timing-safe összehasonlítás, 5 hibás
+   próbálkozás után a kód törlődik, IP-nként 20 ellenőrzés / perc.
+4. Siker: JWT session (7 nap). A tokenben lévő szerep percenként újraolvasódik
+   az adatbázisból, így a visszavont jog legfeljebb 1 percen belül az API-kon
+   is érvényesül. `lastLoginAt` frissül a `users` rekordon.
+5. `proxy.ts`: az `/admin` útvonalakra token nélkül → `/mavet-login`, nem admin
+   szereppel → `/`. Az `app/admin/layout.tsx` friss session-nel újra ellenőriz.
+
+### Szerepek (`users.role`)
+
+| Szerep | Jog |
+| --- | --- |
+| `SUPERADMIN` | Minden admin funkció + adminok felvétele, visszavonása, naplók. Csak a `npm run seed:superadmin` script vagy DB-szintű módosítás adja. |
+| `ADMIN` | Az admin felület minden tartalmi funkciója (a következő körökben). |
+| `USER` | Tagi fiók (későbbi kör); az admin felületet nem éri el. Jog visszavonása = átsorolás `USER`-re, nem törlés. |
+
+A szervezeti tisztség (elnök, bizottsági tag) nem szerep, hanem tagsági adat
+(specifikáció 1.2).
+
+### Végpontok
+
+- `GET /api/auth/*` és `POST /api/auth/*` – NextAuth (session, signin, signout, csrf).
+- `GET /api/admin/users` – SUPERADMIN. Az admin szintű felhasználók listája
+  (`{ data: AdminUserListItem[] }`).
+- `POST /api/admin/users` – SUPERADMIN. Body: `{ email, name }`. Új cím → új
+  `ADMIN` (`201`); meglévő `USER` → előléptetés (`200`, `promoted: true`);
+  meglévő admin → `409`; hibás adat → `400`.
+- `PATCH /api/admin/users/[id]` – SUPERADMIN. Body: `{ role: "ADMIN" | "USER" }`.
+  Saját fiók → `400`; SUPERADMIN célpont → `403`; nincs ilyen → `404`.
+
+Minden mutáció `admin_audit_logs` bejegyzést ír (ki, kin, mit, IP, user agent).
+
+### Gyűjtemények
+
+- `users` – `email` (egyedi), `name`, `role`, `lastLoginAt`, időbélyegek.
+- `auth_logs` – minden belépési esemény (kódkérés, küldés, hibás kód, zárolás,
+  siker) e-maillel, IP-vel, user agenttel. Nincs TTL.
+- `admin_audit_logs` – jogosultság-változások actor → target viszonnyal. Nincs TTL.
+
+### Környezeti változók
+
+`NEXTAUTH_SECRET` (kötelező, `openssl rand -base64 32`), `NEXTAUTH_URL` (a
+telepítés publikus origin-je), `SUPERADMIN_EMAIL` és `SUPERADMIN_NAME` (csak a
+seed scripthez), `CRON_SECRET` (az ütemezett feladatokhoz; Vercel
+automatikusan küldi), `NEXT_PUBLIC_SITE_URL` (a levelekben szereplő linkekhez). Redis nélkül a belépés nem működik (a kódoknak tároló kell); a
+rate limit Redis-hiba esetén átenged (fail open), a kódellenőrzés nem.
+
+## 4. Tagsági jelentkezés (D-018)
+
+### Folyamat
+
+1. `POST /api/preliminary-membership-applications` (változatlan kérés: `category`,
+   `title`, `lastName`, `firstName`, `email`, `consent`, `privacyNoticeVersion`)
+   → `membership_applications` rekord `elozetes` állapotban, `201`. A
+   jelentkező a `jelentkezes_folytatas` sablonnal folytató linket kap
+   (`/tagsag/jelentkezes/<token>`; a tokenből csak sha-256 hash tárolódik,
+   30 napig érvényes, minden küldés újat generál). Nyitott jelentkezéssel
+   rendelkező címre `200 { duplicate: true }`; ha az még nincs véglegesítve, a
+   link újra kimegy (címenként napi 1×).
+2. A link első megnyitása: `megerositett` + `emailVerifiedAt`. Az oldal a
+   teljes adatlapot mutatja; `saveApplicationDraft` (server action, 60/10 perc/IP)
+   bármikor ment, `finalizeApplication` validál (lib/validation/
+   membership-application.ts), nyilatkozatokat rögzít, `bekuldott` + `submittedAt`,
+   majd `jelentkezes_beerkezett` a jelentkezőnek és `admin_uj_jelentkezes` a
+   `MAIL_TO` címre.
+3. Admin (`/admin/jelentkezesek/[id]`, server actionök, admin session):
+   `acceptApplication(id, category)` → `elfogadva`, `acceptedCategory`,
+   `jelentkezes_elfogadva`; `rejectApplication(id, message)` → `elutasitva`,
+   `decisionMessage`, `jelentkezes_elutasitva` vagy Érdemesnél
+   `jelentkezes_elutasitva_erdemes`; `resendContinueLink`, `sendManualReminder`,
+   `saveInternalNote`, `withdrawApplication` (→ `visszavont`, token törölve).
+4. Elutasítás után a rövid űrlap új rekordot hoz létre (a részleges egyedi index
+   csak a nyitott állapotokra vonatkozik).
+
+### Emlékeztetők
+
+`GET /api/cron/application-reminders` (`Authorization: Bearer CRON_SECRET`,
+`vercel.json`: naponta 07:00 UTC). Félbehagyott (`elozetes`, `megerositett`)
+jelentkezések: az utolsó aktivitás után 7 nappal az első, az első után 14
+nappal a második emlékeztető, utána nincs több; a kézi emlékeztető is számít.
+Minden futás `cron_runs` rekord (átnézett, küldött, hibák).
+
+### E-mail-sablonok
+
+Kulcsok és változók: `lib/server/email/registry.ts`. Az admin mentett
+változata (`email_templates`) felülírja a kódbeli alapértelmezést; `enabled:
+false` esetén a küldés kimarad (naplózva). Küldés: `sendTemplatedMail` →
+`email_logs` (`sent` / `failed` / `skipped`, `triggeredBy`, `applicationId`).
+A sablon csak a törzs; a keretet `wrapInMailLayout` adja.
+
+### Gyűjtemények
+
+- `membership_applications` – lásd a sémát; indexek: `email_open_unique`
+  (részleges), `continueTokenHash`, `status + lastActivityAt`.
+- `email_templates`, `email_logs`, `cron_runs`.
+
+Migráció meglévő adatbázison: `npm run migrate:applications`.
+
+## 5. Tagi fiók és aktiválás (D-019, D-020)
+
+- Elfogadáskor (`acceptApplication`) a `createMemberFromApplication`
+  létrehozza vagy frissíti a `users` rekordot (`role: USER`, profil a
+  jelentkezésből, `membership.status: aktivalasra_var`), az
+  `activationOutcome` az elfogadás dátuma alapján dönt: díjmentes vagy 2026-ig
+  → `paidThroughYear`; díjköteles 2027-től → `membership.feeDue` (összeg, év,
+  határidő = elfogadás + 30 nap). Levél: `jelentkezes_elfogadva` vagy
+  `jelentkezes_elfogadva_dijkoteles`, benne a `/fiok/aktivalas/<token>` link
+  (sha-256 hash a useren, 7 nap; `resendActivationLink` újat generál).
+- Aktiválás (`activateAccount` server action): jelszó-szabály (D-020), bcrypt,
+  `membership.status` → `aktiv` vagy `fizetesre_var`, `activatedAt`, token
+  törlése, `ACCOUNT_ACTIVATED` az `auth_logs`-ban, majd automatikus belépés.
+- Belépés: NextAuth `member-password` provider (`/belepes`); session
+  `user.role = USER`. `/fiok` szerveroldalon ellenőrzi a sessiont, admin
+  szerepet az adminba irányít.
+- Jelszó-visszaállítás: `requestPasswordReset` (semleges válasz) →
+  `sendPasswordResetMail` (`passwordResetTokenHash`, 1 óra) → `resetPassword`
+  a `/jelszo-visszaallitas/<token>` oldalon; belépve `changePassword`.
+- A fejléc fiókmenüje a `/api/auth/session` végpontból olvassa a sessiont a
+  kliensen.
+- Admin tagkezelés (`/admin/tagok/[id]`, server actionök): `changeMemberCategory`,
+  `revokeMembership` (→ `megszunt`, `revokedAt/ByEmail/Reason`, opcionális
+  `tagsag_megszunt` levél), `restoreMembership`, `deleteMember` (SUPERADMIN;
+  `users` törlés + `membership_applications` anonimizálás). Mind
+  `admin_audit_logs` bejegyzéssel.
+- Profil (`/fiok/profil`, server actionök): `updateProfile` (9.2 mezők),
+  `updateVisibility` (`visibility.enabled` + mezőnkénti flagek, 9.3),
+  `uploadProfilePhoto` / `removeProfilePhoto` (sharp → WebP 512 px → Vercel
+  Blob `profil/<userId>/<ts>.webp`, `BLOB_READ_WRITE_TOKEN`). Saját fióktörlés:
+  `deleteOwnAccount` (jelszó + megerősítés; `users` törlés, jelentkezések
+  anonimizálva, `fiok_torolve` levél). Admin: `updateMemberOffice`
+  (`office`, `boardMember`). A névjegyzék és a publikus elnökségi kártyák a
+  `visibility.enabled` + `membership.status = aktiv` (+ `boardMember`) szűrésre
+  épülnek majd.
+- Fizetés, megújítás, lejáratás: következő körök.
+
+## 6. Elvárt adatok és állapotok
+
+_A további területek (fizetés, tagi névjegyzék, profil, tartalom, szakmai
+anyagok, konferencia) adatköre a következő körökben kerül ide._
+
+## 7. Nyitott döntések, amelyek a backendet érintik
 
 A projekt-specifikáció nyitott `ND-xx` kérdései közül az alábbiak befolyásolják a
 backend működését: ND-01 (első tagdíj elmaradása), ND-17 (számla és díjbekérő),
@@ -68,12 +210,32 @@ ND-37 (fájlok, formátumok, videóbeágyazás), ND-38 (megújítási értesít�
 ND-44 (hírlevélküldés). Ezek lezárása nélkül az érintett funkció nem
 tekinthető véglegesnek.
 
-## 5. Technikai környezet
+## 8. Technikai környezet
 
 - Next.js 16 App Router, TypeScript, Tailwind CSS v4, shadcn komponensek (D-004).
 - Nincs `src/` könyvtár, az import alias `@/*`.
 - Minden aloldal saját `layout.tsx`-szel rendelkezik, szerveroldali
   komponensként; a `page.tsx` szemantikus HTML és szerveroldali, az interaktív
   részek külön kliens komponensekben élnek (D-005).
-- A prototípus nem tartalmaz valódi hitelesítést, fizetést és külső
-  szolgáltatást (D-006, D-007).
+- MongoDB Atlas (Mongoose), Upstash Redis, SendGrid, NextAuth v4 (D-016, D-017).
+  Fizetési integráció (SimplePay) még nincs (D-007 szerint csak ellenőrzött
+  visszaigazolás aktiválhat).
+
+## Aktualitások (hírek és események)
+
+- Gyűjtemény: `posts` (`lib/models/post.ts`); indexek: egyedi `slug`,
+  `type + status + publishedAt`, `type + status + endsAt + startsAt`.
+- Szabályok adatbázis nélkül: `lib/posts.ts` (validáció, magyar idő → UTC,
+  `eventWindow`, `eventPhase`, `toPostView`, `composeHomePreview`).
+  Lekérdezések: `lib/server/posts.ts`. Admin műveletek (server actionök):
+  `app/admin/aktualitasok/actions.ts` (`savePost`, `setPostFeatured`,
+  `deletePost`, `uploadPostImage`, `removePostImage`).
+- Az esemény `startsAt` / `endsAt` mezője minden mentéskor a beírt magyar
+  dátumból és időből számolódik; az „aktuális vagy korábbi” besorolás ezekből
+  jön lekérdezéskor, ütemezett feladat nincs hozzá.
+- Statikus oldalak érvénytelenítése: `revalidatePosts(slug)` a
+  `lib/server/revalidate-public.ts`-ben; minden új, bejegyzést módosító
+  műveletnek hívnia kell.
+- Képek: `lib/server/post-image.ts`, Blob mappa `aktualitasok/<postId>/`.
+- Első feltöltés: `npm run seed:news`.
+

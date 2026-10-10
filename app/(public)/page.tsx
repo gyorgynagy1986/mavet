@@ -1,0 +1,121 @@
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowRightIcon } from "lucide-react"
+import { MavetEmblem } from "@/components/brand/mavet-emblem"
+import { Eyebrow } from "@/components/home/eyebrow"
+import { HomeContent } from "@/components/home/home-content"
+import { InViewItem } from "@/components/home/in-view-item"
+import { SiteContainer } from "@/components/site-container"
+import { Button } from "@/components/ui/button"
+import { mottoPillars } from "@/lib/data/site"
+import { cn } from "@/lib/utils"
+
+/**
+ * Static page; the news preview is refreshed when the admin changes a post (`revalidatePosts`) and, so that
+ * a finished event drops out on its own, every ten minutes.
+ */
+export const revalidate = 600
+
+export default function HomePage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative isolate overflow-hidden bg-mavet-hero text-white">
+        {/* Barely visible landscape photo with a slow zoom; luminosity blend keeps it inside the navy palette. */}
+        <div
+          className="absolute inset-0 -z-20 overflow-hidden opacity-[0.16] mix-blend-luminosity [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
+          aria-hidden="true"
+        >
+          <Image src="/hero.webp" alt="" fill sizes="100vw" priority className="object-cover object-[center_60%] motion-safe:animate-mavet-zoom" />
+        </div>
+        <div className="absolute inset-0 -z-10 bg-mavet-grid" aria-hidden="true" />
+        <MavetEmblem variant="mono" className="absolute -top-6 -right-40 -z-10 w-96 text-white opacity-[0.04] lg:hidden" />
+        <SiteContainer className="mavet-hero-exit grid items-center gap-12 pt-16 pb-28 sm:pt-24 sm:pb-36 lg:grid-cols-[1.15fr_0.85fr] lg:pt-24 lg:pb-40 short-lg:pt-10 short-lg:pb-28">
+          <div className="flex flex-col items-start gap-8 short-lg:gap-6 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-700">
+            <Eyebrow as="h1" emblem="mono" className="text-mavet-gold-50">Magyar Vidékegészségügyi Társaság</Eyebrow>
+            <div className="flex flex-col gap-6">
+              <h2 className="text-[2.75rem] leading-[1.05] text-balance sm:text-6xl lg:text-[4rem] short-lg:text-5xl">
+                <span className="block">Helyszín.</span> <span className="block">Közösség.</span> <span className="block text-mavet-gold italic">Szemlélet.</span>
+              </h2>
+              <p className="max-w-xl text-lg leading-8 text-white/80 sm:text-xl short-lg:text-lg short-lg:leading-7">
+                A tudomány az együttműködésben válik cselekvéssé. A MAVET a vidéki közösségek egészségéért dolgozó szakemberek nyitott, interdiszciplináris fóruma.
+              </p>
+            </div>
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <Button size="xl" variant="gold" render={<Link href="/tagsag/jelentkezes" />} nativeButton={false}>
+                Jelentkezem
+                <ArrowRightIcon data-icon="inline-end" />
+              </Button>
+              <Button size="xl" variant="outline-inverse" render={<Link href="/a-tarsasagrol" />} nativeButton={false}>
+                Ismerje meg a Társaságot
+              </Button>
+            </div>
+          </div>
+
+          <div className="mavet-parallax relative mx-auto hidden aspect-square w-full max-w-md place-items-center lg:grid short-lg:max-w-sm" aria-hidden="true">
+            <div className="absolute inset-0 rounded-full border border-white/10" />
+            <div className="absolute inset-[9%] rounded-full border border-white/10 bg-white/[0.04]" />
+            <div className="absolute inset-[18%] rounded-full bg-mavet-blue/40 blur-3xl" />
+            <div className="absolute inset-[19%] rounded-full bg-white shadow-[0_30px_80px_-20px_rgb(6_30_65/0.8)]" />
+            {/* Two dots orbiting slowly on the rings (outer: gold, clockwise; inner: light blue, counter-clockwise). */}
+            <div className="absolute inset-0 motion-safe:animate-mavet-orbit [--orbit-from:38deg] [--orbit-duration:70s]" style={{ rotate: "38deg" }}>
+              <div className="absolute top-0 left-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-mavet-gold shadow-[0_0_12px_2px_rgb(242_169_0/0.45)]" />
+            </div>
+            <div className="absolute inset-[9%] motion-safe:animate-mavet-orbit [--orbit-from:232deg] [--orbit-duration:110s] motion-safe:[animation-direction:reverse]" style={{ rotate: "232deg" }}>
+              <div className="absolute top-0 left-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-mavet-blue-50" />
+            </div>
+            <MavetEmblem className="relative w-[44%] translate-y-[4%]" />
+          </div>
+        </SiteContainer>
+      </section>
+
+      {/* Motto pillars, overlapping the hero */}
+      <section aria-labelledby="pillerek-cime" className="relative z-10 -mt-16 sm:-mt-20">
+        <SiteContainer>
+          <h2 id="pillerek-cime" className="sr-only">Amit a mottónk jelent</h2>
+          <ul className="grid divide-y divide-border overflow-hidden rounded-2xl motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-6 motion-safe:delay-200 motion-safe:duration-700 motion-safe:fill-mode-both border border-border bg-card shadow-[0_24px_60px_-24px_rgb(11_45_91/0.28)] md:grid-cols-3 md:divide-x md:divide-y-0">
+            {mottoPillars.map(({ title, description, image, imagePosition }) => (
+              <InViewItem key={title} className="group relative isolate flex flex-col gap-3 overflow-hidden p-6 pt-28 sm:p-8 sm:pt-36">
+                {/*
+                 * Faint duotone photo (luminosity blend over a light blue tint) that "comes to life" on hover,
+                 * keyboard focus, or on phones when the card reaches the middle of the screen: a full-colour
+                 * copy fades in on top. Both layers fade out towards the text.
+                 */}
+                <div
+                  className="absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black_28%,transparent_70%)]"
+                  aria-hidden="true"
+                >
+                  <div className="absolute inset-0 bg-mavet-blue-50 opacity-50">
+                    <Image
+                      src={image}
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className={cn("object-cover mix-blend-luminosity transition-transform duration-700 ease-out group-hover:scale-105 group-data-[inview=true]:scale-105 motion-reduce:transform-none", imagePosition)}
+                    />
+                  </div>
+                  <div className="absolute inset-0 opacity-0 transition-opacity duration-700 ease-out group-focus-within:opacity-80 group-hover:opacity-80 group-data-[inview=true]:opacity-80 motion-reduce:transition-none">
+                    <Image
+                      src={image}
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className={cn("object-cover transition-transform duration-700 ease-out group-hover:scale-105 group-data-[inview=true]:scale-105 motion-reduce:transform-none", imagePosition)}
+                    />
+                  </div>
+                </div>
+                <h3 className="flex items-center gap-2.5 text-xl">
+                  <MavetEmblem className="h-[0.8em] w-auto shrink-0" />
+                  {title}
+                </h3>
+                <p className="leading-7 text-muted-foreground">{description}</p>
+              </InViewItem>
+            ))}
+          </ul>
+        </SiteContainer>
+      </section>
+
+      <HomeContent />
+    </>
+  )
+}

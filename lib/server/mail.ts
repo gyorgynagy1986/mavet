@@ -1,4 +1,5 @@
 import sgMail from "@sendgrid/mail"
+import { MAIL_MAX_ATTEMPTS, withMailRetry } from "@/lib/server/mail-retry"
 
 export type MailMessage = {
   to: string
@@ -22,31 +23,50 @@ export function getNotificationRecipient(): string | null {
 
 let configured = false
 
+export interface SendMailResult {
+  /** How many SendGrid calls it took (1 = first try succeeded; 0 = not sent, no API key). */
+  attempts: number
+}
+
 /**
- * Sends one e-mail through SendGrid. Without SENDGRID_API_KEY (local dev) the
- * message is logged instead of sent, so the flow can be exercised end to end.
+ * Sends one e-mail through SendGrid, retrying transient failures (429, 5xx,
+ * network) up to MAIL_MAX_ATTEMPTS times with a short back-off; permanent 4xx
+ * errors throw at once. Throws a `MailSendError` after the last attempt.
+ * Without SENDGRID_API_KEY (local dev) the message is logged instead of sent,
+ * so the flow can be exercised end to end.
  */
-export async function sendMail(message: MailMessage): Promise<void> {
+export async function sendMail(message: MailMessage): Promise<SendMailResult> {
   const apiKey = process.env.SENDGRID_API_KEY
   if (!apiKey) {
     console.warn("⚠️ [mail] SENDGRID_API_KEY missing — e-mail not sent:", {
       to: message.to,
       subject: message.subject,
     })
-    return
+    return { attempts: 0 }
   }
   if (!configured) {
     sgMail.setApiKey(apiKey)
     configured = true
   }
-  await sgMail.send({
+  const payload = {
     from: getSender(),
     to: message.to,
     replyTo: message.replyTo,
     subject: message.subject,
     text: message.text,
     html: message.html ?? textToHtml(message.text),
-  })
+  }
+  return withMailRetry(
+    async () => {
+      await sgMail.send(payload)
+    },
+    {
+      onRetry: (error, attempt, delayMs) => {
+        const reason = error instanceof Error ? error.message : String(error)
+        console.warn(`⚠️ [mail] attempt ${attempt}/${MAIL_MAX_ATTEMPTS} to ${message.to} failed (${reason}); retrying in ${delayMs} ms`)
+      },
+    },
+  )
 }
 
 export function escapeHtml(value: string): string {

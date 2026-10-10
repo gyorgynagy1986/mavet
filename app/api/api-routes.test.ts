@@ -1,19 +1,20 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
-const { dbConnect, create, updateOne, contactCreate, contactUpdateOne, sendMail, rateLimit } = vi.hoisted(() => ({
+const { dbConnect, create, findOne, contactCreate, contactUpdateOne, sendMail, rateLimit, sendContinueLink } = vi.hoisted(() => ({
   dbConnect: vi.fn<() => Promise<undefined>>(async () => undefined),
   create: vi.fn<(doc: Record<string, unknown>) => Promise<{ _id: string; email: string; createdAt: Date }>>(),
-  updateOne: vi.fn(() => ({ catch: () => undefined })),
+  findOne: vi.fn(),
   contactCreate: vi.fn<(doc: Record<string, unknown>) => Promise<{ _id: string; createdAt: Date }>>(),
   contactUpdateOne: vi.fn(() => ({ catch: () => undefined })),
   sendMail: vi.fn<(message: { to: string; subject: string; text: string }) => Promise<void>>(async () => undefined),
   rateLimit: vi.fn<() => Promise<{ allowed: boolean; retryAfterSeconds?: number }>>(async () => ({ allowed: true })),
+  sendContinueLink: vi.fn<(app: { email: string }, kind: string, by: string) => Promise<{ status: "sent" }>>(async () => ({ status: "sent" })),
 }))
 
 vi.mock("@/lib/db-connect", () => ({ default: dbConnect, markPoolPoisoned: () => false }))
 vi.mock("@/lib/models/membership-application", async (importOriginal) => {
   const original = await importOriginal<typeof import("@/lib/models/membership-application")>()
-  return { ...original, MembershipApplicationModel: { create, updateOne } }
+  return { ...original, MembershipApplicationModel: { create, findOne } }
 })
 vi.mock("@/lib/models/contact-message", async (importOriginal) => {
   const original = await importOriginal<typeof import("@/lib/models/contact-message")>()
@@ -21,6 +22,7 @@ vi.mock("@/lib/models/contact-message", async (importOriginal) => {
 })
 vi.mock("@/lib/server/mail", () => ({ sendMail, getNotificationRecipient: () => "iroda@example.hu" }))
 vi.mock("@/lib/server/rate-limit", () => ({ rateLimit, getClientIp: () => "127.0.0.1", hashIp: () => "hash" }))
+vi.mock("@/lib/server/applications", () => ({ sendContinueLink, ensureApplicationIndexes: async () => undefined }))
 
 import { POST as preliminaryMembership } from "@/app/api/preliminary-membership-applications/route"
 import { POST as contact } from "@/app/api/contact-messages/route"
@@ -35,22 +37,25 @@ function request(path: string, body: unknown) {
 
 const validApplication = { category: "rendes", title: "Dr.", lastName: "Teszt", firstName: "Elek", email: "Teszt@Example.hu", consent: true, privacyNoticeVersion: "csok-2026-09-21" }
 
+function leanQuery<T>(value: T) {
+  return { select: () => ({ lean: async () => value }) }
+}
+
 describe("POST /api/preliminary-membership-applications", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     create.mockResolvedValue({ _id: "abc", email: "teszt@example.hu", createdAt: new Date() })
   })
 
-  it("saves a valid application and sends both e-mails", async () => {
+  it("saves a valid application as elozetes and sends the continuation link", async () => {
     const response = await preliminaryMembership(request("/api/preliminary-membership-applications", validApplication))
     expect(response.status).toBe(201)
     await expect(response.json()).resolves.toMatchObject({ ok: true, id: "abc" })
     expect(create).toHaveBeenCalledTimes(1)
-    expect(create.mock.calls[0][0]).toMatchObject({ email: "teszt@example.hu", status: "tagjelolt", consent: { accepted: true, privacyNoticeVersion: "csok-2026-09-21" } })
-    expect(sendMail).toHaveBeenCalledTimes(2)
-    expect(sendMail.mock.calls[0][0]).toMatchObject({ to: "teszt@example.hu" })
-    expect(sendMail.mock.calls[0][0].text).toContain("Tisztelt Jelentkező!")
-    expect(sendMail.mock.calls[1][0]).toMatchObject({ to: "iroda@example.hu" })
+    expect(create.mock.calls[0][0]).toMatchObject({ email: "teszt@example.hu", status: "elozetes", consent: { accepted: true, privacyNoticeVersion: "csok-2026-09-21" } })
+    expect(sendContinueLink).toHaveBeenCalledTimes(1)
+    expect(sendContinueLink.mock.calls[0]).toEqual([expect.objectContaining({ email: "teszt@example.hu" }), "folytatas", "system"])
+    expect(sendMail).not.toHaveBeenCalled()
   })
 
   it("rejects an incomplete application without touching the database", async () => {
@@ -59,21 +64,30 @@ describe("POST /api/preliminary-membership-applications", () => {
     expect(create).not.toHaveBeenCalled()
   })
 
-  it("acknowledges a duplicate e-mail, re-sends only the applicant confirmation", async () => {
+  it("acknowledges a duplicate open application and re-sends the link to an unfinished one", async () => {
     create.mockRejectedValueOnce(Object.assign(new Error("dup"), { code: 11000 }))
+    findOne.mockReturnValueOnce(leanQuery({ _id: "abc", email: "teszt@example.hu", title: "Dr.", lastName: "Teszt", firstName: "Elek", category: "rendes", status: "megerositett" }))
     const response = await preliminaryMembership(request("/api/preliminary-membership-applications", validApplication))
     expect(response.status).toBe(200)
     await expect(response.json()).resolves.toMatchObject({ ok: true, duplicate: true })
-    expect(sendMail).toHaveBeenCalledTimes(1)
-    expect(sendMail.mock.calls[0][0]).toMatchObject({ to: "teszt@example.hu" })
+    expect(sendContinueLink).toHaveBeenCalledTimes(1)
+    expect(sendContinueLink.mock.calls[0][1]).toBe("folytatas")
   })
 
-  it("does not re-send the confirmation for a duplicate when the daily re-send limit is hit", async () => {
+  it("does not re-send a link when the open application is already under review", async () => {
+    create.mockRejectedValueOnce(Object.assign(new Error("dup"), { code: 11000 }))
+    findOne.mockReturnValueOnce(leanQuery({ _id: "abc", email: "teszt@example.hu", status: "bekuldott" }))
+    const response = await preliminaryMembership(request("/api/preliminary-membership-applications", validApplication))
+    expect(response.status).toBe(200)
+    expect(sendContinueLink).not.toHaveBeenCalled()
+  })
+
+  it("does not re-send the link for a duplicate when the daily re-send limit is hit", async () => {
     create.mockRejectedValueOnce(Object.assign(new Error("dup"), { code: 11000 }))
     rateLimit.mockResolvedValueOnce({ allowed: true }).mockResolvedValueOnce({ allowed: false, retryAfterSeconds: 3600 })
     const response = await preliminaryMembership(request("/api/preliminary-membership-applications", validApplication))
     expect(response.status).toBe(200)
-    expect(sendMail).not.toHaveBeenCalled()
+    expect(sendContinueLink).not.toHaveBeenCalled()
   })
 
   it("returns 429 with Retry-After when rate limited", async () => {
