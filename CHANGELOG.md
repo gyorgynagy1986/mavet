@@ -4,6 +4,50 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-10-20 – Szakmai anyagok és Díjazottak modul (spec 6., 4.4)
+
+### Változások
+
+- **Szakmai anyagok** (`materials`, `material_categories`; `lib/materials.ts`): cím, kategória
+  (admin által kezelt lista, csak szűrésre), rövid összefoglaló, szerző, dátum; forma: dokumentum
+  (feltöltött fájl vagy külső hivatkozás) vagy videó; hozzáférés: publikus vagy csak aktív tagoknak;
+  rejtett / közzétett. Új anyag rejtett; közzétételhez minden megjelenő adat kell (6.2).
+- **Fájlok**: PDF, DOC(X), PPT(X), XLS(X), legfeljebb 25 MB (ND-37 javaslat, ügyfélnek jóváhagyásra);
+  a böngészőből közvetlenül a Vercel Blobba mennek (`@vercel/blob/client`, token a
+  `/api/admin/szakmai-anyagok/feltoltes` útvonalról, csak adminnak, csak az adott anyag mappájába),
+  csere és törlés a tárolóból is. Megnyitás a `/szakmai-anyagok/<id>/megnyitas` kapun át: itt
+  történik a jogosultság-ellenőrzés (6.3), vendég a belépésre, nem aktív tag tájékoztatóra kerül;
+  rejtett anyag 404.
+- **Publikus lista** (`/szakmai-anyagok`, 6.4): cím szerinti kereső, kategóriaszűrő, 12-es
+  lapozás; táblázatos sorok (DD-46), tagi anyag zárolva, felül egy belépésre hívó sáv; videó
+  dialógablakban, YouTube `nocookie` beágyazással (DD-47/53); üres állapotok.
+- **Bunny.net**: a modell és az űrlap ismeri a szolgáltatót, de **nincs bekötve** (ügyféldöntés,
+  2026-10-20): Bunny-videó nem tehető közzé, `lib/server/bunny.ts` csonk a bekötés leírásával.
+  Amíg nincs, tagi videó is YouTube-ról (nem listázott) megy; a védelem ott a kártya zárolása, nem a
+  tokenes lejátszás.
+- **Admin**: Tartalom → Szakmai anyagok (lista állapotfülekkel, kereséssel, lapozással; űrlap élő
+  YouTube-előnézettel; kategória-kezelő sorrenddel). Napló: `material_*`.
+- **Díjazottak és elismerések** (`awards`, `site_texts`; `lib/awards.ts`): díjtípus név + leírás +
+  sorrend + elrejtés, díjazottak évenként (személy, szervezet vagy szerzői közösség neve), a
+  bevezető szerkeszthető. Adminban soronként „ÉÉÉÉ Név; Név” formában, ellenőrzéssel. Publikus
+  oldal (`/dijazottak`, statikus, admin mentésre újraépül): kétoszlopos kártyák, évek a legújabbal
+  kezdve, üres évek nem látszanak. `npm run seed:awards`: a hat díj a spec leírásaival és a
+  bevezető (ismételhető). Napló: `award_update`.
+- **Navigáció**: publikus fejlécben „Szakmai tartalom” lenyíló (Szakmai anyagok, Tagi névjegyzék,
+  Díjazottak); admin Tartalom menü bővítve; sitemap: `/dijazottak`.
+- Tesztek: `lib/materials.test.ts` (YouTube-azonosító, közzétételi szabályok, fájlkorlát,
+  díjazott-sorok értelmezése, publikus szűrés).
+
+### Ismert korlátok
+
+- A Blob-ban tárolt fájl URL-je publikus (véletlen utótaggal); a kapu a megnyitást ellenőrzi, a már
+  kiadott címet nem lehet visszavonni (a spec 6.3 ezt elismeri). Privát Blob-tárolásra később.
+- Bunny.net lejátszás nincs; a tagi videó egyelőre nem védett technikailag.
+- Díjazottaknál fénykép és életrajz nincs (4.4: csak hozzájárulással; az oldal neveket mutat).
+- Élesítéskor: `npm run seed:awards`, majd az adminban kategóriák felvétele.
+
+---
+
 ## 2026-10-20 – Borítókép, főoldali előnézet, admin ergonómia
 
 ### Változások

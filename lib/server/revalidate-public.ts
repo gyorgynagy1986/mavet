@@ -24,3 +24,14 @@ export function revalidatePosts(slug?: string | null): void {
   revalidatePath("/sitemap.xml")
   if (slug) revalidatePath(`${POSTS_PATH}/${slug}`)
 }
+
+/** The materials list is request-time, but the sitemap and the home are cached. */
+export function revalidateMaterials(): void {
+  revalidatePath("/szakmai-anyagok")
+  revalidatePath("/sitemap.xml")
+}
+
+/** The awards page is static; every admin edit rebuilds it. */
+export function revalidateAwards(): void {
+  revalidatePath("/dijazottak")
+}

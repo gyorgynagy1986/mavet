@@ -9,6 +9,7 @@ const routes = [
   "/munkacsoportok",
   "/aktualitasok",
   "/szakmai-anyagok",
+  "/dijazottak",
   "/kapcsolat",
   "/adatkezeles",
   "/impresszum",
