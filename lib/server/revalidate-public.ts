@@ -35,3 +35,11 @@ export function revalidateMaterials(): void {
 export function revalidateAwards(): void {
   revalidatePath("/dijazottak")
 }
+
+/** Partners appear on the (static) home page and on /partnerek. */
+export function revalidatePartners(): void {
+  revalidatePath("/")
+  revalidatePath("/fooldalv2")
+  revalidatePath("/partnerek")
+  revalidatePath("/sitemap.xml")
+}

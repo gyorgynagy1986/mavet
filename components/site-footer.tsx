@@ -30,6 +30,8 @@ export function SiteFooter() {
           {navigation.map((item) => (
             <Link key={item.href} className={footerLinkClass} href={item.href}>{item.label}</Link>
           ))}
+          <Link className={footerLinkClass} href="/dijazottak">Díjazottak</Link>
+          <Link className={footerLinkClass} href="/partnerek">Partnereink</Link>
         </nav>
         <div className="flex flex-col gap-2.5 text-sm">
           <p className="mb-1 text-xs font-semibold tracking-[0.14em] text-white/55 uppercase">Kapcsolat</p>

@@ -52,9 +52,7 @@ export default async function MaterialsPage({ searchParams }: { searchParams: Pr
           ) : !canOpenMembersOnly(viewer) ? (
             <div className="flex flex-wrap items-center gap-4 rounded-xl border border-border bg-mavet-surface px-5 py-4">
               <LockIcon className="size-5 shrink-0 text-mavet-blue" aria-hidden="true" />
-              <p className="flex-1 text-sm leading-6">
-                {viewer.kind === "admin" ? "Az adminfiók nem tagság: a tagi anyagokat tagi fiókkal lehet megnyitni." : "A tagi anyagokhoz aktív tagság kell. A tagsága állapotát a fiókjában látja."}
-              </p>
+              <p className="flex-1 text-sm leading-6">A tagi anyagokhoz aktív tagság kell. A tagsága állapotát a fiókjában látja.</p>
               {viewer.kind === "member" ? <Button size="sm" variant="soft" render={<Link href="/fiok" />} nativeButton={false}>Saját fiók</Button> : null}
             </div>
           ) : null

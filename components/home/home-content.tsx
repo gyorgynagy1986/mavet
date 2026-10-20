@@ -18,6 +18,9 @@ import { Button } from "@/components/ui/button"
 import { POST_TYPE_LABEL, type HomePreview, type PostView } from "@/lib/posts"
 import { PostCover } from "@/components/posts/post-cover"
 import { listHomePreview } from "@/lib/server/posts"
+import { listFeaturedPartners } from "@/lib/server/partners"
+import { PartnerStrip } from "@/components/partners/partner-strip"
+import type { PartnerView } from "@/lib/partners"
 import { workgroups } from "@/lib/data/site"
 
 /** Decorative icons for the workgroup cards, in the order of `workgroups`. */
@@ -38,6 +41,13 @@ export async function HomeContent() {
     console.error("[home] news preview could not be loaded:", error)
   }
   const { highlight: featuredNews, news: otherNews, events: upcomingEvents } = preview
+  // Partners (3.1): the featured, published ones; without any the section stays hidden.
+  let partners: PartnerView[] = []
+  try {
+    partners = await listFeaturedPartners()
+  } catch (error) {
+    console.error("[home] partners could not be loaded:", error)
+  }
 
   return (
     <>
@@ -192,6 +202,27 @@ export async function HomeContent() {
           </div>
         </SiteContainer>
       </section>
+
+      {/* Partners (3.1): featured partners in equal tiles; the full list is on /partnerek */}
+      {partners.length > 0 && (
+        <section className="border-t border-border bg-mavet-surface py-16 sm:py-20">
+          <SiteContainer className="flex flex-col gap-10">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+              <div className="mavet-reveal flex flex-col gap-5">
+                <Eyebrow className="text-mavet-blue">Együttműködés</Eyebrow>
+                <h2 className="text-3xl leading-tight sm:text-[2.5rem]">Partnereink és támogatóink</h2>
+              </div>
+              <Button size="xl" variant="soft" className="w-fit shrink-0" render={<Link href="/partnerek" />} nativeButton={false}>
+                Összes partner
+                <ArrowRightIcon data-icon="inline-end" />
+              </Button>
+            </div>
+            <div className="mavet-reveal">
+              <PartnerStrip partners={partners} />
+            </div>
+          </SiteContainer>
+        </section>
+      )}
 
       {/* Stay in touch */}
       <section className="border-t border-border bg-mavet-surface py-12">
