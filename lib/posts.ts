@@ -13,8 +13,9 @@ export const POST_STATUS_LABEL: Record<PostStatus, string> = { piszkozat: "Piszk
 
 export const NEWS_PAGE_SIZE = 6
 export const EVENTS_PAGE_SIZE = 6
-/** Home page preview: at most six cards (3.2). */
-export const HOME_PREVIEW_SIZE = 6
+/** Home page preview (3.2, DD-2026-10-20): one highlighted card, beside it at most two news, below at most three events. */
+export const HOME_PREVIEW_NEWS = 2
+export const HOME_PREVIEW_EVENTS = 3
 /** Address segments that are pages of their own under /aktualitasok and cannot be a post slug. */
 export const RESERVED_POST_SLUGS = ["korabbi-esemenyek"] as const
 export const PAST_EVENTS_PATH = "/aktualitasok/korabbi-esemenyek"
@@ -288,18 +289,33 @@ export function toPostView(post: PostSource, now: Date): PostView {
   }
 }
 
+export interface HomePreview {
+  /** The highlighted (blue) card: the admin-featured post, otherwise the newest news item. */
+  highlight: PostView | null
+  /** At most `HOME_PREVIEW_NEWS` further news items beside the highlight. */
+  news: PostView[]
+  /** At most `HOME_PREVIEW_EVENTS` running or upcoming events below. */
+  events: PostView[]
+}
+
 /**
- * Home page preview (3.2): the featured item first, then running and upcoming events, then the newest
- * news; nothing twice, at most six. `events` and `news` must already be in their list order.
+ * Home page preview (3.2): the highlight is the admin-featured post (a news item or a current event),
+ * otherwise the newest news; beside it the newest news (max 2), below it the current events (max 3);
+ * nothing twice. `events` and `news` must already be in their list order.
  */
-export function composeHomePreview(featured: PostView | null, events: PostView[], news: PostView[], size = HOME_PREVIEW_SIZE): PostView[] {
-  const out: PostView[] = []
-  const seen = new Set<string>()
+export function composeHomePreview(featured: PostView | null, events: PostView[], news: PostView[], limits = { news: HOME_PREVIEW_NEWS, events: HOME_PREVIEW_EVENTS }): HomePreview {
   const usable = featured && (featured.type === "hir" || featured.event?.phase !== "korabbi") ? featured : null
-  for (const item of [...(usable ? [usable] : []), ...events, ...news]) {
-    if (seen.has(item.id) || out.length >= size) continue
-    seen.add(item.id)
-    out.push(item)
+  const highlight = usable ?? news[0] ?? null
+  const taken = new Set(highlight ? [highlight.id] : [])
+  const pick = (items: PostView[], max: number) => {
+    const out: PostView[] = []
+    for (const item of items) {
+      if (out.length >= max) break
+      if (taken.has(item.id)) continue
+      taken.add(item.id)
+      out.push(item)
+    }
+    return out
   }
-  return out
+  return { highlight, news: pick(news, limits.news), events: pick(events, limits.events) }
 }

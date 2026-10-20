@@ -381,7 +381,7 @@ export function PostForm({ id, initial, status, featured, slug, imageUrl, images
                   {busy === "feature" ? <Spinner className="size-4 text-muted-foreground" /> : null}
                 </label>
                 <p className="text-muted-foreground">
-                  {!isPublic ? "Csak közzétett bejegyzés emelhető ki." : past ? "Korábbi esemény nem emelhető ki." : "Egyszerre egy bejegyzés lehet kiemelt; bekapcsolva a korábbi kiemelés megszűnik. A kapcsoló azonnal ment."}
+                  {!isPublic ? "Csak közzétett bejegyzés emelhető ki." : past ? "Korábbi esemény nem emelhető ki." : "Több bejegyzés is lehet kiemelt; a főoldalon a legutóbb kiemelt jelenik meg. A kapcsoló azonnal ment."}
                 </p>
                 <p className="text-muted-foreground">
                   Cím az oldalon: <span className="font-medium text-foreground">{POSTS_PATH}/{slug}</span> (nem változik, ha átírja a címet).

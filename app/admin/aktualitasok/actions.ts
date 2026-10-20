@@ -94,7 +94,7 @@ export async function savePost(id: string | null, raw: Partial<Record<keyof Post
     publishedAt,
     updatedByEmail: actorEmail,
     // A withdrawn post cannot stay featured (3.2).
-    ...(status === "piszkozat" ? { featured: false } : {}),
+    ...(status === "piszkozat" ? { featured: false, featuredAt: null } : {}),
   }
 
   let post: { _id: mongoose.Types.ObjectId; slug: string }
@@ -139,8 +139,8 @@ export async function setPostFeatured(id: string, featured: boolean): Promise<Po
   if (featured && post.status !== "kozzetett") return { ok: false, message: "Csak közzétett bejegyzés emelhető ki." }
   if (featured && post.type === "esemeny" && post.endsAt && post.endsAt.getTime() <= Date.now()) return { ok: false, message: "Korábbi esemény nem emelhető ki a főoldalon." }
 
-  if (featured) await PostModel.updateMany({ _id: { $ne: post._id }, featured: true }, { $set: { featured: false } })
-  await PostModel.updateOne({ _id: post._id }, { $set: { featured, updatedByEmail: ctx.session.user.email ?? null } })
+  // Several posts may be featured at once; the home page shows the most recently featured one.
+  await PostModel.updateOne({ _id: post._id }, { $set: { featured, featuredAt: featured ? new Date() : null, updatedByEmail: ctx.session.user.email ?? null } })
   await logAdminAudit({ ...actorFromSession(ctx.session), ...ctx.meta, action: "post_update", targetName: post.title, changes: [{ field: "featured", from: String(post.featured === true), to: String(featured) }], summary: `Főoldali kiemelés: ${featured ? "be" : "ki"} („${post.title}”)` })
   refresh(post)
   return { ok: true, message: featured ? "Kiemelve a főoldalon." : "A kiemelés megszűnt.", id }

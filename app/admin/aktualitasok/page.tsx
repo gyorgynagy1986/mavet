@@ -127,7 +127,7 @@ export default async function AdminPostsPage({ searchParams }: { searchParams: P
           { label: "Közzétéve", description: "Megjelenik az Aktualitások oldalon és a főoldali előnézetben. Közzétételhez cím, összefoglaló és szöveg kell, eseménynél kezdő dátum is." },
           { label: "Visszavonás", description: "A közzétett bejegyzés bármikor visszavonható: eltűnik a listákból és a főoldalról, a hivatkozása sem nyílik meg. Nem törlődik, később újra közzétehető." },
           { label: "Korábbi esemény", description: "A véget ért esemény magától átkerül a Korábbi események közé. Az oldala megmarad, a jelentkezési gomb eltűnik róla." },
-          { label: "Főoldali kiemelés", description: "Egyszerre egy közzétett hír vagy aktuális esemény emelhető ki; ez kerül a főoldali előnézet első, nagy helyére. Kiemelés nélkül a helyek automatikusan töltődnek." },
+          { label: "Főoldali kiemelés", description: "Közzétett hír vagy aktuális esemény emelhető ki; a főoldal nagy, kék kártyáján mindig a legutóbb kiemelt jelenik meg. Kiemelés nélkül a legfrissebb hír kerül oda. Mellette legfeljebb két hír, alatta legfeljebb három közelgő esemény látszik." },
         ]}
       />
     </div>
