@@ -37,6 +37,7 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
   const session = await getServerAuthSession()
 
   await dbConnect()
+  const now = new Date()
   const [user, mails] = await Promise.all([
     UserModel.findById(id).lean<UserDocument | null>(),
     EmailLogModel.find({ userId: id }).sort({ createdAt: -1 }).limit(30).lean<EmailLogDocument[]>(),
@@ -45,6 +46,10 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
   const m = user.membership
   const name = [user.title, user.lastName, user.firstName].filter(Boolean).join(" ") || user.name
   const address = [user.address?.postalCode, user.address?.city, user.address?.street, user.address?.country].filter(Boolean).join(", ")
+  const activationLink =
+    m.status === "aktivalasra_var"
+      ? { expiresAt: user.activationTokenExpiresAt ? formatDateTime(user.activationTokenExpiresAt) : null, expired: !user.activationTokenExpiresAt || user.activationTokenExpiresAt < now }
+      : null
 
   return (
     <div className="space-y-6">
@@ -71,6 +76,7 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
                 <Row label="Kategória" value={`${categoryName(m.category)}${m.category === "rendes" ? (m.medicalDegree ? " · orvos/gyógyszerész" : " · nem orvos/gyógyszerész") : ""}`} />
                 <Row label="Elfogadva" value={m.acceptedAt ? formatDateTime(m.acceptedAt) : "–"} />
                 <Row label="Aktiválva" value={m.activatedAt ? formatDateTime(m.activatedAt) : "még nem"} />
+                {activationLink ? <Row label="Aktiváló link" value={activationLink.expired ? <span className="text-destructive">lejárt, újra kell küldeni</span> : `érvényes ${activationLink.expiresAt}-ig`} /> : null}
                 <Row label="Érvényes" value={m.paidThroughYear ? `${m.paidThroughYear}. év végéig` : "–"} />
                 {m.feeDue?.amount ? <Row label="Első tagdíj" value={`${formatHuf(m.feeDue.amount)} (${m.feeDue.forYear}. év), határidő: ${m.feeDue.dueAt ? formatDateTime(m.feeDue.dueAt) : "–"}`} /> : null}
                 {m.revokedAt ? <Row label="Visszavonva" value={`${formatDateTime(m.revokedAt)} · ${m.revokedByEmail ?? ""}${m.revokeReason ? ` · ${m.revokeReason}` : ""}`} /> : null}
@@ -129,6 +135,7 @@ export default async function MemberDetailPage({ params }: { params: Promise<{ i
           canDelete={isSuperAdmin(session)}
           office={user.office ?? null}
           boardMember={user.boardMember ?? false}
+          activationLink={activationLink}
         />
       </div>
     </div>

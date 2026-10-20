@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
-import { BadgeCheckIcon, Loader2Icon, RotateCcwIcon, SaveIcon, Trash2Icon, UserXIcon } from "lucide-react"
+import { BadgeCheckIcon, Loader2Icon, MailIcon, RotateCcwIcon, SaveIcon, Trash2Icon, UserXIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -13,9 +13,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { ADMIN_HOME_PATH } from "@/lib/auth-paths"
 import { membershipCategories } from "@/lib/data/site"
 import type { MembershipStatus } from "@/lib/models/user"
-import { changeMemberCategory, deleteMember, restoreMembership, revokeMembership, updateMemberOffice, type MemberActionResult } from "./actions"
+import { changeMemberCategory, deleteMember, resendActivationLink, restoreMembership, revokeMembership, updateMemberOffice, type MemberActionResult } from "./actions"
 
-export function MemberActions({ id, email, status, category, medicalDegree, canDelete, office: initialOffice, boardMember: initialBoard }: { id: string; email: string; status: MembershipStatus; category: string; medicalDegree: boolean | null; canDelete: boolean; office: string | null; boardMember: boolean }) {
+export function MemberActions({ id, email, status, category, medicalDegree, canDelete, office: initialOffice, boardMember: initialBoard, activationLink }: { id: string; email: string; status: MembershipStatus; category: string; medicalDegree: boolean | null; canDelete: boolean; office: string | null; boardMember: boolean; activationLink: { expiresAt: string | null; expired: boolean } | null }) {
   const router = useRouter()
   const [pending, startTransition] = useTransition()
   const [cat, setCat] = useState(category)
@@ -41,6 +41,28 @@ export function MemberActions({ id, email, status, category, medicalDegree, canD
 
   return (
     <div className="space-y-6">
+      {status === "aktivalasra_var" ? (
+        <Card className="border-mavet-gold/60">
+          <CardHeader>
+            <CardTitle>Aktiváló link újraküldése</CardTitle>
+            <CardDescription>
+              A tag még nem kattintott az aktiváló linkre, ezért nincs jelszava. Az újraküldés ugyanazt az elfogadó levelet küldi ki új, 7 napig érvényes linkkel; a korábbi link érvénytelenné válik.
+              {activationLink?.expiresAt ? (
+                <>
+                  {" "}Jelenlegi link: {activationLink.expired ? <strong className="text-destructive">lejárt</strong> : <>érvényes <strong>{activationLink.expiresAt}</strong>-ig</>}.
+                </>
+              ) : null}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button className="w-full" disabled={pending} onClick={() => run(() => resendActivationLink(id), undefined, () => router.refresh())}>
+              {pending ? <Loader2Icon className="animate-spin" /> : <MailIcon data-icon="inline-start" />}
+              Aktiváló link újraküldése
+            </Button>
+          </CardContent>
+        </Card>
+      ) : null}
+
       <Card>
         <CardHeader>
           <CardTitle>Tagsági kategória</CardTitle>
