@@ -31,7 +31,7 @@ export function revalidateMaterials(): void {
   revalidatePath("/sitemap.xml")
 }
 
-/** The awards page is static; every admin edit rebuilds it. */
+/** The awards page renders per request; this clears the router/full-route cache of anyone who holds it. */
 export function revalidateAwards(): void {
   revalidatePath("/dijazottak")
 }
