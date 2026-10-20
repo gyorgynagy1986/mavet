@@ -16,6 +16,7 @@ import { Eyebrow } from "@/components/home/eyebrow"
 import { SiteContainer } from "@/components/site-container"
 import { Button } from "@/components/ui/button"
 import { POST_TYPE_LABEL, type HomePreview, type PostView } from "@/lib/posts"
+import { PostCover } from "@/components/posts/post-cover"
 import { listHomePreview } from "@/lib/server/posts"
 import { workgroups } from "@/lib/data/site"
 
@@ -117,7 +118,15 @@ export async function HomeContent() {
             {featuredNews && (
               <div className="grid gap-5 lg:grid-cols-[1.25fr_1fr]">
                 <article className="mavet-reveal relative isolate flex flex-col justify-end gap-5 overflow-hidden rounded-2xl bg-mavet-hero p-7 text-white sm:p-10 lg:min-h-[26rem]">
-                  <MavetEmblem variant="mono" className="absolute -top-6 -right-10 -z-10 w-72 text-white opacity-[0.06]" />
+                  {featuredNews.coverUrl ? (
+                    <>
+                      {/* eslint-disable-next-line @next/next/no-img-element -- Vercel Blob URL, already resized WebP */}
+                      <img src={featuredNews.coverUrl} alt="" className="absolute inset-0 -z-20 size-full object-cover" />
+                      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-mavet-navy via-mavet-navy/70 to-mavet-navy/20" aria-hidden="true" />
+                    </>
+                  ) : (
+                    <MavetEmblem variant="mono" className="absolute -top-6 -right-10 -z-10 w-72 text-white opacity-[0.06]" />
+                  )}
                   <p className="flex flex-wrap items-center gap-3 text-sm text-white/75">
                     <span className="rounded-full bg-mavet-gold px-3 py-1 text-xs font-semibold tracking-wide text-mavet-navy uppercase">
                       {featuredNews.featured ? `Kiemelt ${POST_TYPE_LABEL[featuredNews.type].toLowerCase()}` : POST_TYPE_LABEL[featuredNews.type]}
@@ -201,7 +210,9 @@ export async function HomeContent() {
 
 function PreviewCard({ item }: { item: PostView }) {
   return (
-    <article className="mavet-reveal group relative flex flex-col gap-4 rounded-2xl border border-border bg-card p-7 transition duration-200 hover:border-mavet-blue-50 hover:shadow-[0_20px_44px_-20px_rgb(11_45_91/0.3)] sm:p-8">
+    <article className="mavet-reveal group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition duration-200 hover:border-mavet-blue-50 hover:shadow-[0_20px_44px_-20px_rgb(11_45_91/0.3)]">
+      <PostCover url={item.coverUrl} zoomOnHover />
+      <div className="flex flex-1 flex-col gap-4 p-7 sm:p-8">
       <p className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
         <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold tracking-wide text-mavet-blue-deep uppercase">{POST_TYPE_LABEL[item.type]}</span>
         {item.dateIso ? <time dateTime={item.dateIso}>{item.dateLabel}</time> : null}
@@ -217,6 +228,7 @@ function PreviewCard({ item }: { item: PostView }) {
         {item.type === "hir" ? "Elolvasom" : "Részletek"}
         <ArrowUpRightIcon className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none" />
       </p>
+      </div>
     </article>
   )
 }

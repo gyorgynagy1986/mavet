@@ -27,7 +27,7 @@ export default async function NewPostPage({ searchParams }: { searchParams: Prom
         <h1 className="mt-2 text-3xl font-semibold tracking-tight">{type === "hir" ? "Hír létrehozása" : "Esemény létrehozása"}</h1>
         <p className="mt-2 max-w-2xl text-base leading-7 text-muted-foreground">Az első mentés piszkozatot hoz létre; képet a mentés után lehet hozzáadni.</p>
       </header>
-      <PostForm id={null} initial={normalizePost({ type })} status="piszkozat" featured={false} slug={null} imageUrl={null} imagesConfigured={isBlobConfigured()} past={false} />
+      <PostForm id={null} initial={normalizePost({ type })} status="piszkozat" featured={false} slug={null} imageUrl={null} coverUrl={null} imagesConfigured={isBlobConfigured()} past={false} />
     </div>
   )
 }

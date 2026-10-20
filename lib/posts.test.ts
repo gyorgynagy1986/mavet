@@ -126,7 +126,7 @@ describe("visitor view", () => {
 })
 
 describe("home preview (3.2)", () => {
-  const view = (id: string, type: "hir" | "esemeny", phase: "kozelgo" | "korabbi" = "kozelgo"): PostView => ({ id, type, slug: id, href: `/aktualitasok/${id}`, title: id, excerpt: "", paragraphs: [], imageUrl: null, featured: false, dateIso: null, dateLabel: null, event: type === "esemeny" ? { when: "", location: null, phase, linkUrl: null, linkLabel: "" } : null })
+  const view = (id: string, type: "hir" | "esemeny", phase: "kozelgo" | "korabbi" = "kozelgo"): PostView => ({ id, type, slug: id, href: `/aktualitasok/${id}`, title: id, excerpt: "", paragraphs: [], coverUrl: null, imageUrl: null, featured: false, dateIso: null, dateLabel: null, event: type === "esemeny" ? { when: "", location: null, phase, linkUrl: null, linkLabel: "" } : null })
 
   it("highlights the featured post, lists the other news beside it and the events below, without repeats", () => {
     const r = composeHomePreview(view("h2", "hir"), [view("e1", "esemeny")], [view("h1", "hir"), view("h2", "hir"), view("h3", "hir"), view("h4", "hir")])

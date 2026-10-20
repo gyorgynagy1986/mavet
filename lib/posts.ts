@@ -229,6 +229,7 @@ export interface PostSource {
   status: PostStatus
   featured?: boolean | null
   publishedAt?: Date | null
+  coverImage?: { url?: string | null } | null
   image?: { url?: string | null } | null
   startDate?: string | null
   startTime?: string | null
@@ -249,6 +250,9 @@ export interface PostView {
   title: string
   excerpt: string
   paragraphs: string[]
+  /** Cover (16:9): cards, home page, article header, social preview. */
+  coverUrl: string | null
+  /** Article image, shown whole inside the article. */
   imageUrl: string | null
   featured: boolean
   /** News: publication date. Event: start date. Machine-readable (YYYY-MM-DD) and Hungarian form. */
@@ -271,6 +275,7 @@ export function toPostView(post: PostSource, now: Date): PostView {
     title: post.title,
     excerpt: post.excerpt?.trim() ?? "",
     paragraphs: splitParagraphs(post.body),
+    coverUrl: post.coverImage?.url?.trim() || null,
     imageUrl: post.image?.url?.trim() || null,
     featured: post.featured === true,
     dateIso,

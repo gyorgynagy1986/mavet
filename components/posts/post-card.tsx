@@ -1,21 +1,18 @@
 import Link from "next/link"
 import { ArrowUpRightIcon, CalendarDaysIcon, MapPinIcon } from "lucide-react"
 import { POST_TYPE_LABEL, type PostView } from "@/lib/posts"
+import { PostCover } from "./post-cover"
 
 /**
  * List card (5.3). News: title, summary, publication date. Event: title, summary, date or period, location.
- * The image is optional; the card works without it. The whole card is one link to the detail page.
+ * The cover slot is always there (placeholder without an upload) so the grid stays even. The whole card is
+ * one link to the detail page.
  */
 export function PostCard({ post }: { post: PostView }) {
   const running = post.event?.phase === "folyamatban"
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition duration-200 hover:border-mavet-blue-50 hover:shadow-[0_20px_44px_-20px_rgb(11_45_91/0.3)]">
-      {post.imageUrl ? (
-        <div className="aspect-[16/9] overflow-hidden bg-muted">
-          {/* eslint-disable-next-line @next/next/no-img-element -- Vercel Blob URL, already resized WebP */}
-          <img src={post.imageUrl} alt="" loading="lazy" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none" />
-        </div>
-      ) : null}
+      <PostCover url={post.coverUrl} zoomOnHover />
       <div className="flex flex-1 flex-col gap-4 p-6 sm:p-7">
         <p className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
           <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold tracking-wide text-mavet-blue-deep uppercase">{POST_TYPE_LABEL[post.type]}</span>

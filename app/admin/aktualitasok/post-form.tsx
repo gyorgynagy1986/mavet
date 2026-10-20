@@ -31,7 +31,7 @@ import {
   type PostStatus,
 } from "@/lib/posts"
 import { PHOTO_ACCEPT, PHOTO_MESSAGES, photoFileError } from "@/lib/validation/photo"
-import { deletePost, removePostImage, savePost, setPostFeatured, uploadPostImage, type SaveIntent } from "./actions"
+import { deletePost, removePostImage, savePost, setPostFeatured, uploadPostImage, type PostImageKind, type SaveIntent } from "./actions"
 
 const LIST_PATH = `${ADMIN_HOME_PATH}/aktualitasok`
 const IMAGE_CLIENT_MAX_EDGE = 2400
@@ -44,6 +44,7 @@ interface Props {
   featured: boolean
   slug: string | null
   imageUrl: string | null
+  coverUrl: string | null
   imagesConfigured: boolean
   /** The event is over: it cannot be featured. */
   past: boolean
@@ -54,16 +55,17 @@ interface Props {
  * are marked and leaving the page asks first); the single-purpose controls (home page highlight, image)
  * save at once.
  */
-export function PostForm({ id, initial, status, featured, slug, imageUrl, imagesConfigured, past }: Props) {
+export function PostForm({ id, initial, status, featured, slug, imageUrl, coverUrl, imagesConfigured, past }: Props) {
   const router = useRouter()
   const [data, setData] = useState<PostInput>(initial)
   // What is stored on the server; moved forward after each successful save, so an image upload or a
   // refresh never throws away text that is still being typed.
   const [baseline, setBaseline] = useState<PostInput>(initial)
   const [errors, setErrors] = useState<PostErrors>({})
-  const [busy, setBusy] = useState<SaveIntent | "delete" | "feature" | "image" | null>(null)
+  const [busy, setBusy] = useState<SaveIntent | "delete" | "feature" | "image" | "cover" | null>(null)
   const [isFeatured, setIsFeatured] = useState(featured)
   const fileRef = useRef<HTMLInputElement>(null)
+  const coverRef = useRef<HTMLInputElement>(null)
 
   const isEvent = data.type === "esemeny"
   const isPublic = status === "kozzetett"
@@ -149,18 +151,19 @@ export function PostForm({ id, initial, status, featured, slug, imageUrl, images
     }
   }
 
-  async function uploadImage(file: File | null) {
-    if (fileRef.current) fileRef.current.value = ""
+  async function uploadImage(kind: PostImageKind, file: File | null) {
+    const ref = kind === "borito" ? coverRef : fileRef
+    if (ref.current) ref.current.value = ""
     if (!id || !file) return
     const invalid = photoFileError(file)
     if (invalid) return void toast.error(invalid)
-    setBusy("image")
+    setBusy(kind === "borito" ? "cover" : "image")
     try {
       const prepared = await downscaleImage(file, IMAGE_CLIENT_MAX_EDGE)
       if (prepared.size > UPLOAD_MAX_BYTES) return void toast.error(PHOTO_MESSAGES.tooLargeToSend)
       const fd = new FormData()
       fd.set("image", prepared)
-      const r = await uploadPostImage(id, fd)
+      const r = await uploadPostImage(id, kind, fd)
       if (r.ok) {
         toast.success(r.message)
         router.refresh()
@@ -172,11 +175,11 @@ export function PostForm({ id, initial, status, featured, slug, imageUrl, images
     }
   }
 
-  async function removeImage() {
-    if (!id || !window.confirm("Eltávolítja a képet? A tárolóból is végleg törlődik.")) return
-    setBusy("image")
+  async function removeImage(kind: PostImageKind) {
+    if (!id || !window.confirm(kind === "borito" ? "Eltávolítja a borítóképet? A tárolóból is végleg törlődik." : "Eltávolítja a képet? A tárolóból is végleg törlődik.")) return
+    setBusy(kind === "borito" ? "cover" : "image")
     try {
-      const r = await removePostImage(id)
+      const r = await removePostImage(id, kind)
       if (r.ok) {
         toast.success(r.message)
         router.refresh()
@@ -200,6 +203,7 @@ export function PostForm({ id, initial, status, featured, slug, imageUrl, images
       body: data.body,
       status,
       publishedAt: isIsoDate(data.publishedDate) ? budapestToUtc(data.publishedDate, "12:00") : isEvent ? null : new Date(),
+      coverImage: { url: coverUrl },
       image: { url: imageUrl },
       startDate: isEvent && datesOk ? data.startDate : null,
       startTime: data.startTime || null,
@@ -336,28 +340,63 @@ export function PostForm({ id, initial, status, featured, slug, imageUrl, images
           <>
             <Card>
               <CardHeader>
-                <CardTitle>Kép</CardTitle>
-                <CardDescription>Nem kötelező. JPEG, PNG vagy WebP, legfeljebb 10 MB; a kiválasztás után azonnal mentődik.</CardDescription>
+                <CardTitle>Borítókép</CardTitle>
+                <CardDescription>
+                  Fekvő, 16:9 arányú kép a listákhoz, a főoldalhoz, a cikk fejlécéhez és a megosztási előnézethez. Más arányú képet a rendszer középre vág. Borító nélkül a kártyán a MAVET helyőrző jelenik meg. JPEG, PNG vagy WebP, legfeljebb 10 MB; a kiválasztás után azonnal mentődik.
+                </CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-start">
                 <div className="flex aspect-[16/9] w-full shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:w-64">
-                  {imageUrl ? (
+                  {coverUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element -- Vercel Blob URL, already resized WebP
-                    <img src={imageUrl} alt="" className="size-full object-cover" />
+                    <img src={coverUrl} alt="" className="size-full object-cover" />
                   ) : (
                     <ImageIcon className="size-8 text-muted-foreground" aria-hidden="true" />
                   )}
                 </div>
                 <div className="flex flex-col gap-3">
                   {!imagesConfigured ? <p className="text-sm text-destructive">{PHOTO_MESSAGES.notConfigured}</p> : null}
-                  <input ref={fileRef} type="file" accept={PHOTO_ACCEPT} className="sr-only" tabIndex={-1} aria-hidden="true" onChange={(e) => void uploadImage(e.target.files?.[0] ?? null)} />
+                  <input ref={coverRef} type="file" accept={PHOTO_ACCEPT} className="sr-only" tabIndex={-1} aria-hidden="true" onChange={(e) => void uploadImage("borito", e.target.files?.[0] ?? null)} />
+                  <div className="flex flex-wrap gap-2">
+                    <Button type="button" variant="soft" onClick={() => coverRef.current?.click()} disabled={disabled || !imagesConfigured}>
+                      {busy === "cover" ? <Spinner data-icon="inline-start" /> : <UploadIcon data-icon="inline-start" />}
+                      {coverUrl ? "Borítókép cseréje" : "Borítókép feltöltése"}
+                    </Button>
+                    {coverUrl ? (
+                      <Button type="button" variant="destructive" onClick={() => void removeImage("borito")} disabled={disabled}>
+                        <Trash2Icon data-icon="inline-start" />
+                        Borítókép eltávolítása
+                      </Button>
+                    ) : null}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Kép a cikkben</CardTitle>
+                <CardDescription>Nem kötelező. A szövegben, eredeti arányban jelenik meg (álló kép, plakát, grafika is lehet). JPEG, PNG vagy WebP, legfeljebb 10 MB; a kiválasztás után azonnal mentődik.</CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                <div className="flex aspect-[16/9] w-full shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-muted sm:w-64">
+                  {imageUrl ? (
+                    // eslint-disable-next-line @next/next/no-img-element -- Vercel Blob URL, already resized WebP
+                    <img src={imageUrl} alt="" className="size-full object-contain" />
+                  ) : (
+                    <ImageIcon className="size-8 text-muted-foreground" aria-hidden="true" />
+                  )}
+                </div>
+                <div className="flex flex-col gap-3">
+                  {!imagesConfigured ? <p className="text-sm text-destructive">{PHOTO_MESSAGES.notConfigured}</p> : null}
+                  <input ref={fileRef} type="file" accept={PHOTO_ACCEPT} className="sr-only" tabIndex={-1} aria-hidden="true" onChange={(e) => void uploadImage("kep", e.target.files?.[0] ?? null)} />
                   <div className="flex flex-wrap gap-2">
                     <Button type="button" variant="soft" onClick={() => fileRef.current?.click()} disabled={disabled || !imagesConfigured}>
                       {busy === "image" ? <Spinner data-icon="inline-start" /> : <UploadIcon data-icon="inline-start" />}
                       {imageUrl ? "Kép cseréje" : "Kép feltöltése"}
                     </Button>
                     {imageUrl ? (
-                      <Button type="button" variant="destructive" onClick={() => void removeImage()} disabled={disabled}>
+                      <Button type="button" variant="destructive" onClick={() => void removeImage("kep")} disabled={disabled}>
                         <Trash2Icon data-icon="inline-start" />
                         Kép eltávolítása
                       </Button>
