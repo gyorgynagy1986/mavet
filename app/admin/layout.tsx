@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { ADMIN_HOME_PATH, LOGIN_PATH } from "@/lib/auth-paths"
 import { visibleNav } from "@/lib/admin-nav"
 import { getServerAuthSession, isAdmin, isSuperAdmin } from "@/lib/server/auth/session"
+import { Suspense } from "react"
 import { AdminNav } from "./admin-nav"
 import { AdminUserMenu } from "./admin-user-menu"
 
@@ -44,11 +45,11 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                 Admin
               </span>
             </Link>
-            <AdminNav items={items} className="hidden md:flex" />
+            <Suspense><AdminNav items={items} className="hidden md:flex" /></Suspense>
           </div>
           <AdminUserMenu name={session.user.name} email={session.user.email} role={session.user.role} />
         </div>
-        <AdminNav items={items} className="flex border-t border-border/70 px-4 py-2 md:hidden" />
+        <Suspense><AdminNav items={items} className="flex border-t border-border/70 px-4 py-2 md:hidden" /></Suspense>
       </header>
       <main id="admin-tartalom" tabIndex={-1} className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         {children}

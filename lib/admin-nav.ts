@@ -10,17 +10,40 @@ export interface AdminNavItem {
   href: string
   label: string
   /** lucide icon name, resolved by the nav component. */
-  icon: "LayoutDashboard" | "ShieldCheck" | "ScrollText" | "Users" | "Mail" | "IdCard" | "Newspaper"
+  icon: "LayoutDashboard" | "ShieldCheck" | "ScrollText" | "Users" | "Mail" | "IdCard" | "Newspaper" | "FolderOpen" | "CalendarDays"
   superadminOnly?: boolean
   /** Only the exact path is active (for the home item). */
   exact?: boolean
+  /**
+   * Sub-items: on desktop the item opens a dropdown with them, on mobile they are
+   * listed as plain items. The parent `href` is the fallback landing page.
+   */
+  children?: readonly AdminNavChild[]
+}
+
+export interface AdminNavChild {
+  key: string
+  href: string
+  label: string
+  icon: AdminNavItem["icon"]
+  /** Query parameter that marks this child active (`?tipus=hir`), when several children share a path. */
+  match?: { param: string; value: string }
 }
 
 export const ADMIN_NAV: readonly AdminNavItem[] = [
   { key: "home", href: ADMIN_HOME_PATH, label: "Kezdőlap", icon: "LayoutDashboard", exact: true },
   { key: "applications", href: `${ADMIN_HOME_PATH}/jelentkezesek`, label: "Jelentkezések", icon: "Users" },
   { key: "members", href: `${ADMIN_HOME_PATH}/tagok`, label: "Tagok", icon: "IdCard" },
-  { key: "posts", href: `${ADMIN_HOME_PATH}/aktualitasok`, label: "Aktualitások", icon: "Newspaper" },
+  {
+    key: "content",
+    href: `${ADMIN_HOME_PATH}/aktualitasok`,
+    label: "Tartalom",
+    icon: "FolderOpen",
+    children: [
+      { key: "news", href: `${ADMIN_HOME_PATH}/aktualitasok?tipus=hir`, label: "Hírek", icon: "Newspaper", match: { param: "tipus", value: "hir" } },
+      { key: "events", href: `${ADMIN_HOME_PATH}/aktualitasok?tipus=esemeny`, label: "Események", icon: "CalendarDays", match: { param: "tipus", value: "esemeny" } },
+    ],
+  },
   { key: "emails", href: `${ADMIN_HOME_PATH}/emailek`, label: "E-mailek", icon: "Mail" },
   { key: "admins", href: `${ADMIN_HOME_PATH}/adminok`, label: "Adminok", icon: "ShieldCheck", superadminOnly: true },
   { key: "logs", href: `${ADMIN_HOME_PATH}/naplo`, label: "Naplók", icon: "ScrollText", superadminOnly: true },

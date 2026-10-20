@@ -18,8 +18,10 @@ const postSchema = new Schema(
     status: { type: String, enum: postStatuses, default: "piszkozat" },
     /** News: the date shown on the card and the sort key. Set at the first publication unless given. */
     publishedAt: { type: Date, default: null },
-    /** At most one post is featured on the home page (3.2). */
+    /** Featured on the home page (3.2). Several may be featured; the most recently featured one is shown. */
     featured: { type: Boolean, default: false },
+    /** When the post was last featured; the home page picks the newest. */
+    featuredAt: { type: Date, default: null },
 
     image: {
       url: { type: String, default: null },

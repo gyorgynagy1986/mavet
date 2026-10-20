@@ -128,14 +128,30 @@ describe("visitor view", () => {
 describe("home preview (3.2)", () => {
   const view = (id: string, type: "hir" | "esemeny", phase: "kozelgo" | "korabbi" = "kozelgo"): PostView => ({ id, type, slug: id, href: `/aktualitasok/${id}`, title: id, excerpt: "", paragraphs: [], imageUrl: null, featured: false, dateIso: null, dateLabel: null, event: type === "esemeny" ? { when: "", location: null, phase, linkUrl: null, linkLabel: "" } : null })
 
-  it("puts the featured item first, then events, then news, without repeats", () => {
-    const ids = composeHomePreview(view("h2", "hir"), [view("e1", "esemeny")], [view("h1", "hir"), view("h2", "hir"), view("h3", "hir")]).map((p) => p.id)
-    expect(ids).toEqual(["h2", "e1", "h1", "h3"])
+  it("highlights the featured post, lists the other news beside it and the events below, without repeats", () => {
+    const r = composeHomePreview(view("h2", "hir"), [view("e1", "esemeny")], [view("h1", "hir"), view("h2", "hir"), view("h3", "hir"), view("h4", "hir")])
+    expect(r.highlight?.id).toBe("h2")
+    expect(r.news.map((p) => p.id)).toEqual(["h1", "h3"])
+    expect(r.events.map((p) => p.id)).toEqual(["e1"])
   })
 
-  it("drops a featured event that is over and never returns more than six", () => {
-    expect(composeHomePreview(view("e0", "esemeny", "korabbi"), [], [view("h1", "hir")]).map((p) => p.id)).toEqual(["h1"])
-    const many = Array.from({ length: 10 }, (_, i) => view(`h${i}`, "hir"))
-    expect(composeHomePreview(null, [], many)).toHaveLength(6)
+  it("falls back to the newest news as highlight and drops a featured event that is over", () => {
+    const r = composeHomePreview(view("e0", "esemeny", "korabbi"), [], [view("h1", "hir"), view("h2", "hir")])
+    expect(r.highlight?.id).toBe("h1")
+    expect(r.news.map((p) => p.id)).toEqual(["h2"])
+    expect(r.events).toEqual([])
+  })
+
+  it("keeps a featured event out of the event row and caps news at two and events at three", () => {
+    const events = Array.from({ length: 5 }, (_, i) => view(`e${i}`, "esemeny"))
+    const news = Array.from({ length: 5 }, (_, i) => view(`h${i}`, "hir"))
+    const r = composeHomePreview(events[1], events, news)
+    expect(r.highlight?.id).toBe("e1")
+    expect(r.news.map((p) => p.id)).toEqual(["h0", "h1"])
+    expect(r.events.map((p) => p.id)).toEqual(["e0", "e2", "e3"])
+  })
+
+  it("has no highlight without any news or featured post", () => {
+    expect(composeHomePreview(null, [view("e1", "esemeny")], []).highlight).toBeNull()
   })
 })

@@ -12,6 +12,7 @@ import { categoryName } from "@/lib/server/applications"
 import { actorFromSession, logAdminAudit } from "@/lib/server/auth/admin-audit"
 import { getServerAuthSession, isAdmin, isSuperAdmin } from "@/lib/server/auth/session"
 import { sendTemplatedMail } from "@/lib/server/email/send"
+import { sendAcceptanceMail } from "@/lib/server/members"
 import { ensureProfileSlug } from "@/lib/server/directory"
 import { purgeProfilePhotos } from "@/lib/server/profile-photo"
 import { revalidatePublicPages } from "@/lib/server/revalidate-public"
@@ -74,6 +75,21 @@ export async function changeMemberCategory(id: string, category: string, medical
   })
   refresh(id)
   return { ok: true, message: "Kategória módosítva." }
+}
+
+/** Re-sends the activation link to a member who has not activated yet (same mail as at acceptance, fresh 7-day token). */
+export async function resendActivationLink(id: string): Promise<MemberActionResult> {
+  const g = await guard(id)
+  if (g.error) return g.error
+  const { user, session } = g
+  if (user.membership!.status !== "aktivalasra_var") return { ok: false, message: "A fiók már aktiválva van." }
+  if (!user.membership!.applicationId) return { ok: false, message: "A taghoz nem tartozik jelentkezés, a levél nem állítható össze." }
+  const app = await MembershipApplicationModel.findById(user.membership!.applicationId).lean()
+  if (!app) return { ok: false, message: "A taghoz tartozó jelentkezés nem található." }
+  const mail = await sendAcceptanceMail(user, app, `admin:${session.user.email ?? session.user.id}`)
+  refresh(id)
+  revalidatePath(`${ADMIN_HOME_PATH}/jelentkezesek/${user.membership!.applicationId.toString()}`)
+  return mail.status === "sent" ? { ok: true, message: "Az aktiváló linket újraküldtük (7 napig érvényes)." } : { ok: false, message: "A levél nem ment ki (lásd az E-mail naplót)." }
 }
 
 /** Revocation: membership → megszunt; the account and the login stay. Optional mail to the member. */

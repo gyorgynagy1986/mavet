@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { StatusHelp } from "../status-help"
+import { ListPager, parsePage } from "../list-pager"
 
 export const metadata: Metadata = { title: "Tagok" }
 export const dynamic = "force-dynamic"
@@ -33,16 +34,20 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
     const re = new RegExp(escapeRegex(q), "i")
     filter.$or = [{ name: re }, { email: re }, { lastName: re }, { firstName: re }]
   }
-  const [counts, rows] = await Promise.all([
+  const [counts, matching] = await Promise.all([
     UserModel.aggregate<{ _id: MembershipStatus; n: number }>([{ $match: { role: "USER", "membership.status": { $exists: true } } }, { $group: { _id: "$membership.status", n: { $sum: 1 } } }]),
-    UserModel.find(filter)
-      .sort({ lastName: 1, firstName: 1 })
-      .limit(PAGE_SIZE)
-      .select({ title: 1, lastName: 1, firstName: 1, name: 1, email: 1, membership: 1, lastLoginAt: 1 })
-      .lean<UserDocument[]>(),
+    UserModel.countDocuments(filter),
   ])
+  const page = parsePage(params.oldal, matching, PAGE_SIZE)
+  const rows = await UserModel.find(filter)
+    .sort({ lastName: 1, firstName: 1 })
+    .skip((page - 1) * PAGE_SIZE)
+    .limit(PAGE_SIZE)
+    .select({ title: 1, lastName: 1, firstName: 1, name: 1, email: 1, membership: 1, lastLoginAt: 1 })
+    .lean<UserDocument[]>()
   const countByStatus = new Map(counts.map((c) => [c._id, c.n]))
   const total = counts.reduce((sum, c) => sum + c.n, 0)
+  const pageHref = (n: number) => `${ADMIN_HOME_PATH}/tagok?allapot=${tab}${q ? `&q=${encodeURIComponent(q)}` : ""}${n > 1 ? `&oldal=${n}` : ""}`
 
   return (
     <div className="space-y-6">
@@ -70,6 +75,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
         <input type="hidden" name="allapot" value={tab} />
         <Input name="q" defaultValue={q} placeholder="Keresés névre vagy e-mail-címre" aria-label="Keresés" className="h-9" />
         <Button type="submit" variant="soft" className="h-9">Keresés</Button>
+        {q ? <Button variant="ghost" className="h-9" render={<Link href={`${ADMIN_HOME_PATH}/tagok?allapot=${tab}`} />} nativeButton={false}>Törlés</Button> : null}
       </form>
 
       <Card>
@@ -91,12 +97,12 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
                   <td className="px-4 py-2.5 whitespace-nowrap tabular-nums">{u.lastLoginAt ? formatDateTime(u.lastLoginAt) : "–"}</td>
                 </tr>
               ))}
-              {rows.length === 0 ? <tr><td colSpan={5} className="px-4 py-10 text-center text-muted-foreground">Nincs tag ebben az állapotban.</td></tr> : null}
+              {rows.length === 0 ? <tr><td colSpan={5} className="px-4 py-10 text-center text-muted-foreground">{q ? "Nincs találat a keresésre." : "Nincs tag ebben az állapotban."}</td></tr> : null}
             </tbody>
           </table>
         </CardContent>
       </Card>
-      {rows.length === PAGE_SIZE ? <p className="text-sm text-muted-foreground">Az első {PAGE_SIZE} találat látható; szűkítsen kereséssel.</p> : null}
+      <ListPager page={page} pageSize={PAGE_SIZE} total={matching} href={pageHref} />
 
       <StatusHelp
         title="Súgó: mit jelentenek a fülek?"

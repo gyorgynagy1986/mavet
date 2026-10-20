@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 import dbConnect from "@/lib/db-connect"
 import { PostModel, type PostDocument } from "@/lib/models/post"
-import { EVENTS_PAGE_SIZE, HOME_PREVIEW_SIZE, NEWS_PAGE_SIZE, RESERVED_POST_SLUGS, composeHomePreview, slugifyTitle, toPostView, type PostSource, type PostView } from "@/lib/posts"
+import { EVENTS_PAGE_SIZE, HOME_PREVIEW_EVENTS, HOME_PREVIEW_NEWS, NEWS_PAGE_SIZE, RESERVED_POST_SLUGS, composeHomePreview, slugifyTitle, toPostView, type HomePreview, type PostSource, type PostView } from "@/lib/posts"
 
 /** Only published posts are ever read by the public pages (5.3). */
 const PUBLISHED = { status: "kozzetett" } as const
@@ -59,12 +59,13 @@ export async function listPublishedSlugs(): Promise<{ slug: string; updatedAt: D
 }
 
 /** Home page preview (3.2); see `composeHomePreview` for the rule. */
-export async function listHomePreview(now = new Date()): Promise<PostView[]> {
+export async function listHomePreview(now = new Date()): Promise<HomePreview> {
   await dbConnect()
   const [featured, events, news] = await Promise.all([
-    PostModel.findOne({ ...PUBLISHED, featured: true }).lean<PostDocument | null>(),
-    PostModel.find({ ...PUBLISHED, type: "esemeny", endsAt: { $gt: now } }).sort({ startsAt: 1, _id: 1 }).limit(HOME_PREVIEW_SIZE).lean<PostDocument[]>(),
-    PostModel.find({ ...PUBLISHED, type: "hir" }).sort(NEWS_ORDER).limit(HOME_PREVIEW_SIZE).lean<PostDocument[]>(),
+    // Several posts may be featured; the most recently featured (running or upcoming for an event) wins.
+    PostModel.findOne({ ...PUBLISHED, featured: true, $or: [{ type: "hir" }, { endsAt: { $gt: now } }] }).sort({ featuredAt: -1, updatedAt: -1 }).lean<PostDocument | null>(),
+    PostModel.find({ ...PUBLISHED, type: "esemeny", endsAt: { $gt: now } }).sort({ startsAt: 1, _id: 1 }).limit(HOME_PREVIEW_EVENTS + 1).lean<PostDocument[]>(),
+    PostModel.find({ ...PUBLISHED, type: "hir" }).sort(NEWS_ORDER).limit(HOME_PREVIEW_NEWS + 1).lean<PostDocument[]>(),
   ])
   const toView = view(now)
   return composeHomePreview(featured ? toView(featured) : null, events.map(toView), news.map(toView))
