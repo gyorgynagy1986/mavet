@@ -4,6 +4,28 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-10-20 – Partnerek modul (spec 3.1 / 3.4), admin hozzáférés a tagi tartalomhoz
+
+### Változások
+
+- **Partnerek** (`partners`; `lib/partners.ts`): név, weboldal, logó, kiemelt (főoldal), közzétéve, sorrend;
+  szerkeszthető bevezető (`site_texts`). Admin: Tartalom → Partnerek (kártyánként szerkesztés, logó
+  feltöltés, kapcsolók, sorrend, törlés). Közzététel előtt logó kell.
+- **Egységes logók**: feltöltéskor a szerver minden logót 800×400-as, átlátszó, 2:1 dobozba illeszt
+  (sharp, trim + contain, WebP alfa-csatornával); SVG-t raszterizál, így SVG-markup sosem kerül
+  kiszolgálásra. A `PartnerTile` fix 2:1 arányú fehér csempe azonos belső margóval, alatta a név; a
+  főoldali sáv és a lista ugyanazt a csempét használja.
+- **Publikus**: `/partnerek` (rács, 2–5 oszlop, külső link új lapon, részletező nincs); főoldali
+  „Partnereink és támogatóink” szakasz a kiemelt partnerekkel (5-től lassan görgő, végtelenített sáv
+  nyilakkal, `prefers-reduced-motion` tiszteletben; kevesebbnél középre rendezett sor). Nincs kiemelt
+  partner → a szakasz nem jelenik meg. Lábléc: Díjazottak, Partnereink linkek; sitemap.
+- **Admin a tagi tartalomban** (megrendelői kérés): admin fiókkal megnyílik a tagi névjegyzék, a tagi
+  profilok és a csak tagoknak szánt szakmai anyagok, hogy ellenőrizhető legyen, mit lát a tag.
+- `/dijazottak` kérésenként renderelt (a kliensoldali router-cache miatt a statikus változat percekig a
+  régit mutathatta az adminnak).
+
+---
+
 ## 2026-10-20 – Szakmai anyagok és Díjazottak modul (spec 6., 4.4)
 
 ### Változások

@@ -5,8 +5,9 @@ import { SiteContainer } from "@/components/site-container"
 import { getAwardsPage } from "@/lib/server/awards"
 
 export const metadata: Metadata = { title: "Díjazottak és elismerések", description: "A MAVET díjai és díjazottjai díjtípusonként és évenként." }
-// Static page, rebuilt by every admin edit (revalidateAwards); the hourly revalidation is the safety net.
-export const revalidate = 3600
+// Rendered per request: a small query, and the admin's edit must show at once even for a visitor whose
+// client-side router cache still holds the page (static pages stay cached there for minutes).
+export const dynamic = "force-dynamic"
 
 /** Díjazottak és elismerések (4.4): award types in two columns, each with its years newest first. */
 export default async function AwardsPage() {

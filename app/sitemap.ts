@@ -10,6 +10,7 @@ const routes = [
   "/aktualitasok",
   "/szakmai-anyagok",
   "/dijazottak",
+  "/partnerek",
   "/kapcsolat",
   "/adatkezeles",
   "/impresszum",

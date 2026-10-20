@@ -22,7 +22,8 @@ export async function getViewer(): Promise<Viewer> {
   return { kind: "member", id: user._id.toString(), active: user.membership?.status === "aktiv" }
 }
 
-export const canUseDirectory = (viewer: Viewer) => viewer.kind === "member" && viewer.active
+/** Active members, and admins so they can check what members see (the admin account is not a membership otherwise). */
+export const canUseDirectory = (viewer: Viewer) => (viewer.kind === "member" && viewer.active) || viewer.kind === "admin"
 
 export interface DirectoryPage {
   members: DirectoryProfile[]

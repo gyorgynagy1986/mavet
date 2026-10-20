@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname, useSearchParams } from "next/navigation"
-import { AwardIcon, BookOpenIcon, CalendarDaysIcon, ChevronDownIcon, FolderOpenIcon, IdCardIcon, LayoutDashboardIcon, MailIcon, NewspaperIcon, ScrollTextIcon, ShieldCheckIcon, UsersIcon } from "lucide-react"
+import { AwardIcon, BookOpenIcon, HandshakeIcon, CalendarDaysIcon, ChevronDownIcon, FolderOpenIcon, IdCardIcon, LayoutDashboardIcon, MailIcon, NewspaperIcon, ScrollTextIcon, ShieldCheckIcon, UsersIcon } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import type { AdminNavChild, AdminNavItem } from "@/lib/admin-nav"
 import { cn } from "@/lib/utils"
@@ -19,6 +19,7 @@ const ICONS = {
   CalendarDays: CalendarDaysIcon,
   BookOpen: BookOpenIcon,
   Award: AwardIcon,
+  Handshake: HandshakeIcon,
 } as const
 
 const linkClass =

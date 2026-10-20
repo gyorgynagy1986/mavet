@@ -10,7 +10,7 @@ export interface AdminNavItem {
   href: string
   label: string
   /** lucide icon name, resolved by the nav component. */
-  icon: "LayoutDashboard" | "ShieldCheck" | "ScrollText" | "Users" | "Mail" | "IdCard" | "Newspaper" | "FolderOpen" | "CalendarDays" | "BookOpen" | "Award"
+  icon: "LayoutDashboard" | "ShieldCheck" | "ScrollText" | "Users" | "Mail" | "IdCard" | "Newspaper" | "FolderOpen" | "CalendarDays" | "BookOpen" | "Award" | "Handshake"
   superadminOnly?: boolean
   /** Only the exact path is active (for the home item). */
   exact?: boolean
@@ -44,6 +44,7 @@ export const ADMIN_NAV: readonly AdminNavItem[] = [
       { key: "events", href: `${ADMIN_HOME_PATH}/aktualitasok?tipus=esemeny`, label: "Események", icon: "CalendarDays", match: { param: "tipus", value: "esemeny" } },
       { key: "materials", href: `${ADMIN_HOME_PATH}/szakmai-anyagok`, label: "Szakmai anyagok", icon: "BookOpen" },
       { key: "awards", href: `${ADMIN_HOME_PATH}/dijazottak`, label: "Díjazottak", icon: "Award" },
+      { key: "partners", href: `${ADMIN_HOME_PATH}/partnerek`, label: "Partnerek", icon: "Handshake" },
     ],
   },
   { key: "emails", href: `${ADMIN_HOME_PATH}/emailek`, label: "E-mailek", icon: "Mail" },

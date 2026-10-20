@@ -27,6 +27,7 @@ export const adminAuditActions = [
   "material_delete", // deleted with its file
   "material_category_change", // category list edited
   "award_update", // awards page content edited
+  "partner_update", // partner created, edited, logo changed, deleted
 ] as const
 export type AdminAuditAction = (typeof adminAuditActions)[number]
 

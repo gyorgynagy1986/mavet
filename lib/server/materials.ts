@@ -40,7 +40,8 @@ export interface MaterialView {
   video: { provider: VideoProvider; embedUrl: string | null } | null
 }
 
-export const canOpenMembersOnly = (viewer: Viewer) => viewer.kind === "member" && viewer.active
+/** Active members, and admins so they can check the members-only materials. */
+export const canOpenMembersOnly = (viewer: Viewer) => (viewer.kind === "member" && viewer.active) || viewer.kind === "admin"
 
 function dateLabel(iso: string | null | undefined): string | null {
   if (!iso) return null
