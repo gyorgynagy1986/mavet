@@ -116,8 +116,8 @@ export async function HomeContent() {
               </Button>
             </div>
             {featuredNews && (
-              <div className="grid gap-5 lg:grid-cols-[1.25fr_1fr]">
-                <article className="mavet-reveal relative isolate flex flex-col justify-end gap-5 overflow-hidden rounded-2xl bg-mavet-hero p-7 text-white sm:p-10 lg:min-h-[26rem]">
+              <div className="grid gap-5 lg:grid-cols-[1.25fr_1fr] lg:items-stretch">
+                <article className="mavet-reveal relative isolate flex min-h-[22rem] flex-col justify-end gap-4 overflow-hidden rounded-2xl bg-mavet-hero p-7 text-white sm:min-h-[26rem] sm:p-10 lg:min-h-0">
                   {featuredNews.coverUrl ? (
                     <>
                       {/* eslint-disable-next-line @next/next/no-img-element -- Vercel Blob URL, already resized WebP */}
@@ -139,7 +139,7 @@ export async function HomeContent() {
                       {featuredNews.title}
                     </Link>
                   </h3>
-                  <p className="max-w-2xl leading-7 text-white/80">{featuredNews.excerpt}</p>
+                  <p className="line-clamp-3 max-w-2xl leading-7 text-white/80">{featuredNews.excerpt}</p>
                   <p className="flex items-center gap-1.5 font-semibold text-mavet-gold-light" aria-hidden="true">
                     {featuredNews.type === "hir" ? "Elolvasom" : "Részletek"}
                     <ArrowUpRightIcon className="size-4" />
@@ -147,7 +147,7 @@ export async function HomeContent() {
                 </article>
                 {otherNews.length > 0 && (
                   <div className="grid gap-5">
-                    {otherNews.map((item) => <PreviewCard key={item.id} item={item} />)}
+                    {otherNews.map((item) => <PreviewCard key={item.id} item={item} variant="side" />)}
                   </div>
                 )}
               </div>
@@ -162,7 +162,7 @@ export async function HomeContent() {
                   </Link>
                 </div>
                 <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-                  {upcomingEvents.map((item) => <PreviewCard key={item.id} item={item} />)}
+                  {upcomingEvents.map((item) => <PreviewCard key={item.id} item={item} variant="grid" />)}
                 </div>
               </div>
             )}
@@ -208,26 +208,57 @@ export async function HomeContent() {
 }
 
 
-function PreviewCard({ item }: { item: PostView }) {
+/**
+ * The small cards of the Aktualitások block. `side`: the two news beside the highlight, horizontal
+ * (thumbnail left, text right, two-line excerpt) so the right column never outgrows the highlight.
+ * `grid`: the events row below, vertical with a cover and a clamped excerpt, equal heights.
+ */
+function PreviewCard({ item, variant }: { item: PostView; variant: "side" | "grid" }) {
+  const meta = (
+    <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground sm:text-sm">
+      <span className="rounded-full bg-accent px-2.5 py-0.5 text-[0.7rem] font-semibold tracking-wide text-mavet-blue-deep uppercase">{POST_TYPE_LABEL[item.type]}</span>
+      {item.dateIso ? <time dateTime={item.dateIso}>{item.dateLabel}</time> : null}
+      {item.event?.location ? <span>{item.event.location}</span> : null}
+    </p>
+  )
+  const cta = (
+    <p className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-mavet-blue" aria-hidden="true">
+      {item.type === "hir" ? "Elolvasom" : "Részletek"}
+      <ArrowUpRightIcon className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none" />
+    </p>
+  )
+  const shell = "mavet-reveal group relative overflow-hidden rounded-2xl border border-border bg-card transition duration-200 hover:border-mavet-blue-50 hover:shadow-[0_20px_44px_-20px_rgb(11_45_91/0.3)]"
+
+  if (variant === "side") {
+    return (
+      <article className={`${shell} flex flex-col sm:flex-row`}>
+        <PostCover url={item.coverUrl} zoomOnHover className="sm:aspect-auto sm:w-44 sm:shrink-0 lg:w-40 xl:w-48" />
+        <div className="flex min-w-0 flex-1 flex-col gap-2.5 p-5 sm:p-6">
+          {meta}
+          <h3 className="line-clamp-2 text-lg leading-snug text-balance">
+            <Link href={item.href} className="rounded-sm outline-none after:absolute after:inset-0 focus-visible:ring-3 focus-visible:ring-ring/50">
+              {item.title}
+            </Link>
+          </h3>
+          <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">{item.excerpt}</p>
+          {cta}
+        </div>
+      </article>
+    )
+  }
+
   return (
-    <article className="mavet-reveal group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition duration-200 hover:border-mavet-blue-50 hover:shadow-[0_20px_44px_-20px_rgb(11_45_91/0.3)]">
+    <article className={`${shell} flex h-full flex-col`}>
       <PostCover url={item.coverUrl} zoomOnHover />
-      <div className="flex flex-1 flex-col gap-4 p-7 sm:p-8">
-      <p className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-        <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold tracking-wide text-mavet-blue-deep uppercase">{POST_TYPE_LABEL[item.type]}</span>
-        {item.dateIso ? <time dateTime={item.dateIso}>{item.dateLabel}</time> : null}
-        {item.event?.location ? <span>{item.event.location}</span> : null}
-      </p>
-      <h3 className="text-xl leading-snug text-balance sm:text-2xl">
-        <Link href={item.href} className="rounded-sm outline-none after:absolute after:inset-0 focus-visible:ring-3 focus-visible:ring-ring/50">
-          {item.title}
-        </Link>
-      </h3>
-      <p className="leading-7 text-muted-foreground">{item.excerpt}</p>
-      <p className="mt-auto flex items-center gap-1.5 font-semibold text-mavet-blue" aria-hidden="true">
-        {item.type === "hir" ? "Elolvasom" : "Részletek"}
-        <ArrowUpRightIcon className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none" />
-      </p>
+      <div className="flex flex-1 flex-col gap-3 p-6">
+        {meta}
+        <h3 className="line-clamp-2 text-lg leading-snug text-balance sm:text-xl">
+          <Link href={item.href} className="rounded-sm outline-none after:absolute after:inset-0 focus-visible:ring-3 focus-visible:ring-ring/50">
+            {item.title}
+          </Link>
+        </h3>
+        <p className="line-clamp-3 text-sm leading-6 text-muted-foreground">{item.excerpt}</p>
+        {cta}
       </div>
     </article>
   )

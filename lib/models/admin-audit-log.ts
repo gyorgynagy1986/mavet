@@ -22,6 +22,11 @@ export const adminAuditActions = [
   "post_publish", // made public
   "post_unpublish", // withdrawn (5.3)
   "post_delete", // deleted with its image
+  "material_create", // professional material created
+  "material_update", // edited, published or hidden, file replaced
+  "material_delete", // deleted with its file
+  "material_category_change", // category list edited
+  "award_update", // awards page content edited
 ] as const
 export type AdminAuditAction = (typeof adminAuditActions)[number]
 

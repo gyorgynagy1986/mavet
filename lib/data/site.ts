@@ -6,6 +6,16 @@ export const navigation = [
   { href: "/kapcsolat", label: "Kapcsolat" },
 ] as const
 
+/**
+ * "Szakmai tartalom" group in the header (spec 2.1): the professional materials and the member
+ * directory. The directory page itself asks a visitor to sign in; the menu item is visible to all.
+ */
+export const professionalContentNavigation = [
+  { href: "/szakmai-anyagok", label: "Szakmai anyagok" },
+  { href: "/tagok", label: "Tagi névjegyzék" },
+  { href: "/dijazottak", label: "Díjazottak és elismerések" },
+] as const
+
 export const workgroups = [
   "Telemedicina",
   "Mesterséges intelligencia",
