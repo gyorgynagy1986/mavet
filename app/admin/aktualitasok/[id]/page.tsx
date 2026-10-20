@@ -62,6 +62,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
         featured={post.featured === true}
         slug={post.slug}
         imageUrl={post.image?.url ?? null}
+        coverUrl={post.coverImage?.url ?? null}
         imagesConfigured={isBlobConfigured()}
         past={post.type === "esemeny" && Boolean(post.endsAt && post.endsAt.getTime() <= now.getTime())}
       />

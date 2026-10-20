@@ -10,7 +10,7 @@ import { PostModel, type PostDocument } from "@/lib/models/post"
 import { POST_TYPE_LABEL, budapestDate, budapestToUtc, eventWindow, normalizePost, validatePost, type PostErrors, type PostInput } from "@/lib/posts"
 import { actorFromSession, logAdminAudit } from "@/lib/server/auth/admin-audit"
 import { getServerAuthSession, isAdmin } from "@/lib/server/auth/session"
-import { purgePostImages, storePostImage } from "@/lib/server/post-image"
+import { purgeAllPostImages, purgePostCovers, purgePostImages, storePostCover, storePostImage } from "@/lib/server/post-image"
 import { uniquePostSlug } from "@/lib/server/posts"
 import { isBlobConfigured } from "@/lib/server/profile-photo"
 import { revalidatePosts } from "@/lib/server/revalidate-public"
@@ -152,40 +152,52 @@ export async function deletePost(id: string): Promise<PostActionResult> {
   if (!ctx) return DENIED
   const post = await load(id)
   if (!post) return { ok: false, message: "A bejegyzés nem található." }
-  if (isBlobConfigured()) await purgePostImages(post._id.toString())
+  if (isBlobConfigured()) await purgeAllPostImages(post._id.toString())
   await PostModel.deleteOne({ _id: post._id })
   await logAdminAudit({ ...actorFromSession(ctx.session), ...ctx.meta, action: "post_delete", targetName: post.title, summary: `${POST_TYPE_LABEL[post.type]} törölve: „${post.title}” (${post.slug})` })
   refresh(post)
   return { ok: true, message: "Bejegyzés törölve.", id }
 }
 
-/** Image upload (FormData with `image`); replaces the previous one, which is deleted from the store. */
-export async function uploadPostImage(id: string, formData: FormData): Promise<PostActionResult> {
+/** Which of the two pictures of a post an upload or removal concerns. */
+export type PostImageKind = "borito" | "kep"
+
+const IMAGE_KIND = {
+  borito: { field: "coverImage", store: storePostCover, purge: purgePostCovers, saved: "Borítókép mentve.", removed: "Borítókép eltávolítva." },
+  kep: { field: "image", store: storePostImage, purge: purgePostImages, saved: "Kép mentve.", removed: "Kép eltávolítva." },
+} as const
+
+/** Image upload (FormData with `image`); replaces the previous one of the same kind, which is deleted from the store. */
+export async function uploadPostImage(id: string, kind: PostImageKind, formData: FormData): Promise<PostActionResult> {
   const ctx = await context()
   if (!ctx) return DENIED
   const post = await load(id)
   if (!post) return { ok: false, message: "A bejegyzés nem található." }
+  const spec = IMAGE_KIND[kind]
+  if (!spec) return { ok: false, message: "Ismeretlen képtípus." }
   const file = formData.get("image")
   const invalid = photoFileError(file instanceof File ? file : null)
   if (invalid || !(file instanceof File)) return { ok: false, message: invalid ?? PHOTO_MESSAGES.missing }
 
   const postId = post._id.toString()
-  const stored = await storePostImage(postId, file)
+  const stored = await spec.store(postId, file)
   if (!stored.ok) return stored
-  await PostModel.updateOne({ _id: post._id }, { $set: { image: { url: stored.url, pathname: stored.pathname }, updatedByEmail: ctx.session.user.email ?? null } })
-  await purgePostImages(postId, stored)
+  await PostModel.updateOne({ _id: post._id }, { $set: { [spec.field]: { url: stored.url, pathname: stored.pathname }, updatedByEmail: ctx.session.user.email ?? null } })
+  await spec.purge(postId, stored)
   refresh(post)
-  return { ok: true, message: "Kép mentve.", id }
+  return { ok: true, message: spec.saved, id }
 }
 
-export async function removePostImage(id: string): Promise<PostActionResult> {
+export async function removePostImage(id: string, kind: PostImageKind): Promise<PostActionResult> {
   const ctx = await context()
   if (!ctx) return DENIED
   const post = await load(id)
   if (!post) return { ok: false, message: "A bejegyzés nem található." }
+  const spec = IMAGE_KIND[kind]
+  if (!spec) return { ok: false, message: "Ismeretlen képtípus." }
   if (!isBlobConfigured()) return { ok: false, message: PHOTO_MESSAGES.notConfigured }
-  if (!(await purgePostImages(post._id.toString()))) return { ok: false, message: PHOTO_MESSAGES.deleteFailed }
-  await PostModel.updateOne({ _id: post._id }, { $set: { image: { url: null, pathname: null }, updatedByEmail: ctx.session.user.email ?? null } })
+  if (!(await spec.purge(post._id.toString()))) return { ok: false, message: PHOTO_MESSAGES.deleteFailed }
+  await PostModel.updateOne({ _id: post._id }, { $set: { [spec.field]: { url: null, pathname: null }, updatedByEmail: ctx.session.user.email ?? null } })
   refresh(post)
-  return { ok: true, message: "Kép eltávolítva.", id }
+  return { ok: true, message: spec.removed, id }
 }

@@ -1,9 +1,10 @@
 import { CalendarDaysIcon, ExternalLinkIcon, MapPinIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { POST_TYPE_LABEL, type PostView } from "@/lib/posts"
+import { PostCover } from "./post-cover"
 
 /**
- * Detail view (5.3): title, date, summary, article and the image; for an event the time, the location and,
+ * Detail view (5.3): title, date, summary, the cover (when uploaded), the article and the article image; for an event the time, the location and,
  * while it is current, the registration or information link. Used by the public page and, with the same
  * data shape, by the live preview of the admin form.
  */
@@ -21,6 +22,8 @@ export function PostArticle({ post, headingLevel = "h1" }: { post: PostView; hea
         <Heading className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{post.title || "Cím nélkül"}</Heading>
         {post.excerpt ? <p className="max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">{post.excerpt}</p> : null}
       </header>
+
+      {post.coverUrl ? <PostCover url={post.coverUrl} className="rounded-xl border border-border" /> : null}
 
       {post.event ? (
         <div className="flex flex-col gap-4 rounded-xl border border-border bg-mavet-surface p-5 sm:flex-row sm:items-center sm:justify-between">
@@ -48,7 +51,7 @@ export function PostArticle({ post, headingLevel = "h1" }: { post: PostView; hea
 
       {post.imageUrl ? (
         // eslint-disable-next-line @next/next/no-img-element -- Vercel Blob URL, already resized WebP
-        <img src={post.imageUrl} alt="" className="w-full rounded-xl border border-border object-cover" />
+        <img src={post.imageUrl} alt="" className="w-full rounded-xl border border-border" />
       ) : null}
 
       <div className="flex flex-col gap-5 leading-7 text-muted-foreground">

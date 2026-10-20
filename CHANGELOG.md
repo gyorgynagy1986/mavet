@@ -4,6 +4,37 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-10-20 – Borítókép, főoldali előnézet, admin ergonómia
+
+### Változások
+
+- **Borítókép a bejegyzéseken** (`posts.coverImage`, `lib/server/post-image.ts`): külön 16:9-es
+  borító a listakártyákhoz, a főoldalhoz, a cikk fejlécéhez és az `og:image`-hez; feltöltéskor
+  szerveren 1600×900-ra vágva (sharp, attention-crop), WebP, Blob `aktualitasok/<id>/borito/`.
+  A korábbi „kép” megmarad cikk-képként, eredeti arányban, a szövegben. Admin szerkesztő: két
+  feltöltő kártya magyarázattal; csere és eltávolítás egymástól függetlenül, törléskor mindkettő
+  megy a tárolóból. Borító nélkül a kártyán egységes MAVET-helyőrző (`components/posts/post-cover.tsx`),
+  így a rács egyenletes.
+- **Főoldali Aktualitások** (3.2, megrendelői döntés): a kék kártyán a legutóbb kiemelt bejegyzés
+  (hír vagy aktuális esemény), kiemelés nélkül a legfrissebb hír; mellette legfeljebb két hír;
+  alatta „Közelgő események” sor legfeljebb három eseménnyel. Több bejegyzés is lehet kiemelt
+  (`posts.featuredAt`), a főoldal a legújabb kiemelést veszi. `composeHomePreview` szerkezetet ad
+  vissza (`highlight`, `news`, `events`); tesztek frissítve.
+- **Admin menü**: „Aktualitások” helyett „Tartalom” lenyíló menü (Hírek, Események); mobilon sima
+  tételek. Bővíthető a további tartalomtípusokkal.
+- **Admin listák**: keresés névre és e-mail-címre a Jelentkezéseken is; 50-esével lapozás
+  (`?oldal=`) mindkét listán, közös `ListPager`.
+- **Aktiválás**: „Aktiváló link újraküldése” a tag adatlapján is (eddig csak a jelentkezésén),
+  a link lejáratának jelzésével; a Jelentkezések listában az elfogadott sorokon második címke a
+  tagi fiók állapotával („jelszót még nem adott”, aktív, stb.).
+
+### Ismert korlátok
+
+- A már feltöltött képek cikk-képként maradnak; borítót az adminnak kell feltöltenie.
+- A főoldali sorrend eltér a spec 3.2 szövegétől (kiemelt → események → hírek); ügyféldöntés.
+
+---
+
 ## 2026-10-10 – E-mail küldés: újrapróbálkozás átmeneti hibákra
 
 ### Változások

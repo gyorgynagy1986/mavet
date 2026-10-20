@@ -43,10 +43,11 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
     .sort({ lastName: 1, firstName: 1 })
     .skip((page - 1) * PAGE_SIZE)
     .limit(PAGE_SIZE)
-    .select({ title: 1, lastName: 1, firstName: 1, name: 1, email: 1, membership: 1, lastLoginAt: 1 })
+    .select({ title: 1, lastName: 1, firstName: 1, name: 1, email: 1, membership: 1, lastLoginAt: 1, activationTokenExpiresAt: 1, office: 1, boardMember: 1 })
     .lean<UserDocument[]>()
   const countByStatus = new Map(counts.map((c) => [c._id, c.n]))
   const total = counts.reduce((sum, c) => sum + c.n, 0)
+  const now = new Date()
   const pageHref = (n: number) => `${ADMIN_HOME_PATH}/tagok?allapot=${tab}${q ? `&q=${encodeURIComponent(q)}` : ""}${n > 1 ? `&oldal=${n}` : ""}`
 
   return (
@@ -92,7 +93,19 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
                     <div className="text-xs text-muted-foreground">{u.email}</div>
                   </td>
                   <td className="px-4 py-2.5">{categoryName(u.membership?.category)}</td>
-                  <td className="px-4 py-2.5">{u.membership?.status ? <Badge variant={membershipBadgeVariant(u.membership.status)}>{MEMBERSHIP_STATUS_LABEL[u.membership.status]}</Badge> : "–"}</td>
+                  <td className="px-4 py-2.5">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      {u.membership?.status ? <Badge variant={membershipBadgeVariant(u.membership.status)}>{MEMBERSHIP_STATUS_LABEL[u.membership.status]}</Badge> : "–"}
+                      {u.membership?.status === "aktivalasra_var" ? (
+                        !u.activationTokenExpiresAt || u.activationTokenExpiresAt < now ? (
+                          <Badge variant="destructive">link lejárt</Badge>
+                        ) : (
+                          <Badge variant="outline">link él {formatDateTime(u.activationTokenExpiresAt)}-ig</Badge>
+                        )
+                      ) : null}
+                      {u.office ? <Badge className="bg-mavet-gold/25 text-mavet-navy hover:bg-mavet-gold/25">{u.office}{u.boardMember ? " · publikus" : ""}</Badge> : null}
+                    </div>
+                  </td>
                   <td className="px-4 py-2.5 tabular-nums">{u.membership?.paidThroughYear ? `${u.membership.paidThroughYear}. év végéig` : "–"}</td>
                   <td className="px-4 py-2.5 whitespace-nowrap tabular-nums">{u.lastLoginAt ? formatDateTime(u.lastLoginAt) : "–"}</td>
                 </tr>
@@ -110,7 +123,7 @@ export default async function MembersPage({ searchParams }: { searchParams: Prom
         items={[
           { label: "Aktív", description: "Teljes jogú tag: eléri a tagi felületeket. Díjmentes kategóriánál és a 2026-ban elfogadott tagoknál ez az aktiválás után azonnal érvényes; díjköteles kategóriánál a tagdíj igazolása után." },
           { label: "Tagdíjra vár", description: "Elfogadott és aktivált tag, akinek az első éves tagdíja még nincs rendezve (2027-től, rendes és ifjúsági kategória). A fiókjába be tud lépni, de a tagi jogok a befizetés igazolásáig nem élnek." },
-          { label: "Aktiválásra vár", description: "Elfogadott jelentkező, aki még nem kattintott az aktiváló linkre, ezért nincs jelszava és nem lépett be. Ha elakadt, a jelentkezés részletezőjéből újraküldhető az aktiváló link (7 napig érvényes)." },
+          { label: "Aktiválásra vár", description: "Elfogadott jelentkező, aki még nem kattintott az aktiváló linkre, ezért nincs jelszava és nem lépett be. A sorban látszik, meddig él a link, vagy hogy lejárt; a tag részletezőjéből (és a jelentkezéséből) újraküldhető (7 napig érvényes)." },
           { label: "Lejárt", description: "A tagdíj a türelmi idő (január 31.) végéig nem érkezett be, a tagság február 1-jével lejárt. A fiók és a profil megmarad; befizetéssel új elbírálás nélkül helyreállítható. (A fizetési modul bekötéséig ez az állapot még nem keletkezik automatikusan.)" },
           { label: "Megszűnt", description: "Az admin visszavonta a tagságot. A fiók és a belépés megmarad, a tagi jogok megszűntek; a tag a fiókjában látja. A részletezőn helyreállítható." },
           { label: "Mind", description: "Minden tagi fiók állapottól függetlenül." },

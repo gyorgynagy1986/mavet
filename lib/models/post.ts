@@ -2,8 +2,8 @@ import mongoose, { Schema, type InferSchemaType, type Model } from "mongoose"
 import { postStatuses, postTypes } from "@/lib/posts"
 
 /**
- * News and events (specification 5) in one collection: both have a title, a summary, an article and an
- * optional image, share the address space under /aktualitasok and the home page preview.
+ * News and events (specification 5) in one collection: both have a title, a summary, an article, an optional
+ * cover and an optional article image, share the address space under /aktualitasok and the home page preview.
  */
 const postSchema = new Schema(
   {
@@ -23,6 +23,12 @@ const postSchema = new Schema(
     /** When the post was last featured; the home page picks the newest. */
     featuredAt: { type: Date, default: null },
 
+    /** Cover (16:9, cropped on upload): lists, home page, article header, social preview. */
+    coverImage: {
+      url: { type: String, default: null },
+      pathname: { type: String, default: null },
+    },
+    /** Article image: shown whole, in its own aspect, inside the article. */
     image: {
       url: { type: String, default: null },
       pathname: { type: String, default: null },
