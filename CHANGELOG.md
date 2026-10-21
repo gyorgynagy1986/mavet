@@ -4,6 +4,28 @@ A projekt változásnaplója (D-012). Bejegyzések dátuma szerint, csökkenő s
 
 ---
 
+## 2026-10-20 – Hírlevél-feliratkozás (spec 3.1, 10.2)
+
+### Változások
+
+- **Főoldali hírlevél-blokk** (a tagsági felhívás előtt): e-mail + külön feliratkozási nyilatkozat, a
+  tájékoztató a mondatba ágyazva; mezőszintű hibák; semleges sikerüzenet; a mezők hibánál megmaradnak.
+  Csak akkor jelenik meg, ha a szolgáltató be van állítva.
+- **Szerveroldali proxy** (`/api/newsletter`, `lib/server/newsletter.ts`): a hirlevelek-kuldese.hu
+  partner API-t a szerver hívja `Origin` fejléccel, a kulcs nem kerül a böngészőbe; IP-nkénti
+  korlát (5 / 10 perc); a szolgáltatói duplikátum semleges siker; 429/403/503 kezelve.
+- **Hozzájárulás-napló** (`newsletter_consents`): e-mail, időpont, tájékoztató-verzió, IP-hash (12.1).
+  A feliratkozói lista a szolgáltatónál van.
+- Env: `NEWSLETTER_API_KEY`, `NEWSLETTER_USERNAME`, `NEWSLETTER_ORIGIN`.
+
+### Ismert korlátok
+
+- A partner API-nak nincs leiratkozó vagy állapot-végpontja, ezért a fiókban a feliratkozás nem
+  mutatható vagy módosítható (10.2 ezt kéri); leiratkozni a hírlevél linkjével lehet.
+- Élesítés előtt a szolgáltatónál fel kell venni az engedélyezett domaint (pontos egyezés).
+
+---
+
 ## 2026-10-20 – Partnerek modul (spec 3.1 / 3.4), admin hozzáférés a tagi tartalomhoz
 
 ### Változások

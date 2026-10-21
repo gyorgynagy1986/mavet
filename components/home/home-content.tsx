@@ -20,6 +20,8 @@ import { PostCover } from "@/components/posts/post-cover"
 import { listHomePreview } from "@/lib/server/posts"
 import { listFeaturedPartners } from "@/lib/server/partners"
 import { PartnerStrip } from "@/components/partners/partner-strip"
+import { NewsletterForm } from "@/components/home/newsletter-form"
+import { isNewsletterConfigured } from "@/lib/server/newsletter"
 import type { PartnerView } from "@/lib/partners"
 import { workgroups } from "@/lib/data/site"
 
@@ -42,6 +44,7 @@ export async function HomeContent() {
   }
   const { highlight: featuredNews, news: otherNews, events: upcomingEvents } = preview
   // Partners (3.1): the featured, published ones; without any the section stays hidden.
+  const newsletter = isNewsletterConfigured()
   let partners: PartnerView[] = []
   try {
     partners = await listFeaturedPartners()
@@ -203,6 +206,21 @@ export async function HomeContent() {
         </SiteContainer>
       </section>
 
+      {/* Stay in touch + newsletter (3.1, 10.2): the wireframe merges the two; the form shows only where the provider is configured */}
+      <section className="border-t border-border bg-mavet-surface py-14 sm:py-20">
+        <SiteContainer className={newsletter ? "mavet-reveal grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" : "mavet-reveal flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center"}>
+          <div className="flex flex-col items-start gap-4">
+            <Eyebrow className="text-mavet-blue">Kapcsolat</Eyebrow>
+            <h2 className="text-3xl leading-tight text-balance sm:text-[2.25rem]">Maradjon kapcsolatban a MAVET-tel</h2>
+            <p className="max-w-md leading-7 text-muted-foreground">
+              {newsletter ? "Iratkozzon fel híreinkre, vagy kövesse Facebook-oldalunkat. A hírlevél tagság nélkül is elérhető." : "Tájékozódjon az oldalon, vagy kövesse Facebook-oldalunkat."}
+            </p>
+            <FacebookMark className="size-11 border-border text-mavet-blue" />
+          </div>
+          {newsletter ? <NewsletterForm /> : null}
+        </SiteContainer>
+      </section>
+
       {/* Partners (3.1): featured partners in equal tiles; the full list is on /partnerek */}
       {partners.length > 0 && (
         <section className="border-t border-border bg-mavet-surface py-16 sm:py-20">
@@ -224,16 +242,6 @@ export async function HomeContent() {
         </section>
       )}
 
-      {/* Stay in touch */}
-      <section className="border-t border-border bg-mavet-surface py-12">
-        <SiteContainer className="mavet-reveal flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
-          <div>
-            <h2 className="text-2xl">Maradjon kapcsolatban a MAVET-tel</h2>
-            <p className="mt-2 text-muted-foreground">Tájékozódjon az oldalon, vagy kövesse Facebook-oldalunkat.</p>
-          </div>
-          <FacebookMark className="size-11 border-border text-mavet-blue" />
-        </SiteContainer>
-      </section>
     </>
   )
 }
